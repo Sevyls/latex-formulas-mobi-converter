@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <name>Latex to Mobi Formula Converter - Bachelor Thesis</name>
+    <groupId>at.ac.tuwien.ims</groupId>
+    <artifactId>latex2mobi-converter</artifactId>
+    <version>0.1</version>
+
+    <developers>
+        <developer>
+            <id>mauss</id>
+            <name>Michael Auss</name>
+            <email>e0525937@student.tuwien.ac.at</email>
+            <organization>Vienna University of Technology</organization>
+            <organizationUrl>http://www.tuwien.ac.at</organizationUrl>
+        </developer>
+    </developers>
+
+    <dependencies>
+        <dependency>
+            <groupId>jdom</groupId>
+            <artifactId>jdom</artifactId>
+            <version>1.1</version>
+        </dependency>
+    </dependencies>
+
+    <issueManagement>
+        <url>https://sevyls.plan.io/projects/latex-formulas-to-mobi-converter</url>
+        <system>Redmine</system>
+    </issueManagement>
+
+    <organization>
+        <name>Vienna University of Technology</name>
+        <url>http://www.tuwien.ac.at</url>
+    </organization>
+
+    <scm>
+        <url>https://github.com/Sevyls/latex-formulas-mobi-converter.git</url>
+    </scm>
+</project>
