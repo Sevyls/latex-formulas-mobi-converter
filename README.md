@@ -13,8 +13,12 @@ Faculty of Informatics at the Vienna University of Technology.
 
 ## Libraries used
 
-* Apache Commons CLI - [http://commons.apache.org/proper/commons-cli/](http://commons.apache.org/proper/commons-cli/)
-* Apache Commons Configuration - [http://commons.apache.org/proper/commons-configuration/](http://commons.apache.org/proper/commons-configuration/)
+### Apache Commons
+* CLI - [http://commons.apache.org/proper/commons-cli/](http://commons.apache.org/proper/commons-cli/)
+* Configuration - [http://commons.apache.org/proper/commons-configuration/](http://commons.apache.org/proper/commons-configuration/)
+* Exec - [http://commons.apache.org/proper/commons-exec/](http://commons.apache.org/proper/commons-exec/)
+
+### Others
 * Apache Log4j - [http://logging.apache.org/log4j/](http://logging.apache.org/log4j/)
 * JDOM - [http://www.jdom.org/](http://www.jdom.org/)
 
