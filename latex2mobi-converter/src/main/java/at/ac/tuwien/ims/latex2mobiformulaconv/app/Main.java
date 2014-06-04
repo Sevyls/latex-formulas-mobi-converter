@@ -37,6 +37,9 @@ public class Main {
         options.addOption("p", "pandoc-exec", true, "pandoc executable location");
         options.addOption("h", "help", false, "show this help");
 
+        // TODO Amazon Kindle Gen flag + arg
+        // TODO Calibre flag + arg
+
 
         CommandLineParser parser = new PosixParser();
         try {

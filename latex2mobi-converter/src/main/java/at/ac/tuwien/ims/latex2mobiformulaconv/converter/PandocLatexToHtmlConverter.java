@@ -94,6 +94,8 @@ public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
             logger.error(e.getMessage(), e);
             // TODO Exception handling
         }
+        // TODO add html document structure to output (html, head, body tags)
+        // TODO output loading as JDOM Document
         return null;
     }
 }
