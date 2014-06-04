@@ -1,5 +1,7 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.app;
 
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.LatexToHtmlConverter;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.PandocLatexToHtmlConverter;
 import org.apache.commons.cli.*;
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.ConfigurationException;
@@ -31,7 +33,7 @@ public class Main {
         options = new Options();
 
         options.addOption("i", "input", true, "input file");
-        options.addOption("o", "output", true, "output file");
+        options.addOption("o", "output", false, "output file");
         options.addOption("p", "pandoc-exec", true, "pandoc executable location");
         options.addOption("h", "help", false, "show this help");
 
@@ -48,11 +50,17 @@ public class Main {
                 System.exit(0);
             }
 
-            // TODO Input File handling
+            if (cmd.hasOption('i')) {
+                // TODO Input File handling
+            }
 
-            // TODO Output File/directory handling
+            if (cmd.hasOption('o')) {
+                // TODO Output File/directory handling
+            }
 
-            // TODO Pandoc executable handling
+            if (cmd.hasOption('p')) {
+                // TODO Pandoc executable handling
+            }
 
 
         } catch (ParseException e) {
@@ -60,6 +68,9 @@ public class Main {
             // TODO Exception handling
         }
 
+        LatexToHtmlConverter latexToHtmlConverter = new PandocLatexToHtmlConverter();
+
+        latexToHtmlConverter.convert(null);
 
         logger.debug("main() exit.");
     }
