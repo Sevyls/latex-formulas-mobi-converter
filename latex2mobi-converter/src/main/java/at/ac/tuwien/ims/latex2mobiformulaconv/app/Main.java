@@ -8,8 +8,10 @@ import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.log4j.Logger;
 
 import java.net.URISyntaxException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 /**
  * @author mauss
@@ -20,6 +22,7 @@ public class Main {
     private static Logger logger = Logger.getRootLogger();
     private static PropertiesConfiguration config;
     private static Options options;
+    private static ArrayList<Path> inputPaths = new ArrayList<Path>();
 
     public static void main(String[] args) {
         logger.debug("main() started.");
@@ -39,27 +42,55 @@ public class Main {
 
         options = new Options();
 
-        options.addOption("i", "input", true, "input file");
+        Option inputOption = new Option("i", "inputPaths", true, "inputPaths file");
+        inputOption.setRequired(true);
+        inputOption.setArgs(Option.UNLIMITED_VALUES);
+        inputOption.setValueSeparator(',');
+        options.addOption(inputOption);
+
         options.addOption("o", "output", true, "output file/directory");
-        options.addOption("p", "pandoc-exec", true, "pandoc executable location");
+
+        Option pandocOption = new Option("p", "pandoc-exec", true, "pandoc executable location");
+        pandocOption.setArgs(1);
+        options.addOption(pandocOption);
+
         options.addOption("k", "kindlegen-exec", true, "Amazon KindleGen executable location");
         options.addOption("c", "calibre-exec", true, "Calibre executable location");
+
         options.addOption("h", "help", false, "show this help");
 
         CommandLineParser parser = new PosixParser();
         try {
+
             CommandLine cmd = parser.parse(options, args);
+
 
             if (cmd.hasOption('h')) {
                 // Show usage, ignore other parameters and quit
-                HelpFormatter formatter = new HelpFormatter();
-                formatter.printHelp("latex2mobi", options);
+                usage();
                 logger.debug("Help called, main() exit.");
                 System.exit(0);
             }
 
             if (cmd.hasOption('i')) {
-                // TODO Input File handling
+                String[] inputValues = cmd.getOptionValues('i');
+                for (String inputValue : inputValues) {
+                    Path inputPath = Paths.get(inputValue);
+
+                    if (Files.exists(inputPath)) {
+                        logger.debug("Input file/directory found: " + inputPath.toAbsolutePath().toString());
+                        inputPaths.add(inputPath);
+                    } else {
+                        logger.error("Input file/directory could not be found!");
+                        logger.error(inputPath.toAbsolutePath().toString());
+                        System.exit(1);
+                    }
+                }
+            } else {
+                logger.error("You have to specify an inputPaths file or directory!");
+                usage();
+                System.exit(1);
+
             }
 
             if (cmd.hasOption('o')) {
@@ -79,6 +110,10 @@ public class Main {
             }
 
 
+        } catch (MissingOptionException m) {
+            logger.warn(m.getMessage());
+            usage();
+            System.exit(1);
         } catch (ParseException e) {
             logger.error(e.getMessage(), e);
             // TODO Exception handling
@@ -108,12 +143,16 @@ public class Main {
             }
         }
 
-
         LatexToHtmlConverter latexToHtmlConverter = new PandocLatexToHtmlConverter();
 
-        // TODO input file --> convert call
-        latexToHtmlConverter.convert(null);
+        // TODO iterate over inputPaths
+        latexToHtmlConverter.convert(inputPaths.get(0).toFile());
 
         logger.debug("main() exit.");
+    }
+
+    private static void usage() {
+        HelpFormatter formatter = new HelpFormatter();
+        formatter.printHelp("latex2mobi", options);
     }
 }

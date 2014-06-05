@@ -8,7 +8,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.URISyntaxException;
 import java.nio.file.Paths;
 import java.util.HashMap;
 
@@ -21,23 +20,20 @@ public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
 
     @Override
     public Document convert(File tex) {
+        logger.debug("Start convert() with file " + tex.toPath().toAbsolutePath().toString());
+
         // TODO read pandoc path from running config
         CommandLine cmdLine = new CommandLine("pandoc");
 
         cmdLine.addArgument("--from=latex");
         cmdLine.addArgument("--to=html");
 
-        // TODO set output file
+        // TODO set output file or working dir
         cmdLine.addArgument("--output=formulas.html");
         cmdLine.addArgument("${file}");
         HashMap map = new HashMap();
-        try {
-            // TODO Input file handling
-            map.put("file", Paths.get(this.getClass().getClassLoader().getResource("formulas.tex").toURI()).toAbsolutePath());
-        } catch (URISyntaxException e) {
-            logger.error(e.getMessage(), e);
-            // TODO Exception handling
-        }
+        map.put("file", Paths.get(tex.toURI()));
+
         cmdLine.setSubstitutionMap(map);
 
         DefaultExecuteResultHandler resultHandler = new DefaultExecuteResultHandler();
