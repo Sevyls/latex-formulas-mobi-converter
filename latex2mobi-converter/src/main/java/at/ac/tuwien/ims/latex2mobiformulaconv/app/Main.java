@@ -8,6 +8,8 @@ import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.log4j.Logger;
 
+import java.nio.file.Paths;
+
 /**
  * @author mauss
  *         Created: 29.04.14 22:55
@@ -21,6 +23,8 @@ public class Main {
     public static void main(String[] args) {
         logger.debug("main() started.");
 
+        //logger.debug(Main.class.getProtectionDomain().getCodeSource().getLocation().toString());
+
         try {
             logger.debug("Loading configuration.");
             config = new PropertiesConfiguration(CONFIGURATION_FILENAME);
@@ -33,13 +37,11 @@ public class Main {
         options = new Options();
 
         options.addOption("i", "input", true, "input file");
-        options.addOption("o", "output", false, "output file");
+        options.addOption("o", "output", true, "output file/directory");
         options.addOption("p", "pandoc-exec", true, "pandoc executable location");
+        options.addOption("k", "kindlegen-exec", true, "Amazon KindleGen executable location");
+        options.addOption("c", "calibre-exec", true, "Calibre executable location");
         options.addOption("h", "help", false, "show this help");
-
-        // TODO Amazon Kindle Gen flag + arg
-        // TODO Calibre flag + arg
-
 
         CommandLineParser parser = new PosixParser();
         try {
@@ -63,6 +65,14 @@ public class Main {
 
             if (cmd.hasOption('p')) {
                 // TODO Pandoc executable handling
+            }
+
+            if (cmd.hasOption('k')) {
+                // TODO KindleGen executable handling
+            }
+
+            if (cmd.hasOption('c')) {
+                // TODO Calibre executable handling
             }
 
 
