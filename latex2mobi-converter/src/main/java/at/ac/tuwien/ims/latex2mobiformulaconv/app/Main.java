@@ -6,6 +6,7 @@ import org.apache.commons.cli.*;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.log4j.Logger;
+import org.jdom2.output.XMLOutputter;
 
 import java.net.URISyntaxException;
 import java.nio.file.Files;
@@ -146,7 +147,12 @@ public class Main {
         LatexToHtmlConverter latexToHtmlConverter = new PandocLatexToHtmlConverter();
 
         // TODO iterate over inputPaths
-        latexToHtmlConverter.convert(inputPaths.get(0).toFile());
+        org.jdom2.Document document = latexToHtmlConverter.convert(inputPaths.get(0).toFile());
+
+
+        XMLOutputter xout = new XMLOutputter();
+        logger.debug(xout.outputString(document));
+
 
         logger.debug("main() exit.");
     }

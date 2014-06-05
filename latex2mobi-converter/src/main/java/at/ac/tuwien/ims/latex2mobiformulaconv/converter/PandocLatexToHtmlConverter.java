@@ -1,13 +1,17 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.converter;
 
 import org.apache.commons.exec.*;
+import org.apache.commons.io.output.WriterOutputStream;
 import org.apache.log4j.Logger;
 import org.jdom2.Document;
+import org.jdom2.JDOMException;
+import org.jdom2.input.SAXBuilder;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.StringReader;
+import java.io.StringWriter;
+import java.nio.charset.Charset;
 import java.nio.file.Paths;
 import java.util.HashMap;
 
@@ -26,11 +30,9 @@ public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
         CommandLine cmdLine = new CommandLine("pandoc");
 
         cmdLine.addArgument("--from=latex");
-        cmdLine.addArgument("--to=html");
-
-        // TODO set output file or working dir
-        cmdLine.addArgument("--output=formulas.html");
+        cmdLine.addArgument("--to=html5");
         cmdLine.addArgument("${file}");
+
         HashMap map = new HashMap();
         map.put("file", Paths.get(tex.toURI()));
 
@@ -42,36 +44,12 @@ public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
         Executor executor = new DefaultExecutor();
         executor.setExitValue(1);
         executor.setWatchdog(watchdog);
+        StringWriter writer = new StringWriter();
+        WriterOutputStream writerOutputStream = new WriterOutputStream(writer, Charset.forName("UTF-8"));
 
-        ExecuteStreamHandler pandocStreamHandler = new ExecuteStreamHandler() {
-            @Override
-            public void setProcessInputStream(OutputStream outputStream) throws IOException {
-                //TODO pandoc input stream
-            }
-
-            @Override
-            public void setProcessErrorStream(InputStream inputStream) throws IOException {
-                // TODO monitor error stream
-                // TODO Error handling
-            }
-
-            @Override
-            public void setProcessOutputStream(InputStream inputStream) throws IOException {
-                // TODO monitor output stream
-                // TODO Error handling?
-            }
-
-            @Override
-            public void start() throws IOException {
-                // TODO ?
-            }
-
-            @Override
-            public void stop() throws IOException {
-                // TODO ?
-            }
-        };
+        ExecuteStreamHandler pandocStreamHandler = new PumpStreamHandler(writerOutputStream, System.err);
         executor.setStreamHandler(pandocStreamHandler);
+
         logger.debug("Launching pandoc:");
         logger.debug(cmdLine.toString());
 
@@ -90,8 +68,37 @@ public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
             logger.error(e.getMessage(), e);
             // TODO Exception handling
         }
-        // TODO add html document structure to output (html, head, body tags)
+        // add html document structure to output
+        String htmlOutput = "<!DOCTYPE html>\n" +
+                "<html>\n" +
+                "<body>";
+        try {
+            htmlOutput += writer.getBuffer().toString();
+            writer.close();
+
+        } catch (IOException e) {
+            logger.error(e.getMessage(), e);
+            // TODO Exception handling
+        }
+
+
+        htmlOutput += "</body>\n" +
+                "</html>";
+
+        logger.debug("html-output: " + htmlOutput);
+
         // TODO output loading as JDOM Document
-        return null;
+        SAXBuilder sax = new SAXBuilder();
+        Document document = null;
+        try {
+            document = sax.build(new StringReader(htmlOutput));
+        } catch (JDOMException e) {
+            logger.error(e.getMessage(), e);
+            // TODO Exception handling
+        } catch (IOException e) {
+            logger.error(e.getMessage(), e);
+            // TODO Exception handling
+        }
+        return document;
     }
 }
