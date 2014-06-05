@@ -65,11 +65,59 @@
         <url>https://github.com/Sevyls/latex-formulas-mobi-converter.git</url>
     </scm>
 
+    <profiles>
+        <profile>
+            <id>windows-deploy</id>
+
+            <activation>
+                <os>
+                    <family>Windows</family>
+                </os>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.bluestemsoftware.open.maven.plugin</groupId>
+                        <artifactId>launch4j-plugin</artifactId>
+                        <version>1.5.0.0</version>
+                        <executions>
+                            <execution>
+                                <id>launch4j</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>launch4j</goal>
+                                </goals>
+                                <configuration>
+
+                                    <headerType>console</headerType>
+                                    <outfile>${project.build.directory}/latex2mobi.exe</outfile>
+
+                                    <errTitle>Launcher</errTitle>
+                                    <jre>
+                                        <minVersion>1.7.0</minVersion>
+                                    </jre>
+                                    <classPath>
+                                        <mainClass>at.ac.tuwien.ims.latex2mobiformulaconv.app.Main</mainClass>
+                                        <addDependencies>true</addDependencies>
+                                        <preCp>anything</preCp>
+                                    </classPath>
+                                    <!--<icon>${basedir}/build-resources/win/icons/application.ico</icon>-->
+
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
                 <configuration>
                     <source>1.7</source>
                     <target>1.7</target>
@@ -96,37 +144,11 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.bluestemsoftware.open.maven.plugin</groupId>
-                <artifactId>launch4j-plugin</artifactId>
-                <version>1.5.0.0</version>
-                <executions>
-                    <execution>
-                        <id>launch4j</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>launch4j</goal>
-                        </goals>
-                        <configuration>
 
-                            <headerType>console</headerType>
-                            <outfile>${project.build.directory}/latex2mobi.exe</outfile>
-
-                            <errTitle>Launcher</errTitle>
-                            <jre>
-                                <minVersion>1.7.0</minVersion>
-                            </jre>
-                            <classPath>
-                                <mainClass>at.ac.tuwien.ims.latex2mobiformulaconv.app.Main</mainClass>
-                                <addDependencies>true</addDependencies>
-                                <preCp>anything</preCp>
-                            </classPath>
-                            <!--<icon>${basedir}/build-resources/win/icons/application.ico</icon>-->
-
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 </project>
