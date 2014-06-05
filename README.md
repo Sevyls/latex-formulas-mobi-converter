@@ -1,9 +1,12 @@
 Latex to Mobi Formula Converter
 =============================
+
 Bachelor Thesis
 
 Michael Auß
 e0525937@student.tuwien.ac.at
+
+![Build status](https://travis-ci.org/Sevyls/latex-formulas-mobi-converter.svg?branch=master "Build status")
 
 [https://www.ims.tuwien.ac.at/topics/239](https://www.ims.tuwien.ac.at/topics/239)
 
