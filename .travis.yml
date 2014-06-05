@@ -1,5 +1,4 @@
 language: java
 jdk:
   - oraclejdk7
-env:
-  - TRAVIS_BUILD_DIR = '$TRAVIS_BUILD_DIR/latex2mobi-converter'
+before_script: cd latex2mobi-converter
