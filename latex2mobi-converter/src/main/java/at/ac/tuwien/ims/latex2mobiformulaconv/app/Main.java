@@ -153,6 +153,7 @@ public class Main {
         XMLOutputter xout = new XMLOutputter();
         logger.debug(xout.outputString(document));
 
+        htmlToMobiConverter.convertToMobi(document);
 
         logger.debug("main() exit.");
     }
