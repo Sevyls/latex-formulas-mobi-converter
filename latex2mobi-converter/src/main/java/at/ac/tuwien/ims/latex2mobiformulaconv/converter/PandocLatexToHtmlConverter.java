@@ -1,5 +1,6 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.converter;
 
+import org.apache.commons.cli.Option;
 import org.apache.commons.exec.*;
 import org.apache.commons.io.output.WriterOutputStream;
 import org.apache.log4j.Logger;
@@ -100,5 +101,12 @@ public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
             // TODO Exception handling
         }
         return document;
+    }
+
+    @Override
+    public Option getExecOption() {
+        Option pandocOption = new Option("p", "pandoc-exec", true, "pandoc executable location");
+        pandocOption.setArgs(1);
+        return pandocOption;
     }
 }

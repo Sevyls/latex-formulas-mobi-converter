@@ -7,7 +7,14 @@ import java.io.File;
 /**
  * @author mauss
  *         Created: 21.05.14 00:11
+ *         // TODO Documentation
  */
-public interface HtmlToMobiConverter {
+public interface HtmlToMobiConverter extends ExecOption {
+    /**
+     * // TODO Documentation
+     *
+     * @param document
+     * @return
+     */
     public File convertToMobi(Document document);
 }

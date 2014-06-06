@@ -1,19 +1,18 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.converter;
 
-import org.jdom2.Document;
-
-import java.io.File;
+import org.apache.commons.cli.Option;
 
 /**
  * @author mauss
- *         Created: 21.05.14 00:08
+ *         Created: 06.06.14 22:48
  *         // TODO Documentation
  */
-public interface LatexToHtmlConverter extends ExecOption {
+public interface ExecOption {
     /**
      * // TODO Documentation
      *
      * @return
      */
-    public Document convert(File tex);
+    public Option getExecOption();
+
 }

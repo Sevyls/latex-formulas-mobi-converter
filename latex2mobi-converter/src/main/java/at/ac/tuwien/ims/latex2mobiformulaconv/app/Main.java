@@ -1,5 +1,7 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.app;
 
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.AmazonHtmlToMobiConverter;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.HtmlToMobiConverter;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.LatexToHtmlConverter;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.PandocLatexToHtmlConverter;
 import org.apache.commons.cli.*;
@@ -25,6 +27,9 @@ public class Main {
     private static Options options;
     private static ArrayList<Path> inputPaths = new ArrayList<Path>();
 
+    private static HtmlToMobiConverter htmlToMobiConverter;
+    private static LatexToHtmlConverter latexToHtmlConverter;
+
     public static void main(String[] args) {
         logger.debug("main() started.");
         Path workingDirectory = null;
@@ -41,6 +46,10 @@ public class Main {
             System.exit(1);
         }
 
+        // Instantiate classes
+        latexToHtmlConverter = new PandocLatexToHtmlConverter();
+        htmlToMobiConverter = new AmazonHtmlToMobiConverter();
+
         options = new Options();
 
         Option inputOption = new Option("i", "inputPaths", true, "inputPaths file");
@@ -50,15 +59,11 @@ public class Main {
         options.addOption(inputOption);
 
         options.addOption("o", "output", true, "output file/directory");
-
-        Option pandocOption = new Option("p", "pandoc-exec", true, "pandoc executable location");
-        pandocOption.setArgs(1);
-        options.addOption(pandocOption);
-
-        options.addOption("k", "kindlegen-exec", true, "Amazon KindleGen executable location");
-        options.addOption("c", "calibre-exec", true, "Calibre executable location");
-
         options.addOption("h", "help", false, "show this help");
+
+        options.addOption(latexToHtmlConverter.getExecOption());
+        options.addOption(htmlToMobiConverter.getExecOption());
+
 
         CommandLineParser parser = new PosixParser();
         try {
@@ -98,16 +103,12 @@ public class Main {
                 // TODO Output File/directory handling
             }
 
-            if (cmd.hasOption('p')) {
+            if (cmd.hasOption(latexToHtmlConverter.getExecOption().getOpt())) {
                 // TODO Pandoc executable handling
             }
 
-            if (cmd.hasOption('k')) {
+            if (cmd.hasOption(htmlToMobiConverter.getExecOption().getOpt())) {
                 // TODO KindleGen executable handling
-            }
-
-            if (cmd.hasOption('c')) {
-                // TODO Calibre executable handling
             }
 
 
@@ -144,7 +145,6 @@ public class Main {
             }
         }
 
-        LatexToHtmlConverter latexToHtmlConverter = new PandocLatexToHtmlConverter();
 
         // TODO iterate over inputPaths
         org.jdom2.Document document = latexToHtmlConverter.convert(inputPaths.get(0).toFile());
