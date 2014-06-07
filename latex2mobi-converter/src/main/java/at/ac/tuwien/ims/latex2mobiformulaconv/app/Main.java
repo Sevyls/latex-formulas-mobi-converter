@@ -10,6 +10,8 @@ import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.log4j.Logger;
 import org.jdom2.output.XMLOutputter;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -26,6 +28,7 @@ public class Main {
     private static PropertiesConfiguration config;
     private static Options options;
     private static ArrayList<Path> inputPaths = new ArrayList<Path>();
+    private static Path outputPath;
 
     private static HtmlToMobiConverter htmlToMobiConverter;
     private static LatexToHtmlConverter latexToHtmlConverter;
@@ -58,7 +61,7 @@ public class Main {
         inputOption.setValueSeparator(',');
         options.addOption(inputOption);
 
-        options.addOption("o", "output", true, "output file/directory");
+        options.addOption("o", "output-dir", true, "output directory");
         options.addOption("h", "help", false, "show this help");
 
         options.addOption(latexToHtmlConverter.getExecOption());
@@ -100,7 +103,25 @@ public class Main {
             }
 
             if (cmd.hasOption('o')) {
-                // TODO Output File/directory handling
+                String outputDirectory = cmd.getOptionValue('o');
+
+                outputPath = workingDirectory.resolve(outputDirectory);
+                if (!Files.isDirectory(outputPath) && Files.isRegularFile(outputPath)) {
+                    logger.error("Given output directory is a file! Exiting...");
+                    logger.debug(outputPath.toAbsolutePath().toString());
+                    System.exit(1);
+                }
+
+                if (!Files.isWritable(outputPath)) {
+                    logger.error("Given output directory is not writable! Exiting...");
+                    logger.debug(outputPath.toAbsolutePath().toString());
+                    System.exit(1);
+                }
+                logger.debug("Output path: " + outputPath.toAbsolutePath().toString());
+
+            } else {
+                // Set default output directory if none is given
+                outputPath = workingDirectory;
             }
 
             if (cmd.hasOption(latexToHtmlConverter.getExecOption().getOpt())) {
@@ -153,7 +174,16 @@ public class Main {
         XMLOutputter xout = new XMLOutputter();
         logger.debug(xout.outputString(document));
 
-        htmlToMobiConverter.convertToMobi(document);
+        File mobiFile = htmlToMobiConverter.convertToMobi(document);
+
+        Path resultFilepath = null;
+        try {
+            resultFilepath = Files.move(mobiFile.toPath(), outputPath.resolve(mobiFile.getName()));
+            logger.debug("Mobi file moved to: " + resultFilepath.toAbsolutePath().toString());
+        } catch (IOException e) {
+            logger.error(e.getMessage(), e);
+            // TODO Exception handling
+        }
 
         logger.debug("main() exit.");
     }

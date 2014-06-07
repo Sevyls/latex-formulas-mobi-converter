@@ -13,7 +13,6 @@ import java.io.StringWriter;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
 /**
  * @author mauss
@@ -118,21 +117,7 @@ public class AmazonHtmlToMobiConverter implements HtmlToMobiConverter {
         logger.debug("Moving Kindlegen output file: " + mobiFilename);
 
         Path tempMobiFilepath = tempFilepath.getParent().resolve(mobiFilename);
-        Path resultFilepath = null;
-        try {
-            // TODO set output path
-            resultFilepath = Files.move(tempMobiFilepath, Paths.get("/Users/Michael/" + tempMobiFilepath.getFileName().toString()));
-        } catch (IOException e) {
-            logger.error(e.getMessage(), e);
-            // TODO Exception handling
-        }
-
-        if (resultFilepath == null) {
-            logger.error("Result Filepath could not be determined.");
-            return null;
-        } else {
-            return resultFilepath.toFile();
-        }
+        return tempMobiFilepath.toFile();
     }
 
 
