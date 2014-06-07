@@ -125,7 +125,7 @@
                         <artifactId>osxappbundle-maven-plugin</artifactId>
                         <version>1.0-alpha-2</version>
                         <configuration>
-                            <mainclass>at.ac.tuwien.ims.latex2mobiformulaconv.app.Main</mainclass>
+                            <mainClass>at.ac.tuwien.ims.latex2mobiformulaconv.app.Main</mainClass>
                             <!--<iconfile>${basedir}/build-resources/osx/icons/application.icns</iconfile>-->
                         </configuration>
                         <executions>
