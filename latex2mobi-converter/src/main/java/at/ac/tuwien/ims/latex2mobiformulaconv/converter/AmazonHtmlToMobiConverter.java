@@ -13,6 +13,7 @@ import java.io.StringWriter;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * @author mauss
@@ -50,9 +51,9 @@ public class AmazonHtmlToMobiConverter implements HtmlToMobiConverter {
 
         // TODO  read kindlegen path from running config
         CommandLine cmdLine = new CommandLine("kindlegen");
-        cmdLine.addArgument("\"" + tempFilepath.toAbsolutePath().toString() + "\"");
+        cmdLine.addArgument(tempFilepath.toAbsolutePath().toString());
         cmdLine.addArgument("-c0");
-        cmdLine.addArgument("-locale en");
+        //cmdLine.addArgument("-locale en");
 
         DefaultExecuteResultHandler resultHandler = new DefaultExecuteResultHandler();
 
@@ -79,18 +80,27 @@ public class AmazonHtmlToMobiConverter implements HtmlToMobiConverter {
         try {
             resultHandler.waitFor();
             int exitValue = resultHandler.getExitValue();
-            // TODO evaluate exitValue
+
             logger.debug("Kindlegen execution's exit value: " + exitValue);
             ExecuteException executeException = resultHandler.getException();
-            if (executeException != null) {
-                // TODO Handle ExecuteException IOException -- "Das System kann die angegebene Datei nicht finden"
-                logger.debug(executeException);
+            if (executeException != null && executeException.getCause() != null) {
+
+                String exceptionKlass = executeException.getCause().getClass().getCanonicalName();
+                String exceptionMessage = executeException.getCause().getMessage();
+                if (exceptionMessage.contains("Cannot run program \"kindlegen\"")
+                        && exceptionMessage.contains("No such file or directory")) {
+                    logger.error("Kindlegen could not be found! Exiting...");
+                    logger.debug(executeException);
+                    System.exit(1);
+                }
+                logger.debug(exceptionKlass + ": " + exceptionMessage);
             }
 
         } catch (InterruptedException e) {
             logger.error(e.getMessage(), e);
             // TODO Exception handling
         }
+
         String output = "";
         try {
             output += writer.getBuffer().toString();
@@ -104,9 +114,25 @@ public class AmazonHtmlToMobiConverter implements HtmlToMobiConverter {
         // TODO evaluate Kindlegen output
         logger.debug("Kindlegen output: \n" + output);
 
-        // TODO move kindlegen mobi file to designated output file / directory
-        // TODO return File
-        return null;
+        String mobiFilename = tempFilepath.getFileName().toString().replace(".html", ".mobi").toString();
+        logger.debug("Moving Kindlegen output file: " + mobiFilename);
+
+        Path tempMobiFilepath = tempFilepath.getParent().resolve(mobiFilename);
+        Path resultFilepath = null;
+        try {
+            // TODO set output path
+            resultFilepath = Files.move(tempMobiFilepath, Paths.get("/Users/Michael/" + tempMobiFilepath.getFileName().toString()));
+        } catch (IOException e) {
+            logger.error(e.getMessage(), e);
+            // TODO Exception handling
+        }
+
+        if (resultFilepath == null) {
+            logger.error("Result Filepath could not be determined.");
+            return null;
+        } else {
+            return resultFilepath.toFile();
+        }
     }
 
 
