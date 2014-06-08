@@ -10,6 +10,15 @@ import java.util.ArrayList;
  */
 public class Formula {
     private ArrayList<Line> lines;
+    private String latexCode;
+
+    public String getLatexCode() {
+        return latexCode;
+    }
+
+    public void setLatexCode(String latexCode) {
+        this.latexCode = latexCode;
+    }
 
     public Formula() {
         lines = new ArrayList<Line>();
