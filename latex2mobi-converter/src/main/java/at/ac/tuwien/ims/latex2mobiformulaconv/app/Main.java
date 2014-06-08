@@ -1,9 +1,6 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.app;
 
-import at.ac.tuwien.ims.latex2mobiformulaconv.converter.AmazonHtmlToMobiConverter;
-import at.ac.tuwien.ims.latex2mobiformulaconv.converter.HtmlToMobiConverter;
-import at.ac.tuwien.ims.latex2mobiformulaconv.converter.LatexToHtmlConverter;
-import at.ac.tuwien.ims.latex2mobiformulaconv.converter.PandocLatexToHtmlConverter;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.*;
 import org.apache.commons.cli.*;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
@@ -17,6 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * @author mauss
@@ -173,6 +171,11 @@ public class Main {
 
         XMLOutputter xout = new XMLOutputter();
         logger.debug(xout.outputString(document));
+
+        logger.info("Parsing Formulas from converted HTML...");
+        FormulaConverter formulaConverter = new FormulaConverterImpl();
+        Map<Integer, String> latexFormulas = formulaConverter.parseFormulas(document);
+
 
         File mobiFile = htmlToMobiConverter.convertToMobi(document);
 
