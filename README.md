@@ -6,7 +6,7 @@ Bachelor Thesis
 Michael Auß
 e0525937@student.tuwien.ac.at
 
-![Build status](https://travis-ci.org/Sevyls/latex-formulas-mobi-converter.svg?branch=master "Build status")
+[![GitHub version](https://badge.fury.io/gh/sevyls%2Flatex-formulas-mobi-converter.svg)](http://badge.fury.io/gh/sevyls%2Flatex-formulas-mobi-converter) ![Build status](https://travis-ci.org/Sevyls/latex-formulas-mobi-converter.svg?branch=master "Build status")
 
 [https://www.ims.tuwien.ac.at/topics/239](https://www.ims.tuwien.ac.at/topics/239)
 
@@ -48,7 +48,13 @@ Ad-hoc configuration is possible by passing the following *optional* command lin
 
 Notice: this overrides all other previous discussed settings.
 
+### Amazon KindleGen
 
+This is the standard way to generate a .Mobi-File.
+
+Download & install from [http://www.amazon.com/gp/feature.html?docId=1000765211](http://www.amazon.com/gp/feature.html?docId=1000765211)
+
+**Add the installed kindlegen executable/directory to your operating system's PATH variable.**
 
 #// TODO rest of documentation.
 
