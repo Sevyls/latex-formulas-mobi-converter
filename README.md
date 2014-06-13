@@ -6,7 +6,7 @@ Bachelor Thesis
 Michael Auß
 e0525937@student.tuwien.ac.at
 
-[![GitHub version](https://badge.fury.io/gh/sevyls%2Flatex-formulas-mobi-converter.svg)](http://badge.fury.io/gh/sevyls%2Flatex-formulas-mobi-converter) ![Build status](https://travis-ci.org/Sevyls/latex-formulas-mobi-converter.svg?branch=master "Build status")
+[![GitHub version](https://badge.fury.io/gh/sevyls%2Flatex-formulas-mobi-converter.svg)](http://badge.fury.io/gh/sevyls%2Flatex-formulas-mobi-converter) [![Build status](https://travis-ci.org/Sevyls/latex-formulas-mobi-converter.svg?branch=master "Build status")](https://travis-ci.org/Sevyls/latex-formulas-mobi-converter)
 
 [https://www.ims.tuwien.ac.at/topics/239](https://www.ims.tuwien.ac.at/topics/239)
 
