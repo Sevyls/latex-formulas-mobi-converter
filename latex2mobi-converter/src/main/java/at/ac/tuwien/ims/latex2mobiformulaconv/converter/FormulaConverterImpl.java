@@ -20,7 +20,7 @@ public class FormulaConverterImpl implements FormulaConverter {
     private static Logger logger = Logger.getLogger(FormulaConverterImpl.class);
 
     private static XPathFactory xPathFactory = XPathFactory.instance();
-    private static XPathExpression<Element> xpath = xPathFactory.compile("//*[@class='math']", Filters.element());
+    private static XPathExpression<Element> xpath = xPathFactory.compile("//*[@class='LaTeX']", Filters.element());
 
 
     @Override
@@ -30,13 +30,19 @@ public class FormulaConverterImpl implements FormulaConverter {
     }
 
     @Override
-    public Map<Integer, String> parseFormulas(Document document) {
-        Map<Integer, String> formulas = new HashMap<>();
+    public Map<Integer, Formula> extractFormulas(Document document) {
+        Map<Integer, Formula> formulas = new HashMap<>();
 
         // TODO implement
         List<Element> foundElements = xpath.evaluate(document);
+        int id = 0;
         for (Element element : foundElements) {
             logger.debug(element.getValue());
+            element.setAttribute("id", "formula_" + id);
+            Formula formula = new Formula();
+            formula.setLatexCode(element.getValue());
+            formulas.put(id, formula);
+            id++;
         }
 
         return formulas;

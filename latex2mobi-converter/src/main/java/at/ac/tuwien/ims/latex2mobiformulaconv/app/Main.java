@@ -1,6 +1,7 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.app;
 
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.*;
+import at.ac.tuwien.ims.latex2mobiformulaconv.elements.Formula;
 import org.apache.commons.cli.*;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
@@ -174,7 +175,7 @@ public class Main {
 
         logger.info("Parsing Formulas from converted HTML...");
         FormulaConverter formulaConverter = new FormulaConverterImpl();
-        Map<Integer, String> latexFormulas = formulaConverter.parseFormulas(document);
+        Map<Integer, Formula> latexFormulas = formulaConverter.extractFormulas(document);
 
 
         File mobiFile = htmlToMobiConverter.convertToMobi(document);
