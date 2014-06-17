@@ -25,6 +25,7 @@ Faculty of Informatics at the Vienna University of Technology.
 ### Others
 * Apache Log4j - [http://logging.apache.org/log4j/](http://logging.apache.org/log4j/)
 * JDOM - [http://www.jdom.org/](http://www.jdom.org/)
+* JEuclid - ([http://www.sourceforge.net/projects/jeuclid/](http://www.sourceforge.net/projects/jeuclid/))
 
 ## Requirements
 
@@ -57,4 +58,5 @@ Download & install from [http://www.amazon.com/gp/feature.html?docId=1000765211]
 **Add the installed kindlegen executable/directory to your operating system's PATH variable.**
 
 #// TODO rest of documentation.
+
 
