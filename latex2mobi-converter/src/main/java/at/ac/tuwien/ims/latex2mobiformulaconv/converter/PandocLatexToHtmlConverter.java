@@ -34,12 +34,9 @@ public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
         cmdLine.addArgument("--to=html5");
         cmdLine.addArgument("--asciimathml");
 
-        //cmdLine.addArgument("--include-in-header=${style}");
         cmdLine.addArgument("${file}");
 
         HashMap map = new HashMap();
-        //File style = new File("style.css");
-        //map.put("style", Paths.get(style.toURI()));
         map.put("file", Paths.get(tex.toURI()));
 
         cmdLine.setSubstitutionMap(map);
