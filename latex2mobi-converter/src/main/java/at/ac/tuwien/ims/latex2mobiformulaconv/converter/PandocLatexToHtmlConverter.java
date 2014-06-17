@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 
@@ -36,7 +37,7 @@ public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
 
         cmdLine.addArgument("${file}");
 
-        HashMap map = new HashMap();
+        HashMap<String, Path> map = new HashMap<String, Path>();
         map.put("file", Paths.get(tex.toURI()));
 
         cmdLine.setSubstitutionMap(map);

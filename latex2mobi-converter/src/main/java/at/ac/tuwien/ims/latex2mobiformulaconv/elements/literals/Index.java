@@ -7,6 +7,8 @@ import org.jdom2.Element;
  *         Created: 20.05.14 23:41
  */
 public class Index extends Literal {
+    public static final char COMMAND = '_';
+
     @Override
     public Element render() {
         return null;  //To change body of implemented methods use File | Settings | File Templates.

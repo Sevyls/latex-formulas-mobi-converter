@@ -76,11 +76,11 @@
             <artifactId>snuggletex-upconversion</artifactId>
             <version>1.2.2</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>uk.ac.ed.ph.snuggletex</groupId>
             <artifactId>snuggletex-jeuclid</artifactId>
             <version>1.2.2</version>
-        </dependency>
+        </dependency>       -->
 
         <dependency>
             <groupId>net.sourceforge.jeuclid</groupId>

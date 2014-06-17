@@ -31,7 +31,6 @@ import java.util.Map;
 public class FormulaConverterImpl implements FormulaConverter {
     private static Logger logger = Logger.getLogger(FormulaConverterImpl.class);
     private static SnuggleEngine engine = new SnuggleEngine();
-    private static SnuggleSession session = engine.createSession();
 
     public static final String FORMULA_ID_PREFIX = "formula_";
     private static XPathFactory xPathFactory = XPathFactory.instance();
@@ -60,6 +59,7 @@ public class FormulaConverterImpl implements FormulaConverter {
 
         SnuggleInput input = new SnuggleInput(latexFormula);
         try {
+            SnuggleSession session = engine.createSession();
             session.parseInput(input);
             String xmlString = session.buildXMLString();
             logger.debug("Snuggle: " + xmlString);
