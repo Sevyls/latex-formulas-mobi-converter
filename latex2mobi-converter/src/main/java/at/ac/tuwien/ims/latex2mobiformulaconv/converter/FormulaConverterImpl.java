@@ -27,6 +27,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -81,7 +82,9 @@ public class FormulaConverterImpl implements FormulaConverter {
             SnuggleSession session = engine.createSession();
             session.parseInput(input);
             String xmlString = session.buildXMLString();
-            logger.debug("Snuggle: " + xmlString);
+            logger.debug("MathML: " + xmlString);
+
+            // TODO ignore empty formulas
 
             formula.setMathMl(xmlString);
             try {
@@ -127,5 +130,34 @@ public class FormulaConverterImpl implements FormulaConverter {
         }
 
         return formulas;
+    }
+
+    public Document replaceFormulasWithImages(Document document, Map<Integer, Path> imagePaths) {
+        // TODO implement
+        List<Element> foundElements = xpath.evaluate(document);
+        Map<String, Element> elementMap = new HashMap<>();
+
+        for (Element element : foundElements) {
+            elementMap.put(element.getAttribute("id").getValue(), element);
+        }
+
+        Iterator<Integer> pathIterator = imagePaths.keySet().iterator();
+
+        while (pathIterator.hasNext()) {
+            Integer id = pathIterator.next();
+
+            Element element = elementMap.get(FORMULA_ID_PREFIX + id);
+            Path imagePath = imagePaths.get(id);
+
+            element.removeAttribute("class");
+            element.removeContent();
+            Element imageTag = new Element("img");
+            imageTag.setAttribute("src", this.tempDirPath.relativize(imagePath).toString());
+            imageTag.setAttribute("alt", FORMULA_ID_PREFIX + id);
+            element.addContent(imageTag);
+        }
+
+
+        return document;
     }
 }

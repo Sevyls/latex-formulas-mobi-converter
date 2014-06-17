@@ -3,6 +3,7 @@ package at.ac.tuwien.ims.latex2mobiformulaconv.converter;
 import at.ac.tuwien.ims.latex2mobiformulaconv.elements.Formula;
 import org.jdom2.Document;
 
+import java.nio.file.Path;
 import java.util.Map;
 
 /**
@@ -26,4 +27,14 @@ public interface FormulaConverter {
      * @return Map of formulas, keys: given id, values: corresponding latex formula code from the document
      */
     public Map<Integer, String> extractFormulas(Document document);
+
+
+    /**
+     * Replaces LaTeX Formulas with Image-Tags
+     *
+     * @param document
+     * @param imagePaths
+     * @return
+     */
+    public Document replaceFormulasWithImages(Document document, Map<Integer, Path> imagePaths);
 }

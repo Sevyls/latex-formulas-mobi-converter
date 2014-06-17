@@ -15,6 +15,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -186,6 +187,7 @@ public class Main {
 
         FormulaConverter formulaConverter = new FormulaConverterImpl(tempDirPath);
         Map<Integer, String> latexFormulas = formulaConverter.extractFormulas(document);
+        Map<Integer, Path> latexFormulaImagePaths = new HashMap<>();
 
         Iterator<Integer> it = latexFormulas.keySet().iterator();
         while (it.hasNext()) {
@@ -193,10 +195,12 @@ public class Main {
             String latexFormula = latexFormulas.get(id);
 
             Formula formula = formulaConverter.parse(latexFormula);
-
-
+            if (formula != null && formula.getImageFilePath() != null) {
+                latexFormulaImagePaths.put(id, formula.getImageFilePath());
+            }
         }
 
+        document = formulaConverter.replaceFormulasWithImages(document, latexFormulaImagePaths);
 
         File mobiFile = htmlToMobiConverter.convertToMobi(document, tempDirPath);
 
