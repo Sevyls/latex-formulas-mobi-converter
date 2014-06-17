@@ -25,5 +25,5 @@ public interface FormulaConverter {
      * @param document JDOM HTML Document to parse
      * @return Map of formulas, keys: given id, values: corresponding latex formula code from the document
      */
-    public Map<Integer, Formula> extractFormulas(Document document);
+    public Map<Integer, String> extractFormulas(Document document);
 }

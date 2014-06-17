@@ -4,6 +4,7 @@ import org.apache.commons.cli.Option;
 import org.jdom2.Document;
 
 import java.io.File;
+import java.nio.file.Path;
 
 /**
  * @author mauss
@@ -11,7 +12,7 @@ import java.io.File;
  */
 public class CalibreHtmlToMobiConverter implements HtmlToMobiConverter {
     @Override
-    public File convertToMobi(Document document) {
+    public File convertToMobi(Document document, Path tempDirPath) {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 

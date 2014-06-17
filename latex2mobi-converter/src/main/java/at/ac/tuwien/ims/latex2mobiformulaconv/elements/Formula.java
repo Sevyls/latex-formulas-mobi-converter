@@ -2,6 +2,7 @@ package at.ac.tuwien.ims.latex2mobiformulaconv.elements;
 
 import org.jdom2.Element;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 
 /**
@@ -9,6 +10,12 @@ import java.util.ArrayList;
  *         Created: 20.05.14 23:30
  */
 public class Formula {
+    private ArrayList<Line> lines;
+    private String latexCode;
+    private Type type;
+    private Path imageFilePath;
+    private String mathMl;
+
 
     public Type getType() {
         return type;
@@ -23,9 +30,21 @@ public class Formula {
         MULTI_LINE
     }
 
-    private ArrayList<Line> lines;
-    private String latexCode;
-    private Type type;
+    public Path getImageFilePath() {
+        return imageFilePath;
+    }
+
+    public void setImageFilePath(Path imageFilePath) {
+        this.imageFilePath = imageFilePath;
+    }
+
+    public String getMathMl() {
+        return mathMl;
+    }
+
+    public void setMathMl(String mathMl) {
+        this.mathMl = mathMl;
+    }
 
     public String getLatexCode() {
         return latexCode;

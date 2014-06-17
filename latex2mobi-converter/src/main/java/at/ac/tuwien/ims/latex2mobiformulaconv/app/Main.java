@@ -15,6 +15,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -174,11 +175,30 @@ public class Main {
         logger.debug(xout.outputString(document));
 
         logger.info("Parsing Formulas from converted HTML...");
-        FormulaConverter formulaConverter = new FormulaConverterImpl();
-        Map<Integer, Formula> latexFormulas = formulaConverter.extractFormulas(document);
+        Path tempDirPath = null;
+        try {
+            tempDirPath = Files.createTempDirectory("latex2mobi");
+            logger.debug("Temporary directory created at: " + tempDirPath.toAbsolutePath().toString());
+        } catch (IOException e) {
+            logger.error(e.getMessage(), e);
+            // TODO Exception handling
+        }
+
+        FormulaConverter formulaConverter = new FormulaConverterImpl(tempDirPath);
+        Map<Integer, String> latexFormulas = formulaConverter.extractFormulas(document);
+
+        Iterator<Integer> it = latexFormulas.keySet().iterator();
+        while (it.hasNext()) {
+            Integer id = it.next();
+            String latexFormula = latexFormulas.get(id);
+
+            Formula formula = formulaConverter.parse(latexFormula);
 
 
-        File mobiFile = htmlToMobiConverter.convertToMobi(document);
+        }
+
+
+        File mobiFile = htmlToMobiConverter.convertToMobi(document, tempDirPath);
 
         Path resultFilepath = null;
         try {

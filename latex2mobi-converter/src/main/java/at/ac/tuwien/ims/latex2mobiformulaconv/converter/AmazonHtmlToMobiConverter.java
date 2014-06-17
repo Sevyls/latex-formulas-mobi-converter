@@ -23,7 +23,7 @@ public class AmazonHtmlToMobiConverter implements HtmlToMobiConverter {
     private static Logger logger = Logger.getLogger(AmazonHtmlToMobiConverter.class);
 
     @Override
-    public File convertToMobi(Document document) {
+    public File convertToMobi(Document document, Path tempDirPath) {
         logger.debug("Enter convertToMobi()...");
 
         if (document == null) {
@@ -33,8 +33,10 @@ public class AmazonHtmlToMobiConverter implements HtmlToMobiConverter {
 
         // Save document to temporary file
         Path tempFilepath = null;
+
         try {
-            tempFilepath = Files.createTempFile("latex2mobi", ".html");
+            tempFilepath = Files.createTempFile(tempDirPath, "latex2mobi", ".html");
+            logger.debug("tempFile created at: " + tempFilepath.toAbsolutePath().toString());
         } catch (IOException e) {
             logger.error(e.getMessage(), e);
             // TODO Exception handling
