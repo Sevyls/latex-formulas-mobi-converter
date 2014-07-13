@@ -30,6 +30,7 @@ public class Main {
     private static Options options;
     private static ArrayList<Path> inputPaths = new ArrayList<Path>();
     private static Path outputPath;
+    private static boolean replaceWithPictures = false;
 
     private static HtmlToMobiConverter htmlToMobiConverter;
     private static LatexToHtmlConverter latexToHtmlConverter;
@@ -54,19 +55,7 @@ public class Main {
         latexToHtmlConverter = new PandocLatexToHtmlConverter();
         htmlToMobiConverter = new AmazonHtmlToMobiConverter();
 
-        options = new Options();
-
-        Option inputOption = new Option("i", "inputPaths", true, "inputPaths file");
-        inputOption.setRequired(true);
-        inputOption.setArgs(Option.UNLIMITED_VALUES);
-        inputOption.setValueSeparator(',');
-        options.addOption(inputOption);
-
-        options.addOption("o", "output-dir", true, "output directory");
-        options.addOption("h", "help", false, "show this help");
-
-        options.addOption(latexToHtmlConverter.getExecOption());
-        options.addOption(htmlToMobiConverter.getExecOption());
+        initializeOptions();
 
 
         CommandLineParser parser = new PosixParser();
@@ -125,6 +114,13 @@ public class Main {
                 outputPath = workingDirectory;
             }
 
+            // If set, replace LaTeX Formulas with PNG images, created by
+            if (cmd.hasOption("r")) {
+                logger.debug("Picture Flag set");
+                replaceWithPictures = true;
+            }
+
+            // Executable configuration
             if (cmd.hasOption(latexToHtmlConverter.getExecOption().getOpt())) {
                 // TODO Pandoc executable handling
             }
@@ -185,22 +181,28 @@ public class Main {
             // TODO Exception handling
         }
 
-        FormulaConverter formulaConverter = new FormulaConverterImpl(tempDirPath);
-        Map<Integer, String> latexFormulas = formulaConverter.extractFormulas(document);
-        Map<Integer, Path> latexFormulaImagePaths = new HashMap<>();
 
-        Iterator<Integer> it = latexFormulas.keySet().iterator();
-        while (it.hasNext()) {
-            Integer id = it.next();
-            String latexFormula = latexFormulas.get(id);
+        if (replaceWithPictures) {
+            SnuggleTeXFormulaConverterImpl formulaConverter = new SnuggleTeXFormulaConverterImpl(tempDirPath);
+            Map<Integer, String> latexFormulas = formulaConverter.extractFormulas(document);
+            Map<Integer, Path> latexFormulaImagePaths = new HashMap<>();
 
-            Formula formula = formulaConverter.parse(latexFormula);
-            if (formula != null && formula.getImageFilePath() != null) {
-                latexFormulaImagePaths.put(id, formula.getImageFilePath());
+            Iterator<Integer> it = latexFormulas.keySet().iterator();
+            while (it.hasNext()) {
+                Integer id = it.next();
+                String latexFormula = latexFormulas.get(id);
+
+                Formula formula = formulaConverter.parse(latexFormula);
+
+                if (formula != null && formula.getImageFilePath() != null) {
+                    latexFormulaImagePaths.put(id, formula.getImageFilePath());
+                }
             }
-        }
+            document = formulaConverter.replaceFormulasWithImages(document, latexFormulaImagePaths);
+        } else {
+            // TODO replace with html
 
-        document = formulaConverter.replaceFormulasWithImages(document, latexFormulaImagePaths);
+        }
 
         File mobiFile = htmlToMobiConverter.convertToMobi(document, tempDirPath);
 
@@ -219,5 +221,27 @@ public class Main {
     private static void usage() {
         HelpFormatter formatter = new HelpFormatter();
         formatter.printHelp("latex2mobi", options);
+    }
+
+    private static void initializeOptions() {
+        options = new Options();
+
+        Option inputOption = new Option("i", "inputPaths", true, "inputPaths file");
+        inputOption.setRequired(true);
+        inputOption.setArgs(Option.UNLIMITED_VALUES);
+        inputOption.setValueSeparator(',');
+        options.addOption(inputOption);
+
+        options.addOption("o", "output-dir", true, "output directory");
+        options.addOption("h", "help", false, "show this help");
+
+        Option picturesOption = new Option("r", "replace-with-images");
+        picturesOption.setArgs(0);
+        picturesOption.setDescription("replace latex formulas with pictures, override html");
+        picturesOption.setRequired(false);
+        options.addOption(picturesOption);
+
+        options.addOption(latexToHtmlConverter.getExecOption());
+        options.addOption(htmlToMobiConverter.getExecOption());
     }
 }

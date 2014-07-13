@@ -9,17 +9,11 @@ import net.sourceforge.jeuclid.converter.Converter;
 import org.apache.log4j.Logger;
 import org.jdom2.Document;
 import org.jdom2.Element;
-import org.jdom2.filter.Filters;
-import org.jdom2.xpath.XPathExpression;
-import org.jdom2.xpath.XPathFactory;
 import org.xml.sax.SAXException;
 import uk.ac.ed.ph.snuggletex.SnuggleEngine;
 import uk.ac.ed.ph.snuggletex.SnuggleInput;
 import uk.ac.ed.ph.snuggletex.SnugglePackage;
 import uk.ac.ed.ph.snuggletex.SnuggleSession;
-import uk.ac.ed.ph.snuggletex.definitions.TextFlowContext;
-import uk.ac.ed.ph.snuggletex.dombuilding.InterpretableSimpleMathHandler;
-import uk.ac.ed.ph.snuggletex.semantics.MathOperatorInterpretation;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
@@ -31,26 +25,26 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import static uk.ac.ed.ph.snuggletex.definitions.Globals.ALL_MODES;
-
 /**
  * @author mauss
  *         Date: 08.06.14
  */
-public class FormulaConverterImpl implements FormulaConverter {
-    private static Logger logger = Logger.getLogger(FormulaConverterImpl.class);
+public class SnuggleTeXFormulaConverterImpl extends FormulaConverter {
+    private static Logger logger = Logger.getLogger(SnuggleTeXFormulaConverterImpl.class);
     private static SnuggleEngine engine = new SnuggleEngine();
-
-    public static final String FORMULA_ID_PREFIX = "formula_";
-    private static XPathFactory xPathFactory = XPathFactory.instance();
-    private static XPathExpression<Element> xpath = xPathFactory.compile("//*[@class='LaTeX']", Filters.element());
 
     private Path tempDirPath;
 
-    public FormulaConverterImpl(Path tempDirPath) {
+    public SnuggleTeXFormulaConverterImpl(Path tempDirPath) {
         this.tempDirPath = tempDirPath;
     }
 
+    static {
+        // Add special SnuggleTeX configuration for certain Elements
+        for (SnugglePackage p : SnugglePackageRegistry.getPackages()) {
+            engine.addPackage(p);
+        }
+    }
 
     @Override
     public Formula parse(String latexFormula) {
@@ -71,14 +65,10 @@ public class FormulaConverterImpl implements FormulaConverter {
         logger.debug(formula.getType());
         logger.debug(latexFormula);
 
-        // Example mod operator
-        SnugglePackage modOperator = new SnugglePackage("mod");
-        MathOperatorInterpretation bmodInterpretation = new MathOperatorInterpretation("mod");
-        modOperator.addSimpleCommand("bmod", ALL_MODES, bmodInterpretation, new InterpretableSimpleMathHandler(), TextFlowContext.ALLOW_INLINE);
 
-        engine.addPackage(modOperator);
         SnuggleInput input = new SnuggleInput(latexFormula);
         try {
+
             SnuggleSession session = engine.createSession();
             session.parseInput(input);
             String xmlString = session.buildXMLString();
@@ -113,27 +103,7 @@ public class FormulaConverterImpl implements FormulaConverter {
         return formula;
     }
 
-    @Override
-    public Map<Integer, String> extractFormulas(Document document) {
-        Map<Integer, String> formulas = new HashMap<>();
-
-
-        List<Element> foundElements = xpath.evaluate(document);
-        int id = 0;
-        for (Element element : foundElements) {
-
-            element.setAttribute("id", FORMULA_ID_PREFIX + id);
-
-
-            formulas.put(id, element.getValue());
-            id++;
-        }
-
-        return formulas;
-    }
-
     public Document replaceFormulasWithImages(Document document, Map<Integer, Path> imagePaths) {
-        // TODO implement
         List<Element> foundElements = xpath.evaluate(document);
         Map<String, Element> elementMap = new HashMap<>();
 
