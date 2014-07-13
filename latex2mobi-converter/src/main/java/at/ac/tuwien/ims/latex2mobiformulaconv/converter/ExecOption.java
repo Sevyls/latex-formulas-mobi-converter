@@ -5,13 +5,14 @@ import org.apache.commons.cli.Option;
 /**
  * @author mauss
  *         Created: 06.06.14 22:48
- *         // TODO Documentation
+ *         <p/>
+ *         Creating an Apache Commons CLI Option for a runtime-depending executable
  */
 public interface ExecOption {
     /**
-     * // TODO Documentation
+     * Gets the configuration for the CLI Option for the executable
      *
-     * @return
+     * @return the configured Option object
      */
     public Option getExecOption();
 

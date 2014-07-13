@@ -29,6 +29,11 @@ Faculty of Informatics at the Vienna University of Technology.
 
 ## Requirements
 
+## Java 7 or higher
+
+You need to have the Java Runtime Environment installed in order to run this software.
+Download Java here: [http://www.java.com](http://www.java.com/)
+
 ### Pandoc
 This software makes great use of pandoc's LaTeX to HTML converter. 
 
@@ -56,6 +61,25 @@ This is the standard way to generate a .Mobi-File.
 Download & install from [http://www.amazon.com/gp/feature.html?docId=1000765211](http://www.amazon.com/gp/feature.html?docId=1000765211)
 
 **Add the installed kindlegen executable/directory to your operating system's PATH variable.**
+
+
+## Build-Requirements
+
+### Java Development Kit (JDK) 7 or higher
+
+This software uses the Java SE JDK 7.
+
+* Download & install from here [http://www.oracle.com/technetwork/java/javase/downloads/index.html](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+
+### Maven
+
+This project is built with Maven 3.3.x
+
+* Download & install from here [http://maven.apache.org/download.cgi](http://maven.apache.org/download.cgi)
+
+
+
+
 
 #// TODO rest of documentation.
 
