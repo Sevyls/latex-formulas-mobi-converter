@@ -1,4 +1,4 @@
-package at.ac.tuwien.ims.latex2mobiformulaconv.converter;
+package at.ac.tuwien.ims.latex2mobiformulaconv.converter.latex;
 
 import org.apache.commons.cli.Option;
 import org.apache.commons.exec.*;
@@ -74,9 +74,9 @@ public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
 
                 String exceptionKlass = executeException.getCause().getClass().getCanonicalName();
                 String exceptionMessage = executeException.getCause().getMessage();
-                if (exceptionMessage.contains("Cannot run program \"pandoc\"")
-                        && exceptionMessage.contains("No such file or directory")) {
+                if (exceptionMessage.contains("Cannot run program \"pandoc\"")) {
                     logger.error("Pandoc could not be found! Exiting...");
+                    logger.error("Please make sure that pandoc is installed on your system and available in the PATH variable");
                     logger.debug(executeException);
                     System.exit(1);
                 }

@@ -10,12 +10,21 @@ import java.util.ArrayList;
  *         Created: 20.05.14 23:30
  */
 public class Formula {
+    private int id;
     private ArrayList<Line> lines;
     private String latexCode;
     private Type type;
     private Path imageFilePath;
+    private Element html;
     private String mathMl;
 
+    public Element getHtml() {
+        return html;
+    }
+
+    public void setHtml(Element html) {
+        this.html = html;
+    }
 
     public Type getType() {
         return type;
@@ -54,8 +63,13 @@ public class Formula {
         this.latexCode = latexCode;
     }
 
-    public Formula() {
+    public Formula(int id) {
+        this.id = id;
         lines = new ArrayList<Line>();
+    }
+
+    public int getId() {
+        return id;
     }
 
     public ArrayList<Line> getLines() {

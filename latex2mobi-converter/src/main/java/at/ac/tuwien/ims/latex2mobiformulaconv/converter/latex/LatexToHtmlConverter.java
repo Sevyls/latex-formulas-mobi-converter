@@ -1,5 +1,6 @@
-package at.ac.tuwien.ims.latex2mobiformulaconv.converter;
+package at.ac.tuwien.ims.latex2mobiformulaconv.converter.latex;
 
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.ExecOption;
 import org.jdom2.Document;
 
 import java.io.File;

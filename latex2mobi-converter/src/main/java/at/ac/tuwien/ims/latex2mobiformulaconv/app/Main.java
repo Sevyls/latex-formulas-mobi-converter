@@ -1,6 +1,12 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.app;
 
-import at.ac.tuwien.ims.latex2mobiformulaconv.converter.*;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi.AmazonHtmlToMobiConverter;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi.HtmlToMobiConverter;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.latex.LatexToHtmlConverter;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.latex.PandocLatexToHtmlConverter;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.FormulaConverter;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.ImageFormulaConverter;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.SAXFormulaConverter;
 import at.ac.tuwien.ims.latex2mobiformulaconv.elements.Formula;
 import org.apache.commons.cli.*;
 import org.apache.commons.configuration.ConfigurationException;
@@ -37,6 +43,7 @@ public class Main {
 
     public static void main(String[] args) {
         logger.debug("main() started.");
+
         Path workingDirectory = null;
         try {
             workingDirectory = Paths.get(Main.class.getProtectionDomain().getCodeSource().getLocation().toURI());
@@ -89,7 +96,6 @@ public class Main {
                 logger.error("You have to specify an inputPaths file or directory!");
                 usage();
                 System.exit(1);
-
             }
 
             if (cmd.hasOption('o')) {
@@ -181,28 +187,28 @@ public class Main {
             // TODO Exception handling
         }
 
+        FormulaConverter formulaConverter;
+        Map<Integer, Formula> formulaMap = new HashMap<>();
 
         if (replaceWithPictures) {
-            SnuggleTeXFormulaConverterImpl formulaConverter = new SnuggleTeXFormulaConverterImpl(tempDirPath);
-            Map<Integer, String> latexFormulas = formulaConverter.extractFormulas(document);
-            Map<Integer, Path> latexFormulaImagePaths = new HashMap<>();
-
-            Iterator<Integer> it = latexFormulas.keySet().iterator();
-            while (it.hasNext()) {
-                Integer id = it.next();
-                String latexFormula = latexFormulas.get(id);
-
-                Formula formula = formulaConverter.parse(latexFormula);
-
-                if (formula != null && formula.getImageFilePath() != null) {
-                    latexFormulaImagePaths.put(id, formula.getImageFilePath());
-                }
-            }
-            document = formulaConverter.replaceFormulasWithImages(document, latexFormulaImagePaths);
+            formulaConverter = new ImageFormulaConverter(tempDirPath);
         } else {
-            // TODO replace with html
-
+            formulaConverter = new SAXFormulaConverter();
         }
+
+        Map<Integer, String> latexFormulas = formulaConverter.extractFormulas(document);
+        Iterator<Integer> it = latexFormulas.keySet().iterator();
+        while (it.hasNext()) {
+            Integer id = it.next();
+            String latexFormula = latexFormulas.get(id);
+
+            Formula formula = formulaConverter.parse(id, latexFormula);
+
+            if (formula != null) {
+                formulaMap.put(id, formula);
+            }
+        }
+        document = formulaConverter.replaceFormulas(document, formulaMap);
 
         File mobiFile = htmlToMobiConverter.convertToMobi(document, tempDirPath);
 

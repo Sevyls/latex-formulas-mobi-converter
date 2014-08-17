@@ -1,4 +1,4 @@
-package at.ac.tuwien.ims.latex2mobiformulaconv.converter;
+package at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi;
 
 import org.apache.commons.cli.Option;
 import org.apache.commons.exec.*;
@@ -88,9 +88,9 @@ public class AmazonHtmlToMobiConverter implements HtmlToMobiConverter {
 
                 String exceptionKlass = executeException.getCause().getClass().getCanonicalName();
                 String exceptionMessage = executeException.getCause().getMessage();
-                if (exceptionMessage.contains("Cannot run program \"kindlegen\"")
-                        && exceptionMessage.contains("No such file or directory")) {
-                    logger.error("Kindlegen could not be found! Exiting...");
+                if (exceptionMessage.contains("Cannot run program \"kindlegen\"")) {
+                    logger.error("Kindlegen could not be run! Exiting...");
+                    logger.error("Please make sure that Kindlegen is installed and available in the PATH variable!");
                     logger.debug(executeException);
                     System.exit(1);
                 }

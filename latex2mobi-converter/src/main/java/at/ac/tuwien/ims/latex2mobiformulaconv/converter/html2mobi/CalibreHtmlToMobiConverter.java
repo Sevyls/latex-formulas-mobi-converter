@@ -1,4 +1,4 @@
-package at.ac.tuwien.ims.latex2mobiformulaconv.converter;
+package at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi;
 
 import org.apache.commons.cli.Option;
 import org.jdom2.Document;
