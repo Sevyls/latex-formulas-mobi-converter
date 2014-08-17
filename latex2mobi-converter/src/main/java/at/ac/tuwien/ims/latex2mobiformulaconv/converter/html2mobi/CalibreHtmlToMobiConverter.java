@@ -13,12 +13,14 @@ import java.nio.file.Path;
 public class CalibreHtmlToMobiConverter implements HtmlToMobiConverter {
     @Override
     public File convertToMobi(Document document, Path tempDirPath) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        // TODO implement
+        return null;
     }
 
     @Override
     public Option getExecOption() {
         // new Option("c", "calibre-exec", true, "Calibre executable location")
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        // TODO implement
+        return null;
     }
 }

@@ -1,29 +1,18 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.app;
 
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.Converter;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi.AmazonHtmlToMobiConverter;
-import at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi.HtmlToMobiConverter;
-import at.ac.tuwien.ims.latex2mobiformulaconv.converter.latex.LatexToHtmlConverter;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.latex.PandocLatexToHtmlConverter;
-import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.FormulaConverter;
-import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.ImageFormulaConverter;
-import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.SAXFormulaConverter;
-import at.ac.tuwien.ims.latex2mobiformulaconv.elements.Formula;
 import org.apache.commons.cli.*;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.log4j.Logger;
-import org.jdom2.output.XMLOutputter;
 
-import java.io.File;
-import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 
 /**
  * @author mauss
@@ -37,42 +26,31 @@ public class Main {
     private static ArrayList<Path> inputPaths = new ArrayList<Path>();
     private static Path outputPath;
     private static boolean replaceWithPictures = false;
+    private static Path workingDirectory;
 
-    private static HtmlToMobiConverter htmlToMobiConverter;
-    private static LatexToHtmlConverter latexToHtmlConverter;
 
     public static void main(String[] args) {
         logger.debug("main() started.");
 
-        Path workingDirectory = null;
-        try {
-            workingDirectory = Paths.get(Main.class.getProtectionDomain().getCodeSource().getLocation().toURI());
-            if (workingDirectory.toFile().isFile()) {
-                workingDirectory = workingDirectory.getParent();
-            }
-            logger.debug("Working Directory: " + workingDirectory);
-        } catch (URISyntaxException e) {
-            logger.error("Working directory could not be resolved!");
-            logger.error(e.getMessage(), e);
-            logger.error("Exiting...");
-            System.exit(1);
-        }
-
-        // Instantiate classes
-        latexToHtmlConverter = new PandocLatexToHtmlConverter();
-        htmlToMobiConverter = new AmazonHtmlToMobiConverter();
-
+        setupWorkingDirectory();
         initializeOptions();
+        parseCli(args);
+        loadConfiguration();
 
+        // Start conversion
+        Converter converter = new Converter();
+        converter.convert(inputPaths, replaceWithPictures, outputPath);
 
+        logger.debug("main() exit.");
+    }
+
+    private static void parseCli(String[] args) {
         CommandLineParser parser = new PosixParser();
         try {
-
             CommandLine cmd = parser.parse(options, args);
 
-
+            // Show usage, ignore other parameters and quit
             if (cmd.hasOption('h')) {
-                // Show usage, ignore other parameters and quit
                 usage();
                 logger.debug("Help called, main() exit.");
                 System.exit(0);
@@ -93,7 +71,7 @@ public class Main {
                     }
                 }
             } else {
-                logger.error("You have to specify an inputPaths file or directory!");
+                logger.error("You have to specify an inputPath file or directory!");
                 usage();
                 System.exit(1);
             }
@@ -126,14 +104,14 @@ public class Main {
                 replaceWithPictures = true;
             }
 
-            // Executable configuration
+            /*// Executable configuration
             if (cmd.hasOption(latexToHtmlConverter.getExecOption().getOpt())) {
                 // TODO Pandoc executable handling
             }
 
             if (cmd.hasOption(htmlToMobiConverter.getExecOption().getOpt())) {
                 // TODO KindleGen executable handling
-            }
+            }   */
 
 
         } catch (MissingOptionException m) {
@@ -144,7 +122,29 @@ public class Main {
             logger.error(e.getMessage(), e);
             // TODO Exception handling
         }
+    }
 
+    private static void setupWorkingDirectory() {
+        try {
+            workingDirectory = Paths.get(Main.class.getProtectionDomain().getCodeSource().getLocation().toURI());
+            if (workingDirectory.toFile().isFile()) {
+                workingDirectory = workingDirectory.getParent();
+            }
+            logger.debug("Working Directory: " + workingDirectory);
+        } catch (URISyntaxException e) {
+            logger.error("Working directory could not be resolved!");
+            logger.error(e.getMessage(), e);
+            logger.error("Exiting...");
+            System.exit(1);
+        }
+    }
+
+    private static void usage() {
+        HelpFormatter formatter = new HelpFormatter();
+        formatter.printHelp("latex2mobi", options);
+    }
+
+    private static void loadConfiguration() {
         Path defaultConfigPath = workingDirectory.resolve(CONFIGURATION_FILENAME);
         logger.debug("Searching for config in default filepath: " + defaultConfigPath.toAbsolutePath().toString());
 
@@ -168,65 +168,6 @@ public class Main {
                 // TODO Exception handling
             }
         }
-
-
-        // TODO iterate over inputPaths
-        org.jdom2.Document document = latexToHtmlConverter.convert(inputPaths.get(0).toFile());
-
-
-        XMLOutputter xout = new XMLOutputter();
-        logger.debug(xout.outputString(document));
-
-        logger.info("Parsing Formulas from converted HTML...");
-        Path tempDirPath = null;
-        try {
-            tempDirPath = Files.createTempDirectory("latex2mobi");
-            logger.debug("Temporary directory created at: " + tempDirPath.toAbsolutePath().toString());
-        } catch (IOException e) {
-            logger.error(e.getMessage(), e);
-            // TODO Exception handling
-        }
-
-        FormulaConverter formulaConverter;
-        Map<Integer, Formula> formulaMap = new HashMap<>();
-
-        if (replaceWithPictures) {
-            formulaConverter = new ImageFormulaConverter(tempDirPath);
-        } else {
-            formulaConverter = new SAXFormulaConverter();
-        }
-
-        Map<Integer, String> latexFormulas = formulaConverter.extractFormulas(document);
-        Iterator<Integer> it = latexFormulas.keySet().iterator();
-        while (it.hasNext()) {
-            Integer id = it.next();
-            String latexFormula = latexFormulas.get(id);
-
-            Formula formula = formulaConverter.parse(id, latexFormula);
-
-            if (formula != null) {
-                formulaMap.put(id, formula);
-            }
-        }
-        document = formulaConverter.replaceFormulas(document, formulaMap);
-
-        File mobiFile = htmlToMobiConverter.convertToMobi(document, tempDirPath);
-
-        Path resultFilepath = null;
-        try {
-            resultFilepath = Files.move(mobiFile.toPath(), outputPath.resolve(mobiFile.getName()));
-            logger.debug("Mobi file moved to: " + resultFilepath.toAbsolutePath().toString());
-        } catch (IOException e) {
-            logger.error(e.getMessage(), e);
-            // TODO Exception handling
-        }
-
-        logger.debug("main() exit.");
-    }
-
-    private static void usage() {
-        HelpFormatter formatter = new HelpFormatter();
-        formatter.printHelp("latex2mobi", options);
     }
 
     private static void initializeOptions() {
@@ -247,7 +188,7 @@ public class Main {
         picturesOption.setRequired(false);
         options.addOption(picturesOption);
 
-        options.addOption(latexToHtmlConverter.getExecOption());
-        options.addOption(htmlToMobiConverter.getExecOption());
+        options.addOption(new PandocLatexToHtmlConverter().getExecOption());
+        options.addOption(new AmazonHtmlToMobiConverter().getExecOption());
     }
 }
