@@ -84,9 +84,11 @@ public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
             }
 
         } catch (InterruptedException e) {
+            logger.error("pandoc conversion thread got interrupted, exiting...");
             logger.error(e.getMessage(), e);
-            // TODO Exception handling
+            System.exit(1);
         }
+
         // add html document structure to output
         String htmlOutput = "<!DOCTYPE html>\n" +
                 "<html>\n" +
@@ -101,8 +103,9 @@ public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
             writer.close();
 
         } catch (IOException e) {
+            logger.error("Error reading html result from StringBuffer...");
             logger.error(e.getMessage(), e);
-            // TODO Exception handling
+            System.exit(1);
         }
 
 
@@ -111,17 +114,19 @@ public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
 
         logger.debug("html-output: " + htmlOutput);
 
-        // TODO output loading as JDOM Document
+        // output loading as JDOM Document
         SAXBuilder sax = new SAXBuilder();
         Document document = null;
         try {
             document = sax.build(new StringReader(htmlOutput));
         } catch (JDOMException e) {
+            logger.error("JDOM Parsing error");
             logger.error(e.getMessage(), e);
-            // TODO Exception handling
+            System.exit(1);
         } catch (IOException e) {
+            logger.error("Error reading from String...");
             logger.error(e.getMessage(), e);
-            // TODO Exception handling
+            System.exit(1);
         }
         return document;
     }
