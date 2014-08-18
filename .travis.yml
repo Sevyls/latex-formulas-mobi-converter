@@ -2,6 +2,11 @@ language: java
 jdk:
   - oraclejdk7
 before_install:
-  - sudo apt-get update -qq
+  - echo 'yes' | sudo add-apt-repository ppa:marutter/c2d4u
+  - sudo apt-get update
   - sudo apt-get install -y pandoc
-before_script: cd latex2mobi-converter
+before_script:
+  - wget "http://kindlegen.s3.amazonaws.com/kindlegen_linux_2.6_i386_v2_9.tar.gz"  -O "/tmp/kindlegen.tar.gz"
+  - tar -xvf /tmp/kindlegen.tar.gz
+  - export PATH=$PATH:$PWD/kindlegen_linux_2.6_i386_v2_9/
+  - cd latex2mobi-converter
