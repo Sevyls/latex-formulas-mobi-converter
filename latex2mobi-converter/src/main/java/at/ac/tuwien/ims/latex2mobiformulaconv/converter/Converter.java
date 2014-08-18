@@ -30,7 +30,7 @@ public class Converter {
     private static LatexToHtmlConverter latexToHtmlConverter = new PandocLatexToHtmlConverter();
     private static HtmlToMobiConverter htmlToMobiConverter = new AmazonHtmlToMobiConverter();
 
-    public void convert(ArrayList<Path> inputPaths, boolean replaceWithPictures, Path outputPath) {
+    public Path convert(ArrayList<Path> inputPaths, boolean replaceWithPictures, Path outputPath, String filename) {
         // TODO iterate over inputPaths
         org.jdom2.Document document = latexToHtmlConverter.convert(inputPaths.get(0).toFile());
 
@@ -74,11 +74,28 @@ public class Converter {
 
         Path resultFilepath = null;
         try {
-            resultFilepath = Files.move(mobiFile.toPath(), outputPath.resolve(mobiFile.getName()));
+            //resultFilepath = Files.move(mobiFile.toPath(), outputPath.resolve(mobiFile.getName()));
+
+            // Don't overwrite files
+            Path outputFilepath;
+            int i = 1;
+            String replaceFilename = filename + ".mobi";
+            while (true) {
+                outputFilepath = outputPath.resolve(replaceFilename);
+                if (Files.exists(outputFilepath) == false) {
+                    break;
+                }
+                replaceFilename = filename + " (" + i + ").mobi";
+                i++;
+            }
+
+            resultFilepath = Files.move(mobiFile.toPath(), outputFilepath);
             logger.debug("Mobi file moved to: " + resultFilepath.toAbsolutePath().toString());
+            return resultFilepath.toAbsolutePath();
+
         } catch (IOException e) {
             logger.error(e.getMessage(), e);
-            // TODO Exception handling
+            return null;
         }
     }
 

@@ -1,0 +1,362 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb}
+\usepackage{leqno}
+
+\begin{document}
+
+\section{Symbols}
+$\forall x \in X, \quad \exists y \leq \epsilon$
+
+\section{Operators}
+$+ - = ! / ( ) [ ] < > | ' :$
+
+$\cos (2\theta) = \cos^2 \theta - \sin^2 \theta$
+
+$\lim_{x \to \infty} \exp(-x) = 0$
+
+$a \bmod b$
+
+$x \equiv a \pmod b$
+
+
+\section{Greek letters}
+$\alpha, A, \beta, B, \gamma, \Gamma, \pi, \Pi, \phi, \varphi, \Phi$
+
+\section{Powers and Indices}
+
+$k_{n+1} = n^2 + k_n^2 - k_{n-1}$
+
+$n^{22}$
+
+$f(n) = n^5 + 4n^2 + 2 |_{n=17}$
+
+
+\section{Fractions}
+
+$\frac{n!}{k!(n-k)!} = \binom{n}{k}$
+
+
+
+$\frac{\frac{1}{x}+\frac{1}{y}}{y-z}$
+
+
+
+$^3/_7$
+
+$\newcommand*\rfrac[2]{{}^{#1}\!/_{#2}}
+\rfrac{3}{7}$
+
+
+\begin{equation}
+\frac{
+    \begin{array}[b]{r}
+      \left( x_1 x_2 \right)\\
+      \times \left( x'_1 x'_2 \right)
+    \end{array}
+  }{
+    \left( y_1y_2y_3y_4 \right)
+  }
+\end{equation}
+
+
+\section{Roots}
+
+$\sqrt{\frac{a}{b}}$
+
+\(x=\sqrt{y^2*2}\)
+
+$\sqrt[n]{1+x+x^2+x^3+\ldots}$
+
+
+\section{Sums and Integrals}
+
+$\sum_{i=1}^{10} t_i$
+
+$\int_0^\infty \mathrm{e}^{-x}\,\mathrm{d}x$
+
+
+\begin{equation}\sum  \prod  \coprod 
+\bigoplus	\bigotimes	\bigodot
+\bigcup		\bigcap		\biguplus
+\bigsqcup		\bigvee		\bigwedge
+\int		\oint		\iint
+\iiint		\iiiint		\idotsint 
+\end{equation}
+
+$\sum_{\substack{
+   0<i<m \\
+   0<j<n
+  }}
+ P(i,j)$
+ 
+$\int\limits_a^b$
+ 
+\section{Brackets, braces and delimiters}
+
+
+$
+( a ), [ b ], \{ c \}, | d |, \| e \|,
+\langle f \rangle, \lfloor g \rfloor,
+\lceil h \rceil, \ulcorner i \urcorner
+$
+
+$\left(\frac{x^2}{y^3}\right)$
+
+$P\left(A=2\middle|\frac{A^2}{B}>4\right)$
+
+$\left\{\frac{x^2}{y^3}\right\}$
+
+$\left.\frac{x^3}{3}\right|_0^1$
+
+$( \big( \Big( \bigg( \Bigg($
+
+$\frac{\mathrm d}{\mathrm d x} \left( k g(x) \right)$
+
+$\frac{\mathrm d}{\mathrm d x} \big( k g(x) \big)$
+
+\section{Intervals}
+
+$x \in ]-1,1[$
+
+$x \in {]-1,1[}$
+
+$x \in {]{-1},1[}$
+
+
+
+\section{Matrices}
+
+$\begin{matrix}
+a & b & c \\
+d & e & f \\
+g & h & i
+\end{matrix}$
+
+$\begin{matrix}
+-1 & 3 \\
+2 & -4
+\end{matrix}
+=
+\begin{matrix}[r]
+-1 & 3 \\
+2 & -4
+\end{matrix}$
+
+ 
+ 
+ 
+$A_{m,n} =
+\begin{pmatrix}
+a_{1,1} & a_{1,2} & \cdots & a_{1,n} \\
+a_{2,1} & a_{2,2} & \cdots & a_{2,n} \\
+\vdots  & \vdots  & \ddots & \vdots  \\
+a_{m,1} & a_{m,2} & \cdots & a_{m,n}
+\end{pmatrix}$
+
+$
+M = \begin{bmatrix}
+       \frac{5}{6} & \frac{1}{6} & 0           \\[0.3em]
+       \frac{5}{6} & 0           & \frac{1}{6} \\[0.3em]
+       0           & \frac{5}{6} & \frac{1}{6}
+     \end{bmatrix}$
+
+$M = \bordermatrix{~ & x & y \cr
+                  A & 1 & 0 \cr
+                  B & 0 & 1 \cr}$
+
+
+
+A matrix in text must be set smaller:
+$\bigl(\begin{smallmatrix}
+a&b\\ c&d
+\end{smallmatrix} \bigr)$
+to not increase leading in a portion of text.
+
+
+\section{Text in equations}
+
+$50 apples \times 100 apples = lots of apples^2$
+
+$50 \text{apples} \times 100 \text{apples}
+ = \text{lots of apples}^2$
+
+$50 \text{ apples} \times 100 \text{ apples}
+ = \text{lots of apples}^2$
+
+$50 \textrm{ apples} \times 100
+ \textbf{ apples} = \textit{lots of apples}^2$
+
+
+\section{Accents}
+
+$a'	a'\,	a''	a''\,
+\hat{a}	\hat{a} \,	\bar{a}	\bar{a} \,
+\grave{a}	\grave{a} \,	\acute{a}	\acute{a} \,
+\dot{a}	\dot{a} \,	\ddot{a}	\ddot{a} \,
+\not{a}	\not{a} \,	\mathring{a}	
+\overrightarrow{AB}	\overrightarrow{AB} \,	\overleftarrow{AB}	\overleftarrow{AB} \,
+a'''	a'''\,	a''''	a''''\,
+\overline{aaa}	\overline{aaa} \,	\check{a}	\check{a} \,
+\breve{a}	\breve{a} \,	\vec{a}	\vec{a} \,
+\dddot{a}[3]		\ddddot{a}[3]	
+\widehat{AAA}	\widehat{AAA} \,	\widetilde{AAA}	\widetilde{AAA}
+\tilde{a}	\underline{a}$
+
+\section{Plusminus sign}
+
+$\pm$
+
+$\mp$
+
+ 
+
+\section{Inline and Displayed Formulas}
+
+$x=\frac{1+y}{1+2z^2}$
+
+$$x=\frac{1+y}{1+2z^2}$$
+
+$\int_0^\infty e^{-x^2} dx=\frac{\sqrt{\pi}}{2}$
+
+$$\int_0^\infty e^{-x^2} dx=\frac{\sqrt{\pi}}{2}$$
+
+$\displaystyle \int_0^\infty e^{-x^2} dx$
+
+$$
+ \frac{1}{\displaystyle 1+
+   \frac{1}{\displaystyle 2+
+   \frac{1}{\displaystyle 3+x}}} +
+ \frac{1}{1+\frac{1}{2+\frac{1}{3+x}}}
+$$
+
+\section{Spaces and Text in Formulas}
+
+$\sqrt{2} \sin x$, $\sqrt{2}\,\sin x$
+
+$\int \!\! \int f(x,y)\,\mathrm{d}x\mathrm{d}y$
+
+$$
+ \mathop{\int \!\!\! \int}_{\mathbf{x} \in \mathbf{R}^2} 
+ \! \langle \mathbf{x},\mathbf{y}\rangle 
+ \,d\mathbf{x}
+$$
+
+$$ x_1 = a+b \mbox{ and } x_2=a-b $$
+
+$$ x_1 = a+b ~~\mbox{and}~~ x_2=a-b $$
+
+\begin{eqnarray}
+ y &=& x^4 + 4      \nonumber \\
+   &=& (x^2+2)^2 -4x^2 \nonumber \\
+   &\le&(x^2+2)^2
+\end{eqnarray}
+
+\begin{eqnarray*}
+ e^x &\approx& 1+x+x^2/2! + \\
+   && {}+x^3/3! + x^4/4! + \\
+   && + x^5/5!
+\end{eqnarray*}
+
+\begin{eqnarray*}
+ \lefteqn{w+x+y+z = }\\
+   && a+b+c+d+e+\\
+   && {}+f+g+h+i
+\end{eqnarray*}
+
+\begin{eqnarray*}
+ x&=&\sin \alpha = \cos \beta\\
+  &=&\cos(\pi-\alpha) = \sin(\pi-\beta)
+\end{eqnarray*}
+
+{\setlength\arraycolsep{0.1em}
+ \begin{eqnarray*}
+  x&=&\sin \alpha = \cos \beta\\
+   &=&\cos(\pi-\alpha) = \sin(\pi-\beta)
+ \end{eqnarray*}
+}
+
+$$\setlength\arraycolsep{0.1em}
+ \begin{array}{rclcl}
+  x&=&\sin \alpha &=& \cos \beta\\
+   &=&\cos(\pi-\alpha) &=& \sin(\pi-\beta)
+ \end{array}
+$$
+
+\section{Formula Numbering}
+
+\begin{equation} x=y+3 \label{eq:xdef}
+\end{equation}
+In equation (\ref{eq:xdef}) we saw $\dots$
+
+
+...
+\begin{equation} x=y+3 \label{eq:xdef}
+\end{equation}
+In equation (\ref{eq:xdef}) we saw $\dots$
+
+\begin{equation}
+\begin{array}{l}
+\displaystyle \int 1 = x + C\\
+\displaystyle \int x = \frac{x^2}{2} + C \\
+\displaystyle \int x^2 = \frac{x^3}{3} + C
+\end{array} 
+\label{eq:xdef}
+\end{equation}
+
+\begin{eqnarray}
+&& \int 1 = x + C \nonumber\\
+&& \int x = \frac{x^2}{2} + C \nonumber\\
+&& \int x^2 = \frac{x^3}{3} + C \label{eq:xdef}
+\end{eqnarray}
+
+\section{Braces}
+
+$\left] 0,1
+\right[
+ + \lceil x \rfloor - \langle x,y\rangle$
+ 
+$$
+{n+1\choose k} = {n\choose k} + {n \choose k-1}
+$$
+
+$$
+|x| = \left\{ \begin{array}{rl}
+ -x &\mbox{ if $x<0$} \\
+  x &\mbox{ otherwise}
+       \end{array} \right.
+$$
+
+$$
+F(x,y)=0 ~~\mbox{and}~~
+\left| \begin{array}{ccc}
+  F''_{xx} & F''_{xy} &  F'_x \\
+  F''_{yx} & F''_{yy} &  F'_y \\
+  F'_x     & F'_y     & 0 
+  \end{array}\right| = 0
+$$
+
+$$
+\underbrace{n(n-1)(n-2)\dots(n-m+1)}_{\mbox{total of $m$ factors}}
+$$
+
+\section{Accents}
+
+$\hat{x}$, $\check{x}$, $\tilde{a}$, 
+$\bar{\ell}$, $\dot{y}$, $\ddot{y}$, 
+$\vec{z_1}$, $\vec{z}_1$
+
+$\hat{T} = \widehat{T}$,
+$\bar{T} = \overline{T}$, $\widetilde{xyz}$,
+$\overbrace{a+\underbrace{b+c}+d}$
+
+$$
+ \overline{\overline{a}^2+\underline{xy}
+ +\overline{\overline{z}}}
+$$
+
+$$
+\underbrace{a+\overbrace{b+\cdots}^{{}=t}+z}
+_{\mathrm{total}} ~~
+a+{\overbrace{b+\cdots}}^{126}+z
+$$
+\end{document}

@@ -39,7 +39,8 @@ public class Main {
 
         // Start conversion
         Converter converter = new Converter();
-        converter.convert(inputPaths, replaceWithPictures, outputPath);
+        Path resultFile = converter.convert(inputPaths, replaceWithPictures, outputPath, "LaTeX2Mobi");
+        logger.info("Result : " + resultFile.toAbsolutePath().toString());
 
         logger.debug("main() exit.");
     }
