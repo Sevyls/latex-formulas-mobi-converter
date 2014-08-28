@@ -4,7 +4,6 @@ import at.ac.tuwien.ims.latex2mobiformulaconv.converter.ExecOption;
 import org.jdom2.Document;
 
 import java.io.File;
-import java.nio.file.Path;
 
 /**
  * @author mauss
@@ -16,8 +15,7 @@ public interface HtmlToMobiConverter extends ExecOption {
      * // TODO Documentation
      *
      * @param document
-     * @param tempDirPath
      * @return
      */
-    public File convertToMobi(Document document, Path tempDirPath);
+    public File convertToMobi(Document document);
 }

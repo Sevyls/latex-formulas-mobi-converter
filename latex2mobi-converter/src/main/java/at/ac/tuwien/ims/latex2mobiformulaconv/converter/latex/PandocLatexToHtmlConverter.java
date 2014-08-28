@@ -29,6 +29,8 @@ public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
         return "<style>code {\n" +
                 "    white-space: pre;\n" +
                 "    display: block;\n" +
+                "    margin-top: 10px;\n" +
+                "    margin-bottom: 10px;\n" +
                 "}\n" +
                 "</style>";
     }

@@ -50,20 +50,13 @@ public class Converter {
         logger.debug(xout.outputString(document));
 
         logger.info("Parsing Formulas from converted HTML...");
-        Path tempDirPath = null;
-        try {
-            tempDirPath = Files.createTempDirectory("latex2mobi");
-            logger.debug("Temporary directory created at: " + tempDirPath.toAbsolutePath().toString());
-        } catch (IOException e) {
-            logger.error(e.getMessage(), e);
-            // TODO Exception handling
-        }
+
 
         FormulaConverter formulaConverter;
         Map<Integer, Formula> formulaMap = new HashMap<>();
 
         if (replaceWithPictures) {
-            formulaConverter = new ImageFormulaConverter(tempDirPath);
+            formulaConverter = new ImageFormulaConverter();
         } else {
             formulaConverter = new SAXFormulaConverter();
         }
@@ -86,7 +79,7 @@ public class Converter {
         }
 
         // Convert to MOBI format
-        File mobiFile = htmlToMobiConverter.convertToMobi(document, tempDirPath);
+        File mobiFile = htmlToMobiConverter.convertToMobi(document);
 
         // Save file
         Path resultFilepath = null;

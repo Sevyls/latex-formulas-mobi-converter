@@ -20,6 +20,7 @@ public class SAXFormulaConverter extends FormulaConverter {
     private static boolean DEBUG = true;
     private static Logger logger = Logger.getLogger(SAXFormulaConverter.class);
 
+
     @Override
     public Formula parse(int id, String latexFormula) {
         Formula formula = super.parseToMathML(id, latexFormula);
@@ -83,20 +84,38 @@ public class SAXFormulaConverter extends FormulaConverter {
         // Test output
         Element span = new Element("span");
 
+
+        // Generate debug output (image, latex + mathml code)
         if (DEBUG) {
+            // Index
+            Element index = new Element("span");
+            Text text = new Text("Formula #" + formula.getId());
+            index.addContent(text);
+            span.addContent(index);
+
+            Element br = new Element("br");
+            span.addContent(br);
+
+            // LaTeX
+            Element latex = new Element("code");
+            Text latexText = new Text(formula.getLatexCode());
+            latex.addContent(latexText);
+            span.addContent(latex);
+
+            // Image
+            Element image = new Element("code");
+            ImageFormulaConverter imageFormulaConverter = new ImageFormulaConverter();
+            Formula imageFormula = imageFormulaConverter.parse(formula.getId(), formula.getLatexCode());
+            image.addContent(imageFormula.getHtml());
+            span.addContent(image);
+
+            // MathML
             Element mathml = new Element("code");
             Text mathmlText = new Text(formula.getMathMl());
             mathml.addContent(mathmlText);
             span.addContent(mathml);
-
-            Element br = new Element("br");
-            span.addContent(br);
         }
 
-        Element html = new Element("span");
-        Text text = new Text("Formula #" + formula.getId());
-        html.addContent(text);
-        span.addContent(html);
 
         formula.setHtml(span);
 

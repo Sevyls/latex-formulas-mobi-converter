@@ -30,13 +30,6 @@ import java.util.Map;
 public class ImageFormulaConverter extends FormulaConverter {
     private static Logger logger = Logger.getLogger(ImageFormulaConverter.class);
 
-
-    private Path tempDirPath;
-
-    public ImageFormulaConverter(Path tempDirPath) {
-        this.tempDirPath = tempDirPath;
-    }
-
     static {
         // Add special SnuggleTeX configuration for certain Elements
         for (SnugglePackage p : SnugglePackageRegistry.getPackages()) {
@@ -60,13 +53,13 @@ public class ImageFormulaConverter extends FormulaConverter {
         try {
             final org.w3c.dom.Document doc = MathMLParserSupport.parseString(formula.getMathMl());
 
-            final File outFile = Files.createTempFile(this.tempDirPath, "formula", ".png").toFile();
+            final File outFile = Files.createTempFile("formula", ".png").toFile();
 
             formula.setImageFilePath(outFile.toPath());
 
             // Generate Html Image tag
             Element imageTag = new Element("img");
-            imageTag.setAttribute("src", this.tempDirPath.relativize(formula.getImageFilePath()).toString());
+            imageTag.setAttribute("src", formula.getImageFilePath().toAbsolutePath().toString());
             imageTag.setAttribute("alt", FORMULA_ID_PREFIX + formula.getId());
             formula.setHtml(imageTag);
 
@@ -116,7 +109,7 @@ public class ImageFormulaConverter extends FormulaConverter {
             element.removeAttribute("class");
             element.removeContent();
             Element imageTag = new Element("img");
-            imageTag.setAttribute("src", this.tempDirPath.relativize(imagePath).toString());
+            imageTag.setAttribute("src", imagePath.toAbsolutePath().toString());
             imageTag.setAttribute("alt", FORMULA_ID_PREFIX + id);
             element.addContent(imageTag);
         }
