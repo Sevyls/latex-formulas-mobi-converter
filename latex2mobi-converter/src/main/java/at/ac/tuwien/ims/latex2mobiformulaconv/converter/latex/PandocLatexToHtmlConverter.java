@@ -24,6 +24,15 @@ import java.util.HashMap;
 public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
     private static Logger logger = Logger.getLogger(PandocLatexToHtmlConverter.class);
 
+    private String includeCss() {
+        // TODO compile all css files to single string
+        return "<style>code {\n" +
+                "    white-space: pre;\n" +
+                "    display: block;\n" +
+                "}\n" +
+                "</style>";
+    }
+
     @Override
     public Document convert(File tex) {
         logger.debug("Start convert() with file " + tex.toPath().toAbsolutePath().toString());
@@ -94,8 +103,8 @@ public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
                 "<html>\n" +
                 "<head>\n" +
                 // TODO title
-                // TODO include css
-
+                // include css
+                includeCss() +
                 "</head>\n" +
                 "<body>";
         try {

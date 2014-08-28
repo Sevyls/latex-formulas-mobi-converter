@@ -17,6 +17,7 @@ import java.io.StringReader;
  *         Time: 16:14
  */
 public class SAXFormulaConverter extends FormulaConverter {
+    private static boolean DEBUG = true;
     private static Logger logger = Logger.getLogger(SAXFormulaConverter.class);
 
     @Override
@@ -80,11 +81,24 @@ public class SAXFormulaConverter extends FormulaConverter {
 
 
         // Test output
+        Element span = new Element("span");
+
+        if (DEBUG) {
+            Element mathml = new Element("code");
+            Text mathmlText = new Text(formula.getMathMl());
+            mathml.addContent(mathmlText);
+            span.addContent(mathml);
+
+            Element br = new Element("br");
+            span.addContent(br);
+        }
+
         Element html = new Element("span");
         Text text = new Text("Formula #" + formula.getId());
         html.addContent(text);
+        span.addContent(html);
 
-        formula.setHtml(html);
+        formula.setHtml(span);
 
         return formula;
     }

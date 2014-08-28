@@ -35,7 +35,6 @@ public class ConverterTest {
         outputPath = workingDirectory.resolve("..");
         outputFilePath = outputPath.resolve(filename + ext);
         Files.deleteIfExists(outputFilePath);
-
     }
 
     @After
@@ -65,5 +64,22 @@ public class ConverterTest {
             e.printStackTrace();
             fail("Unexpected Exception thrown: " + e.getMessage());
         }
+    }
+
+    @Test
+    public void testConvertFileExists() throws Exception {
+        Path existingFile = outputPath.resolve(filename + ext);
+        assertTrue(Files.exists(existingFile) == false);
+        Files.createFile(existingFile);
+        assertTrue(Files.exists(existingFile));
+
+        // Modify expected output file location
+        outputFilePath = outputPath.resolve(filename + " (1)" + ext);
+        testConvertCreatesFiles(false);
+        assertTrue(Files.exists(existingFile));
+        assertTrue(Files.exists(outputFilePath));
+
+        // delete created stub file
+        Files.deleteIfExists(existingFile);
     }
 }

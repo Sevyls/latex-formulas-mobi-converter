@@ -27,9 +27,21 @@ import java.util.Map;
  */
 public class Converter {
     private static Logger logger = Logger.getLogger(Converter.class);
+
+    // hard coded Implementation bindings
     private static LatexToHtmlConverter latexToHtmlConverter = new PandocLatexToHtmlConverter();
     private static HtmlToMobiConverter htmlToMobiConverter = new AmazonHtmlToMobiConverter();
 
+    /**
+     * Converts a single input file from LaTeX to Mobi
+     *
+     * @param inputPaths          ArrayList of input paths, only the first gets read
+     * @param replaceWithPictures if true, the formulas will get replaced with png pictures,
+     *                            else the will be represented with html
+     * @param outputPath          the directory path where the result will be written to
+     * @param filename            the filename of the result file, if it already exists, a number will automatically be added to this string
+     * @return Path of the resulting File
+     */
     public Path convert(ArrayList<Path> inputPaths, boolean replaceWithPictures, Path outputPath, String filename) {
         // TODO iterate over inputPaths
         org.jdom2.Document document = latexToHtmlConverter.convert(inputPaths.get(0).toFile());
@@ -57,25 +69,28 @@ public class Converter {
         }
 
         Map<Integer, String> latexFormulas = formulaConverter.extractFormulas(document);
-        Iterator<Integer> it = latexFormulas.keySet().iterator();
-        while (it.hasNext()) {
-            Integer id = it.next();
-            String latexFormula = latexFormulas.get(id);
 
-            Formula formula = formulaConverter.parse(id, latexFormula);
+        if (latexFormulas.isEmpty() == false) {
+            Iterator<Integer> it = latexFormulas.keySet().iterator();
+            while (it.hasNext()) {
+                Integer id = it.next();
+                String latexFormula = latexFormulas.get(id);
 
-            if (formula != null) {
-                formulaMap.put(id, formula);
+                Formula formula = formulaConverter.parse(id, latexFormula);
+
+                if (formula != null) {
+                    formulaMap.put(id, formula);
+                }
             }
+            document = formulaConverter.replaceFormulas(document, formulaMap);
         }
-        document = formulaConverter.replaceFormulas(document, formulaMap);
 
+        // Convert to MOBI format
         File mobiFile = htmlToMobiConverter.convertToMobi(document, tempDirPath);
 
+        // Save file
         Path resultFilepath = null;
         try {
-            //resultFilepath = Files.move(mobiFile.toPath(), outputPath.resolve(mobiFile.getName()));
-
             // Don't overwrite files
             Path outputFilepath;
             int i = 1;

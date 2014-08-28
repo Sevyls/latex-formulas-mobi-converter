@@ -10,6 +10,7 @@ import org.jdom2.xpath.XPathFactory;
 import uk.ac.ed.ph.snuggletex.SnuggleEngine;
 import uk.ac.ed.ph.snuggletex.SnuggleInput;
 import uk.ac.ed.ph.snuggletex.SnuggleSession;
+import uk.ac.ed.ph.snuggletex.XMLStringOutputOptions;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -28,6 +29,13 @@ public abstract class FormulaConverter {
     private static Logger logger = Logger.getLogger(FormulaConverter.class);
     protected static SnuggleEngine engine = new SnuggleEngine();
 
+    static {
+        XMLStringOutputOptions xmlStringOutputOptions = new XMLStringOutputOptions();
+        xmlStringOutputOptions.setEncoding("UTF-8");
+        xmlStringOutputOptions.setIndenting(true);
+        engine.setDefaultXMLStringOutputOptions(xmlStringOutputOptions);
+    }
+
     /**
      * Parse latex formula code to entities, which afterward can be rendered to html
      *
@@ -36,14 +44,19 @@ public abstract class FormulaConverter {
      */
     public abstract Formula parse(int id, String latexFormula);
 
-
+    /**
+     * Parses a latex formula to MathML with SnuggleTeX
+     *
+     * @param id           the formula's index
+     * @param latexFormula the latex formula string
+     * @return formula object with set id, latex and mathml parameters
+     */
     public Formula parseToMathML(int id, String latexFormula) {
         Formula formula = new Formula(id);
 
         formula.setLatexCode(latexFormula);
 
         // Check if multiline
-        // Eine Leerzeile oder ein Doppelbackslash \\ bewirken einen neuen Absatz.
         if (latexFormula.matches("(?m)^\\s+$") || latexFormula.contains("\\\\")) {
             formula.setType(Formula.Type.MULTI_LINE);
         } else {
@@ -71,7 +84,7 @@ public abstract class FormulaConverter {
     }
 
     /**
-     * Parses an JDOM HTML Document for formula entries, sets an id to refer to it in the future.
+     * Parses a JDOM HTML Document for formula entries, sets an id to refer to it in the future.
      *
      * @param document JDOM HTML Document to parse
      * @return Map of formulas, keys: given id, values: corresponding latex formula code from the document
@@ -79,41 +92,50 @@ public abstract class FormulaConverter {
     public Map<Integer, String> extractFormulas(Document document) {
         Map<Integer, String> formulas = new HashMap<>();
 
-
         List<Element> foundElements = xpath.evaluate(document);
-        int id = 0;
-        for (Element element : foundElements) {
+        if (foundElements.size() > 0) {
+            int id = 0;
+            for (Element element : foundElements) {
+                formulas.put(id, element.getValue());
 
-            element.setAttribute("id", FORMULA_ID_PREFIX + id);
-
-
-            formulas.put(id, element.getValue());
-            id++;
+                // mark formula number
+                element.setAttribute("id", FORMULA_ID_PREFIX + id);
+                id++;
+            }
         }
 
         return formulas;
     }
 
+    /**
+     * Replaces all formulas with the html representation of the mapped formula objects
+     *
+     * @param doc        JDOM Document where to replace the formulas
+     * @param formulaMap Map of the indexed Formula Objects
+     * @return JDOM Document with replaced formulas
+     */
     public Document replaceFormulas(Document doc, Map<Integer, Formula> formulaMap) {
         List<Element> foundElements = xpath.evaluate(doc);
-        Map<String, Element> elementMap = new HashMap<>();
 
-        for (Element element : foundElements) {
-            elementMap.put(element.getAttribute("id").getValue(), element);
-        }
+        if (foundElements.size() > 0) {
+            Map<String, Element> elementMap = new HashMap<>();
 
-        Iterator<Integer> formulaIterator = formulaMap.keySet().iterator();
+            for (Element element : foundElements) {
+                elementMap.put(element.getAttribute("id").getValue(), element);
+            }
 
-        while (formulaIterator.hasNext()) {
-            Integer id = formulaIterator.next();
+            // Replace all found formulas
+            Iterator<Integer> formulaIterator = formulaMap.keySet().iterator();
+            while (formulaIterator.hasNext()) {
+                Integer id = formulaIterator.next();
 
-            Element element = elementMap.get(FORMULA_ID_PREFIX + id);
-            Formula formula = formulaMap.get(id);
+                Element element = elementMap.get(FORMULA_ID_PREFIX + id);
+                Formula formula = formulaMap.get(id);
 
-            element.removeAttribute("class");
-            element.removeContent();
-
-            element.addContent(formula.getHtml());
+                element.removeAttribute("class");
+                element.removeContent();
+                element.addContent(formula.getHtml());
+            }
         }
         return doc;
     }
