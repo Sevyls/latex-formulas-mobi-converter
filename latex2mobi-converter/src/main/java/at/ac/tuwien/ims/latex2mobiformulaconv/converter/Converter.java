@@ -42,7 +42,7 @@ public class Converter {
      * @param filename            the filename of the result file, if it already exists, a number will automatically be added to this string
      * @return Path of the resulting File
      */
-    public Path convert(ArrayList<Path> inputPaths, boolean replaceWithPictures, Path outputPath, String filename) {
+    public Path convert(ArrayList<Path> inputPaths, boolean replaceWithPictures, Path outputPath, String filename, boolean debug) {
         // TODO iterate over inputPaths
         org.jdom2.Document document = latexToHtmlConverter.convert(inputPaths.get(0).toFile());
 
@@ -58,7 +58,7 @@ public class Converter {
         if (replaceWithPictures) {
             formulaConverter = new ImageFormulaConverter();
         } else {
-            formulaConverter = new SAXFormulaConverter();
+            formulaConverter = new SAXFormulaConverter(debug);
         }
 
         Map<Integer, String> latexFormulas = formulaConverter.extractFormulas(document);

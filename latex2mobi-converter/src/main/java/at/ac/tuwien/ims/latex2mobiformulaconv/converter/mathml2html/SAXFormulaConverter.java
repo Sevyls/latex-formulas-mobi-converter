@@ -17,9 +17,12 @@ import java.io.StringReader;
  *         Time: 16:14
  */
 public class SAXFormulaConverter extends FormulaConverter {
-    private static boolean DEBUG = true;
+    private boolean debug = false;
     private static Logger logger = Logger.getLogger(SAXFormulaConverter.class);
 
+    public SAXFormulaConverter(boolean debug) {
+        this.debug = debug;
+    }
 
     @Override
     public Formula parse(int id, String latexFormula) {
@@ -86,7 +89,7 @@ public class SAXFormulaConverter extends FormulaConverter {
 
 
         // Generate debug output (image, latex + mathml code)
-        if (DEBUG) {
+        if (debug) {
             // Index
             Element index = new Element("span");
             Text text = new Text("Formula #" + formula.getId());

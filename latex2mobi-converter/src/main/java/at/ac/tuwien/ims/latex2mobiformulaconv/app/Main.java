@@ -26,6 +26,7 @@ public class Main {
     private static ArrayList<Path> inputPaths = new ArrayList<Path>();
     private static Path outputPath;
     private static boolean replaceWithPictures = false;
+    private static boolean debug = false;
     private static Path workingDirectory;
 
 
@@ -39,7 +40,7 @@ public class Main {
 
         // Start conversion
         Converter converter = new Converter();
-        Path resultFile = converter.convert(inputPaths, replaceWithPictures, outputPath, "LaTeX2Mobi");
+        Path resultFile = converter.convert(inputPaths, replaceWithPictures, outputPath, "LaTeX2Mobi", debug);
         logger.info("Result : " + resultFile.toAbsolutePath().toString());
 
         logger.debug("main() exit.");
@@ -55,6 +56,10 @@ public class Main {
                 usage();
                 logger.debug("Help called, main() exit.");
                 System.exit(0);
+            }
+
+            if (cmd.hasOption('d')) {
+                debug = true;
             }
 
             if (cmd.hasOption('i')) {
@@ -182,6 +187,7 @@ public class Main {
 
         options.addOption("o", "output-dir", true, "output directory");
         options.addOption("h", "help", false, "show this help");
+        options.addOption("d", "debug", false, "show debug output");
 
         Option picturesOption = new Option("r", "replace-with-images");
         picturesOption.setArgs(0);
