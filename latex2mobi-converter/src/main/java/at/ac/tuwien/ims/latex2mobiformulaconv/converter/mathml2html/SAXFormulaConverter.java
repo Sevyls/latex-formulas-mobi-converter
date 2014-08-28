@@ -10,6 +10,7 @@ import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import java.io.StringReader;
+import java.util.Stack;
 
 /**
  * @author Michael Auß
@@ -31,46 +32,97 @@ public class SAXFormulaConverter extends FormulaConverter {
         // TODO convert formula with SAX Parser
 
         XMLInputFactory factory = XMLInputFactory.newInstance();
+        Element html = new Element("span");
+        html.setAttribute("class", "math");
+
         try {
             XMLStreamReader parser = factory.createXMLStreamReader(new StringReader(formula.getMathMl()));
 
             StringBuilder spacer = new StringBuilder();
 
+
+            Stack<Element> elementStack = new Stack<>();
+            Element cur = null;
             while (parser.hasNext()) {
-                System.out.println("Event: " + parser.getEventType());
+                //logger.debug("Event: " + parser.getEventType());
 
                 switch (parser.getEventType()) {
                     case XMLStreamConstants.START_DOCUMENT:
-                        System.out.println("START_DOCUMENT: " + parser.getVersion());
+                        logger.debug("START_DOCUMENT: " + parser.getVersion());
                         break;
 
                     case XMLStreamConstants.END_DOCUMENT:
-                        System.out.println("END_DOCUMENT: ");
+                        logger.debug("END_DOCUMENT");
                         parser.close();
                         break;
 
-                    case XMLStreamConstants.NAMESPACE:
+                    /*case XMLStreamConstants.NAMESPACE:
                         System.out.println("NAMESPACE: " + parser.getNamespaceURI());
-                        break;
+                        break;*/
 
                     case XMLStreamConstants.START_ELEMENT:
                         spacer.append("  ");
-                        System.out.println(spacer + "START_ELEMENT: " + parser.getLocalName());
+
+                        String name = parser.getLocalName();
+                        logger.debug(spacer + "START_ELEMENT: " + name);
+
+
+                        // ignore root node
+                        if (name == "math") {
+                            parser.next();
+                            continue;
+                        }
+
+                        cur = new Element("span");
+                        cur.setAttribute("class", name);
+                        elementStack.push(cur);
+
+                        switch (name) {
+
+                            default:
+                                logger.debug("Not yet implemented: " + name);
+                                break;
+                        }
+
+                        html.addContent(cur);
 
                         // Der Event XMLStreamConstants.ATTRIBUTE wird nicht geliefert!
                         for (int i = 0; i < parser.getAttributeCount(); i++)
-                            System.out.println(spacer + "  Attribut: "
+                            logger.debug(spacer + "  Attribut: "
                                     + parser.getAttributeLocalName(i)
                                     + " Wert: " + parser.getAttributeValue(i));
                         break;
 
                     case XMLStreamConstants.CHARACTERS:
-                        if (!parser.isWhiteSpace())
-                            System.out.println(spacer + "  CHARACTERS: " + parser.getText());
+                        if (!parser.isWhiteSpace()) {
+                            cur = elementStack.peek();
+                            Text text = new Text(parser.getText());
+                            cur.addContent(text);
+
+                            logger.debug(spacer + "  CHARACTERS: " + parser.getText());
+                        } else {
+                            if (elementStack.isEmpty() == false) {
+                                cur = elementStack.peek();
+                                Text text = new Text(" ");
+                                html.addContent(text);
+                            }
+                        }
                         break;
 
                     case XMLStreamConstants.END_ELEMENT:
-                        System.out.println(spacer + "END_ELEMENT: " + parser.getLocalName());
+                        name = parser.getLocalName();
+                        logger.debug(spacer + "START_ELEMENT: " + name);
+
+                        // ignore root node
+                        if (name == "math") {
+                            parser.next();
+                            continue;
+                        }
+
+                        elementStack.pop();
+                        cur = null;
+
+                        logger.debug(spacer + "END_ELEMENT: " + parser.getLocalName());
                         spacer.delete((spacer.length() - 2), spacer.length());
                         break;
 
@@ -118,6 +170,8 @@ public class SAXFormulaConverter extends FormulaConverter {
             mathml.addContent(mathmlText);
             span.addContent(mathml);
         }
+
+        span.addContent(html);
 
 
         formula.setHtml(span);
