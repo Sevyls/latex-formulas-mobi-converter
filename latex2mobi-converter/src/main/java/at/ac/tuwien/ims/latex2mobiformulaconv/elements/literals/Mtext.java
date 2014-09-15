@@ -6,7 +6,7 @@ import org.jdom2.Element;
  * @author mauss
  *         Created: 20.05.14 23:41
  */
-public class Text extends Literal {
+public class Mtext extends Literal {
     private String value;
 
     @Override
@@ -21,6 +21,9 @@ public class Text extends Literal {
 
     @Override
     public Element render() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        Element span = new Element("span");
+        span.setAttribute("class", "mspan");
+        span.setText(value);
+        return span;
     }
 }

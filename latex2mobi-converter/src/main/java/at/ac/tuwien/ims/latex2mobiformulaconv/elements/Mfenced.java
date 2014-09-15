@@ -9,6 +9,15 @@ import org.jdom2.Element;
 public class Mfenced implements FormulaElement {
     private String opened;
     private String closed;
+
+    public FormulaElement getContent() {
+        return content;
+    }
+
+    public void setContent(FormulaElement content) {
+        this.content = content;
+    }
+
     // todo separator
     private FormulaElement content;
 
@@ -34,7 +43,10 @@ public class Mfenced implements FormulaElement {
         fencedSpan.setAttribute("class", "mfenced");
 
         fencedSpan.addContent(opened);
-        fencedSpan.addContent(content.render());
+        if (content != null) {
+            fencedSpan.addContent(content.render());
+        }
+
         fencedSpan.addContent(closed);
 
         return fencedSpan;

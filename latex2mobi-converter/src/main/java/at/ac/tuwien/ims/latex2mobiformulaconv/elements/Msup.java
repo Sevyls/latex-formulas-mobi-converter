@@ -34,7 +34,10 @@ public class Msup implements FormulaElement {
         msuperSpan.setAttribute("class", "msup");
 
         // Add base content
-        msuperSpan.addContent(base.render());
+        if (base != null) {
+            Element baseElement = base.render();
+            msuperSpan.addContent(baseElement);
+        }
 
         // Add superscript content
         Element sub = new Element("sup");

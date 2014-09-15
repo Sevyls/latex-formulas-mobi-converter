@@ -2,6 +2,7 @@ package at.ac.tuwien.ims.latex2mobiformulaconv.elements.operators;
 
 import at.ac.tuwien.ims.latex2mobiformulaconv.elements.FormulaElement;
 import at.ac.tuwien.ims.latex2mobiformulaconv.elements.Mo;
+import at.ac.tuwien.ims.latex2mobiformulaconv.elements.literals.Mtext;
 import org.jdom2.Element;
 
 /**
@@ -31,6 +32,13 @@ public class Mroot extends Mo {
     @Override
     public Element render() {
         // TODO mroot
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        Element span = new Element("span");
+        span.setAttribute("class", "mroot");
+        span.addContent(index.render());
+        Mtext sqrtSymbol = new Mtext();
+        sqrtSymbol.setValue("√");
+        span.addContent(sqrtSymbol.render());
+        span.addContent(base.render());
+        return span;
     }
 }

@@ -1,5 +1,6 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.elements;
 
+import org.apache.log4j.Logger;
 import org.jdom2.Element;
 
 import java.util.ArrayList;
@@ -11,6 +12,8 @@ import java.util.List;
  *         Created: 20.05.14 23:30
  */
 public class Mrow implements FormulaElement {
+    private static Logger logger = Logger.getLogger(Mrow.class);
+
     List<FormulaElement> list = new ArrayList<>();
 
     public void addElement(FormulaElement element) {
@@ -23,7 +26,12 @@ public class Mrow implements FormulaElement {
         Iterator<FormulaElement> iterator = list.iterator();
         while (iterator.hasNext()) {
             FormulaElement cur = iterator.next();
-            span.addContent(cur.render());
+            Element html = cur.render();
+            if (html != null) {
+                span.addContent(html);
+            } else {
+                logger.debug("HTML is NULL: " + cur.getClass().toString());
+            }
         }
         return span;
     }

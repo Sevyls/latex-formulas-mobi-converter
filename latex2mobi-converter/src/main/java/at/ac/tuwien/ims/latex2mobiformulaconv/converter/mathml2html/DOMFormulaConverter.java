@@ -4,6 +4,8 @@ import at.ac.tuwien.ims.latex2mobiformulaconv.elements.*;
 import at.ac.tuwien.ims.latex2mobiformulaconv.elements.literals.Mi;
 import at.ac.tuwien.ims.latex2mobiformulaconv.elements.literals.Mn;
 import at.ac.tuwien.ims.latex2mobiformulaconv.elements.literals.Mspace;
+import at.ac.tuwien.ims.latex2mobiformulaconv.elements.literals.Mtext;
+import at.ac.tuwien.ims.latex2mobiformulaconv.elements.operators.Mroot;
 import org.apache.log4j.Logger;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -48,7 +50,12 @@ public class DOMFormulaConverter extends FormulaConverter {
                 Element cur = it.next();
                 FormulaElement formulaElement = renderElement(cur);
                 if (formulaElement != null) {
-                    html.addContent(formulaElement.render());
+                    Element resultHtml = formulaElement.render();
+                    if (resultHtml != null) {
+                        html.addContent(resultHtml);
+                    } else {
+                        logger.debug("HTML is NULL: " + cur.getName());
+                    }
                 }
             }
 
@@ -105,6 +112,13 @@ public class DOMFormulaConverter extends FormulaConverter {
         return formula;
     }
 
+
+    /**
+     * Recursive function to render all FormulaElements
+     *
+     * @param cur the current processed MathML JDOM2 Element (a node or leaf inside MathML's DOM tree)
+     * @return an object which implements the FormulaElement interface, so it can be rendered to HTML
+     */
     private FormulaElement renderElement(Element cur) {
 
         String name = cur.getName();
@@ -150,11 +164,60 @@ public class DOMFormulaConverter extends FormulaConverter {
                 mi.setLiteral(cur.getText());
                 output = mi;
                 break;
+            case "mfrac":
+                Mfrac mfrac = new Mfrac();
+                mfrac.setNumerator(renderElement(cur.getChildren().get(0)));
+                mfrac.setDenominator(renderElement(cur.getChildren().get(1)));
+                output = mfrac;
+                break;
+            case "mfenced":
+                Mfenced mfenced = new Mfenced();
+                mfenced.setOpened(cur.getAttributeValue("open"));
+                mfenced.setClosed(cur.getAttributeValue("close"));
+                if (cur.getChildren().isEmpty() == false) {
+                    mfenced.setContent(renderElement(cur.getChildren().get(0)));
+                }
+                output = mfenced;
+                break;
             case "mspace":
                 Mspace mspace = new Mspace();
                 output = new Mspace();
                 break;
-
+            case "msqrt":
+                Mroot msqrt = new Mroot();
+                msqrt.setBase(renderElement(cur.getChildren().get(0)));
+                Mn square = new Mn();
+                square.setValue("2");
+                msqrt.setIndex(square);
+                output = msqrt;
+                break;
+            case "mroot":
+                Mroot mroot = new Mroot();
+                mroot.setBase(renderElement(cur.getChildren().get(0)));
+                mroot.setIndex(renderElement(cur.getChildren().get(1)));
+                output = mroot;
+                break;
+            case "mtext":
+                Mtext mtext = new Mtext();
+                mtext.setValue(cur.getText());
+                output = mtext;
+                break;
+            case "mstyle":
+                Mstyle mstyle = new Mstyle();
+                output = mstyle;
+                break;
+            case "mover":
+                Mover mover = new Mover();
+                mover.setBase(renderElement(cur.getChildren().get(0)));
+                mover.setOverscript(renderElement(cur.getChildren().get(1)));
+                output = mover;
+                break;
+            case "munder":
+                Munder munder = new Munder();
+                munder.setBase(renderElement(cur.getChildren().get(0)));
+                munder.setUnderscript(renderElement(cur.getChildren().get(1)));
+                output = munder;
+                break;
             default:
                 logger.info("MathML conversion of element <" + cur.getName() + "> NOT YET IMPLEMENTED");
                 output = null;
