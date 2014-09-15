@@ -2,6 +2,7 @@ package at.ac.tuwien.ims.latex2mobiformulaconv.converter.latex;
 
 import org.apache.commons.cli.Option;
 import org.apache.commons.exec.*;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.output.WriterOutputStream;
 import org.apache.log4j.Logger;
 import org.jdom2.Document;
@@ -18,21 +19,25 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 
 /**
- * @author mauss
+ * @author Michael Auß
  *         Created: 21.05.14 00:06
  */
 public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
     private static Logger logger = Logger.getLogger(PandocLatexToHtmlConverter.class);
 
     private String includeCss() {
+        // Load main css file
+        File mainCss = new File("main.css"); // TODO !IMPORTANT! search in classpath or working directory!!
+        String css = null;
+        try {
+            css = FileUtils.readFileToString(mainCss, Charset.forName("UTF-8"));
+        } catch (IOException e) {
+            logger.error("Error reading main.css file\n" + e.getMessage(), e);
+        }
+
         // TODO compile all css files to single string
-        return "<style>code {\n" +
-                "    white-space: pre;\n" +
-                "    display: block;\n" +
-                "    margin-top: 10px;\n" +
-                "    margin-bottom: 10px;\n" +
-                "}\n" +
-                "</style>";
+
+        return "<style>\n" + css + "\n</style>";
     }
 
     @Override
