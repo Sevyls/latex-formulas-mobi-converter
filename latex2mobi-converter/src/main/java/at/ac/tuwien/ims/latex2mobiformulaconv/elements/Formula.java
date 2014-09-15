@@ -11,7 +11,7 @@ import java.util.ArrayList;
  */
 public class Formula {
     private int id;
-    private ArrayList<Line> lines;
+    private ArrayList<Mrow> mrows;
     private String latexCode;
     private Type type;
     private Path imageFilePath;
@@ -65,15 +65,15 @@ public class Formula {
 
     public Formula(int id) {
         this.id = id;
-        lines = new ArrayList<Line>();
+        mrows = new ArrayList<Mrow>();
     }
 
     public int getId() {
         return id;
     }
 
-    public ArrayList<Line> getLines() {
-        return lines;
+    public ArrayList<Mrow> getMrows() {
+        return mrows;
     }
 
     public Element render() {

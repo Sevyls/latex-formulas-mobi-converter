@@ -4,9 +4,9 @@ import at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi.AmazonHtmlToMo
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi.HtmlToMobiConverter;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.latex.LatexToHtmlConverter;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.latex.PandocLatexToHtmlConverter;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.DOMFormulaConverter;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.FormulaConverter;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.ImageFormulaConverter;
-import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.SAXFormulaConverter;
 import at.ac.tuwien.ims.latex2mobiformulaconv.elements.Formula;
 import org.apache.log4j.Logger;
 import org.jdom2.output.XMLOutputter;
@@ -58,7 +58,7 @@ public class Converter {
         if (replaceWithPictures) {
             formulaConverter = new ImageFormulaConverter();
         } else {
-            formulaConverter = new SAXFormulaConverter(debug);
+            formulaConverter = new DOMFormulaConverter(debug);
         }
 
         Map<Integer, String> latexFormulas = formulaConverter.extractFormulas(document);

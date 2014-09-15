@@ -1,6 +1,7 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.elements.operators;
 
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.SnugglePackageProvider;
+import at.ac.tuwien.ims.latex2mobiformulaconv.elements.Mo;
 import org.jdom2.Element;
 import uk.ac.ed.ph.snuggletex.SnugglePackage;
 import uk.ac.ed.ph.snuggletex.definitions.TextFlowContext;
@@ -13,7 +14,7 @@ import static uk.ac.ed.ph.snuggletex.definitions.Globals.ALL_MODES;
  * @author mauss
  *         Created: 13.07.14 16:57
  */
-public class Modulo extends Operator implements SnugglePackageProvider {
+public class Modulo extends Mo implements SnugglePackageProvider {
 
     @Override
     public Element render() {

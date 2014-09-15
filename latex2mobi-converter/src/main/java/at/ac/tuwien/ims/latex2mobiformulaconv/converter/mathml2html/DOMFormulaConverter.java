@@ -1,0 +1,167 @@
+package at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html;
+
+import at.ac.tuwien.ims.latex2mobiformulaconv.elements.*;
+import at.ac.tuwien.ims.latex2mobiformulaconv.elements.literals.Mi;
+import at.ac.tuwien.ims.latex2mobiformulaconv.elements.literals.Mn;
+import at.ac.tuwien.ims.latex2mobiformulaconv.elements.literals.Mspace;
+import org.apache.log4j.Logger;
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.JDOMException;
+import org.jdom2.Text;
+import org.jdom2.input.SAXBuilder;
+
+import java.io.IOException;
+import java.io.StringReader;
+import java.util.Iterator;
+
+/**
+ * @author Michael Auß
+ *         Date: 17.08.14
+ *         Time: 16:14
+ */
+public class DOMFormulaConverter extends FormulaConverter {
+    private boolean debug = false;
+    private static Logger logger = Logger.getLogger(DOMFormulaConverter.class);
+
+    public DOMFormulaConverter(boolean debug) {
+        this.debug = debug;
+    }
+
+    @Override
+    public Formula parse(int id, String latexFormula) {
+        Formula formula = super.parseToMathML(id, latexFormula);
+
+        Element html = new Element("span");
+        html.setAttribute("class", "math");
+
+        SAXBuilder builder = new SAXBuilder();
+
+
+        try {
+            Document mathml = builder.build(new StringReader(formula.getMathMl()));
+
+            Element root = mathml.getRootElement();
+            Iterator<Element> it = root.getChildren().iterator();
+
+            while (it.hasNext()) {
+                Element cur = it.next();
+                FormulaElement formulaElement = renderElement(cur);
+                if (formulaElement != null) {
+                    html.addContent(formulaElement.render());
+                }
+            }
+
+        } catch (JDOMException e) {
+            logger.error("Error parsing generated MathML:");
+            logger.error(formula.getMathMl());
+            logger.error(e.getMessage(), e);
+
+        } catch (IOException e) {
+            logger.error("Error reading generated MathML:");
+            logger.error(formula.getMathMl());
+            logger.error(e.getMessage(), e);
+        }
+        // Test output
+        Element span = new Element("span");
+
+
+        // Generate debug output (image, latex + mathml code)
+        if (debug) {
+            // Msub
+            Element index = new Element("span");
+            Text text = new Text("Formula #" + formula.getId());
+            index.addContent(text);
+            span.addContent(index);
+
+            Element br = new Element("br");
+            span.addContent(br);
+
+            // LaTeX
+            Element latex = new Element("code");
+            Text latexText = new Text(formula.getLatexCode());
+            latex.addContent(latexText);
+            span.addContent(latex);
+
+            // Image
+            Element image = new Element("code");
+            ImageFormulaConverter imageFormulaConverter = new ImageFormulaConverter();
+            Formula imageFormula = imageFormulaConverter.parse(formula.getId(), formula.getLatexCode());
+            image.addContent(imageFormula.getHtml());
+            span.addContent(image);
+
+            // MathML
+            Element mathml = new Element("code");
+            Text mathmlText = new Text(formula.getMathMl());
+            mathml.addContent(mathmlText);
+            span.addContent(mathml);
+        }
+
+        span.addContent(html);
+
+
+        formula.setHtml(span);
+
+        return formula;
+    }
+
+    private FormulaElement renderElement(Element cur) {
+
+        String name = cur.getName();
+        FormulaElement output;
+
+        switch (name.toLowerCase()) {
+            case "msup":
+                Msup msup = new Msup();
+                msup.setBase(renderElement(cur.getChildren().get(0)));
+                msup.setSuperscript(renderElement(cur.getChildren().get(1)));
+                output = msup;
+                break;
+            case "msub":
+                Msub msub = new Msub();
+                msub.setBase(renderElement(cur.getChildren().get(0)));
+                msub.setSubscript(renderElement(cur.getChildren().get(1)));
+                output = msub;
+                break;
+            case "mrow":
+                Mrow mrow = new Mrow();
+                Iterator<Element> iterator = cur.getChildren().iterator();
+
+                while (iterator.hasNext()) {
+                    Element element = iterator.next();
+                    FormulaElement rowElement = renderElement(element);
+                    mrow.addElement(rowElement);
+                }
+
+                output = mrow;
+                break;
+            case "mo":
+                Mo mo = new Mo();
+                mo.setOperator(cur.getText());
+                output = mo;
+                break;
+            case "mn":
+                Mn mn = new Mn();
+                mn.setValue(cur.getText());
+                output = mn;
+                break;
+            case "mi":
+                Mi mi = new Mi();
+                mi.setLiteral(cur.getText());
+                output = mi;
+                break;
+            case "mspace":
+                Mspace mspace = new Mspace();
+                output = new Mspace();
+                break;
+
+            default:
+                logger.info("MathML conversion of element <" + cur.getName() + "> NOT YET IMPLEMENTED");
+                output = null;
+                break;
+
+        }
+
+        return output;
+    }
+}
