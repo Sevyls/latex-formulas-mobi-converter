@@ -9,3 +9,17 @@ code {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+.mfrac {
+    display: inline-block;
+}
+
+.numerator {
+    display: block;
+    text-align: center;
+}
+
+.denominator {
+    display: block;
+    border-top: 1px solid black;
+}

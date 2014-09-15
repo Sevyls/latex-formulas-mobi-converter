@@ -124,6 +124,7 @@ public class DOMFormulaConverter extends FormulaConverter {
         String name = cur.getName();
         FormulaElement output;
 
+        // Based on the MathML tag a corresponding class will be chosen and output will be rendered
         switch (name.toLowerCase()) {
             case "msup":
                 Msup msup = new Msup();
