@@ -23,6 +23,7 @@ public class Mrow implements FormulaElement {
     @Override
     public Element render() {
         Element span = new Element("span");
+        span.setAttribute("class", "mrow");
         Iterator<FormulaElement> iterator = list.iterator();
         while (iterator.hasNext()) {
             FormulaElement cur = iterator.next();

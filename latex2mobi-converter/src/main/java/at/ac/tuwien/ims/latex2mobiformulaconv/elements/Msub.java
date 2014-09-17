@@ -7,8 +7,6 @@ import org.jdom2.Element;
  *         Created: 15.09.2014
  */
 public class Msub implements FormulaElement {
-    public static final char COMMAND = '_';
-
     public FormulaElement getBase() {
         return base;
     }
@@ -43,6 +41,4 @@ public class Msub implements FormulaElement {
 
         return msubSpan;
     }
-
-
 }

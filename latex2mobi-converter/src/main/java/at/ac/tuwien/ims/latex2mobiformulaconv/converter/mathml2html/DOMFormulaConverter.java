@@ -138,6 +138,13 @@ public class DOMFormulaConverter extends FormulaConverter {
                 msub.setSubscript(renderElement(cur.getChildren().get(1)));
                 output = msub;
                 break;
+            case "msubsup":
+                Msubsup msubsup = new Msubsup();
+                msubsup.setBase(renderElement(cur.getChildren().get(0)));
+                msubsup.setSubscript(renderElement(cur.getChildren().get(1)));
+                msubsup.setSuperscript(renderElement(cur.getChildren().get(2)));
+                output = msubsup;
+                break;
             case "mrow":
                 Mrow mrow = new Mrow();
                 Iterator<Element> iterator = cur.getChildren().iterator();
@@ -205,6 +212,16 @@ public class DOMFormulaConverter extends FormulaConverter {
                 break;
             case "mstyle":
                 Mstyle mstyle = new Mstyle();
+
+                String mathvariant = cur.getAttributeValue("mathvariant");
+                if (mathvariant != null && mathvariant.isEmpty() == false) {
+                    mstyle.setStyle(mathvariant);
+                }
+
+                Iterator<Element> mstyleIterator = cur.getChildren().iterator();
+                while (mstyleIterator.hasNext()) {
+                    mstyle.addBaseElement(renderElement(mstyleIterator.next()));
+                }
                 output = mstyle;
                 break;
             case "mover":
