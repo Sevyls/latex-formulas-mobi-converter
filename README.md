@@ -79,6 +79,27 @@ This project is built with Maven 3.3.x
 
 
 
+## Conversion strategy
+
+A short explanation about the main conversion strategy:
+
+### 1. Main document structure conversion (without formulas)
+
+Initially pandoc converts the LaTeX input file to HTML5. 
+The complete LaTeX code will be transformed into an HTML representation, except for the formulas. 
+Pandoc will not transform the formulas, just mark them with a "LaTeX" HTML class.
+
+### 2. Converting all formulas from LaTeX to MathML with SnuggleTeX
+
+// TODO 
+
+### 3. Converting all formulas from MathML to pure HTML markup and applying a static stylesheet
+
+// TODO 
+
+### 4. Converting the resulting HTML document to the MOBI-Format
+
+// TODO 
 
 
 #// TODO rest of documentation.
