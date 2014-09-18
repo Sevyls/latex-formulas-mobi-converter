@@ -22,6 +22,7 @@ public class ConverterTest {
     private Path outputFilePath;
     private Path workingDirectory;
     private final String inputFilename = "formulas.tex";
+    private final String title = "title";
     private final String filename = "ConverterTestFile";
     private final String ext = ".mobi";
 
@@ -57,7 +58,7 @@ public class ConverterTest {
         assertTrue(!Files.exists(outputFilePath));
 
         try {
-            converter.convert(inputPaths, images, outputPath, filename, false);
+            converter.convert(inputPaths, images, outputPath, filename, title, false);
             assertTrue(Files.exists(outputFilePath));
             assertTrue(Files.isRegularFile(outputFilePath));
         } catch (Exception e) {

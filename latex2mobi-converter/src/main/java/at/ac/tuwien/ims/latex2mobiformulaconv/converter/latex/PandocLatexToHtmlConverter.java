@@ -41,8 +41,8 @@ public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
     }
 
     @Override
-    public Document convert(File tex) {
-        logger.debug("Start convert() with file " + tex.toPath().toAbsolutePath().toString());
+    public Document convert(File tex, String title) {
+        logger.debug("Start convert() with file " + tex.toPath().toAbsolutePath().toString() + ", title: " + title);
 
         // TODO read pandoc path from running config
         CommandLine cmdLine = new CommandLine("pandoc");
@@ -109,7 +109,8 @@ public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
         String htmlOutput = "<!DOCTYPE html>\n" +
                 "<html>\n" +
                 "<head>\n" +
-                // TODO title
+                // set title
+                "<title>" + title + "</title>\n" +
                 // include css
                 includeCss() +
                 "</head>\n" +

@@ -16,5 +16,5 @@ public interface LatexToHtmlConverter extends ExecOption {
      *
      * @return
      */
-    public Document convert(File tex);
+    public Document convert(File tex, String title);
 }

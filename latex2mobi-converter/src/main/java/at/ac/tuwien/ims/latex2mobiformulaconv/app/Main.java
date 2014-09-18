@@ -27,6 +27,7 @@ public class Main {
     private static Path outputPath;
     private static boolean replaceWithPictures = false;
     private static boolean debug = false;
+    private static String title = null;
     private static Path workingDirectory;
 
 
@@ -40,7 +41,7 @@ public class Main {
 
         // Start conversion
         Converter converter = new Converter();
-        Path resultFile = converter.convert(inputPaths, replaceWithPictures, outputPath, "LaTeX2Mobi", debug);
+        Path resultFile = converter.convert(inputPaths, replaceWithPictures, outputPath, "LaTeX2Mobi", title, debug); // TODO title
         logger.info("Result : " + resultFile.toAbsolutePath().toString());
 
         logger.debug("main() exit.");
@@ -60,6 +61,10 @@ public class Main {
 
             if (cmd.hasOption('d')) {
                 debug = true;
+            }
+
+            if (cmd.hasOption('t')) {
+                title = cmd.getOptionValue('t');
             }
 
             if (cmd.hasOption('i')) {
@@ -186,6 +191,7 @@ public class Main {
         options.addOption(inputOption);
 
         options.addOption("o", "output-dir", true, "output directory");
+        options.addOption("t", "title", true, "Document title");
         options.addOption("h", "help", false, "show this help");
         options.addOption("d", "debug", false, "show debug output");
 

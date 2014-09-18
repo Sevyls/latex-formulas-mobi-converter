@@ -9,6 +9,7 @@ import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.FormulaConve
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.ImageFormulaConverter;
 import at.ac.tuwien.ims.latex2mobiformulaconv.elements.Formula;
 import org.apache.log4j.Logger;
+import org.jdom2.Document;
 import org.jdom2.output.XMLOutputter;
 
 import java.io.File;
@@ -42,14 +43,23 @@ public class Converter {
      * @param filename            the filename of the result file, if it already exists, a number will automatically be added to this string
      * @return Path of the resulting File
      */
-    public Path convert(ArrayList<Path> inputPaths, boolean replaceWithPictures, Path outputPath, String filename, boolean debug) {
+    public Path convert(ArrayList<Path> inputPaths, boolean replaceWithPictures, Path outputPath, String filename, String title, boolean debug) {
         // TODO iterate over inputPaths
-        org.jdom2.Document document = latexToHtmlConverter.convert(inputPaths.get(0).toFile());
+        File inputFile = inputPaths.get(0).toFile();
+
+        // set default title
+        if (title == null) {
+            title = inputFile.getName();
+        }
+
+        // Main Document conversion to HTML, without formulas
+        logger.debug("Converting main document to HTML...");
+        Document document = latexToHtmlConverter.convert(inputFile, title);
 
         XMLOutputter xout = new XMLOutputter();
         logger.debug(xout.outputString(document));
 
-        logger.info("Parsing Formulas from converted HTML...");
+        logger.info("Parsing LaTeX formulas from resulting HTML...");
 
 
         FormulaConverter formulaConverter;
@@ -79,6 +89,7 @@ public class Converter {
         }
 
         // Convert to MOBI format
+        logger.info("Converting completed HTML to MOBI format...");
         File mobiFile = htmlToMobiConverter.convertToMobi(document);
 
         // Save file
