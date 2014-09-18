@@ -25,6 +25,7 @@ Faculty of Informatics at the Vienna University of Technology.
 ### Others
 * Apache Log4j - [http://logging.apache.org/log4j/](http://logging.apache.org/log4j/)
 * JDOM - [http://www.jdom.org/](http://www.jdom.org/)
+* SnuggleTeX - [http://www2.ph.ed.ac.uk/snuggletex/](http://www2.ph.ed.ac.uk/snuggletex/)
 * JEuclid - ([http://www.sourceforge.net/projects/jeuclid/](http://www.sourceforge.net/projects/jeuclid/))
 
 ## Requirements
