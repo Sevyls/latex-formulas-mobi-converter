@@ -1,37 +1,47 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <title>Latex to Mobi Formula Converter by Sevyls</title>
+    <meta name="description" content="Latex to Mobi Formula Converter : Bachelor Thesis, Michael Auß, e0525937@student.tuwien.ac.at">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Latex to Mobi Formula Converter</title>
   </head>
 
   <body>
-    <div id="container">
-      <div class="inner">
 
-        <header>
-          <h1>Latex to Mobi Formula Converter</h1>
-          <h2>Bachelor Thesis, Michael Auß, e0525937@student.tuwien.ac.at</h2>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/Sevyls/latex-formulas-mobi-converter">View on GitHub</a>
+
+          <h1 id="project_title">Latex to Mobi Formula Converter</h1>
+          <h2 id="project_tagline">Bachelor Thesis, Michael Auß, e0525937@student.tuwien.ac.at</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/Sevyls/latex-formulas-mobi-converter/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/Sevyls/latex-formulas-mobi-converter/tarball/master">Download this project as a tar.gz file</a>
+            </section>
         </header>
+    </div>
 
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/Sevyls/latex-formulas-mobi-converter/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/Sevyls/latex-formulas-mobi-converter/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/Sevyls/latex-formulas-mobi-converter" id="view-on-github" class="button"><span>View on GitHub</span></a>
-        </section>
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="latex-to-mobi-formula-converter" class="anchor" href="#latex-to-mobi-formula-converter"><span class="octicon octicon-link"></span></a>Latex to Mobi Formula Converter</h1>
 
-        <hr>
+<p>Bachelor Thesis</p>
 
-        <section id="main_content">
-          <p><a href="https://www.ims.tuwien.ac.at/topics/239">https://www.ims.tuwien.ac.at/topics/239</a></p>
+<p>Michael Auß
+<a href="mailto:e0525937@student.tuwien.ac.at">e0525937@student.tuwien.ac.at</a></p>
+
+<p><a href="http://badge.fury.io/gh/sevyls%2Flatex-formulas-mobi-converter"><img src="https://badge.fury.io/gh/sevyls%2Flatex-formulas-mobi-converter.svg" alt="GitHub version"></a> <a href="https://travis-ci.org/Sevyls/latex-formulas-mobi-converter"><img src="https://travis-ci.org/Sevyls/latex-formulas-mobi-converter.svg?branch=master" alt="Build status" title="Build status"></a></p>
+
+<p><a href="https://www.ims.tuwien.ac.at/topics/239">https://www.ims.tuwien.ac.at/topics/239</a></p>
 
 <p>Interactive Media Systems is a multimedia research group at the
 Institute of Software Technology and Interactive Systems, part of the
@@ -60,11 +70,18 @@ Faculty of Informatics at the Vienna University of Technology.</p>
 </li>
 <li>JDOM - <a href="http://www.jdom.org/">http://www.jdom.org/</a>
 </li>
+<li>JEuclid - (<a href="http://www.sourceforge.net/projects/jeuclid/">http://www.sourceforge.net/projects/jeuclid/</a>)</li>
 </ul><h2>
 <a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h2>
 
+<h2>
+<a name="java-7-or-higher" class="anchor" href="#java-7-or-higher"><span class="octicon octicon-link"></span></a>Java 7 or higher</h2>
+
+<p>You need to have the Java Runtime Environment installed in order to run this software.
+Download Java here: <a href="http://www.java.com/">http://www.java.com</a></p>
+
 <h3>
-<a name="pandoc" class="anchor" href="#pandoc"><span class="octicon octicon-link"></span></a>Pandoc</h3>
+<a name="pandoc-112-or-higher" class="anchor" href="#pandoc-112-or-higher"><span class="octicon octicon-link"></span></a>Pandoc 1.12 or higher</h3>
 
 <p>This software makes great use of pandoc's LaTeX to HTML converter. </p>
 
@@ -92,17 +109,75 @@ Faculty of Informatics at the Vienna University of Technology.</p>
 
 <p>Notice: this overrides all other previous discussed settings.</p>
 
+<h3>
+<a name="amazon-kindlegen" class="anchor" href="#amazon-kindlegen"><span class="octicon octicon-link"></span></a>Amazon KindleGen</h3>
+
+<p>This is the standard way to generate a .Mobi-File.</p>
+
+<p>Download &amp; install from <a href="http://www.amazon.com/gp/feature.html?docId=1000765211">http://www.amazon.com/gp/feature.html?docId=1000765211</a></p>
+
+<p><strong>Add the installed kindlegen executable/directory to your operating system's PATH variable.</strong></p>
+
+<h2>
+<a name="build-requirements" class="anchor" href="#build-requirements"><span class="octicon octicon-link"></span></a>Build-Requirements</h2>
+
+<h3>
+<a name="java-development-kit-jdk-7-or-higher" class="anchor" href="#java-development-kit-jdk-7-or-higher"><span class="octicon octicon-link"></span></a>Java Development Kit (JDK) 7 or higher</h3>
+
+<p>This software uses the Java SE JDK 7.</p>
+
+<ul>
+<li>Download &amp; install from here <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a>
+</li>
+</ul><h3>
+<a name="maven" class="anchor" href="#maven"><span class="octicon octicon-link"></span></a>Maven</h3>
+
+<p>This project is built with Maven 3.3.x</p>
+
+<ul>
+<li>Download &amp; install from here <a href="http://maven.apache.org/download.cgi">http://maven.apache.org/download.cgi</a>
+</li>
+</ul><h2>
+<a name="conversion-strategy" class="anchor" href="#conversion-strategy"><span class="octicon octicon-link"></span></a>Conversion strategy</h2>
+
+<p>A short explanation about the main conversion strategy:</p>
+
+<h3>
+<a name="1-main-document-structure-conversion-without-formulas" class="anchor" href="#1-main-document-structure-conversion-without-formulas"><span class="octicon octicon-link"></span></a>1. Main document structure conversion (without formulas)</h3>
+
+<p>Initially pandoc converts the LaTeX input file to HTML5. 
+The complete LaTeX code will be transformed into an HTML representation, except for the formulas. 
+Pandoc will not transform the formulas, just mark them with a "LaTeX" HTML class.</p>
+
+<h3>
+<a name="2-converting-all-formulas-from-latex-to-mathml-with-snuggletex" class="anchor" href="#2-converting-all-formulas-from-latex-to-mathml-with-snuggletex"><span class="octicon octicon-link"></span></a>2. Converting all formulas from LaTeX to MathML with SnuggleTeX</h3>
+
+<p>// TODO </p>
+
+<h3>
+<a name="3-converting-all-formulas-from-mathml-to-pure-html-markup-and-applying-a-static-stylesheet" class="anchor" href="#3-converting-all-formulas-from-mathml-to-pure-html-markup-and-applying-a-static-stylesheet"><span class="octicon octicon-link"></span></a>3. Converting all formulas from MathML to pure HTML markup and applying a static stylesheet</h3>
+
+<p>// TODO </p>
+
+<h3>
+<a name="4-converting-the-resulting-html-document-to-the-mobi-format" class="anchor" href="#4-converting-the-resulting-html-document-to-the-mobi-format"><span class="octicon octicon-link"></span></a>4. Converting the resulting HTML document to the MOBI-Format</h3>
+
+<p>// TODO </p>
+
 <h1>
 <a name="-todo-rest-of-documentation" class="anchor" href="#-todo-rest-of-documentation"><span class="octicon octicon-link"></span></a>// TODO rest of documentation.</h1>
-        </section>
-
-        <footer>
-          Latex to Mobi Formula Converter is maintained by <a href="https://github.com/Sevyls">Sevyls</a><br>
-          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
-        </footer>
-
-        
-      </div>
+      </section>
     </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Latex to Mobi Formula Converter maintained by <a href="https://github.com/Sevyls">Sevyls</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
   </body>
 </html>
