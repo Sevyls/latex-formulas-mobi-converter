@@ -45,7 +45,7 @@ public class PandocLatexToHtmlConverterTest {
         // ignore UNIX / Windows new line
         mainCss = mainCss.trim().replace("\n", "").replace("\r", "");
 
-        title = RandomStringUtils.random(64);
+        title = RandomStringUtils.randomAlphanumeric(64);
         logger.debug("Random title: " + title);
     }
 

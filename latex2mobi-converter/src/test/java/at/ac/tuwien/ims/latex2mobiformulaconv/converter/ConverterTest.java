@@ -32,7 +32,7 @@ public class ConverterTest {
         workingDirectory = TestUtils.getWorkingDirectory(this.getClass());
         logger.info("Working directory: " + workingDirectory.toAbsolutePath().toString());
         converter = new Converter(workingDirectory);
-        title = RandomStringUtils.random(64);
+        title = RandomStringUtils.randomAlphanumeric(64);
         logger.debug("Random title: " + title);
 
         inputPaths = new ArrayList<>();
