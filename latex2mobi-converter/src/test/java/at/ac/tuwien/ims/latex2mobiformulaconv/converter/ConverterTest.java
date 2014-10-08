@@ -1,5 +1,6 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.converter;
 
+import org.apache.commons.lang.RandomStringUtils;
 import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
@@ -22,17 +23,21 @@ public class ConverterTest {
     private Path outputFilePath;
     private Path workingDirectory;
     private final String inputFilename = "formulas.tex";
-    private final String title = "title";
+    private String title;
     private final String filename = "ConverterTestFile";
     private final String ext = ".mobi";
 
     @Before
     public void setUp() throws Exception {
-        converter = new Converter();
-        inputPaths = new ArrayList<>();
-        workingDirectory = Paths.get(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI());
+        workingDirectory = TestUtils.getWorkingDirectory(this.getClass());
         logger.info("Working directory: " + workingDirectory.toAbsolutePath().toString());
+        converter = new Converter(workingDirectory);
+        title = RandomStringUtils.random(64);
+        logger.debug("Random title: " + title);
+
+        inputPaths = new ArrayList<>();
         inputPaths.add(workingDirectory.resolve(Paths.get(inputFilename)));
+
         outputPath = workingDirectory.resolve("..");
         outputFilePath = outputPath.resolve(filename + ext);
         Files.deleteIfExists(outputFilePath);

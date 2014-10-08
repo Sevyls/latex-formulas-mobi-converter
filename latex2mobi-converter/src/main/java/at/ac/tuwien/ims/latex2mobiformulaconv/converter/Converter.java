@@ -33,6 +33,14 @@ public class Converter {
     private static LatexToHtmlConverter latexToHtmlConverter = new PandocLatexToHtmlConverter();
     private static HtmlToMobiConverter htmlToMobiConverter = new AmazonHtmlToMobiConverter();
 
+    private Path workingDirectory;
+
+    public Converter(Path workingDirectory) {
+        this.workingDirectory = workingDirectory;
+    }
+
+
+
     /**
      * Converts a single input file from LaTeX to Mobi
      *
@@ -54,7 +62,7 @@ public class Converter {
 
         // Main Document conversion to HTML, without formulas
         logger.debug("Converting main document to HTML...");
-        Document document = latexToHtmlConverter.convert(inputFile, title);
+        Document document = latexToHtmlConverter.convert(inputFile, title, workingDirectory);
 
         XMLOutputter xout = new XMLOutputter();
         logger.debug(xout.outputString(document));

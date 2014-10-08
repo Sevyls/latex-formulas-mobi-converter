@@ -20,27 +20,43 @@ import java.util.ArrayList;
  */
 public class Main {
     private static final String CONFIGURATION_FILENAME = "configuration.properties";
+
+    // Utils
     private static Logger logger = Logger.getRootLogger();
     private static PropertiesConfiguration config;
     private static Options options;
-    private static ArrayList<Path> inputPaths = new ArrayList<Path>();
-    private static Path outputPath;
+
+    // Flag options
     private static boolean replaceWithPictures = false;
     private static boolean debug = false;
+
+    // Value options
     private static String title = null;
+
+    // Paths
+    private static ArrayList<Path> inputPaths = new ArrayList<Path>();
     private static Path workingDirectory;
+    private static Path outputPath;
 
 
+    /**
+     * Main application method, may exit on error.
+     *
+     * @param args standard posix command line arguments
+     */
     public static void main(String[] args) {
         logger.debug("main() started.");
 
+        // Init
         setupWorkingDirectory();
         initializeOptions();
+
+        // Analyse options
         parseCli(args);
         loadConfiguration();
 
         // Start conversion
-        Converter converter = new Converter();
+        Converter converter = new Converter(workingDirectory);
         Path resultFile = converter.convert(inputPaths, replaceWithPictures, outputPath, "LaTeX2Mobi", title, debug); // TODO title
         logger.info("Result : " + resultFile.toAbsolutePath().toString());
 

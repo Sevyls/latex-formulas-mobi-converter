@@ -4,6 +4,7 @@ import at.ac.tuwien.ims.latex2mobiformulaconv.converter.ExecOption;
 import org.jdom2.Document;
 
 import java.io.File;
+import java.nio.file.Path;
 
 /**
  * @author mauss
@@ -16,5 +17,5 @@ public interface LatexToHtmlConverter extends ExecOption {
      *
      * @return
      */
-    public Document convert(File tex, String title);
+    public Document convert(File tex, String title, final Path workingDirectory);
 }

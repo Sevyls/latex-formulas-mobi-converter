@@ -25,10 +25,11 @@ import java.util.HashMap;
 public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
     private static Logger logger = Logger.getLogger(PandocLatexToHtmlConverter.class);
 
-    private String includeCss() {
+    private String includeCss(Path workingDirectory) {
         // Load main css file
-        File mainCss = new File("main.css"); // TODO !IMPORTANT! search in classpath or working directory!!
-        String css = null;
+        File mainCss = workingDirectory.resolve("main.css").toFile();
+
+        String css = "";
         try {
             css = FileUtils.readFileToString(mainCss, Charset.forName("UTF-8"));
         } catch (IOException e) {
@@ -41,7 +42,7 @@ public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
     }
 
     @Override
-    public Document convert(File tex, String title) {
+    public Document convert(File tex, String title, final Path workingDirectory) {
         logger.debug("Start convert() with file " + tex.toPath().toAbsolutePath().toString() + ", title: " + title);
 
         // TODO read pandoc path from running config
@@ -112,7 +113,7 @@ public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
                 // set title
                 "<title>" + title + "</title>\n" +
                 // include css
-                includeCss() +
+                includeCss(workingDirectory) +
                 "</head>\n" +
                 "<body>";
         try {
