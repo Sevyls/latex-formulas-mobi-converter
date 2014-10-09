@@ -1,4 +1,4 @@
-package at.ac.tuwien.ims.latex2mobiformulaconv.converter.latex;
+package at.ac.tuwien.ims.latex2mobiformulaconv.converter.latex2html;
 
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.TestUtils;
 import org.apache.commons.io.FileUtils;
