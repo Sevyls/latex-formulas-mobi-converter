@@ -9,7 +9,6 @@ import org.jdom2.Element;
 import org.jdom2.filter.Filters;
 import org.jdom2.xpath.XPathExpression;
 import org.jdom2.xpath.XPathFactory;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -47,11 +46,6 @@ public class PandocLatexToHtmlConverterTest {
 
         title = RandomStringUtils.randomAlphanumeric(64);
         logger.debug("Random title: " + title);
-    }
-
-    @After
-    public void tearDown() throws Exception {
-
     }
 
     @Test
