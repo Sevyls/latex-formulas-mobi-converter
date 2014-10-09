@@ -14,7 +14,12 @@ import java.util.ArrayList;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-
+/**
+ * @author Michael Auß
+ *         <p/>
+ *         Integration test
+ *         Tests the standard ways of running a conversion with the formulas.tex test resource
+ */
 public class ConverterTest {
     private static Logger logger = Logger.getLogger(ConverterTest.class);
     private Converter converter;
@@ -58,6 +63,11 @@ public class ConverterTest {
         testConvertCreatesFiles(false);
     }
 
+    /**
+     * Generic test runner
+     * @param images flag for test mode - when true the formulas will get replaced by images, else by html+css
+     * @throws Exception
+     */
     private void testConvertCreatesFiles(boolean images) throws Exception {
         assertTrue(Files.exists(inputPaths.get(0)));
         assertTrue(!Files.exists(outputFilePath));
@@ -72,6 +82,10 @@ public class ConverterTest {
         }
     }
 
+    /**
+     * tests the renaming scheme for handling existing filenames
+     * @throws Exception
+     */
     @Test
     public void testConvertFileExists() throws Exception {
         Path existingFile = outputPath.resolve(filename + ext);
