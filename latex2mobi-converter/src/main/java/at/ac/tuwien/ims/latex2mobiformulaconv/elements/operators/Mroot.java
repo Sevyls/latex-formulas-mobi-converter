@@ -31,14 +31,41 @@ public class Mroot extends Mo {
 
     @Override
     public Element render() {
-        // TODO mroot
-        Element span = new Element("span");
-        span.setAttribute("class", "mroot");
-        span.addContent(index.render());
+
+        Element mrootSpan = new Element("span");
+        mrootSpan.setAttribute("class", "mroot");
+
+        // index
+        if (index != null) {
+            Element indexSpan = new Element("span");
+            indexSpan.setAttribute("class", "mroot-index");
+
+            indexSpan.addContent(index.render());
+
+            mrootSpan.addContent(indexSpan);
+        }
+
+        // Root symbol
+        Element mrootSymbol = new Element("span");
+        mrootSymbol.setAttribute("class", "mroot-symbol");
         Mtext sqrtSymbol = new Mtext();
         sqrtSymbol.setValue("√");
-        span.addContent(sqrtSymbol.render());
-        span.addContent(base.render());
-        return span;
+        mrootSymbol.addContent(sqrtSymbol.render());
+        mrootSpan.addContent(mrootSymbol);
+
+
+        Element mrootTopbar = new Element("span");
+        mrootTopbar.setAttribute("class", "mroot-topbar");
+
+        // base
+        Element baseSpan = new Element("span");
+        baseSpan.setAttribute("class", "mroot-base");
+        baseSpan.addContent(base.render());
+        mrootTopbar.addContent(baseSpan);
+
+        mrootSpan.addContent(mrootTopbar);
+
+
+        return mrootSpan;
     }
 }

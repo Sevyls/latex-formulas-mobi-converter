@@ -195,7 +195,7 @@ public class DOMFormulaConverter extends FormulaConverter {
                 Mroot msqrt = new Mroot();
                 msqrt.setBase(renderElement(cur.getChildren().get(0)));
                 Mn square = new Mn();
-                square.setValue("2");
+
                 msqrt.setIndex(square);
                 output = msqrt;
                 break;

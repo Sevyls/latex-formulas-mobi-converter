@@ -1,6 +1,6 @@
 .math {
     font-family: serif;
-    font-size: 1.4em;
+    font-size: 2em;
 }
 
 code {
@@ -12,6 +12,9 @@ code {
 
 .mfrac {
     display: inline-block;
+    font-size: 50%;
+    position: relative;
+    top: 1em;
 }
 
 .numerator {
@@ -59,4 +62,24 @@ code {
     left: -0.5em;
     position: relative;
     bottom: -0.25em;
+}
+
+.mroot-index {
+    font-size: 0.5em;
+    vertical-align: super;
+    top: -0.9em;
+    position: relative;
+    left: 0.9em;
+}
+
+.mroot-symbol {
+    font-size: 1.34em;
+}
+
+.mroot-topbar {
+    border-top: 0.05em solid black;
+}
+
+.mroot-base {
+    margin-left: 0.05em;
 }

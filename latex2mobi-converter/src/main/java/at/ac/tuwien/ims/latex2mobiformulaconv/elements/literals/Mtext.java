@@ -22,7 +22,7 @@ public class Mtext extends Literal {
     @Override
     public Element render() {
         Element span = new Element("span");
-        span.setAttribute("class", "mspan");
+        span.setAttribute("class", "mtext");
         span.setText(value);
         return span;
     }
