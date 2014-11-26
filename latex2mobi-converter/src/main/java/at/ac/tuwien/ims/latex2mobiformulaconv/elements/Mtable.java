@@ -2,6 +2,9 @@ package at.ac.tuwien.ims.latex2mobiformulaconv.elements;
 
 import org.jdom2.Element;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * The MIT License (MIT)
  * latex2mobi -- LaTeX Formulas to Mobi Converter
@@ -32,9 +35,27 @@ import org.jdom2.Element;
  *         Created: 20.05.14 23:36
  */
 public class Mtable implements FormulaElement {
-    // TODO mtable
+    private List<Mtr> rows = new ArrayList<Mtr>();
+
+    public List<Mtr> getRows() {
+        return rows;
+    }
+
     @Override
     public Element render() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        Element mtableDiv = new Element("div");
+        mtableDiv.setAttribute("class", "mtable");
+
+        // create Table
+        Element table = new Element("table");
+
+        // evaluate Rows
+        for (int i = 0; i < rows.size(); i++) {
+            table.addContent(rows.get(i).render());
+        }
+
+        mtableDiv.addContent(table);
+
+        return mtableDiv;
     }
 }

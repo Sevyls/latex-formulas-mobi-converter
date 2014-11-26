@@ -159,6 +159,11 @@ public abstract class FormulaConverter {
 
                 element.removeAttribute("class");
                 element.removeContent();
+                element.setName("div");
+
+                Element paragraph = (Element) element.getParent();
+                paragraph.setName("div");
+                paragraph.setAttribute("class", "p");
                 element.addContent(formula.getHtml());
             }
         }

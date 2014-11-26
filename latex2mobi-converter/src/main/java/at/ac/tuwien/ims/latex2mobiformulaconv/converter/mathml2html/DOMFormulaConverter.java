@@ -59,7 +59,7 @@ public class DOMFormulaConverter extends FormulaConverter {
     public Formula parse(int id, String latexFormula) {
         Formula formula = super.parseToMathML(id, latexFormula);
 
-        Element html = new Element("span");
+        Element html = new Element("div");
         html.setAttribute("class", "math");
 
         SAXBuilder builder = new SAXBuilder();
@@ -95,44 +95,44 @@ public class DOMFormulaConverter extends FormulaConverter {
             logger.error(e.getMessage(), e);
         }
         // Test output
-        Element span = new Element("span");
+        Element div = new Element("div");
 
 
         // Generate debug output (image, latex + mathml code)
         if (debug) {
-            // Msub
+            // Formula Index
             Element index = new Element("span");
             Text text = new Text("Formula #" + formula.getId());
             index.addContent(text);
-            span.addContent(index);
+            div.addContent(index);
 
             Element br = new Element("br");
-            span.addContent(br);
+            div.addContent(br);
 
             // LaTeX
             Element latex = new Element("code");
             Text latexText = new Text(formula.getLatexCode());
             latex.addContent(latexText);
-            span.addContent(latex);
+            div.addContent(latex);
 
             // Image
             Element image = new Element("code");
             ImageFormulaConverter imageFormulaConverter = new ImageFormulaConverter();
             Formula imageFormula = imageFormulaConverter.parse(formula.getId(), formula.getLatexCode());
             image.addContent(imageFormula.getHtml());
-            span.addContent(image);
+            div.addContent(image);
 
             // MathML
             Element mathml = new Element("code");
             Text mathmlText = new Text(formula.getMathMl());
             mathml.addContent(mathmlText);
-            span.addContent(mathml);
+            div.addContent(mathml);
         }
 
-        span.addContent(html);
+        div.addContent(html);
 
 
-        formula.setHtml(span);
+        formula.setHtml(div);
 
         return formula;
     }
@@ -260,6 +260,34 @@ public class DOMFormulaConverter extends FormulaConverter {
                 munder.setBase(renderElement(cur.getChildren().get(0)));
                 munder.setUnderscript(renderElement(cur.getChildren().get(1)));
                 output = munder;
+                break;
+            case "mtable":
+                Mtable mtable = new Mtable();
+                Iterator<Element> mRowIterator = cur.getChildren().iterator();
+                while (mRowIterator.hasNext()) {
+                    Mtr mtr = (Mtr) renderElement(mRowIterator.next());
+                    mtable.getRows().add(mtr);
+                }
+                output = mtable;
+                break;
+            case "mtr":
+                Mtr mtr = new Mtr();
+                Iterator<Element> mCellIterator = cur.getChildren().iterator();
+                while (mCellIterator.hasNext()) {
+                    Mtd mtd = (Mtd) renderElement(mCellIterator.next());
+                    mtr.getTds().add(mtd);
+                }
+                output = mtr;
+                break;
+            case "mtd":
+                Mtd mtd = new Mtd();
+                Mrow tdContent = new Mrow();
+                Iterator<Element> mContentIterator = cur.getChildren().iterator();
+                while (mContentIterator.hasNext()) {
+                    tdContent.addElement(renderElement(mContentIterator.next()));
+                }
+                mtd.setContent(tdContent);
+                output = mtd;
                 break;
             default:
                 logger.info("MathML conversion of element <" + cur.getName() + "> NOT YET IMPLEMENTED");

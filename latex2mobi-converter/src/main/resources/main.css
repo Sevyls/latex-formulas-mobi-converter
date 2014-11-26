@@ -112,3 +112,12 @@ code {
 .mroot-base {
     margin-left: 0.05em;
 }
+
+.mtable {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.mtable td {
+    text-align: center;
+}
