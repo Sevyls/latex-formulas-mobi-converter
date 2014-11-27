@@ -7,6 +7,7 @@ before_install:
   - sudo apt-get install -y pandoc
 before_script:
   - wget "http://kindlegen.s3.amazonaws.com/kindlegen_linux_2.6_i386_v2_9.tar.gz"  -O "/tmp/kindlegen.tar.gz"
-  - tar -xvf /tmp/kindlegen.tar.gz
-  - export PATH=$PATH:$PWD/kindlegen_linux_2.6_i386_v2_9/
+  - mkdir kindlegen
+  - tar -xvf /tmp/kindlegen.tar.gz -C kindlegen/
+  - export PATH=$PATH:$PWD/kindlegen/
   - cd latex2mobi-converter
