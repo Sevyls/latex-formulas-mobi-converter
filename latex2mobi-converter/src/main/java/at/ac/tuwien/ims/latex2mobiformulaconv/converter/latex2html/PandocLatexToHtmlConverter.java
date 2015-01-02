@@ -155,7 +155,7 @@ public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
         htmlOutput += "</body>\n" +
                 "</html>";
 
-        logger.debug("html-output: " + htmlOutput);
+        //logger.debug("html-output: " + htmlOutput);
 
         // output loading as JDOM Document
         SAXBuilder sax = new SAXBuilder();

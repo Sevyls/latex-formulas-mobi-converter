@@ -52,17 +52,62 @@ public class MoTest {
     }
 
     @Test
-    public void testRender() throws Exception {
+    public void testRenderInfix() throws Exception {
         Mo mo = new Mo();
 
         mo.setOperator(operator);
 
-        Element result = mo.render();
+        Element result = mo.render(null, null);
 
         assertNotNull(result);
         assertEquals("span", result.getName());
         assertEquals("mo", result.getAttributeValue("class"));
-        assertEquals(operator, result.getText());
+        assertEquals(" " + operator + " ", result.getText());
+
+    }
+
+    @Test
+     public void testRenderPrefix() throws Exception {
+        Mo mo = new Mo();
+
+        mo.setOperator(operator);
+        mo.setForm("prefix");
+        Element result = mo.render(null, null);
+
+        assertNotNull(result);
+        assertEquals("span", result.getName());
+        assertEquals("mo", result.getAttributeValue("class"));
+        assertEquals(" " + operator, result.getText());
+
+    }
+
+    @Test
+    public void testRenderPostfix() throws Exception {
+        Mo mo = new Mo();
+
+        mo.setOperator(operator);
+        mo.setForm("postfix");
+        Element result = mo.render(null, null);
+
+        assertNotNull(result);
+        assertEquals("span", result.getName());
+        assertEquals("mo", result.getAttributeValue("class"));
+        assertEquals(operator + " ", result.getText());
+
+    }
+
+    @Test
+    public void testRenderSeparator() throws Exception {
+        Mo mo = new Mo();
+
+        mo.setOperator(operator);
+        mo.setSeparator(true);
+        Element result = mo.render(null, null);
+
+        assertNotNull(result);
+        assertEquals("span", result.getName());
+        assertEquals("mo", result.getAttributeValue("class"));
+        assertEquals(" " + operator + " ", result.getText());
 
     }
 }

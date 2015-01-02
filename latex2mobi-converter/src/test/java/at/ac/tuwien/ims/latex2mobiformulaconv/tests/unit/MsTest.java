@@ -60,7 +60,7 @@ public class MsTest {
         this.ms = new Ms();
         ms.setValue(whitespace + randomString + whitespace);
 
-        Element result = ms.render();
+        Element result = ms.render(null, null);
 
         assertNotNull(result);
         assertEquals("span", result.getName());

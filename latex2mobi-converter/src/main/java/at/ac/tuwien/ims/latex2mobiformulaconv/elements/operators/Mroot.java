@@ -5,6 +5,8 @@ import at.ac.tuwien.ims.latex2mobiformulaconv.elements.Mo;
 import at.ac.tuwien.ims.latex2mobiformulaconv.elements.literals.Mtext;
 import org.jdom2.Element;
 
+import java.util.List;
+
 /**
  * The MIT License (MIT)
  * latex2mobi -- LaTeX Formulas to Mobi Converter
@@ -55,7 +57,7 @@ public class Mroot extends Mo {
     }
 
     @Override
-    public Element render() {
+    public Element render(FormulaElement parent, List<FormulaElement> siblings) {
 
         Element mrootSpan = new Element("span");
         mrootSpan.setAttribute("class", "mroot");
@@ -65,7 +67,7 @@ public class Mroot extends Mo {
             Element indexSpan = new Element("span");
             indexSpan.setAttribute("class", "mroot-index");
 
-            indexSpan.addContent(index.render());
+            indexSpan.addContent(index.render(null, null));
 
             mrootSpan.addContent(indexSpan);
         }
@@ -75,7 +77,7 @@ public class Mroot extends Mo {
         mrootSymbol.setAttribute("class", "mroot-symbol");
         Mtext sqrtSymbol = new Mtext();
         sqrtSymbol.setValue("√");
-        mrootSymbol.addContent(sqrtSymbol.render());
+        mrootSymbol.addContent(sqrtSymbol.render(null, null));
         mrootSpan.addContent(mrootSymbol);
 
 
@@ -85,7 +87,7 @@ public class Mroot extends Mo {
         // base
         Element baseSpan = new Element("span");
         baseSpan.setAttribute("class", "mroot-base");
-        baseSpan.addContent(base.render());
+        baseSpan.addContent(base.render(null, null));
         mrootTopbar.addContent(baseSpan);
 
         mrootSpan.addContent(mrootTopbar);

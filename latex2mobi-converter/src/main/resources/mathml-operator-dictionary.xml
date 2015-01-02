@@ -35,13 +35,13 @@
 	<mo value="&amp;VerticalSeparator;" form="infix" stretchy="true" lspace="thickmathspace" rspace="thickmathspace" />
 	<mo value="//" form="infix" lspace="thickmathspace" rspace="thickmathspace" />
 	<mo value="&amp;Colon;" form="infix" lspace="thickmathspace" rspace="thickmathspace" />
-	<mo value="&amp;amp;" form="prefix" lspace="0em" rspace="thickmathspace" />
-	<mo value="&amp;amp;" form="postfix" lspace="thickmathspace" rspace="0em" />
+	<mo value="&amp;" form="prefix" lspace="0em" rspace="thickmathspace" />
+	<mo value="&amp;" form="postfix" lspace="thickmathspace" rspace="0em" />
 	<mo value="*=" form="infix" lspace="thickmathspace" rspace="thickmathspace" />
 	<mo value="-=" form="infix" lspace="thickmathspace" rspace="thickmathspace" />
 	<mo value="+=" form="infix" lspace="thickmathspace" rspace="thickmathspace" />
 	<mo value="/=" form="infix" lspace="thickmathspace" rspace="thickmathspace" />
-	<mo value="-&amp;gt;" form="infix" lspace="thickmathspace" rspace="thickmathspace" />
+	<mo value="-&gt;" form="infix" lspace="thickmathspace" rspace="thickmathspace" />
 	<mo value=":" form="infix" lspace="thickmathspace" rspace="thickmathspace" />
 	<mo value=".." form="postfix" lspace="mediummathspace" rspace="0em" />
 	<mo value="..." form="postfix" lspace="mediummathspace" rspace="0em" />
@@ -56,9 +56,9 @@
 	<mo value="|" form="infix" stretchy="true" lspace="thickmathspace" rspace="thickmathspace" />
 	<mo value="||" form="infix" lspace="mediummathspace" rspace="mediummathspace" />
 	<mo value="&amp;Or;" form="infix" stretchy="true" lspace="mediummathspace" rspace="mediummathspace" />
-	<mo value="&amp;amp;&amp;amp;" form="infix" lspace="thickmathspace" rspace="thickmathspace" />
+	<mo value="&amp;&amp;" form="infix" lspace="thickmathspace" rspace="thickmathspace" />
 	<mo value="&amp;And;" form="infix" stretchy="true" lspace="mediummathspace" rspace="mediummathspace" />
-	<mo value="&amp;amp;" form="infix" lspace="thickmathspace" rspace="thickmathspace" />
+	<mo value="&amp;" form="infix" lspace="thickmathspace" rspace="thickmathspace" />
 	<mo value="!" form="prefix" lspace="0em" rspace="thickmathspace" />
 	<mo value="&amp;Not;" form="prefix" lspace="0em" rspace="thickmathspace" />
 	<mo value="&amp;Exists;" form="prefix" lspace="0em" rspace="thickmathspace" />
@@ -117,11 +117,11 @@
 	<mo value="&amp;UpperLeftArrow;" form="infix" stretchy="true" lspace="thickmathspace" rspace="thickmathspace" />
 	<mo value="&amp;UpperRightArrow;" form="infix" stretchy="true" lspace="thickmathspace" rspace="thickmathspace" />
 	<mo value="=" form="infix" lspace="thickmathspace" rspace="thickmathspace" />
-	<mo value="&amp;lt;" form="infix" lspace="thickmathspace" rspace="thickmathspace" />
-	<mo value="&amp;gt;" form="infix" lspace="thickmathspace" rspace="thickmathspace" />
+	<mo value="&lt;" form="infix" lspace="thickmathspace" rspace="thickmathspace" />
+	<mo value="&gt;" form="infix" lspace="thickmathspace" rspace="thickmathspace" />
 	<mo value="!=" form="infix" lspace="thickmathspace" rspace="thickmathspace" />
 	<mo value="==" form="infix" lspace="thickmathspace" rspace="thickmathspace" />
-	<mo value="&amp;lt;=" form="infix" lspace="thickmathspace" rspace="thickmathspace" />
+	<mo value="&lt;=" form="infix" lspace="thickmathspace" rspace="thickmathspace" />
 	<mo value="&amp;gte;" form="infix" lspace="thickmathspace" rspace="thickmathspace" />
 	<mo value="&amp;Congruent;" form="infix" lspace="thickmathspace" rspace="thickmathspace" />
 	<mo value="&amp;CupCap;" form="infix" lspace="thickmathspace" rspace="thickmathspace" />
@@ -308,7 +308,7 @@
 	<mo value="&amp;UpEquilibrium;" form="infix" stretchy="true" lspace="verythinmathspace" rspace="verythinmathspace" />
 	<mo value="&amp;UpTeeArrow;" form="infix" stretchy="true" lspace="verythinmathspace" rspace="verythinmathspace" />
 	<mo value="^" form="infix" lspace="verythinmathspace" rspace="verythinmathspace" />
-	<mo value="&amp;lt;>" form="infix" lspace="verythinmathspace" rspace="verythinmathspace" /><mo value="'" form="postfix" lspace="verythinmathspace" rspace="0em" />
+	<mo value="&lt;>" form="infix" lspace="verythinmathspace" rspace="verythinmathspace" /><mo value="'" form="postfix" lspace="verythinmathspace" rspace="0em" />
 	<mo value="!" form="postfix" lspace="verythinmathspace" rspace="0em" />
 	<mo value="!!" form="postfix" lspace="verythinmathspace" rspace="0em" />
 	<mo value="~" form="infix" lspace="verythinmathspace" rspace="verythinmathspace" />

@@ -3,12 +3,12 @@ package at.ac.tuwien.ims.latex2mobiformulaconv.app;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.Converter;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi.AmazonHtmlToMobiConverter;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.latex2html.PandocLatexToHtmlConverter;
+import at.ac.tuwien.ims.latex2mobiformulaconv.utils.WorkingDirectoryResolver;
 import org.apache.commons.cli.*;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.log4j.Logger;
 
-import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -177,15 +177,9 @@ public class Main {
     }
 
     private static void setupWorkingDirectory() {
-        try {
-            workingDirectory = Paths.get(Main.class.getProtectionDomain().getCodeSource().getLocation().toURI());
-            if (workingDirectory.toFile().isFile()) {
-                workingDirectory = workingDirectory.getParent();
-            }
-            logger.debug("Working Directory: " + workingDirectory);
-        } catch (URISyntaxException e) {
-            logger.error("Working directory could not be resolved!");
-            logger.error(e.getMessage(), e);
+        workingDirectory = WorkingDirectoryResolver.getWorkingDirectory(Main.class);
+
+        if (workingDirectory == null) {
             logger.error("Exiting...");
             System.exit(1);
         }

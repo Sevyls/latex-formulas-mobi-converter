@@ -10,7 +10,6 @@ import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.ImageFormula
 import at.ac.tuwien.ims.latex2mobiformulaconv.elements.Formula;
 import org.apache.log4j.Logger;
 import org.jdom2.Document;
-import org.jdom2.output.XMLOutputter;
 
 import java.io.File;
 import java.io.IOException;
@@ -88,8 +87,8 @@ public class Converter {
         logger.debug("Converting main document to HTML...");
         Document document = latexToHtmlConverter.convert(inputFile, title, workingDirectory);
 
-        XMLOutputter xout = new XMLOutputter();
-        logger.debug(xout.outputString(document));
+        /*XMLOutputter xout = new XMLOutputter();
+        logger.debug(xout.outputString(document));*/
 
         logger.info("Parsing LaTeX formulas from resulting HTML...");
 

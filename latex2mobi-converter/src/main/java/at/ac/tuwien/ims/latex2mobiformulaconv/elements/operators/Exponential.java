@@ -1,7 +1,10 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.elements.operators;
 
+import at.ac.tuwien.ims.latex2mobiformulaconv.elements.FormulaElement;
 import at.ac.tuwien.ims.latex2mobiformulaconv.elements.Mo;
 import org.jdom2.Element;
+
+import java.util.List;
 
 /**
  * The MIT License (MIT)
@@ -34,7 +37,7 @@ import org.jdom2.Element;
  */
 public class Exponential extends Mo {
     @Override
-    public Element render() {
+    public Element render(FormulaElement parent, List<FormulaElement> siblings) {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

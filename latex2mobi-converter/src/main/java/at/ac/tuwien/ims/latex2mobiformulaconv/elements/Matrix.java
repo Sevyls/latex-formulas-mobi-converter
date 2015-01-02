@@ -2,6 +2,8 @@ package at.ac.tuwien.ims.latex2mobiformulaconv.elements;
 
 import org.jdom2.Element;
 
+import java.util.List;
+
 /**
  * The MIT License (MIT)
  * latex2mobi -- LaTeX Formulas to Mobi Converter
@@ -33,7 +35,7 @@ import org.jdom2.Element;
  */
 public class Matrix implements FormulaElement {
     @Override
-    public Element render() {
+    public Element render(FormulaElement parent, List<FormulaElement> siblings) {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

@@ -2,6 +2,8 @@ package at.ac.tuwien.ims.latex2mobiformulaconv.elements;
 
 import org.jdom2.Element;
 
+import java.util.List;
+
 /**
  * The MIT License (MIT)
  * latex2mobi -- LaTeX Formulas to Mobi Converter
@@ -52,17 +54,17 @@ public class Mfrac implements FormulaElement {
     }
 
     @Override
-    public Element render() {
+    public Element render(FormulaElement parent, List<FormulaElement> siblings) {
         Element fraction = new Element("span");
         fraction.setAttribute("class", "mfrac");
 
         Element numerator = new Element("span");
         numerator.setAttribute("class", "numerator");
-        numerator.addContent(this.numerator.render());
+        numerator.addContent(this.numerator.render(null, null));
 
         Element denominator = new Element("span");
         denominator.setAttribute("class", "denominator");
-        denominator.addContent(this.denominator.render());
+        denominator.addContent(this.denominator.render(null, null));
 
         fraction.addContent(numerator);
         fraction.addContent(denominator);

@@ -50,13 +50,13 @@ public class Mrow implements FormulaElement {
     }
 
     @Override
-    public Element render() {
+    public Element render(FormulaElement parent, List<FormulaElement> siblings) {
         Element span = new Element("span");
         span.setAttribute("class", "mrow");
         Iterator<FormulaElement> iterator = list.iterator();
         while (iterator.hasNext()) {
             FormulaElement cur = iterator.next();
-            Element html = cur.render();
+            Element html = cur.render(this, list);
             if (html != null) {
                 span.addContent(html);
             } else {

@@ -63,7 +63,7 @@ public class MrowTest {
             // mock result of subelement
             Element span = new Element("span");
             span.setAttribute("class", subElements[RandomUtils.nextInt(subElements.length - 1)]);
-            when(formulaElement.render()).thenReturn(span);
+            when(formulaElement.render(null, null)).thenReturn(span);
 
             mrow.addElement(formulaElement);
         }
@@ -72,7 +72,7 @@ public class MrowTest {
 
     @Test
     public void testRender() throws Exception {
-        Element result = mrow.render();
+        Element result = mrow.render(null, null);
 
         assertNotNull(result);
         assertEquals("span", result.getName());
@@ -81,7 +81,7 @@ public class MrowTest {
 
         Iterator<FormulaElement> iterator = mrow.getList().iterator();
         while (iterator.hasNext()) {
-            verify(iterator.next()).render();
+            verify(iterator.next()).render(mrow, mrow.getList());
         }
     }
 }

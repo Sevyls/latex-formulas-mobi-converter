@@ -60,7 +60,7 @@ public class Mstyle implements FormulaElement {
     }
 
     @Override
-    public Element render() {
+    public Element render(FormulaElement parent, List<FormulaElement> siblings) {
         Element span = new Element("span");
 
         // set style classes
@@ -73,7 +73,7 @@ public class Mstyle implements FormulaElement {
 
         if (base.isEmpty() == false) {
             for (FormulaElement e : base) {
-                span.addContent(e.render());
+                span.addContent(e.render(null, null));
             }
         }
         return span;

@@ -2,6 +2,8 @@ package at.ac.tuwien.ims.latex2mobiformulaconv.elements;
 
 import org.jdom2.Element;
 
+import java.util.List;
+
 /**
  * The MIT License (MIT)
  * latex2mobi -- LaTeX Formulas to Mobi Converter
@@ -63,13 +65,13 @@ public class Mfenced implements FormulaElement {
     }
 
     @Override
-    public Element render() {
+    public Element render(FormulaElement parent, List<FormulaElement> siblings) {
         Element fencedSpan = new Element("span");
         fencedSpan.setAttribute("class", "mfenced");
 
         fencedSpan.addContent(opened);
         if (content != null) {
-            fencedSpan.addContent(content.render());
+            fencedSpan.addContent(content.render(null, null));
         }
 
         fencedSpan.addContent(closed);

@@ -2,6 +2,8 @@ package at.ac.tuwien.ims.latex2mobiformulaconv.elements;
 
 import org.jdom2.Element;
 
+import java.util.List;
+
 /**
  * @author Michael Auß
  *         Date: 26.11.2014
@@ -15,10 +17,10 @@ public class Mtd implements FormulaElement {
     }
 
     @Override
-    public Element render() {
+    public Element render(FormulaElement parent, List<FormulaElement> siblings) {
         Element td = new Element("td");
 
-        td.addContent(content.render());
+        td.addContent(content.render(null, null));
 
         return td;
     }

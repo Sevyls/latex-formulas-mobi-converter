@@ -72,7 +72,7 @@ public class DOMFormulaConverter extends FormulaConverter {
                 Element cur = it.next();
                 FormulaElement formulaElement = renderElement(cur);
                 if (formulaElement != null) {
-                    Element resultHtml = formulaElement.render();
+                    Element resultHtml = formulaElement.render(null, null);
                     if (resultHtml != null) {
                         html.addContent(resultHtml);
                     } else {
@@ -182,6 +182,18 @@ public class DOMFormulaConverter extends FormulaConverter {
             case "mo":
                 Mo mo = new Mo();
                 mo.setOperator(cur.getText());
+
+                // Parse attributes
+                mo.setForm(cur.getAttributeValue("form", "infix"));
+                mo.setAccent(Boolean.parseBoolean(cur.getAttributeValue("accent", "false")));
+                mo.setSeparator(Boolean.parseBoolean(cur.getAttributeValue("separator", "false")));
+                mo.setFence(Boolean.parseBoolean(cur.getAttributeValue("fence", "false")));
+                mo.setMovablelimits(Boolean.parseBoolean(cur.getAttributeValue("movablelimits", "false")));
+                mo.setLargeop(Boolean.parseBoolean(cur.getAttributeValue("largeop", "false")));
+                mo.setStretchy(Boolean.parseBoolean(cur.getAttributeValue("stretchy", "false")));
+                mo.setLspace(cur.getAttributeValue("lspace"));
+                mo.setRspace(cur.getAttributeValue("rspace"));
+
                 output = mo;
                 break;
             case "mn":

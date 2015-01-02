@@ -18,10 +18,10 @@ public class Mtr implements FormulaElement {
     }
 
     @Override
-    public Element render() {
+    public Element render(FormulaElement parent, List<FormulaElement> siblings) {
         Element tr = new Element("tr");
         for (int i = 0; i < tds.size(); i++) {
-            tr.addContent(tds.get(i).render());
+            tr.addContent(tds.get(i).render(null, null));
         }
         return tr;
     }

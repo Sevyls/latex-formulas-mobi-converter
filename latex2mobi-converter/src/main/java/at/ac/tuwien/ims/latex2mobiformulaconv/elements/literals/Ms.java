@@ -1,6 +1,9 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.elements.literals;
 
+import at.ac.tuwien.ims.latex2mobiformulaconv.elements.FormulaElement;
 import org.jdom2.Element;
+
+import java.util.List;
 
 /**
  * The MIT License (MIT)
@@ -46,7 +49,7 @@ public class Ms extends Literal {
     }
 
     @Override
-    public Element render() {
+    public Element render(FormulaElement parent, List<FormulaElement> siblings) {
         Element span = new Element("span");
         span.setAttribute("class", "ms");
         // MathML <ms> Element trims strings

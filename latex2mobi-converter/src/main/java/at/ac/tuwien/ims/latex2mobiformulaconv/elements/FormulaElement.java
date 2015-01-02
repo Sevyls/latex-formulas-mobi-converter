@@ -2,6 +2,8 @@ package at.ac.tuwien.ims.latex2mobiformulaconv.elements;
 
 import org.jdom2.Element;
 
+import java.util.List;
+
 /**
  * The MIT License (MIT)
  * latex2mobi -- LaTeX Formulas to Mobi Converter
@@ -43,6 +45,8 @@ public interface FormulaElement {
      * May call render() on sub-elements for recursive rendering.
      *
      * @return A JDOM Element which represents this FormulaElement + sub-elements (i.e. in HTML)
+     * @param parent the parent FormulaElement, use it for context only
+     * @param siblings list of sibling elements including this FormulaElement, use it for context only
      */
-    public Element render();
+    public Element render(FormulaElement parent, List<FormulaElement> siblings);
 }

@@ -46,22 +46,22 @@ public class MfracTest {
         mfrac = new Mfrac();
 
         mfrac.setNumerator(mock(FormulaElement.class));
-        when(mfrac.getNumerator().render()).thenReturn(new Element("span"));
+        when(mfrac.getNumerator().render(null, null)).thenReturn(new Element("span"));
         mfrac.setDenominator(mock(FormulaElement.class));
-        when(mfrac.getDenominator().render()).thenReturn(new Element("span"));
+        when(mfrac.getDenominator().render(null, null)).thenReturn(new Element("span"));
     }
 
     @Test
     public void testRender() throws Exception {
-        Element result = mfrac.render();
+        Element result = mfrac.render(null, null);
 
         assertNotNull(result);
         assertEquals("span", result.getName());
         assertEquals("mfrac", result.getAttributeValue("class"));
 
-        verify(mfrac.getNumerator()).render();
+        verify(mfrac.getNumerator()).render(null, null);
         assertEquals("numerator", result.getChildren("span").get(0).getAttributeValue("class"));
-        verify(mfrac.getDenominator()).render();
+        verify(mfrac.getDenominator()).render(null, null);
         assertEquals("denominator", result.getChildren("span").get(1).getAttributeValue("class"));
     }
 }

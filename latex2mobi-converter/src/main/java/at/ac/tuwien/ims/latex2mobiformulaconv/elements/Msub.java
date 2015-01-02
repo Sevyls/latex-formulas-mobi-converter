@@ -2,6 +2,8 @@ package at.ac.tuwien.ims.latex2mobiformulaconv.elements;
 
 import org.jdom2.Element;
 
+import java.util.List;
+
 /**
  * The MIT License (MIT)
  * latex2mobi -- LaTeX Formulas to Mobi Converter
@@ -52,16 +54,16 @@ public class Msub implements FormulaElement {
     private FormulaElement subscript;
 
     @Override
-    public Element render() {
+    public Element render(FormulaElement parent, List<FormulaElement> siblings) {
         Element msubSpan = new Element("span");
         msubSpan.setAttribute("class", "msub");
 
         // Add base content
-        msubSpan.addContent(base.render());
+        msubSpan.addContent(base.render(null, null));
 
         // Add subscript content
         Element sub = new Element("sub");
-        sub.addContent(subscript.render());
+        sub.addContent(subscript.render(null, null));
         msubSpan.addContent(sub);
 
         return msubSpan;

@@ -1,10 +1,10 @@
-package at.ac.tuwien.ims.latex2mobiformulaconv.elements.operators;
+package at.ac.tuwien.ims.latex2mobiformulaconv.utils;
 
-import at.ac.tuwien.ims.latex2mobiformulaconv.elements.FormulaElement;
-import at.ac.tuwien.ims.latex2mobiformulaconv.elements.Mo;
-import org.jdom2.Element;
+import org.apache.log4j.Logger;
 
-import java.util.List;
+import java.net.URISyntaxException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * The MIT License (MIT)
@@ -32,12 +32,33 @@ import java.util.List;
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
- * @author mauss
- *         Created: 21.05.14 00:03
+ * @author Michael Auß
+ *         Date: 02.01.2015
+ *         Time: 12:46
+ *
+ * Helper class for resolving the current working directory of a class
  */
-public class Limit extends Mo {
-    @Override
-    public Element render(FormulaElement parent, List<FormulaElement> siblings) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+public class WorkingDirectoryResolver {
+    private static Logger logger = Logger.getLogger(WorkingDirectoryResolver.class);
+
+    /**
+     * Returns the path of the working directory of a given class
+     * @param clazz Class object
+     * @return a Path object of the working directory or null if it could not be resolved
+     */
+    public static Path getWorkingDirectory(Class clazz) {
+        Path workingDirectory = null;
+        try {
+            workingDirectory = Paths.get(clazz.getProtectionDomain().getCodeSource().getLocation().toURI());
+            if (workingDirectory.toFile().isFile()) {
+                workingDirectory = workingDirectory.getParent();
+            }
+            logger.debug("Working Directory: " + workingDirectory);
+        } catch (URISyntaxException e) {
+            logger.error("Working directory could not be resolved!");
+            logger.error(e.getMessage(), e);
+        }
+
+        return workingDirectory;
     }
 }

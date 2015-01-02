@@ -42,7 +42,7 @@ public class Mtable implements FormulaElement {
     }
 
     @Override
-    public Element render() {
+    public Element render(FormulaElement parent, List<FormulaElement> siblings) {
         Element mtableDiv = new Element("div");
         mtableDiv.setAttribute("class", "mtable");
 
@@ -51,7 +51,7 @@ public class Mtable implements FormulaElement {
 
         // evaluate Rows
         for (int i = 0; i < rows.size(); i++) {
-            table.addContent(rows.get(i).render());
+            table.addContent(rows.get(i).render(null, null));
         }
 
         mtableDiv.addContent(table);

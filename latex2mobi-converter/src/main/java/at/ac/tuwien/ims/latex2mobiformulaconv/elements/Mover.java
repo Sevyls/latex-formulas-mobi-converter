@@ -2,6 +2,8 @@ package at.ac.tuwien.ims.latex2mobiformulaconv.elements;
 
 import org.jdom2.Element;
 
+import java.util.List;
+
 /**
  * The MIT License (MIT)
  * latex2mobi -- LaTeX Formulas to Mobi Converter
@@ -54,12 +56,12 @@ public class Mover implements FormulaElement {
     }
 
     @Override
-    public Element render() {
+    public Element render(FormulaElement parent, List<FormulaElement> siblings) {
         Element span = new Element("span");
         span.setAttribute("class", "mover");
 
-        span.addContent(base.render());
-        span.addContent(overscript.render());
+        span.addContent(base.render(null, null));
+        span.addContent(overscript.render(null, null));
 
         // TODO mover
         return span;

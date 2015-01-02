@@ -1,6 +1,9 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.elements.literals;
 
+import at.ac.tuwien.ims.latex2mobiformulaconv.elements.FormulaElement;
 import org.jdom2.Element;
+
+import java.util.List;
 
 /**
  * The MIT License (MIT)
@@ -45,7 +48,7 @@ public class Symbol extends Literal {
     }
 
     @Override
-    public Element render() {
+    public Element render(FormulaElement parent, List<FormulaElement> siblings) {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }
