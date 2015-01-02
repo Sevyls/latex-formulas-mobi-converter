@@ -1,3 +1,4 @@
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
 <!--
  * The MIT License (MIT)
  * latex2mobi - LaTeX Formulas to Mobi Converter
@@ -37,3 +38,4 @@
     </mrow>
     <mn>2</mn>
 </msup>
+</math>

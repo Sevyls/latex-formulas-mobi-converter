@@ -2,6 +2,7 @@ package at.ac.tuwien.ims.latex2mobiformulaconv.elements;
 
 import org.jdom2.Element;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -57,13 +58,26 @@ public class Mover implements FormulaElement {
 
     @Override
     public Element render(FormulaElement parent, List<FormulaElement> siblings) {
-        Element span = new Element("span");
-        span.setAttribute("class", "mover");
+        Element mainDiv = new Element("div");
+        mainDiv.setAttribute("class", "mover");
 
-        span.addContent(base.render(null, null));
-        span.addContent(overscript.render(null, null));
+        // Siblings
+        List<FormulaElement> content = new ArrayList<>();
+        content.add(base);
+        content.add(overscript);
 
-        // TODO mover
-        return span;
+        Element baseDiv = new Element("div");
+        baseDiv.addContent(base.render(this, content));
+        baseDiv.setAttribute("class", "base");
+
+        Element underscriptDiv = new Element("div");
+        underscriptDiv.setAttribute("class", "overscript");
+        underscriptDiv.addContent(overscript.render(this, content));
+
+        mainDiv.addContent(underscriptDiv);
+        mainDiv.addContent(baseDiv);
+
+        // TODO munder
+        return mainDiv;
     }
 }

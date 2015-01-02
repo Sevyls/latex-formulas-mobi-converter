@@ -46,13 +46,12 @@ public class Modulo extends Mo implements SnugglePackageProvider {
 
     @Override
     public Element render(FormulaElement parent, List<FormulaElement> siblings) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null;  //TODO
     }
 
 
     @Override
     public SnugglePackage provide() {
-
         SnugglePackage modOperator = new SnugglePackage("mod");
         MathOperatorInterpretation bmodInterpretation = new MathOperatorInterpretation("mod");
         modOperator.addSimpleCommand("bmod", ALL_MODES, bmodInterpretation, new InterpretableSimpleMathHandler(), TextFlowContext.ALLOW_INLINE);

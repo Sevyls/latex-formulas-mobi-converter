@@ -2,6 +2,7 @@ package at.ac.tuwien.ims.latex2mobiformulaconv.elements;
 
 import org.jdom2.Element;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -57,13 +58,25 @@ public class Munder implements FormulaElement {
 
     @Override
     public Element render(FormulaElement parent, List<FormulaElement> siblings) {
-        Element span = new Element("span");
-        span.setAttribute("class", "munder");
+        Element mainDiv = new Element("div");
+        mainDiv.setAttribute("class", "munder");
 
-        span.addContent(base.render(null, null));
-        span.addContent(underscript.render(null, null));
+        // Siblings
+        List<FormulaElement> content = new ArrayList<>();
+        content.add(base);
+        content.add(underscript);
+
+        Element baseDiv = new Element("div");
+        baseDiv.addContent(base.render(this, content));
+        baseDiv.setAttribute("class", "base");
+        mainDiv.addContent(baseDiv);
+
+        Element underscriptDiv = new Element("div");
+        underscriptDiv.setAttribute("class", "underscript");
+        underscriptDiv.addContent(underscript.render(this, content));
+        mainDiv.addContent(underscriptDiv);
 
         // TODO munder
-        return span;
+        return mainDiv;
     }
 }

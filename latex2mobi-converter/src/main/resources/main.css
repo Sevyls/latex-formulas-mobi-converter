@@ -113,7 +113,7 @@ code {
     margin-left: 0.05em;
 }
 
-.mtable {
+.mtable, .munder, .mover {
     display: inline-block;
     vertical-align: middle;
 }
@@ -121,3 +121,30 @@ code {
 .mtable td {
     text-align: center;
 }
+
+.munder .underscript, .mover .overscript{
+    text-align: center;
+    height: 0;
+}
+
+.mover .overscript {
+
+    margin-bottom: 0;
+}
+
+/*
+.mover {
+    margin-top: -1.2em;
+}
+
+.munder {
+    margin-bottom: 1.2em;
+}
+
+.mover .overscript, .munder .underscript {
+     height: 0.1em;
+}
+
+.mover .base {
+    margin-top: 0.2em
+} */
