@@ -1,10 +1,7 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html;
 
 import at.ac.tuwien.ims.latex2mobiformulaconv.elements.*;
-import at.ac.tuwien.ims.latex2mobiformulaconv.elements.literals.Mi;
-import at.ac.tuwien.ims.latex2mobiformulaconv.elements.literals.Mn;
-import at.ac.tuwien.ims.latex2mobiformulaconv.elements.literals.Mspace;
-import at.ac.tuwien.ims.latex2mobiformulaconv.elements.literals.Mtext;
+import at.ac.tuwien.ims.latex2mobiformulaconv.elements.literals.*;
 import at.ac.tuwien.ims.latex2mobiformulaconv.elements.operators.Mroot;
 import org.apache.log4j.Logger;
 import org.jdom2.Document;
@@ -194,7 +191,7 @@ public class DOMFormulaConverter extends FormulaConverter {
                 break;
             case "mi":
                 Mi mi = new Mi();
-                mi.setLiteral(cur.getText());
+                mi.setValue(cur.getText());
                 output = mi;
                 break;
             case "mfrac":
@@ -229,6 +226,11 @@ public class DOMFormulaConverter extends FormulaConverter {
                 mroot.setBase(renderElement(cur.getChildren().get(0)));
                 mroot.setIndex(renderElement(cur.getChildren().get(1)));
                 output = mroot;
+                break;
+            case "ms":
+                Ms ms = new Ms();
+                ms.setValue(cur.getText());
+                output = ms;
                 break;
             case "mtext":
                 Mtext mtext = new Mtext();

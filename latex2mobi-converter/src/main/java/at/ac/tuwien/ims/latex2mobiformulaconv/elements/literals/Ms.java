@@ -29,14 +29,15 @@ import org.jdom2.Element;
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
  * @author Michael Auß
- *         Date: 15.09.2014
+ *         Date: 02.01.2015
+ *         Time: 10:32
  */
-public class Mi extends Literal {
+public class Ms extends Literal {
     private String value;
 
     @Override
-    public Object getValue() {
-        return value;
+    public String getValue() {
+        return null;
     }
 
     @Override
@@ -47,8 +48,9 @@ public class Mi extends Literal {
     @Override
     public Element render() {
         Element span = new Element("span");
-        span.setAttribute("class", "mi");
-        span.setText(value);
+        span.setAttribute("class", "ms");
+        // MathML <ms> Element trims strings
+        span.setText(value.trim());
         return span;
     }
 }
