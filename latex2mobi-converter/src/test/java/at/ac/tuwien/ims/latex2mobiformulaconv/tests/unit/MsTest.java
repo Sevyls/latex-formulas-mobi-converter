@@ -7,8 +7,9 @@ import org.jdom2.Element;
 import org.junit.Before;
 import org.junit.Test;
 
-import static junit.framework.TestCase.assertFalse;
-import static org.junit.Assert.*;
+import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * The MIT License (MIT)
@@ -66,7 +67,16 @@ public class MsTest {
         assertEquals("ms", result.getAttributeValue("class"));
         String resultText = result.getText();
         logger.debug("Result Text:\n" + resultText);
+
+        // MathML: By default, string literals are displayed surrounded by double quotes.
+        assertTrue(resultText.charAt(0) == '"');
+        assertTrue(resultText.charAt(resultText.length() - 1) == '"');
+
+        // The original string should be contained within the result string
         assertTrue(resultText.contains(randomString));
-        assertFalse(resultText.contains(whitespace));
+
+        // Leading + Trailing Whitespace should be trimmed
+        // Currently whitespace inside the string is ignored
+        assertEquals(randomString, resultText.substring(1, resultText.length() - 1));
     }
 }

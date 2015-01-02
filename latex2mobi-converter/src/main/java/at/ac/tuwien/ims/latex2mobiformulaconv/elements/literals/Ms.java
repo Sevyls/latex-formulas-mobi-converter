@@ -50,7 +50,8 @@ public class Ms extends Literal {
         Element span = new Element("span");
         span.setAttribute("class", "ms");
         // MathML <ms> Element trims strings
-        span.setText(value.trim());
+        // Currently whitespace inside the string is ignored TODO
+        span.setText("\"" + value.trim() + "\"");
         return span;
     }
 }
