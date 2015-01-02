@@ -51,8 +51,20 @@ public class Mrow implements FormulaElement {
 
     @Override
     public Element render(FormulaElement parent, List<FormulaElement> siblings) {
+        if (list.size() == 1) {
+            // TODO check attributes of mrow
+
+            // MathML2 3.3.1.2.1 mrow of one argument
+            // http://www.w3.org/TR/MathML2/chapter3.html#presm.mrow
+            // MathML renderers are required to treat an mrow element containing exactly one argument as equivalent
+            // in all ways to the single argument occurring alone,
+            // provided there are no attributes on the mrow element's start tag.
+            return list.get(0).render(null, null);
+        }
+
         Element span = new Element("span");
         span.setAttribute("class", "mrow");
+
         Iterator<FormulaElement> iterator = list.iterator();
         while (iterator.hasNext()) {
             FormulaElement cur = iterator.next();

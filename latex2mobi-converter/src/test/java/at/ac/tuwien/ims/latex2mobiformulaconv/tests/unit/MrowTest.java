@@ -10,8 +10,7 @@ import org.junit.Test;
 
 import java.util.Iterator;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 /**
@@ -52,26 +51,36 @@ public class MrowTest {
 
     @Before
     public void setUp() throws Exception {
-        count = RandomUtils.nextInt(100);
-        logger.debug("Random count: " + count);
-        mrow = new Mrow();
 
-        for (int i = 0; i < count; i++) {
-            // mock subelement
-            FormulaElement formulaElement = mock(FormulaElement.class);
-
-            // mock result of subelement
-            Element span = new Element("span");
-            span.setAttribute("class", subElements[RandomUtils.nextInt(subElements.length - 1)]);
-            when(formulaElement.render(null, null)).thenReturn(span);
-
-            mrow.addElement(formulaElement);
-        }
 
     }
 
     @Test
-    public void testRender() throws Exception {
+    public void testRenderSingleElement() throws Exception {
+        count = 1;
+        mockElements();
+        Element result = mrow.render(null, null);
+
+        assertNotNull(result);
+        assertEquals("span", result.getName());
+        // Should not render any mrow markup
+        assertNotEquals("mrow", result.getAttributeValue("class"));
+
+        FormulaElement singleChild = mrow.getList().get(0);
+
+        // Single child should get rendered
+        verify(singleChild).render(any(FormulaElement.class), anyList());
+
+    }
+
+    @Test
+    public void testRenderRandomCountOfMin2Elements() throws Exception {
+        count = RandomUtils.nextInt(100) + 2;  // Minimum of 2 elements
+        logger.debug("Random count: " + count);
+        mockElements();
+
+
+
         Element result = mrow.render(null, null);
 
         assertNotNull(result);
@@ -82,6 +91,21 @@ public class MrowTest {
         Iterator<FormulaElement> iterator = mrow.getList().iterator();
         while (iterator.hasNext()) {
             verify(iterator.next()).render(mrow, mrow.getList());
+        }
+    }
+
+    private void mockElements() {
+        mrow = new Mrow();
+        for (int i = 0; i < count; i++) {
+            // mock subelement
+            FormulaElement formulaElement = mock(FormulaElement.class);
+
+            // mock result of subelement
+            Element span = new Element("span");
+            span.setAttribute("class", subElements[RandomUtils.nextInt(subElements.length - 1)]);
+            when(formulaElement.render(null, null)).thenReturn(span);
+
+            mrow.addElement(formulaElement);
         }
     }
 }
