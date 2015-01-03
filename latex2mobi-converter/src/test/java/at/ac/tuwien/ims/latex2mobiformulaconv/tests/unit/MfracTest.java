@@ -6,8 +6,11 @@ import org.jdom2.Element;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.mockito.AdditionalMatchers.or;
 import static org.mockito.Mockito.*;
 
 /**
@@ -40,28 +43,31 @@ import static org.mockito.Mockito.*;
  */
 public class MfracTest {
     private Mfrac mfrac;
-
+    private FormulaElement numerator;
+    private FormulaElement denominator;
     @Before
     public void setUp() throws Exception {
         mfrac = new Mfrac();
+        numerator = mock(FormulaElement.class);
+        when(numerator.render(or(eq(mfrac), isNull(FormulaElement.class)), anyListOf(FormulaElement.class))).thenReturn(new Element("span"));
+        mfrac.setNumerator(numerator);
 
-        mfrac.setNumerator(mock(FormulaElement.class));
-        when(mfrac.getNumerator().render(null, null)).thenReturn(new Element("span"));
-        mfrac.setDenominator(mock(FormulaElement.class));
-        when(mfrac.getDenominator().render(null, null)).thenReturn(new Element("span"));
+        denominator = mock(FormulaElement.class);
+        when(denominator.render(or(eq(mfrac), isNull(FormulaElement.class)), anyListOf(FormulaElement.class))).thenReturn(new Element("span"));
+        mfrac.setDenominator(denominator);
     }
 
     @Test
     public void testRender() throws Exception {
-        Element result = mfrac.render(null, null);
+        Element result = mfrac.render(or(eq(mfrac), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
 
         assertNotNull(result);
         assertEquals("span", result.getName());
         assertEquals("mfrac", result.getAttributeValue("class"));
 
-        verify(mfrac.getNumerator()).render(null, null);
+        verify(numerator).render(or(eq(mfrac), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
         assertEquals("numerator", result.getChildren("span").get(0).getAttributeValue("class"));
-        verify(mfrac.getDenominator()).render(null, null);
+        verify(denominator).render(or(eq(mfrac), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
         assertEquals("denominator", result.getChildren("span").get(1).getAttributeValue("class"));
     }
 }
