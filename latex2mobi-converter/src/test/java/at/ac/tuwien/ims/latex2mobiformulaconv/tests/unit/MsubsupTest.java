@@ -1,6 +1,21 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit;
 
+import at.ac.tuwien.ims.latex2mobiformulaconv.elements.FormulaElement;
+import at.ac.tuwien.ims.latex2mobiformulaconv.elements.Msubsup;
+import org.jdom2.Element;
+import org.junit.Before;
 import org.junit.Test;
+
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.mockito.AdditionalMatchers.or;
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyListOf;
+import static org.mockito.Matchers.eq;
+import static org.mockito.Matchers.isNull;
+import static org.mockito.Mockito.*;
 
 /**
  * The MIT License (MIT)
@@ -31,9 +46,48 @@ import org.junit.Test;
  * @author Michael Auß
  */
 public class MsubsupTest {
+    private Msubsup msubsup;
+    private FormulaElement base;
+    private FormulaElement subscript;
+    private FormulaElement superscript;
+
+    @Before
+    public void setUp() throws Exception {
+        base = mock(FormulaElement.class);
+        when(base.render(or(any(FormulaElement.class), isNull(FormulaElement.class)), anyListOf(FormulaElement.class))).thenReturn(new Element("span"));
+
+        subscript = mock(FormulaElement.class);
+        when(subscript.render(or(any(FormulaElement.class), isNull(FormulaElement.class)), anyListOf(FormulaElement.class))).thenReturn(new Element("span"));
+
+        superscript = mock(FormulaElement.class);
+        when(superscript.render(or(any(FormulaElement.class), isNull(FormulaElement.class)), anyListOf(FormulaElement.class))).thenReturn(new Element("span"));
+    }
+
 
     @Test
     public void testRender() throws Exception {
-        // TODO
+        this.msubsup = new Msubsup();
+        msubsup.setBase(base);
+        msubsup.setSubscript(subscript);
+        msubsup.setSuperscript(superscript);
+
+        FormulaElement possibleParent = mock(FormulaElement.class);
+
+        Element result = msubsup.render(or(eq(possibleParent), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
+
+        verify(base).render(or(eq(msubsup), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
+        verify(subscript).render(or(eq(msubsup), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
+        verify(superscript).render(or(eq(msubsup), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
+
+        assertNotNull(result);
+        assertEquals("span", result.getName());
+        assertEquals("msubsup", result.getAttributeValue("class"));
+
+        assertNotNull(result.getChild("sub"));
+        assertNotNull(result.getChild("sup"));
+        assertEquals(2, result.getChildren().indexOf(result.getChild("sub")));
+        assertEquals(1, result.getChildren().indexOf(result.getChild("sup")));
+
+        verify(possibleParent, never()).render(or(any(FormulaElement.class), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
     }
 }

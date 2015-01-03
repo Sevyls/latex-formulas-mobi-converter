@@ -1,6 +1,20 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit;
 
+import at.ac.tuwien.ims.latex2mobiformulaconv.elements.FormulaElement;
+import at.ac.tuwien.ims.latex2mobiformulaconv.elements.literals.Mn;
+import org.apache.commons.lang.RandomStringUtils;
+import org.apache.log4j.Logger;
+import org.jdom2.Element;
+import org.junit.Before;
 import org.junit.Test;
+
+import java.util.List;
+import java.util.Random;
+
+import static org.junit.Assert.*;
+import static org.mockito.AdditionalMatchers.or;
+import static org.mockito.Matchers.*;
+import static org.mockito.Mockito.mock;
 
 /**
  * The MIT License (MIT)
@@ -31,9 +45,31 @@ import org.junit.Test;
  * @author Michael Auß
  */
 public class MnTest {
+    private Mn mn;
+    private String randomText;
+
+    private static Logger logger = Logger.getLogger(MiTest.class);
+
+    @Before
+    public void setUp() throws Exception {
+        mn = new Mn();
+        randomText = RandomStringUtils.randomAscii(new Random().nextInt(32));
+        logger.debug("RandomText: " + randomText);
+        mn.setValue(randomText);
+    }
 
     @Test
     public void testRender() throws Exception {
-        // TODO
+        FormulaElement possibleParent = mock(FormulaElement.class);
+
+        Element result = mn.render(or(eq(possibleParent), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
+
+        assertNotNull(result);
+
+        assertEquals("span", result.getName());
+        assertEquals("mn", result.getAttributeValue("class"));
+        assertEquals(randomText, result.getText());
+        assertTrue(result.getChildren().isEmpty());
+
     }
 }

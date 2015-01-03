@@ -52,8 +52,6 @@ public class MsubTest {
 
     @Before
     public void setUp() throws Exception {
-        msub = new Msub();
-
         base = mock(FormulaElement.class);
         when(base.render(or(any(FormulaElement.class), isNull(FormulaElement.class)), anyListOf(FormulaElement.class))).thenReturn(new Element("span"));
 
