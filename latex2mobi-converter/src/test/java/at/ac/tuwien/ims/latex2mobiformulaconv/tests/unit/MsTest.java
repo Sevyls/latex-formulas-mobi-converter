@@ -41,7 +41,7 @@ import static org.junit.Assert.assertTrue;
  *         Date: 02.01.2015
  *         Time: 10:39
  */
-public class MsTest {
+public class MsTest extends FormulaElementTest {
     private Ms ms;
     private String randomString;
     private String whitespace = "   \t";
@@ -60,7 +60,7 @@ public class MsTest {
         this.ms = new Ms();
         ms.setValue(whitespace + randomString + whitespace);
 
-        Element result = ms.render(null, null);
+        Element result = ms.render(possibleParent, null);
 
         assertNotNull(result);
         assertEquals("span", result.getName());

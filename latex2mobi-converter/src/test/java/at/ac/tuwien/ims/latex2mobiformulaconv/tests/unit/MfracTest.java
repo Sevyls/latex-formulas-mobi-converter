@@ -41,10 +41,11 @@ import static org.mockito.Mockito.*;
  *
  * @author Michael Auß
  */
-public class MfracTest {
+public class MfracTest extends FormulaElementTest {
     private Mfrac mfrac;
     private FormulaElement numerator;
     private FormulaElement denominator;
+
     @Before
     public void setUp() throws Exception {
         mfrac = new Mfrac();
@@ -59,9 +60,7 @@ public class MfracTest {
 
     @Test
     public void testRender() throws Exception {
-        FormulaElement possibleParent = mock(FormulaElement.class);
-
-        Element result = mfrac.render(or(eq(possibleParent), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
+        Element result = mfrac.render(possibleParent, null);
 
         assertNotNull(result);
         assertEquals("span", result.getName());
@@ -71,7 +70,5 @@ public class MfracTest {
         assertEquals("numerator", result.getChildren("span").get(0).getAttributeValue("class"));
         verify(denominator).render(or(eq(mfrac), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
         assertEquals("denominator", result.getChildren("span").get(1).getAttributeValue("class"));
-
-        verify(possibleParent, never()).render(or(any(FormulaElement.class), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
     }
 }

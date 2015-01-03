@@ -1,15 +1,16 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit;
 
-import at.ac.tuwien.ims.latex2mobiformulaconv.elements.literals.Mi;
-import org.apache.commons.lang.RandomStringUtils;
+import at.ac.tuwien.ims.latex2mobiformulaconv.elements.FormulaElement;
 import org.apache.log4j.Logger;
-import org.jdom2.Element;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.After;
 
-import java.util.Random;
+import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.mockito.AdditionalMatchers.or;
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyListOf;
+import static org.mockito.Matchers.isNull;
+import static org.mockito.Mockito.*;
 
 /**
  * The MIT License (MIT)
@@ -38,30 +39,24 @@ import static org.junit.Assert.*;
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
  * @author Michael Auß
+ *         Date: 03.01.2015
+ *         Time: 21:56
+ *
+ * Provides a generic logger and a parent Element
+ * Verifies behaviour that all implementing classes should respect.
  */
-public class MiTest extends FormulaElementTest {
-    private Mi mi;
-    private String randomText;
+public abstract class FormulaElementTest {
+    protected FormulaElement possibleParent = mock(FormulaElement.class);
+    protected static Logger logger = Logger.getLogger(FormulaElementTest.class);
 
-    private static Logger logger = Logger.getLogger(MiTest.class);
-
-    @Before
-    public void setUp() throws Exception {
-        mi = new Mi();
-        randomText = RandomStringUtils.randomAscii(new Random().nextInt(32));
-        logger.debug("RandomText: " + randomText);
-        mi.setValue(randomText);
-    }
-
-    @Test
-    public void testRender() throws Exception {
-        Element result = mi.render(possibleParent, null);
-
-        assertNotNull(result);
-
-        assertEquals("span", result.getName());
-        assertEquals("mi", result.getAttributeValue("class"));
-        assertEquals(randomText, result.getText());
-        assertTrue(result.getChildren().isEmpty());
+    /**
+     * Verifies that an implementing FormulaElement class should not call render
+     * on its parent FormulaElement. Loop render calls would never stop because
+     * of the recursive rendering algorithm.
+     */
+    @After
+    public void verifyParentHasNotBeenRenderedAgain() {
+        logger.debug("Verify parent has not been rendered again");
+        verify(this.possibleParent, never()).render(or(any(FormulaElement.class), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
     }
 }

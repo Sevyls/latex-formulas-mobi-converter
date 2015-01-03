@@ -45,7 +45,7 @@ import static org.mockito.Mockito.*;
  *
  * @author Michael Auß
  */
-public class MsubsupTest {
+public class MsubsupTest extends FormulaElementTest {
     private Msubsup msubsup;
     private FormulaElement base;
     private FormulaElement subscript;
@@ -71,9 +71,7 @@ public class MsubsupTest {
         msubsup.setSubscript(subscript);
         msubsup.setSuperscript(superscript);
 
-        FormulaElement possibleParent = mock(FormulaElement.class);
-
-        Element result = msubsup.render(or(eq(possibleParent), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
+        Element result = msubsup.render(possibleParent, null);
 
         verify(base).render(or(eq(msubsup), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
         verify(subscript).render(or(eq(msubsup), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
@@ -87,7 +85,5 @@ public class MsubsupTest {
         assertNotNull(result.getChild("sup"));
         assertEquals(2, result.getChildren().indexOf(result.getChild("sub")));
         assertEquals(1, result.getChildren().indexOf(result.getChild("sup")));
-
-        verify(possibleParent, never()).render(or(any(FormulaElement.class), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
     }
 }
