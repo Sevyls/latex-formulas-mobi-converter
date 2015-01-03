@@ -59,7 +59,9 @@ public class MfracTest {
 
     @Test
     public void testRender() throws Exception {
-        Element result = mfrac.render(or(eq(mfrac), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
+        FormulaElement possibleParent = mock(FormulaElement.class);
+
+        Element result = mfrac.render(or(eq(possibleParent), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
 
         assertNotNull(result);
         assertEquals("span", result.getName());
@@ -69,5 +71,7 @@ public class MfracTest {
         assertEquals("numerator", result.getChildren("span").get(0).getAttributeValue("class"));
         verify(denominator).render(or(eq(mfrac), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
         assertEquals("denominator", result.getChildren("span").get(1).getAttributeValue("class"));
+
+        verify(possibleParent, never()).render(or(any(FormulaElement.class), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
     }
 }

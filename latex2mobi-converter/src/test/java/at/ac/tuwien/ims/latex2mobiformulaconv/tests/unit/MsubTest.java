@@ -68,7 +68,9 @@ public class MsubTest {
         msub.setBase(base);
         msub.setSubscript(subscript);
 
-        Element result = msub.render(or(eq(msub), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
+        FormulaElement possibleParent = mock(FormulaElement.class);
+
+        Element result = msub.render(or(eq(possibleParent), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
 
         verify(base).render(or(eq(msub), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
         verify(subscript).render(or(eq(msub), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
@@ -80,6 +82,6 @@ public class MsubTest {
         assertNotNull(result.getChild("sub"));
         assertEquals(1, result.getChildren().indexOf(result.getChild("sub")));
 
-
+        verify(possibleParent, never()).render(or(any(FormulaElement.class), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
     }
 }

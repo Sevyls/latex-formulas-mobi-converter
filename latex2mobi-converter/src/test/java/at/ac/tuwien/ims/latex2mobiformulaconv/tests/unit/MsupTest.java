@@ -66,7 +66,9 @@ public class MsupTest {
         msup.setBase(base);
         msup.setSuperscript(superscript);
 
-        Element result = msup.render(or(eq(msup), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
+        FormulaElement possibleParent = mock(FormulaElement.class);
+
+        Element result = msup.render(or(eq(possibleParent), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
         verify(base).render(or(eq(msup), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
         verify(superscript).render(or(eq(msup), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
 
@@ -76,5 +78,7 @@ public class MsupTest {
 
         assertNotNull(result.getChild("sup"));
         assertEquals(1, result.getChildren().indexOf(result.getChild("sup")));
+
+        verify(possibleParent, never()).render(or(any(FormulaElement.class), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
     }
 }
