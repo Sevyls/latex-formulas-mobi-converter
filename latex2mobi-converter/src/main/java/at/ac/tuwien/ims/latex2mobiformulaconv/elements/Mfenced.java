@@ -2,6 +2,7 @@ package at.ac.tuwien.ims.latex2mobiformulaconv.elements;
 
 import org.jdom2.Element;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,19 +35,40 @@ import java.util.List;
  *         Created: 15.09.2014
  */
 public class Mfenced implements FormulaElement {
+    private static final String SEPARATOR = ",";
+
     private String opened;
     private String closed;
+    private List<FormulaElement> content;
+    private String separators;
 
-    public FormulaElement getContent() {
+    public Mfenced() {
+        // default values
+        this.opened = "(";
+        this.closed = ")";
+        this.separators = SEPARATOR;
+        this.content = new ArrayList<>();
+    }
+
+    public String getSeparators() {
+        return separators;
+    }
+
+    public void setSeparators(String separators) {
+        if (separators != null) {
+            this.separators = separators;
+        } else {
+            this.separators = SEPARATOR;
+        }
+    }
+
+    public List<FormulaElement> getContent() {
         return content;
     }
 
-    public void setContent(FormulaElement content) {
+    public void setContent(List<FormulaElement> content) {
         this.content = content;
     }
-
-    // todo separator
-    private FormulaElement content;
 
     public String getOpened() {
         return opened;
@@ -69,12 +91,53 @@ public class Mfenced implements FormulaElement {
         Element fencedSpan = new Element("span");
         fencedSpan.setAttribute("class", "mfenced");
 
-        fencedSpan.addContent(opened);
-        if (content != null) {
-            fencedSpan.addContent(content.render(null, null));
+        // Opening fence
+        Element openFenceSpan = new Element("span");
+        openFenceSpan.setAttribute("class", "mfenced-open");
+        openFenceSpan.setText(opened);
+        fencedSpan.addContent(openFenceSpan);
+
+
+
+        // Content
+        if (content.isEmpty() == false) {
+            String tempSeparators = separators.replaceAll(" ", "");
+
+            for (int i = 0; i < content.size(); i++) {
+                FormulaElement element = content.get(i);
+
+                Element contentSpan = new Element("span");
+                contentSpan.setAttribute("class", "mfenced-content");
+                contentSpan.addContent(element.render(null, null));
+                fencedSpan.addContent(contentSpan);
+
+                // Separators
+                if (content.size() > 1) {
+                    Mo separatorElement = new Mo();
+                    separatorElement.setSeparator(true);
+
+                    String separator = SEPARATOR;
+                    if (tempSeparators.length() == 1) {
+                        separator = tempSeparators;
+                    } else if (i < tempSeparators.length()) {
+                        separator = Character.toString(tempSeparators.charAt(i));
+                        // TODO separator entity support
+                    }
+
+                    separatorElement.setOperator(separator);
+
+                    Element mo = separatorElement.render(this, null);
+                    mo.setAttribute("class", mo.getAttributeValue("class") + " mfenced-separator");
+                    fencedSpan.addContent(mo);
+                }
+            }
         }
 
-        fencedSpan.addContent(closed);
+        // Closing fence
+        Element closeFenceSpan = new Element("span");
+        closeFenceSpan.setAttribute("class", "mfenced-close");
+        closeFenceSpan.setText(closed);
+        fencedSpan.addContent(closeFenceSpan);
 
         return fencedSpan;
     }

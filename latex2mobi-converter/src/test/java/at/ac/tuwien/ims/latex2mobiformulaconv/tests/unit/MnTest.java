@@ -9,7 +9,8 @@ import org.junit.Test;
 
 import java.util.Random;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * The MIT License (MIT)
@@ -51,16 +52,14 @@ public class MnTest extends FormulaElementTest {
         randomText = RandomStringUtils.randomAscii(new Random().nextInt(32));
         logger.debug("RandomText: " + randomText);
         mn.setValue(randomText);
+
+        formulaElement = mn;
     }
 
     @Test
-    public void testRender() throws Exception {
+    public void testDetails() throws Exception {
         Element result = mn.render(possibleParent, null);
 
-        assertNotNull(result);
-
-        assertEquals("span", result.getName());
-        assertEquals("mn", result.getAttributeValue("class"));
         assertEquals(randomText, result.getText());
         assertTrue(result.getChildren().isEmpty());
     }

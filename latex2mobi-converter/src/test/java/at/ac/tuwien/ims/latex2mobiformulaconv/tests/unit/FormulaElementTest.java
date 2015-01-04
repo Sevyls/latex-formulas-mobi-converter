@@ -2,10 +2,14 @@ package at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit;
 
 import at.ac.tuwien.ims.latex2mobiformulaconv.elements.FormulaElement;
 import org.apache.log4j.Logger;
+import org.jdom2.Element;
 import org.junit.After;
+import org.junit.Test;
 
 import java.util.List;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.AdditionalMatchers.or;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyListOf;
@@ -46,8 +50,29 @@ import static org.mockito.Mockito.*;
  * Verifies behaviour that all implementing classes should respect.
  */
 public abstract class FormulaElementTest {
+    protected FormulaElement formulaElement;
+
     protected FormulaElement possibleParent = mock(FormulaElement.class);
     protected static Logger logger = Logger.getLogger(FormulaElementTest.class);
+
+    @Test
+    public void testRender() {
+        logger.debug("Generic render test...");
+        Element result = formulaElement.render(possibleParent, null);
+        assertNotNull(result);
+        String resultTagName = result.getName();
+
+        // Ensure that no other elements as div or span Tags are used
+        assertTrue(resultTagName == "div" || resultTagName == "span");
+
+        // Ensure main element has name of corresponding MathML Object for Styling
+        String className = formulaElement.getClass().getSimpleName().toLowerCase();
+        logger.debug("Class Name: " + className);
+        assertTrue(result.getAttributeValue("class").contains(className));
+
+        // Ensure content
+        assertTrue(result.getChildren().isEmpty() == false || result.getText().isEmpty() == false);
+    }
 
     /**
      * Verifies that an implementing FormulaElement class should not call render

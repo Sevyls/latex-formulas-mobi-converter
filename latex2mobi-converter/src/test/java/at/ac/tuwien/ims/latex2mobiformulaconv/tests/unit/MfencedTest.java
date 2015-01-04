@@ -1,6 +1,22 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit;
 
+import at.ac.tuwien.ims.latex2mobiformulaconv.elements.FormulaElement;
+import at.ac.tuwien.ims.latex2mobiformulaconv.elements.Mfenced;
+import org.apache.commons.lang.RandomStringUtils;
+import org.jdom2.Element;
+import org.junit.Before;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+import static org.mockito.AdditionalMatchers.or;
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyListOf;
+import static org.mockito.Matchers.eq;
+import static org.mockito.Matchers.isNull;
+import static org.mockito.Mockito.*;
 
 /**
  * The MIT License (MIT)
@@ -30,10 +46,58 @@ import org.junit.Test;
  *
  * @author Michael Auß
  */
-public class MfencedTest {
+public class MfencedTest extends FormulaElementTest {
+    private Mfenced mfenced;
+    private String opening;
+    private String closing;
+    private String separators;
+
+
+    @Before
+    public void setUp() throws Exception {
+        mfenced = new Mfenced();
+
+        formulaElement = mfenced;
+    }
 
     @Test
-    public void testRender() throws Exception {
+    public void testRenderEmptyContent() throws Exception {
+        // TODO
+    }
+
+    @Test
+    public void testRenderSingleContentElement() throws Exception {
+        // TODO
+    }
+
+    @Test
+    public void testRenderContentList() throws Exception {
+        // TODO
+    }
+
+    @Test
+    public void testRenderContentListWithSeparators() throws Exception {
+        int count = new Random().nextInt(31) + 2;
+        logger.debug("Content list length: " + count);
+        separators = RandomStringUtils.randomAscii(count);
+
+        List<FormulaElement> list = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            FormulaElement mockedFormulaElement = mock(FormulaElement.class);
+            when(mockedFormulaElement.render(or(any(FormulaElement.class), isNull(FormulaElement.class)),
+                    or(anyListOf(FormulaElement.class), isNull(List.class)))).thenReturn(new Element("span"));
+            list.add(mockedFormulaElement);
+        }
+
+        mfenced.setContent(list);
+
+        Element result = mfenced.render(possibleParent, null);
+
+
+
+        for (FormulaElement mockedElement : list) {
+            verify(mockedElement).render(or(eq(mfenced), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
+        }
         // TODO
     }
 }

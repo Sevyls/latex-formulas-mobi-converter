@@ -1,6 +1,5 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit;
 
-import at.ac.tuwien.ims.latex2mobiformulaconv.elements.FormulaElement;
 import at.ac.tuwien.ims.latex2mobiformulaconv.elements.Mo;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.log4j.Logger;
@@ -9,8 +8,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.mockito.Mockito.mock;
 
 /**
  * The MIT License (MIT)
@@ -44,71 +41,49 @@ public class MoTest extends FormulaElementTest {
     private static final char[] operators = new char[]{'+', '-', '*', '%', '=', '/', '&', '<', '>', ':'};
 
     private static Logger logger = Logger.getLogger(MoTest.class);
-
+    private Mo mo;
     private String operator;
 
 
     @Before
     public void setUp() throws Exception {
+        mo = new Mo();
+        formulaElement = mo;
         operator = RandomStringUtils.random(1, operators);
         logger.debug("Operator: " + operator);
-        possibleParent = mock(FormulaElement.class);
+        mo.setOperator(operator);
+
     }
 
     @Test
-    public void testRenderInfix() throws Exception {
-        Mo mo = new Mo();
-
-        mo.setOperator(operator);
-
+    public void testRenderDefaultInfix() throws Exception {
         Element result = mo.render(possibleParent, null);
 
-        assertNotNull(result);
-        assertEquals("span", result.getName());
-        assertEquals("mo", result.getAttributeValue("class"));
         assertEquals(" " + operator + " ", result.getText());
     }
 
     @Test
      public void testRenderPrefix() throws Exception {
-        Mo mo = new Mo();
-
-        mo.setOperator(operator);
         mo.setForm("prefix");
         Element result = mo.render(possibleParent, null);
 
-        assertNotNull(result);
-        assertEquals("span", result.getName());
-        assertEquals("mo", result.getAttributeValue("class"));
         assertEquals(" " + operator, result.getText());
     }
 
     @Test
     public void testRenderPostfix() throws Exception {
-        Mo mo = new Mo();
-
-        mo.setOperator(operator);
         mo.setForm("postfix");
 
         Element result = mo.render(possibleParent, null);
 
-        assertNotNull(result);
-        assertEquals("span", result.getName());
-        assertEquals("mo", result.getAttributeValue("class"));
         assertEquals(operator + " ", result.getText());
     }
 
     @Test
     public void testRenderSeparator() throws Exception {
-        Mo mo = new Mo();
-
-        mo.setOperator(operator);
         mo.setSeparator(true);
         Element result = mo.render(possibleParent, null);
 
-        assertNotNull(result);
-        assertEquals("span", result.getName());
-        assertEquals("mo", result.getAttributeValue("class"));
         assertEquals(" " + operator + " ", result.getText());
     }
 

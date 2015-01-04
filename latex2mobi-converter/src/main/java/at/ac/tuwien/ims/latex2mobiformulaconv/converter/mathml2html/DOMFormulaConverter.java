@@ -12,7 +12,9 @@ import org.jdom2.input.SAXBuilder;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * The MIT License (MIT)
@@ -216,8 +218,16 @@ public class DOMFormulaConverter extends FormulaConverter {
                 Mfenced mfenced = new Mfenced();
                 mfenced.setOpened(cur.getAttributeValue("open"));
                 mfenced.setClosed(cur.getAttributeValue("close"));
-                if (cur.getChildren().isEmpty() == false) {
-                    mfenced.setContent(renderElement(cur.getChildren().get(0)));
+                mfenced.setSeparators(cur.getAttributeValue("separators"));
+
+                List<Element> children = cur.getChildren();
+                if (children.isEmpty() == false) {
+                    List<FormulaElement> renderedChildren = new ArrayList<>();
+                    for (Element child : children) {
+                        FormulaElement renderedChild = renderElement(child);
+                        renderedChildren.add(renderedChild);
+                    }
+                    mfenced.setContent(renderedChildren);
                 }
                 output = mfenced;
                 break;

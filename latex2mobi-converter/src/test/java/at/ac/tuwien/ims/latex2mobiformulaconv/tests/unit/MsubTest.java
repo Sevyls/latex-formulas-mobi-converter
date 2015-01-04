@@ -52,28 +52,26 @@ public class MsubTest extends FormulaElementTest {
 
     @Before
     public void setUp() throws Exception {
+        msub = new Msub();
         base = mock(FormulaElement.class);
         when(base.render(or(any(FormulaElement.class), isNull(FormulaElement.class)), anyListOf(FormulaElement.class))).thenReturn(new Element("span"));
 
         subscript = mock(FormulaElement.class);
         when(subscript.render(or(any(FormulaElement.class), isNull(FormulaElement.class)), anyListOf(FormulaElement.class))).thenReturn(new Element("span"));
+
+        msub.setBase(base);
+        msub.setSubscript(subscript);
+
+        formulaElement = msub;
     }
 
 
     @Test
-    public void testRender() throws Exception {
-        this.msub = new Msub();
-        msub.setBase(base);
-        msub.setSubscript(subscript);
-
+    public void testDetails() throws Exception {
         Element result = msub.render(possibleParent, null);
 
         verify(base).render(or(eq(msub), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
         verify(subscript).render(or(eq(msub), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
-
-        assertNotNull(result);
-        assertEquals("span", result.getName());
-        assertEquals("msub", result.getAttributeValue("class"));
 
         assertNotNull(result.getChild("sub"));
         assertEquals(1, result.getChildren().indexOf(result.getChild("sub")));

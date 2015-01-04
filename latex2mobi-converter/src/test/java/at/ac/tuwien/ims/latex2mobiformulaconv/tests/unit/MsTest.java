@@ -8,7 +8,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -50,21 +49,18 @@ public class MsTest extends FormulaElementTest {
 
     @Before
     public void setUp() throws Exception {
-
+        ms = new Ms();
         randomString = RandomStringUtils.randomAscii(32);
         logger.debug("Random string:\n" + randomString);
+
+        ms.setValue(whitespace + randomString + whitespace);
+        formulaElement = ms;
     }
 
     @Test
-    public void testRender() throws Exception {
-        this.ms = new Ms();
-        ms.setValue(whitespace + randomString + whitespace);
-
+    public void testDetails() throws Exception {
         Element result = ms.render(possibleParent, null);
 
-        assertNotNull(result);
-        assertEquals("span", result.getName());
-        assertEquals("ms", result.getAttributeValue("class"));
         String resultText = result.getText();
         logger.debug("Result Text:\n" + resultText);
 

@@ -9,8 +9,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Iterator;
+import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotEquals;
+import static org.mockito.AdditionalMatchers.or;
 import static org.mockito.Mockito.*;
 
 /**
@@ -41,18 +43,19 @@ import static org.mockito.Mockito.*;
  *
  * @author Michael Auß
  */
-public class MrowTest {
+public class MrowTest extends FormulaElementTest {
     private static Logger logger = Logger.getLogger(MrowTest.class);
     private static final String[] subElements = new String[]{"mo", "mover", "munder", "msup", "mi", "mfrac"};
 
     private Mrow mrow;
-    private int count;
+    private int count = 2;
 
 
     @Before
     public void setUp() throws Exception {
-
-
+        mrow = new Mrow();
+        mockElements();
+        formulaElement = mrow;
     }
 
     @Test
@@ -61,8 +64,6 @@ public class MrowTest {
         mockElements();
         Element result = mrow.render(null, null);
 
-        assertNotNull(result);
-        assertEquals("span", result.getName());
         // Should not render any mrow markup
         assertNotEquals("mrow", result.getAttributeValue("class"));
 
@@ -70,7 +71,6 @@ public class MrowTest {
 
         // Single child should get rendered
         verify(singleChild).render(any(FormulaElement.class), anyList());
-
     }
 
     @Test
@@ -79,14 +79,7 @@ public class MrowTest {
         logger.debug("Random count: " + count);
         mockElements();
 
-
-
         Element result = mrow.render(null, null);
-
-        assertNotNull(result);
-        assertEquals("span", result.getName());
-        assertEquals("mrow", result.getAttributeValue("class"));
-
 
         Iterator<FormulaElement> iterator = mrow.getList().iterator();
         while (iterator.hasNext()) {
@@ -103,7 +96,7 @@ public class MrowTest {
             // mock result of subelement
             Element span = new Element("span");
             span.setAttribute("class", subElements[RandomUtils.nextInt(subElements.length - 1)]);
-            when(formulaElement.render(null, null)).thenReturn(span);
+            when(formulaElement.render(or(eq(mrow), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)))).thenReturn(span);
 
             mrow.addElement(formulaElement);
         }

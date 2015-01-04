@@ -9,7 +9,6 @@ import org.junit.Test;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.mockito.AdditionalMatchers.or;
 import static org.mockito.Mockito.*;
 
@@ -49,6 +48,7 @@ public class MfracTest extends FormulaElementTest {
     @Before
     public void setUp() throws Exception {
         mfrac = new Mfrac();
+        formulaElement = mfrac;
         numerator = mock(FormulaElement.class);
         when(numerator.render(or(eq(mfrac), isNull(FormulaElement.class)), anyListOf(FormulaElement.class))).thenReturn(new Element("span"));
         mfrac.setNumerator(numerator);
@@ -59,16 +59,13 @@ public class MfracTest extends FormulaElementTest {
     }
 
     @Test
-    public void testRender() throws Exception {
+    public void testDetails() throws Exception {
         Element result = mfrac.render(possibleParent, null);
 
-        assertNotNull(result);
-        assertEquals("span", result.getName());
-        assertEquals("mfrac", result.getAttributeValue("class"));
+        assertEquals("numerator", result.getChildren("span").get(0).getAttributeValue("class"));
+        assertEquals("denominator", result.getChildren("span").get(1).getAttributeValue("class"));
 
         verify(numerator).render(or(eq(mfrac), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
-        assertEquals("numerator", result.getChildren("span").get(0).getAttributeValue("class"));
         verify(denominator).render(or(eq(mfrac), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
-        assertEquals("denominator", result.getChildren("span").get(1).getAttributeValue("class"));
     }
 }

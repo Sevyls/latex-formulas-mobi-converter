@@ -52,27 +52,25 @@ public class MsupTest extends FormulaElementTest {
 
     @Before
     public void setUp() throws Exception {
+        msup = new Msup();
         base = mock(FormulaElement.class);
         when(base.render(or(any(FormulaElement.class), isNull(FormulaElement.class)), anyListOf(FormulaElement.class))).thenReturn(new Element("span"));
 
         superscript = mock(FormulaElement.class);
         when(superscript.render(or(any(FormulaElement.class), isNull(FormulaElement.class)), anyListOf(FormulaElement.class))).thenReturn(new Element("span"));
+
+        msup.setBase(base);
+        msup.setSuperscript(superscript);
+
+        formulaElement = msup;
     }
 
 
     @Test
-    public void testRender() throws Exception {
-        this.msup = new Msup();
-        msup.setBase(base);
-        msup.setSuperscript(superscript);
-
+    public void testDetails() throws Exception {
         Element result = msup.render(possibleParent, null);
         verify(base).render(or(eq(msup), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
         verify(superscript).render(or(eq(msup), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
-
-        assertNotNull(result);
-        assertEquals("span", result.getName());
-        assertEquals("msup", result.getAttributeValue("class"));
 
         assertNotNull(result.getChild("sup"));
         assertEquals(1, result.getChildren().indexOf(result.getChild("sup")));

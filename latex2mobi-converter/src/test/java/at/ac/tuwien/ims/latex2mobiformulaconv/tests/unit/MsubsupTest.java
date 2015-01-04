@@ -61,29 +61,28 @@ public class MsubsupTest extends FormulaElementTest {
 
         superscript = mock(FormulaElement.class);
         when(superscript.render(or(any(FormulaElement.class), isNull(FormulaElement.class)), anyListOf(FormulaElement.class))).thenReturn(new Element("span"));
+
+        msubsup = new Msubsup();
+        msubsup.setBase(base);
+        msubsup.setSubscript(subscript);
+        msubsup.setSuperscript(superscript);
+        formulaElement = msubsup;
     }
 
 
     @Test
-    public void testRender() throws Exception {
-        this.msubsup = new Msubsup();
-        msubsup.setBase(base);
-        msubsup.setSubscript(subscript);
-        msubsup.setSuperscript(superscript);
-
+    public void testDetails() throws Exception {
         Element result = msubsup.render(possibleParent, null);
 
         verify(base).render(or(eq(msubsup), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
         verify(subscript).render(or(eq(msubsup), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
         verify(superscript).render(or(eq(msubsup), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
 
-        assertNotNull(result);
-        assertEquals("span", result.getName());
-        assertEquals("msubsup", result.getAttributeValue("class"));
-
         assertNotNull(result.getChild("sub"));
         assertNotNull(result.getChild("sup"));
         assertEquals(2, result.getChildren().indexOf(result.getChild("sub")));
         assertEquals(1, result.getChildren().indexOf(result.getChild("sup")));
+
+        formulaElement = msubsup;
     }
 }
