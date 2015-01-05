@@ -53,14 +53,17 @@ code {
 
 .denominator {
     display: block;
-    border-top: 1px solid black;
+}
+
+sub, sup {
+    font-size: 0.5em;
 }
 
 /* thanks to https://gist.github.com/unruthless/413930 */
 .msubsup sub, .msubsup sup {
     /* Specified in % so that the sup/sup is the
        right size relative to the surrounding text */
-    font-size: 75%;
+    font-size: /*75%;*/ 0.5em;
 
     /* Zero out the line-height so that it doesn't
        interfere with the positioning that follows */
@@ -77,7 +80,7 @@ code {
 
 .msubsup sup {
     /* Move the superscripted text up */
-    top: -0.5em;
+    top: /*-0.5em;*/ -0.75em;
 }
 
 .msubsup sub {
@@ -90,7 +93,7 @@ code {
 .msubsup sub .mrow {
     left: -0.5em;
     position: relative;
-    bottom: -0.25em;
+    bottom: /*-0.25em;*/ -0.5em;
 }
 
 .mroot-index {
@@ -128,9 +131,25 @@ code {
 }
 
 .mover .overscript {
-
     margin-bottom: 0;
 }
+
+.mspace {
+    display: inline-block;
+}
+
+.integral + sup + sub, .integral + sup {
+    color: red;
+}
+
+.integral + .msubsup > sup + sub, .integral + .msubsup > sup {
+    color: red;
+}
+
+.nothing {
+    display: none;
+}
+
 
 /*
 .mover {

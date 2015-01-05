@@ -1,5 +1,6 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.converter;
 
+import at.ac.tuwien.ims.latex2mobiformulaconv.elements.operators.Binomial;
 import at.ac.tuwien.ims.latex2mobiformulaconv.elements.operators.Modulo;
 import uk.ac.ed.ph.snuggletex.SnugglePackage;
 
@@ -54,6 +55,7 @@ public class SnugglePackageRegistry {
      */
     private static void configure() {
         register(Modulo.class, new Modulo());
+        register(Binomial.class, new Binomial());
     }
 
     public static List<SnugglePackage> getPackages() {

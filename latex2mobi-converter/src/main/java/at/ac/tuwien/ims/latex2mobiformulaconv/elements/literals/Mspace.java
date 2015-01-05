@@ -1,6 +1,7 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.elements.literals;
 
 import at.ac.tuwien.ims.latex2mobiformulaconv.elements.FormulaElement;
+import at.ac.tuwien.ims.latex2mobiformulaconv.elements.attributes.Unit;
 import org.jdom2.Element;
 
 import java.util.List;
@@ -35,10 +36,53 @@ import java.util.List;
  *         Date: 15.09.14
  */
 public class Mspace implements FormulaElement {
+    // Default values from MathML2 3.2.7.2
+    // http://www.w3.org/TR/MathML2/chapter3.html#presm.mspace
+    private Unit width = new Unit(0.0, "em");
+    private Unit height = new Unit(0.0, "ex");
+    private Unit depth = new Unit(0.0, "ex");
+    private String linebreak = "auto";
+
+    public Unit getWidth() {
+        return width;
+    }
+
+    public void setWidth(Unit width) {
+        this.width = width;
+    }
+
+    public Unit getHeight() {
+        return height;
+    }
+
+    public void setHeight(Unit height) {
+        this.height = height;
+    }
+
+    public Unit getDepth() {
+        return depth;
+    }
+
+    public void setDepth(Unit depth) {
+        this.depth = depth;
+    }
+
+    public String getLinebreak() {
+        return linebreak;
+    }
+
+    public void setLinebreak(String linebreak) {
+        this.linebreak = linebreak;
+    }
+
     @Override
     public Element render(FormulaElement parent, List<FormulaElement> siblings) {
         Element span = new Element("span");
         span.setAttribute("class", "mspace");
+
+        String style = "width: " + width.toString() + "; height: " + height.toString() + ";";
+        span.setAttribute("style", style);
+
         span.setText(" ");
         return span;
     }

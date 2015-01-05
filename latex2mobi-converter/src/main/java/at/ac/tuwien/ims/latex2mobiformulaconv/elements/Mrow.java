@@ -51,6 +51,12 @@ public class Mrow implements FormulaElement {
 
     @Override
     public Element render(FormulaElement parent, List<FormulaElement> siblings) {
+        if (list.isEmpty()) {
+            Element nothing = new Element("span");
+            nothing.setAttribute("class", "nothing");
+            nothing.setText(" ");
+            return nothing;
+        }
         if (list.size() == 1) {
             // TODO check attributes of mrow
 

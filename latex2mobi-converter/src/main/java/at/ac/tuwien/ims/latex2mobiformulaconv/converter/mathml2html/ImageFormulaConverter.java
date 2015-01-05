@@ -1,6 +1,5 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html;
 
-import at.ac.tuwien.ims.latex2mobiformulaconv.converter.SnugglePackageRegistry;
 import at.ac.tuwien.ims.latex2mobiformulaconv.elements.Formula;
 import net.sourceforge.jeuclid.MathMLParserSupport;
 import net.sourceforge.jeuclid.MutableLayoutContext;
@@ -11,7 +10,6 @@ import org.apache.log4j.Logger;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.xml.sax.SAXException;
-import uk.ac.ed.ph.snuggletex.SnugglePackage;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
@@ -55,12 +53,7 @@ import java.util.Map;
 public class ImageFormulaConverter extends FormulaConverter {
     private static Logger logger = Logger.getLogger(ImageFormulaConverter.class);
 
-    static {
-        // Add special SnuggleTeX configuration for certain Elements
-        for (SnugglePackage p : SnugglePackageRegistry.getPackages()) {
-            engine.addPackage(p);
-        }
-    }
+
 
     /**
      * Takes a single LaTeX formula and converts it to an image in PNG format

@@ -1,5 +1,6 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html;
 
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.SnugglePackageRegistry;
 import at.ac.tuwien.ims.latex2mobiformulaconv.elements.Formula;
 import org.apache.log4j.Logger;
 import org.jdom2.Document;
@@ -7,10 +8,7 @@ import org.jdom2.Element;
 import org.jdom2.filter.Filters;
 import org.jdom2.xpath.XPathExpression;
 import org.jdom2.xpath.XPathFactory;
-import uk.ac.ed.ph.snuggletex.SnuggleEngine;
-import uk.ac.ed.ph.snuggletex.SnuggleInput;
-import uk.ac.ed.ph.snuggletex.SnuggleSession;
-import uk.ac.ed.ph.snuggletex.XMLStringOutputOptions;
+import uk.ac.ed.ph.snuggletex.*;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -55,6 +53,11 @@ public abstract class FormulaConverter {
     protected static SnuggleEngine engine = new SnuggleEngine();
 
     static {
+        // Add special SnuggleTeX configuration for certain Elements
+        for (SnugglePackage p : SnugglePackageRegistry.getPackages()) {
+            engine.addPackage(p);
+        }
+
         XMLStringOutputOptions xmlStringOutputOptions = new XMLStringOutputOptions();
         xmlStringOutputOptions.setEncoding("UTF-8");
         xmlStringOutputOptions.setIndenting(true);
@@ -97,6 +100,7 @@ public abstract class FormulaConverter {
             SnuggleSession session = engine.createSession();
             session.parseInput(input);
             String xmlString = session.buildXMLString();
+            logger.debug("Formula #" + formula.getId());
             logger.debug("MathML: " + xmlString);
 
             // TODO ignore empty formulas

@@ -1,8 +1,11 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html;
 
 import at.ac.tuwien.ims.latex2mobiformulaconv.elements.*;
+import at.ac.tuwien.ims.latex2mobiformulaconv.elements.attributes.Unit;
 import at.ac.tuwien.ims.latex2mobiformulaconv.elements.literals.*;
+import at.ac.tuwien.ims.latex2mobiformulaconv.elements.operators.Integral;
 import at.ac.tuwien.ims.latex2mobiformulaconv.elements.operators.Mroot;
+import at.ac.tuwien.ims.latex2mobiformulaconv.elements.operators.Summation;
 import org.apache.log4j.Logger;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -182,11 +185,28 @@ public class DOMFormulaConverter extends FormulaConverter {
                 output = mrow;
                 break;
             case "mo":
-                Mo mo = new Mo();
-                mo.setOperator(cur.getText());
+                Mo mo;
+                String operator = cur.getText();
 
+                switch (operator) {
+                    case "∫":
+                    case "&int;":
+                    case "&Integral;":
+                        mo = new Integral();
+                        break;
+                    case "∑":
+                    case "&Sum;":
+                        mo = new Summation();
+                        break;
+                    default:
+                        mo = new Mo();
+                        mo.setOperator(operator);
+
+
+                        mo.setForm(cur.getAttributeValue("form", "infix"));
+
+                }
                 // Parse attributes
-                mo.setForm(cur.getAttributeValue("form", "infix"));
                 mo.setAccent(Boolean.parseBoolean(cur.getAttributeValue("accent", "false")));
                 mo.setSeparator(Boolean.parseBoolean(cur.getAttributeValue("separator", "false")));
                 mo.setFence(Boolean.parseBoolean(cur.getAttributeValue("fence", "false")));
@@ -212,6 +232,12 @@ public class DOMFormulaConverter extends FormulaConverter {
                 Mfrac mfrac = new Mfrac();
                 mfrac.setNumerator(renderElement(cur.getChildren().get(0)));
                 mfrac.setDenominator(renderElement(cur.getChildren().get(1)));
+
+                String linethickness = cur.getAttributeValue("linethickness");
+                if (linethickness != null) {
+                    mfrac.setLinethickness(linethickness);
+                }
+
                 output = mfrac;
                 break;
             case "mfenced":
@@ -233,7 +259,20 @@ public class DOMFormulaConverter extends FormulaConverter {
                 break;
             case "mspace":
                 Mspace mspace = new Mspace();
-                output = new Mspace();
+
+                // Parse attributes
+                String widthAttribute = cur.getAttributeValue("width");
+                if (widthAttribute != null) {
+                    mspace.setWidth(Unit.parse(widthAttribute));
+                }
+                String heightAttribute = cur.getAttributeValue("height");
+                if (heightAttribute != null) {
+                    mspace.setHeight(Unit.parse(heightAttribute));
+                }
+
+                // TODO linebreaks
+
+                output = mspace;
                 break;
             case "msqrt":
                 Mroot msqrt = new Mroot();

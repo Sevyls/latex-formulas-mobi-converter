@@ -36,8 +36,16 @@ import java.util.List;
  *         Created: 21.05.14 00:04
  */
 public class Integral extends Mo {
+    public Integral() {
+        setOperator("∫");
+        setForm("prefix");
+    }
+
     @Override
     public Element render(FormulaElement parent, List<FormulaElement> siblings) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        Element integralSpan = new Element("span");
+        integralSpan.setAttribute("class", "mo integral");
+        integralSpan.setText(getOperator());
+        return integralSpan;
     }
 }

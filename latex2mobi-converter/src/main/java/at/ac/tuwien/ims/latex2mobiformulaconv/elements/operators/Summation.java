@@ -1,10 +1,6 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.elements.operators;
 
-import at.ac.tuwien.ims.latex2mobiformulaconv.elements.FormulaElement;
 import at.ac.tuwien.ims.latex2mobiformulaconv.elements.Mo;
-import org.jdom2.Element;
-
-import java.util.List;
 
 /**
  * The MIT License (MIT)
@@ -36,8 +32,8 @@ import java.util.List;
  *         Created: 21.05.14 00:03
  */
 public class Summation extends Mo {
-    @Override
-    public Element render(FormulaElement parent, List<FormulaElement> siblings) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public Summation() {
+        setOperator("∑");
+        setForm("prefix");
     }
 }

@@ -2,6 +2,7 @@ package at.ac.tuwien.ims.latex2mobiformulaconv.elements;
 
 import org.jdom2.Element;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,6 +37,15 @@ import java.util.List;
 public class Mfrac implements FormulaElement {
     private FormulaElement numerator;
     private FormulaElement denominator;
+    private String linethickness = "1";
+
+    public String getLinethickness() {
+        return linethickness;
+    }
+
+    public void setLinethickness(String linethickness) {
+        this.linethickness = linethickness;
+    }
 
     public FormulaElement getNumerator() {
         return numerator;
@@ -58,16 +68,46 @@ public class Mfrac implements FormulaElement {
         Element fraction = new Element("span");
         fraction.setAttribute("class", "mfrac");
 
-        Element numerator = new Element("span");
-        numerator.setAttribute("class", "numerator");
-        numerator.addContent(this.numerator.render(null, null));
+        Element numeratorSpan = new Element("span");
+        numeratorSpan.setAttribute("class", "numerator");
 
-        Element denominator = new Element("span");
-        denominator.setAttribute("class", "denominator");
-        denominator.addContent(this.denominator.render(null, null));
+        List<FormulaElement> siblingsList = new ArrayList<>();
+        siblingsList.add(numerator);
+        siblingsList.add(denominator);
 
-        fraction.addContent(numerator);
-        fraction.addContent(denominator);
+        numeratorSpan.addContent(numerator.render(this, siblingsList));
+
+        Element denominatorSpan = new Element("span");
+        denominatorSpan.setAttribute("class", "denominator");
+
+        // style for linethickness
+
+        //  medium (same as 1), thin (thinner than 1, otherwise up to the renderer), or thick (thicker than 1, otherwise up to the renderer).
+        switch (linethickness) {
+            case "medium":
+                linethickness = "1";
+                break;
+            case "thin":
+                linethickness = "0.75";
+                break;
+            case "thick":
+                linethickness = "2";
+                break;
+            default:
+                try {
+                    Double.valueOf(linethickness);
+                } catch (NumberFormatException e) {
+                    linethickness = "1";
+                }
+        }
+
+
+        denominatorSpan.setAttribute("style", "border-top: " + linethickness + "px solid black;");
+
+        denominatorSpan.addContent(this.denominator.render(this, siblingsList));
+
+        fraction.addContent(numeratorSpan);
+        fraction.addContent(denominatorSpan);
 
         return fraction;
     }

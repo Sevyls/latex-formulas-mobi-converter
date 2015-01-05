@@ -2,7 +2,6 @@ package at.ac.tuwien.ims.latex2mobiformulaconv.converter.latex2html;
 
 import org.apache.commons.cli.Option;
 import org.apache.commons.exec.*;
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.output.WriterOutputStream;
 import org.apache.log4j.Logger;
 import org.jdom2.Document;
@@ -54,7 +53,7 @@ public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
         // Load main css file
         File mainCss = workingDirectory.resolve("main.css").toFile();
 
-        String css = "";
+        /*String css = "";
         try {
             css = FileUtils.readFileToString(mainCss, Charset.forName("UTF-8"));
         } catch (IOException e) {
@@ -63,7 +62,17 @@ public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
 
         // TODO compile all css files to single string
 
-        return "<style>\n" + css + "\n</style>";
+        return "<style><!--//--><![CDATA[//><!--\n" + css + "\n//--><!]]></style>";*/
+        /*
+        String linkTag = null;
+        try {
+            linkTag = "<link rel=\"stylesheet\" type=\"text/css\" href=\"" +  mainCss.toURI().toURL().toString() + "\"></link>";
+        } catch (MalformedURLException e) {
+            logger.error("Main Css file Url could not be read");
+        }
+
+        return linkTag;*/
+        return "";
     }
 
     @Override
@@ -138,7 +147,8 @@ public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
                 // set title
                 "<title>" + title + "</title>\n" +
                 // include css
-                includeCss(workingDirectory) +
+                //includeCss(workingDirectory) +
+                "<link rel=\"stylesheet\" type=\"text/css\" href=\"main.css\"></link>\n" +
                 "</head>\n" +
                 "<body>";
         try {

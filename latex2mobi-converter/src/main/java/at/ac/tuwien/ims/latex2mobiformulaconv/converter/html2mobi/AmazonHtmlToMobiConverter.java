@@ -1,5 +1,6 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi;
 
+import at.ac.tuwien.ims.latex2mobiformulaconv.utils.WorkingDirectoryResolver;
 import org.apache.commons.cli.Option;
 import org.apache.commons.exec.*;
 import org.apache.commons.io.output.WriterOutputStream;
@@ -60,7 +61,13 @@ public class AmazonHtmlToMobiConverter implements HtmlToMobiConverter {
         Path tempFilepath = null;
 
         try {
-            tempFilepath = Files.createTempFile("latex2mobi", ".html");
+            //tempFilepath = Files.createTempFile("latex2mobi", ".html");
+            Path tempDir = Files.createTempDirectory("latex2mobi");
+            Path mainCssPath = WorkingDirectoryResolver.getWorkingDirectory(getClass()).resolve("main.css");
+            logger.debug("Copying main.css file to temp dir:" + mainCssPath.toAbsolutePath().toString() + " -> " + tempDir.toAbsolutePath().toString());
+            Files.copy(mainCssPath, tempDir.resolve("main.css"));
+            tempFilepath = tempDir.resolve("latex2mobi.html");
+
             logger.debug("tempFile created at: " + tempFilepath.toAbsolutePath().toString());
         } catch (IOException e) {
             logger.error(e.getMessage(), e);
