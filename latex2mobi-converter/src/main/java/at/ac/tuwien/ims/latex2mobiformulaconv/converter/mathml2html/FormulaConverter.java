@@ -1,6 +1,6 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html;
 
-import at.ac.tuwien.ims.latex2mobiformulaconv.converter.SnugglePackageRegistry;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.snugglepkgs.SnugglePackageRegistry;
 import at.ac.tuwien.ims.latex2mobiformulaconv.elements.Formula;
 import org.apache.log4j.Logger;
 import org.jdom2.Document;

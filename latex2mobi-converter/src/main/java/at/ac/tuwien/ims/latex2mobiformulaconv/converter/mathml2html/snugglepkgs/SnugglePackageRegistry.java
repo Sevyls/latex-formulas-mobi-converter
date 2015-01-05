@@ -1,6 +1,11 @@
-package at.ac.tuwien.ims.latex2mobiformulaconv.converter;
+package at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.snugglepkgs;
 
 import uk.ac.ed.ph.snuggletex.SnugglePackage;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * The MIT License (MIT)
@@ -29,15 +34,31 @@ import uk.ac.ed.ph.snuggletex.SnugglePackage;
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
  * @author mauss
- *         Created: 13.07.14 17:01
+ *         Created: 13.07.14 17:05
  */
-public interface SnugglePackageProvider {
+public class SnugglePackageRegistry {
+
+    private static Map<Class, SnugglePackage> providerMap = new HashMap<Class, SnugglePackage>();
+
+    static {
+        configure();
+    }
+
+    public static void register(Class klass, SnugglePackageProvider provider) {
+        providerMap.put(klass, provider.provide());
+    }
 
     /**
-     * Provide a SnugglePackage implementation for certain missing LaTeX formula objects
-     *
-     * @return SnugglePackage which can be added to the Runtime's Snuggle Engine
+     * static configuration for SnugglePackages
      */
-    public SnugglePackage provide();
+    private static void configure() {
+        register(Modulo.class, new Modulo());
+        register(Binomial.class, new Binomial());
+    }
 
+    public static List<SnugglePackage> getPackages() {
+        List<SnugglePackage> list = new ArrayList<SnugglePackage>();
+        list.addAll(providerMap.values());
+        return list;
+    }
 }

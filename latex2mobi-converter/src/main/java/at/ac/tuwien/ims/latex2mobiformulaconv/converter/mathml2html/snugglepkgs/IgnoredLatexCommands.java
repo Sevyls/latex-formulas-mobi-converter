@@ -1,4 +1,4 @@
-package at.ac.tuwien.ims.latex2mobiformulaconv.converter;
+package at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.snugglepkgs;
 
 import uk.ac.ed.ph.snuggletex.SnugglePackage;
 

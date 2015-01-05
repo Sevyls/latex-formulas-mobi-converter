@@ -63,9 +63,21 @@ public class MfracTest extends FormulaElementTest {
         Element result = mfrac.render(possibleParent, null);
 
         assertEquals("numerator", result.getChildren("span").get(0).getAttributeValue("class"));
-        assertEquals("denominator", result.getChildren("span").get(1).getAttributeValue("class"));
+        Element denominatorElement = result.getChildren("span").get(1);
+        assertEquals("denominator", denominatorElement.getAttributeValue("class"));
+        assertEquals("border-top: 1px solid black;", denominatorElement.getAttributeValue("style"));
 
         verify(numerator).render(or(eq(mfrac), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
         verify(denominator).render(or(eq(mfrac), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
+    }
+
+    @Test
+    public void testLinethickness() throws Exception {
+        String linethickness = "2.67";
+        mfrac.setLinethickness(linethickness);
+        Element result = mfrac.render(possibleParent, null);
+
+        Element denominatorElement = result.getChildren("span").get(1);
+        assertEquals("border-top: " + linethickness + "px solid black;", denominatorElement.getAttributeValue("style"));
     }
 }

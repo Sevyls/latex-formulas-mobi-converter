@@ -1,6 +1,10 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.elements.operators;
 
+import at.ac.tuwien.ims.latex2mobiformulaconv.elements.FormulaElement;
 import at.ac.tuwien.ims.latex2mobiformulaconv.elements.Mo;
+import org.jdom2.Element;
+
+import java.util.List;
 
 /**
  * The MIT License (MIT)
@@ -35,5 +39,13 @@ public class Summation extends Mo {
     public Summation() {
         setOperator("∑");
         setForm("prefix");
+    }
+
+    @Override
+    public Element render(FormulaElement parent, List<FormulaElement> siblings) {
+        Element summationSpan = new Element("span");
+        summationSpan.setAttribute("class", "mo summation");
+        summationSpan.setText(getOperator());
+        return summationSpan;
     }
 }

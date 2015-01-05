@@ -1,15 +1,9 @@
-package at.ac.tuwien.ims.latex2mobiformulaconv.elements.operators;
+package at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.snugglepkgs;
 
-import at.ac.tuwien.ims.latex2mobiformulaconv.converter.SnugglePackageProvider;
-import at.ac.tuwien.ims.latex2mobiformulaconv.elements.FormulaElement;
-import at.ac.tuwien.ims.latex2mobiformulaconv.elements.Mo;
-import org.jdom2.Element;
 import uk.ac.ed.ph.snuggletex.SnugglePackage;
 import uk.ac.ed.ph.snuggletex.definitions.TextFlowContext;
 import uk.ac.ed.ph.snuggletex.dombuilding.InterpretableSimpleMathHandler;
 import uk.ac.ed.ph.snuggletex.semantics.MathOperatorInterpretation;
-
-import java.util.List;
 
 import static uk.ac.ed.ph.snuggletex.definitions.Globals.ALL_MODES;
 
@@ -42,13 +36,7 @@ import static uk.ac.ed.ph.snuggletex.definitions.Globals.ALL_MODES;
  * @author mauss
  *         Created: 13.07.14 16:57
  */
-public class Modulo extends Mo implements SnugglePackageProvider {
-
-    @Override
-    public Element render(FormulaElement parent, List<FormulaElement> siblings) {
-        return null;  //TODO
-    }
-
+public class Modulo implements SnugglePackageProvider {
 
     @Override
     public SnugglePackage provide() {
