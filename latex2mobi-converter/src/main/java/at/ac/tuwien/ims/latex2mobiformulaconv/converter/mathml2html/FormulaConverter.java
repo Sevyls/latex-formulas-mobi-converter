@@ -84,13 +84,7 @@ public abstract class FormulaConverter {
 
         formula.setLatexCode(latexFormula);
 
-        // Check if multiline
-        if (latexFormula.matches("(?m)^\\s+$") || latexFormula.contains("\\\\")) {
-            formula.setType(Formula.Type.MULTI_LINE);
-        } else {
-            formula.setType(Formula.Type.SINGLE_LINE);
-        }
-        logger.debug(formula.getType());
+        logger.debug("Formula #" + formula.getId());
         logger.debug(latexFormula);
 
         // Parse MathML formula and convert to png file
@@ -100,7 +94,7 @@ public abstract class FormulaConverter {
             SnuggleSession session = engine.createSession();
             session.parseInput(input);
             String xmlString = session.buildXMLString();
-            logger.debug("Formula #" + formula.getId());
+
             logger.debug("MathML: " + xmlString);
 
             // TODO ignore empty formulas

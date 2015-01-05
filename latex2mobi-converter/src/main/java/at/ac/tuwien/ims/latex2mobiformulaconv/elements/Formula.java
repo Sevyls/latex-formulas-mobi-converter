@@ -38,7 +38,6 @@ public class Formula {
     private int id;
     private ArrayList<Mrow> mrows;
     private String latexCode;
-    private Type type;
     private Path imageFilePath;
     private Element html;
     private String mathMl;
@@ -49,19 +48,6 @@ public class Formula {
 
     public void setHtml(Element html) {
         this.html = html;
-    }
-
-    public Type getType() {
-        return type;
-    }
-
-    public void setType(Type type) {
-        this.type = type;
-    }
-
-    public enum Type {
-        SINGLE_LINE,
-        MULTI_LINE
     }
 
     public Path getImageFilePath() {
