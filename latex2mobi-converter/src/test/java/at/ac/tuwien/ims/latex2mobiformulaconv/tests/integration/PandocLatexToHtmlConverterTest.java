@@ -93,15 +93,11 @@ public class PandocLatexToHtmlConverterTest {
         assertNotNull(title);
         assertEquals(this.title, title.getText());
 
-        // Check CSS
-        Element style = head.getChild("style");
-        assertNotNull(style);
+        // Check linked CSS
+        Element link = head.getChild("link");
+        assertNotNull(link);
 
-        // ignore UNIX / Windows new line
-        String styleText = style.getText().trim().replace("\n", "").replace("\r", "");
-
-        assertFalse(styleText.isEmpty());
-        assertEquals(mainCss, styleText);
+        assertEquals("main.css", link.getAttributeValue("href"));
 
 
         Element body = children.get(1);
