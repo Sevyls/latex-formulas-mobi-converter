@@ -48,26 +48,65 @@ public class Unit {
 
     private static Logger logger = Logger.getLogger(Unit.class);
 
-    // TODO namedspace
-    // namedspace is one of "veryverythinmathspace", "verythinmathspace", "thinmathspace", "mediummathspace",
-    // "thickmathspace", "verythickmathspace", or "veryverythickmathspace"
-
     public static Unit parse(String unitText) {
         if (unitText == null) {
             return null;
         }
+        Unit unit = null;
 
-        for (Identifier id : Identifier.values()) {
-            if (unitText.endsWith(id.getIdentifier())) {
-                Double number = Double.parseDouble(unitText.replaceFirst(id.getIdentifier(), ""));
+        /*
+        * MathML2 - named mathspaces
+        * via mstyle 3.3.4.2 Attributes
+        * http://www.w3.org/TR/MathML2/chapter3.html#presm.mstyle
+        */
+        switch (unitText) {
+            case "veryverythinmathspace":
+                unit = new Unit(0.0555556, "em");
+                break;
+            case "verythinmathspace":
+                unit = new Unit(0.111111, "em");
+                break;
+            case "thinmathspace":
+                unit = new Unit(0.166667, "em");
+                break;
+            case "mediummathspace":
+                unit = new Unit(0.222222, "em");
+                break;
+            case "thickmathspace":
+                unit = new Unit(0.277778, "em");
+                break;
+            case "verythickmathspace":
+                unit = new Unit(0.333333, "em");
+                break;
+            case "veryverythickmathspace":
+                unit = new Unit(0.388889, "em");
+                break;
+        }
 
-                Unit unit = new Unit(number, id.getIdentifier());
-
-                return unit;
+        if (unit == null) {
+            try {
+                Double onlyNumber = Double.parseDouble(unitText);
+                unit = new Unit(onlyNumber, "em");
+            } catch (NumberFormatException e) {
+                // do nothing
             }
         }
 
-        return null;
+        if (unit == null) {
+            for (Identifier id : Identifier.values()) {
+                if (unitText.endsWith(id.getIdentifier())) {
+                    Double number = Double.parseDouble(unitText.replaceFirst(id.getIdentifier(), ""));
+
+                    unit = new Unit(number, id.getIdentifier());
+                    break;
+                }
+            }
+        }
+
+        if (unit == null) {
+            logger.error("Unit could not be parsed: " + unitText);
+        }
+        return unit;
     }
 
     private enum Identifier {

@@ -146,6 +146,12 @@ sub, sup {
     color: red;
 }
 
+.msub .mo, .msup .mo {
+    padding-left: 0em!important;
+    padding-right: 0em!important;
+}
+
+
 .nothing {
     display: none;
 }

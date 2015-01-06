@@ -1,7 +1,6 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi;
 
 import org.apache.commons.cli.Option;
-import org.jdom2.Document;
 
 import java.io.File;
 
@@ -36,7 +35,7 @@ import java.io.File;
  */
 public class CalibreHtmlToMobiConverter implements HtmlToMobiConverter {
     @Override
-    public File convertToMobi(Document document) {
+    public File convertToMobi(File htmlFile) {
         // TODO implement
         return null;
     }

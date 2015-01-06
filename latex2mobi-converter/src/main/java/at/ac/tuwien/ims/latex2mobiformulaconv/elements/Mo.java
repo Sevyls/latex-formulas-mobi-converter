@@ -83,8 +83,8 @@ public class Mo implements FormulaElement {
                 element.setSeparator(Boolean.parseBoolean(moElement.getAttributeValue("separator", "false")));
                 element.setFence(Boolean.parseBoolean(moElement.getAttributeValue("fence", "false")));
 
-                element.setLspace(Unit.parse(moElement.getAttributeValue("lspace")));
-                element.setRspace(Unit.parse(moElement.getAttributeValue("rspace")));
+                element.setLspace(Unit.parse(moElement.getAttributeValue("lspace", "thickmathspace")));
+                element.setRspace(Unit.parse(moElement.getAttributeValue("rspace", "thickmathspace")));
 
                 element.setMinsize(Unit.parse(moElement.getAttributeValue("minsize")));
                 element.setMaxsize(Unit.parse(moElement.getAttributeValue("maxsize")));
@@ -240,8 +240,8 @@ public class Mo implements FormulaElement {
         this.minsize = minsize;
     }
 
-    private Unit lspace = null;
-    private Unit rspace = null;
+    private Unit lspace = Unit.parse("thickmathspace");
+    private Unit rspace = Unit.parse("thickmathspace");
 
 
     public boolean isFence() {
@@ -344,8 +344,6 @@ public class Mo implements FormulaElement {
 
     @Override
     public Element render(FormulaElement parent, List<FormulaElement> siblings) {
-        logger.debug(this.toString());
-
         // Mrow default form behaviour according to W3C MathML2
         // 3.2.5.7.2 Default value of the form attribute
         // http://www.w3.org/TR/MathML2/chapter3.html#presm.formdefval
@@ -380,6 +378,10 @@ public class Mo implements FormulaElement {
         Element moSpan = new Element("span");
         moSpan.setAttribute("class", "mo");
 
+        // spacing
+        String css = "padding-left: " + lspace.toString() + "; padding-right: " + rspace.toString() + ";";
+        moSpan.setAttribute("style", css);
+
         String output = operator;
         if (output.length() > 1) {
             String entityName = output.substring(1, output.length() - 1);
@@ -388,27 +390,7 @@ public class Mo implements FormulaElement {
             }
         }
 
-        // Spacing depends on form attribute
-        String text;
-
-        if (this.separator) {
-            text = output;
-        } else {
-            switch (this.form) {
-                case "prefix":
-                    text = " " + output;
-                    break;
-                case "postfix":
-                    text = output + " ";
-                    break;
-                case "infix":
-                default:
-                    text = " " + output + " ";
-                    break;
-            }
-        }
-        moSpan.addContent(text);
-
+        moSpan.addContent(output);
 
         return moSpan;
     }

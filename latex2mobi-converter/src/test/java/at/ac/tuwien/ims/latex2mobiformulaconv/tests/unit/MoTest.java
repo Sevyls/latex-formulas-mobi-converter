@@ -56,36 +56,11 @@ public class MoTest extends FormulaElementTest {
     }
 
     @Test
-    public void testRenderDefaultInfix() throws Exception {
-        Element result = mo.render(possibleParent, null);
-
-        assertEquals(" " + operator + " ", result.getText());
-    }
-
-    @Test
-     public void testRenderPrefix() throws Exception {
-        mo.setForm("prefix");
-        Element result = mo.render(possibleParent, null);
-
-        assertEquals(" " + operator, result.getText());
-    }
-
-    @Test
-    public void testRenderPostfix() throws Exception {
-        mo.setForm("postfix");
-
-        Element result = mo.render(possibleParent, null);
-
-        assertEquals(operator + " ", result.getText());
-    }
-
-    @Test
-    public void testRenderSeparator() throws Exception {
-        mo.setSeparator(true);
+    public void testDetails() throws Exception {
         Element result = mo.render(possibleParent, null);
 
         assertEquals(operator, result.getText());
     }
 
-
+    // TODO lspace + rspace tests
 }

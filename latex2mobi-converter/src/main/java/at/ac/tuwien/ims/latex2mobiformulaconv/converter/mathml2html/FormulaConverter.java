@@ -3,9 +3,13 @@ package at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.snugglepkgs.SnugglePackageRegistry;
 import at.ac.tuwien.ims.latex2mobiformulaconv.elements.Formula;
 import org.apache.log4j.Logger;
+import org.jdom2.Content;
 import org.jdom2.Document;
 import org.jdom2.Element;
+import org.jdom2.Text;
 import org.jdom2.filter.Filters;
+import org.jdom2.output.Format;
+import org.jdom2.output.XMLOutputter;
 import org.jdom2.xpath.XPathExpression;
 import org.jdom2.xpath.XPathFactory;
 import uk.ac.ed.ph.snuggletex.*;
@@ -64,6 +68,16 @@ public abstract class FormulaConverter {
         engine.setDefaultXMLStringOutputOptions(xmlStringOutputOptions);
     }
 
+    private boolean debug = false;
+
+    public boolean isDebug() {
+        return debug;
+    }
+
+    public void setDebug(boolean debug) {
+        this.debug = debug;
+    }
+
     /**
      * Parse latex formula code to entities, which afterward can be rendered to html
      *
@@ -84,9 +98,6 @@ public abstract class FormulaConverter {
 
         formula.setLatexCode(latexFormula);
 
-        logger.debug("Formula #" + formula.getId());
-        logger.debug(latexFormula);
-
         // Parse MathML formula and convert to png file
         SnuggleInput input = new SnuggleInput(latexFormula);
         try {
@@ -94,8 +105,6 @@ public abstract class FormulaConverter {
             SnuggleSession session = engine.createSession();
             session.parseInput(input);
             String xmlString = session.buildXMLString();
-
-            logger.debug("MathML: " + xmlString);
 
             // TODO ignore empty formulas
 
@@ -159,14 +168,57 @@ public abstract class FormulaConverter {
                 element.removeContent();
                 element.setName("div");
 
-                Element paragraph = (Element) element.getParent();
-                paragraph.setName("div");
-                paragraph.setAttribute("class", "p");
+                Element div = (Element) element.getParent();
+                div.setName("div");
+                div.setAttribute("class", "formula");
+
+                // Potentially there's text inside the paragraph...
+                List<Text> texts = div.getContent(Filters.textOnly());
+                if (texts.isEmpty() == false) {
+                    String textString = "";
+                    for (Text text : texts) {
+                        textString += text.getText();
+                    }
+                    Element textSpan = new Element("span");
+                    textSpan.setAttribute("class", "text");
+                    textSpan.setText(textString);
+                    div.addContent(textSpan);
+
+                    List<Content> content = div.getContent();
+                    content.removeAll(texts);
+                }
+
+
+                if (debug) {
+                    div.setAttribute("style", "border: 1px solid black;");
+
+                    Element h4 = new Element("h4");
+                    h4.setText("DEBUG - Formula #" + formula.getId());
+                    div.addContent(h4);
+
+                    Element latexPre = new Element("pre");
+                    latexPre.setAttribute("class", "debug-latex");
+                    latexPre.setText(formula.getLatexCode());
+                    div.addContent(latexPre);
+
+                    Element mathmlPre = new Element("pre");
+                    mathmlPre.setAttribute("class", "debug-mathml");
+                    mathmlPre.setText(formula.getMathMl());
+                    div.addContent(mathmlPre);
+
+                    Element htmlPre = new Element("pre");
+                    htmlPre.setAttribute("class", "debug-html");
+                    XMLOutputter xmlOutputter = new XMLOutputter();
+                    xmlOutputter.setFormat(Format.getRawFormat());
+                    htmlPre.setText(xmlOutputter.outputString(formula.getHtml()));
+
+                    div.addContent(htmlPre);
+
+                }
+
                 element.addContent(formula.getHtml());
             }
         }
         return doc;
     }
-
-
 }

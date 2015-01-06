@@ -8,13 +8,18 @@ import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.DOMFormulaCo
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.FormulaConverter;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.ImageFormulaConverter;
 import at.ac.tuwien.ims.latex2mobiformulaconv.elements.Formula;
+import at.ac.tuwien.ims.latex2mobiformulaconv.utils.WorkingDirectoryResolver;
 import org.apache.log4j.Logger;
 import org.jdom2.Document;
+import org.jdom2.output.XMLOutputter;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -49,11 +54,13 @@ import java.util.Map;
  * @author Michael Auß
  *         Date: 17.08.14
  *         Time: 17:35
+ *
+ * Converts LaTeX input to Mobi files with Pandoc & Amazon Kindlegen
  */
 public class Converter {
     private static Logger logger = Logger.getLogger(Converter.class);
 
-    // hard coded Implementation bindings
+    // TODO resolve hard coded Implementation bindings
     private static LatexToHtmlConverter latexToHtmlConverter = new PandocLatexToHtmlConverter();
     private static HtmlToMobiConverter htmlToMobiConverter = new AmazonHtmlToMobiConverter();
 
@@ -63,18 +70,93 @@ public class Converter {
         this.workingDirectory = workingDirectory;
     }
 
+    /**
+     *  ArrayList of input paths, only the first gets read
+     */
+    private ArrayList<Path> inputPaths;
+
+    /**
+     * if true, the formulas will get replaced with png pictures
+     * else the will be represented with html
+     */
+    private boolean replaceWithPictures = false;
+    private boolean debug = false;
+
+    private boolean exportMarkup = false;
+
+    /**
+     * the directory path where the result will be written to
+     */
+    private Path outputPath;
+
+    /**
+     * the filename of the result file, if it already exists, a number will automatically be added to this string
+     */
+    private String filename;
+
+    private String title;
+
+    public boolean isExportMarkup() {
+        return exportMarkup;
+    }
+
+    public void setExportMarkup(boolean exportMarkup) {
+        this.exportMarkup = exportMarkup;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public boolean isReplaceWithPictures() {
+        return replaceWithPictures;
+    }
+
+    public void setReplaceWithPictures(boolean replaceWithPictures) {
+        this.replaceWithPictures = replaceWithPictures;
+    }
+
+    public boolean isDebug() {
+        return debug;
+    }
+
+    public void setDebug(boolean debug) {
+        this.debug = debug;
+    }
+
+    public Path getOutputPath() {
+        return outputPath;
+    }
+
+    public void setOutputPath(Path outputPath) {
+        this.outputPath = outputPath;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+
+    public ArrayList<Path> getInputPaths() {
+        return inputPaths;
+    }
+
+    public void setInputPaths(ArrayList<Path> inputPaths) {
+        this.inputPaths = inputPaths;
+    }
 
     /**
      * Converts a single input file from LaTeX to Mobi
-     *
-     * @param inputPaths          ArrayList of input paths, only the first gets read
-     * @param replaceWithPictures if true, the formulas will get replaced with png pictures,
-     *                            else the will be represented with html
-     * @param outputPath          the directory path where the result will be written to
-     * @param filename            the filename of the result file, if it already exists, a number will automatically be added to this string
      * @return Path of the resulting File
      */
-    public Path convert(ArrayList<Path> inputPaths, boolean replaceWithPictures, Path outputPath, String filename, String title, boolean debug) {
+    public Path convert() {
         // TODO iterate over inputPaths
         File inputFile = inputPaths.get(0).toFile();
 
@@ -87,11 +169,7 @@ public class Converter {
         logger.debug("Converting main document to HTML...");
         Document document = latexToHtmlConverter.convert(inputFile, title, workingDirectory);
 
-        /*XMLOutputter xout = new XMLOutputter();
-        logger.debug(xout.outputString(document));*/
-
         logger.info("Parsing LaTeX formulas from resulting HTML...");
-
 
         FormulaConverter formulaConverter;
         Map<Integer, Formula> formulaMap = new HashMap<>();
@@ -99,8 +177,10 @@ public class Converter {
         if (replaceWithPictures) {
             formulaConverter = new ImageFormulaConverter();
         } else {
-            formulaConverter = new DOMFormulaConverter(debug);
+            formulaConverter = new DOMFormulaConverter();
         }
+
+        formulaConverter.setDebug(debug);
 
         Map<Integer, String> latexFormulas = formulaConverter.extractFormulas(document);
 
@@ -119,9 +199,14 @@ public class Converter {
             document = formulaConverter.replaceFormulas(document, formulaMap);
         }
 
+        // Saving html file
+        File htmlFile = saveHtmlFile(document);
+
+
+
         // Convert to MOBI format
         logger.info("Converting completed HTML to MOBI format...");
-        File mobiFile = htmlToMobiConverter.convertToMobi(document);
+        File mobiFile = htmlToMobiConverter.convertToMobi(htmlFile);
 
         // Save file
         Path resultFilepath = null;
@@ -147,6 +232,50 @@ public class Converter {
             logger.error(e.getMessage(), e);
             return null;
         }
+    }
+
+    /**
+     * Saves the html document to a file with .html extension
+     * @param document JDOM Document representing the HTML
+     * @return written HTML File object
+     */
+    private File saveHtmlFile(Document document) {
+        Path tempFilepath = null;
+
+
+        try {
+
+            Path tempDir = Files.createTempDirectory("latex2mobi");
+            Path mainCssPath = WorkingDirectoryResolver.getWorkingDirectory(getClass()).resolve("main.css");
+
+            logger.debug("Copying main.css file to temp dir:" + mainCssPath.toAbsolutePath().toString() + " -> " + tempDir.toAbsolutePath().toString());
+            Files.copy(mainCssPath, tempDir.resolve("main.css"));
+            tempFilepath = tempDir.resolve("latex2mobi.html");
+
+
+
+
+            logger.debug("tempFile created at: " + tempFilepath.toAbsolutePath().toString());
+
+
+            Files.write(tempFilepath, new XMLOutputter().outputString(document).getBytes(Charset.forName("UTF-8")));
+
+            if (exportMarkup) {
+                Path markupDir = workingDirectory.resolve(title + "-markup");
+                try {
+                    Files.createDirectory(markupDir);
+                } catch (FileAlreadyExistsException e) {
+                    // do nothing
+                }
+                Files.copy(mainCssPath, markupDir.resolve(mainCssPath.getFileName()), StandardCopyOption.REPLACE_EXISTING);
+
+                Files.copy(tempFilepath, markupDir.resolve(tempFilepath.getFileName()), StandardCopyOption.REPLACE_EXISTING);
+            }
+        } catch (IOException e) {
+            logger.error(e.getMessage(), e);
+            // TODO Exception handling
+        }
+        return tempFilepath.toFile();
     }
 
 }

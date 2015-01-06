@@ -101,7 +101,14 @@ public class ConverterTest {
         assertTrue(!Files.exists(outputFilePath));
 
         try {
-            converter.convert(inputPaths, images, outputPath, filename, title, false);
+            converter.setInputPaths(inputPaths);
+            converter.setReplaceWithPictures(images);
+            converter.setOutputPath(outputPath);
+            converter.setFilename(filename);
+            converter.setTitle(title);
+            converter.setDebug(false);
+
+            converter.convert();
             assertTrue(Files.exists(outputFilePath));
             assertTrue(Files.isRegularFile(outputFilePath));
         } catch (Exception e) {

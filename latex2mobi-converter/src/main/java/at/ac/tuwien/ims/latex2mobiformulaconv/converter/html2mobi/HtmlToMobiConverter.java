@@ -1,7 +1,6 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi;
 
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.ExecOption;
-import org.jdom2.Document;
 
 import java.io.File;
 
@@ -33,14 +32,17 @@ import java.io.File;
  *
  * @author mauss
  *         Created: 21.05.14 00:11
- *         // TODO Documentation
+ *
+ * This interface provides the method signature for converting an HTML document
+ * to an eBook in Mobi-Format
+ *
  */
 public interface HtmlToMobiConverter extends ExecOption {
     /**
-     * // TODO Documentation
+     * Converts an HTML document
      *
-     * @param document
-     * @return
+     * @param htmlFile a JDOM representation of the HTML document which will be converted from.
+     * @return Returns the Java File object of the already written output Mobi ebook file.
      */
-    public File convertToMobi(Document document);
+    public File convertToMobi(File htmlFile);
 }

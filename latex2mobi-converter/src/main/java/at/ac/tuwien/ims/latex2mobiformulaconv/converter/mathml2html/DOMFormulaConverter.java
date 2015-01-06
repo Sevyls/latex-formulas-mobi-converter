@@ -8,7 +8,6 @@ import org.apache.log4j.Logger;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
-import org.jdom2.Text;
 import org.jdom2.input.SAXBuilder;
 
 import java.io.IOException;
@@ -48,12 +47,7 @@ import java.util.List;
  *         Time: 16:14
  */
 public class DOMFormulaConverter extends FormulaConverter {
-    private boolean debug = false;
     private static Logger logger = Logger.getLogger(DOMFormulaConverter.class);
-
-    public DOMFormulaConverter(boolean debug) {
-        this.debug = debug;
-    }
 
     @Override
     public Formula parse(int id, String latexFormula) {
@@ -69,6 +63,10 @@ public class DOMFormulaConverter extends FormulaConverter {
             Document mathml = builder.build(new StringReader(formula.getMathMl()));
 
             Element root = mathml.getRootElement();
+            if (root.getChildren().isEmpty()) {
+                return null;
+            }
+
             Iterator<Element> it = root.getChildren().iterator();
 
             while (it.hasNext()) {
@@ -97,40 +95,7 @@ public class DOMFormulaConverter extends FormulaConverter {
         // Test output
         Element div = new Element("div");
 
-
-        // Generate debug output (image, latex + mathml code)
-        if (debug) {
-            // Formula Index
-            Element index = new Element("span");
-            Text text = new Text("Formula #" + formula.getId());
-            index.addContent(text);
-            div.addContent(index);
-
-            Element br = new Element("br");
-            div.addContent(br);
-
-            // LaTeX
-            Element latex = new Element("code");
-            Text latexText = new Text(formula.getLatexCode());
-            latex.addContent(latexText);
-            div.addContent(latex);
-
-            // Image
-            Element image = new Element("code");
-            ImageFormulaConverter imageFormulaConverter = new ImageFormulaConverter();
-            Formula imageFormula = imageFormulaConverter.parse(formula.getId(), formula.getLatexCode());
-            image.addContent(imageFormula.getHtml());
-            div.addContent(image);
-
-            // MathML
-            Element mathml = new Element("code");
-            Text mathmlText = new Text(formula.getMathMl());
-            mathml.addContent(mathmlText);
-            div.addContent(mathml);
-        }
-
         div.addContent(html);
-
 
         formula.setHtml(div);
 
@@ -215,8 +180,8 @@ public class DOMFormulaConverter extends FormulaConverter {
                     mo.setLargeop(Boolean.parseBoolean(cur.getAttributeValue("largeop", "false")));
                     mo.setStretchy(Boolean.parseBoolean(cur.getAttributeValue("stretchy", "false")));
 
-                    mo.setLspace(Unit.parse(cur.getAttributeValue("lspace")));
-                    mo.setRspace(Unit.parse(cur.getAttributeValue("rspace")));
+                    mo.setLspace(Unit.parse(cur.getAttributeValue("lspace", "thickmathspace")));
+                    mo.setRspace(Unit.parse(cur.getAttributeValue("rspace", "thickmathspace")));
                     mo.setMinsize(Unit.parse(cur.getAttributeValue("minsize")));
                     mo.setMaxsize(Unit.parse(cur.getAttributeValue("maxsize")));
                 }

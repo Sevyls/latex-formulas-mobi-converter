@@ -1,19 +1,16 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi;
 
-import at.ac.tuwien.ims.latex2mobiformulaconv.utils.WorkingDirectoryResolver;
 import org.apache.commons.cli.Option;
 import org.apache.commons.exec.*;
 import org.apache.commons.io.output.WriterOutputStream;
 import org.apache.log4j.Logger;
-import org.jdom2.Document;
-import org.jdom2.output.XMLOutputter;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
-import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * The MIT License (MIT)
@@ -49,42 +46,19 @@ public class AmazonHtmlToMobiConverter implements HtmlToMobiConverter {
     private static Logger logger = Logger.getLogger(AmazonHtmlToMobiConverter.class);
 
     @Override
-    public File convertToMobi(Document document) {
+    public File convertToMobi(File htmlFile) {
         logger.debug("Enter convertToMobi()...");
 
-        if (document == null) {
+        if (htmlFile == null) {
             logger.error("Document is null, aborting...");
             System.exit(1);
         }
 
-        // Save document to temporary file
-        Path tempFilepath = null;
-
-        try {
-            //tempFilepath = Files.createTempFile("latex2mobi", ".html");
-            Path tempDir = Files.createTempDirectory("latex2mobi");
-            Path mainCssPath = WorkingDirectoryResolver.getWorkingDirectory(getClass()).resolve("main.css");
-            logger.debug("Copying main.css file to temp dir:" + mainCssPath.toAbsolutePath().toString() + " -> " + tempDir.toAbsolutePath().toString());
-            Files.copy(mainCssPath, tempDir.resolve("main.css"));
-            tempFilepath = tempDir.resolve("latex2mobi.html");
-
-            logger.debug("tempFile created at: " + tempFilepath.toAbsolutePath().toString());
-        } catch (IOException e) {
-            logger.error(e.getMessage(), e);
-            // TODO Exception handling
-        }
-
-        try {
-            Files.write(tempFilepath, new XMLOutputter().outputString(document).getBytes(Charset.forName("UTF-8")));
-        } catch (IOException e) {
-            logger.error(e.getMessage(), e);
-            // TODO Exception handling
-        }
 
 
         // TODO  read kindlegen path from running config
         CommandLine cmdLine = new CommandLine("kindlegen");
-        cmdLine.addArgument(tempFilepath.toAbsolutePath().toString());
+        cmdLine.addArgument(Paths.get(htmlFile.toURI()).toAbsolutePath().toString());
         cmdLine.addArgument("-c0");
         //cmdLine.addArgument("-locale en");
 
@@ -147,10 +121,10 @@ public class AmazonHtmlToMobiConverter implements HtmlToMobiConverter {
         // TODO evaluate Kindlegen output
         logger.debug("Kindlegen output: \n" + output);
 
-        String mobiFilename = tempFilepath.getFileName().toString().replace(".html", ".mobi").toString();
+        String mobiFilename = htmlFile.getName().toString().replace(".html", ".mobi").toString();
         logger.debug("Moving Kindlegen output file: " + mobiFilename);
 
-        Path tempMobiFilepath = tempFilepath.getParent().resolve(mobiFilename);
+        Path tempMobiFilepath = Paths.get(htmlFile.toURI()).getParent().resolve(mobiFilename);
         return tempMobiFilepath.toFile();
     }
 

@@ -62,7 +62,16 @@ public class Main {
     private static ArrayList<Path> inputPaths = new ArrayList<Path>();
     private static Path workingDirectory;
     private static Path outputPath;
+    private static boolean exportMarkup;
 
+
+    public static boolean isReplaceWithPictures() {
+        return replaceWithPictures;
+    }
+
+    public static void setReplaceWithPictures(boolean replaceWithPictures) {
+        Main.replaceWithPictures = replaceWithPictures;
+    }
 
     /**
      * Main application method, may exit on error.
@@ -82,7 +91,17 @@ public class Main {
 
         // Start conversion
         Converter converter = new Converter(workingDirectory);
-        Path resultFile = converter.convert(inputPaths, replaceWithPictures, outputPath, "LaTeX2Mobi", title, debug); // TODO title
+
+        converter.setInputPaths(inputPaths);
+        converter.setReplaceWithPictures(replaceWithPictures);
+        converter.setOutputPath(outputPath);
+        converter.setFilename("LaTeX2Mobi");  // TODO
+        converter.setTitle(title);
+        converter.setDebug(debug);
+        converter.setExportMarkup(exportMarkup);
+
+        Path resultFile = converter.convert();
+
         logger.info("Result : " + resultFile.toAbsolutePath().toString());
 
         logger.debug("main() exit.");
@@ -102,6 +121,10 @@ public class Main {
 
             if (cmd.hasOption('d')) {
                 debug = true;
+            }
+            
+            if (cmd.hasOption('m')) {
+                exportMarkup = true;
             }
 
             if (cmd.hasOption('t')) {
@@ -230,6 +253,7 @@ public class Main {
         options.addOption(inputOption);
 
         options.addOption("o", "output-dir", true, "output directory");
+        options.addOption("m", "export-markup", false, "export html markup");
         options.addOption("t", "title", true, "Document title");
         options.addOption("h", "help", false, "show this help");
         options.addOption("d", "debug", false, "show debug output");
