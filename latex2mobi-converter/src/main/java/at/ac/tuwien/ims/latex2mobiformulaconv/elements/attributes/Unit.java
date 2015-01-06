@@ -44,20 +44,29 @@ public class Unit {
     private Double number;
     private Identifier identifier;
 
+    public static final Unit INFINITY = new Unit(Double.POSITIVE_INFINITY, null);
+
     private static Logger logger = Logger.getLogger(Unit.class);
 
+    // TODO namedspace
+    // namedspace is one of "veryverythinmathspace", "verythinmathspace", "thinmathspace", "mediummathspace",
+    // "thickmathspace", "verythickmathspace", or "veryverythickmathspace"
+
     public static Unit parse(String unitText) {
+        if (unitText == null) {
+            return null;
+        }
+
         for (Identifier id : Identifier.values()) {
             if (unitText.endsWith(id.getIdentifier())) {
                 Double number = Double.parseDouble(unitText.replaceFirst(id.getIdentifier(), ""));
 
                 Unit unit = new Unit(number, id.getIdentifier());
 
-                logger.debug("Unit parsed: " + unit.toString());
                 return unit;
             }
         }
-        logger.error("Unit could not be parsed correctly");
+
         return null;
     }
 
@@ -118,6 +127,14 @@ public class Unit {
 
     @Override
     public String toString() {
-        return number.toString() + identifier.getIdentifier();
+        if (number.equals(Double.POSITIVE_INFINITY)) {
+            return "infinity";
+        }
+
+        String output = number.toString();
+        if (identifier != null) {
+            output += identifier.getIdentifier();
+        }
+        return output;
     }
 }

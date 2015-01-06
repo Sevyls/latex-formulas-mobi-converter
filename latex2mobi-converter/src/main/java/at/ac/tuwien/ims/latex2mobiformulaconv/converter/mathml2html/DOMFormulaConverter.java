@@ -3,9 +3,7 @@ package at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html;
 import at.ac.tuwien.ims.latex2mobiformulaconv.elements.*;
 import at.ac.tuwien.ims.latex2mobiformulaconv.elements.attributes.Unit;
 import at.ac.tuwien.ims.latex2mobiformulaconv.elements.literals.*;
-import at.ac.tuwien.ims.latex2mobiformulaconv.elements.operators.Integral;
 import at.ac.tuwien.ims.latex2mobiformulaconv.elements.operators.Mroot;
-import at.ac.tuwien.ims.latex2mobiformulaconv.elements.operators.Summation;
 import org.apache.log4j.Logger;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -188,7 +186,9 @@ public class DOMFormulaConverter extends FormulaConverter {
                 Mo mo;
                 String operator = cur.getText();
 
-                switch (operator) {
+
+                // TODO handling special classes
+                /*switch (operator) {
                     case "∫":
                     case "&int;":
                     case "&Integral;":
@@ -198,24 +198,28 @@ public class DOMFormulaConverter extends FormulaConverter {
                     case "&Sum;":
                         mo = new Summation();
                         break;
-                    default:
-                        mo = new Mo();
-                        mo.setOperator(operator);
+                    default:       */
+                        mo = Mo.findInDictionary(operator, cur.getAttributeValue("form", "infix"));
 
+                //}
 
-                        mo.setForm(cur.getAttributeValue("form", "infix"));
+                if (mo == null) {
+                    mo = new Mo();
+                    mo.setOperator(operator);
 
+                    // Parse attributes
+                    mo.setAccent(Boolean.parseBoolean(cur.getAttributeValue("accent", "false")));
+                    mo.setSeparator(Boolean.parseBoolean(cur.getAttributeValue("separator", "false")));
+                    mo.setFence(Boolean.parseBoolean(cur.getAttributeValue("fence", "false")));
+                    mo.setMovablelimits(Boolean.parseBoolean(cur.getAttributeValue("movablelimits", "false")));
+                    mo.setLargeop(Boolean.parseBoolean(cur.getAttributeValue("largeop", "false")));
+                    mo.setStretchy(Boolean.parseBoolean(cur.getAttributeValue("stretchy", "false")));
+
+                    mo.setLspace(Unit.parse(cur.getAttributeValue("lspace")));
+                    mo.setRspace(Unit.parse(cur.getAttributeValue("rspace")));
+                    mo.setMinsize(Unit.parse(cur.getAttributeValue("minsize")));
+                    mo.setMaxsize(Unit.parse(cur.getAttributeValue("maxsize")));
                 }
-                // Parse attributes
-                mo.setAccent(Boolean.parseBoolean(cur.getAttributeValue("accent", "false")));
-                mo.setSeparator(Boolean.parseBoolean(cur.getAttributeValue("separator", "false")));
-                mo.setFence(Boolean.parseBoolean(cur.getAttributeValue("fence", "false")));
-                mo.setMovablelimits(Boolean.parseBoolean(cur.getAttributeValue("movablelimits", "false")));
-                mo.setLargeop(Boolean.parseBoolean(cur.getAttributeValue("largeop", "false")));
-                mo.setStretchy(Boolean.parseBoolean(cur.getAttributeValue("stretchy", "false")));
-                mo.setLspace(cur.getAttributeValue("lspace"));
-                mo.setRspace(cur.getAttributeValue("rspace"));
-
                 output = mo;
                 break;
             case "mn":

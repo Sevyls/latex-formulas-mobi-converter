@@ -167,3 +167,106 @@ sub, sup {
 .mover .base {
     margin-top: 0.2em
 } */
+
+/*
+ * Following styles based on
+ * G Sample CSS Style Sheet for MathML (Non-Normative)
+ * http://www.w3.org/TR/MathML2/appendixg.html
+ */
+.math, .math[mode="inline"] {
+    display: inline;
+
+    font-style: normal;
+}
+
+.math {
+    display: block;
+    text-align: center;
+
+    font-style: normal;
+}
+
+
+/* Rules dealing with the various values of the "mathvariant" attribute: */
+
+.mathvariant-normal {
+    font-family: "Times New Roman", Courier, Garamond, serif;
+    font-weight: normal;
+    font-style: normal;
+}
+
+.mathvariant-bold {
+    font-family: "Times New Roman", Courier, Garamond, serif;
+    font-weight: bold;
+    font-style: normal;
+}
+
+.mathvariant-italic {
+    font-family: "Times New Roman", Courier, Garamond, serif;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.mathvariant-bold-italic {
+    font-family: "Times New Roman", Courier, Garamond, serif;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.mathvariant-double-struck {
+    font-family: msbm;
+    font-weight: normal;
+    font-style: normal;
+}
+
+.mathvariant-script {
+    font-family: eusb;
+    font-weight: normal;
+    font-style: normal;
+}
+
+.mathvariant-bold-script {
+    font-family: eusb;
+    font-weight: bold;
+    font-style: normal;
+}
+
+.mathvariant-fraktur {
+    font-family: eufm;
+    font-weight: normal;
+    font-style: normal;
+}
+
+.mathvariant-bold-fraktur {
+    font-family: eufm;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.mathvariant-sans-serif {
+    font-family: Arial, "Lucida Sans Unicode", Verdana, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+}
+
+.mathvariant-bold-sans-serif {
+    font-family: Arial, "Lucida Sans Unicode", Verdana, sans-serif;
+    font-weight: bold;
+    font-style: normal;
+}
+
+.mathvariant-sans-serif-italic {
+    font-family: Arial, "Lucida Sans Unicode", Verdana, sans-serif;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.mathvariant-sans-serif-bold-italic {
+    font-family: Arial, "Lucida Sans Unicode", Verdana, sans-serif;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.mathvariant-monospace {
+    font-family: monospace
+}

@@ -1,5 +1,6 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.elements;
 
+import at.ac.tuwien.ims.latex2mobiformulaconv.elements.attributes.Unit;
 import at.ac.tuwien.ims.latex2mobiformulaconv.elements.literals.Mspace;
 import at.ac.tuwien.ims.latex2mobiformulaconv.utils.WorkingDirectoryResolver;
 import org.apache.commons.lang.StringEscapeUtils;
@@ -45,12 +46,19 @@ import java.util.List;
  *         Created: 15.09.2014
  */
 public class Mo implements FormulaElement {
-    private static final String FILENAME = "mathml-operator-dictionary.xml";
     private static Logger logger = Logger.getLogger(Mo.class);
+
+    private static final String MATHML_OPERATOR_DICTIONARY_XML = "mathml-operator-dictionary.xml";
+    private static final String MATHML_CHARACTERS_BY_NAME_XML = "mathml-characters-by-name.xml";
+    private static final String MATHML_CHARACTERS_BY_UNICODE_XML = "mathml-characters-by-unicode.xml";
+
     private static HashMap<String, List<Mo>> dictionary = new HashMap<>();
+    private static HashMap<String, String> mathmlEntityMapByName = new HashMap<>();
+    private static HashMap<String, List<String>> mathmlEntityMapByUnicode = new HashMap<>();
 
-
-
+    /**
+     * Initializes MathML2 Operator dictionary & Character Entity mappings
+     */
     static {
         // initialize Operator dictionary as described in MathML2 spec
         // http://www.w3.org/TR/MathML2/appendixf.html
@@ -58,7 +66,7 @@ public class Mo implements FormulaElement {
         // Read from dictionary xml
         try {
             SAXBuilder builder = new SAXBuilder();
-            Document dictionaryXml = builder.build(WorkingDirectoryResolver.getWorkingDirectory(Mo.class).resolve(FILENAME).toFile());
+            Document dictionaryXml = builder.build(WorkingDirectoryResolver.getWorkingDirectory(Mo.class).resolve(MATHML_OPERATOR_DICTIONARY_XML).toFile());
             List<Element> operatorElements = dictionaryXml.getRootElement().getChildren();
             logger.debug("Found " + operatorElements.size() + " operators from dictionary.");
 
@@ -75,9 +83,11 @@ public class Mo implements FormulaElement {
                 element.setSeparator(Boolean.parseBoolean(moElement.getAttributeValue("separator", "false")));
                 element.setFence(Boolean.parseBoolean(moElement.getAttributeValue("fence", "false")));
 
-                element.setLspace(moElement.getAttributeValue("lspace"));
-                element.setRspace(moElement.getAttributeValue("rspace"));
+                element.setLspace(Unit.parse(moElement.getAttributeValue("lspace")));
+                element.setRspace(Unit.parse(moElement.getAttributeValue("rspace")));
 
+                element.setMinsize(Unit.parse(moElement.getAttributeValue("minsize")));
+                element.setMaxsize(Unit.parse(moElement.getAttributeValue("maxsize")));
 
 
                 // keep lists of all forms of operators
@@ -93,12 +103,113 @@ public class Mo implements FormulaElement {
         } catch (JDOMException e) {
             logger.error(e.getMessage(), e);
         } catch (FileNotFoundException e) {
-            logger.error("Missing required system file " + FILENAME);
+            logger.error("Missing required system file " + MATHML_OPERATOR_DICTIONARY_XML);
             logger.error(e.getMessage(), e);
         } catch (IOException e) {
             logger.error(e.getMessage(), e);
         }
         logger.debug("Dictionary init");
+
+        // MathML2 Character Entity Mapping by name
+        // http://www.w3.org/TR/MathML2/byalpha.html
+        try {
+            SAXBuilder builder = new SAXBuilder();
+
+            Document characterXml = builder.build(WorkingDirectoryResolver.getWorkingDirectory(Mo.class).resolve(MATHML_CHARACTERS_BY_NAME_XML).toFile());
+            List<Element> characterElements = characterXml.getRootElement().getChildren();
+
+            for (Element characterElement : characterElements) {
+                String name = characterElement.getAttributeValue("name");
+                String unicode = characterElement.getAttributeValue("unicode");
+
+                // Decode Unicode value to character, note: currently only UTF-8 values
+                char c = (char) Integer.parseInt(unicode.substring(1), 16);
+                mathmlEntityMapByName.put(name, Character.toString(c));
+            }
+            logger.debug("Character Map by Name init");
+        } catch (JDOMException e) {
+            logger.error(e.getMessage(), e);
+        } catch (FileNotFoundException e) {
+            logger.error("Missing required system file " + MATHML_CHARACTERS_BY_NAME_XML);
+            logger.error(e.getMessage(), e);
+        } catch (IOException e) {
+            logger.error(e.getMessage(), e);
+        }
+
+        // MathML2 Character Entity Mapping by Unicode
+        // http://www.w3.org/TR/MathML2/bycodes.html
+        try {
+            SAXBuilder builder = new SAXBuilder();
+
+            Document characterXml = builder.build(WorkingDirectoryResolver.getWorkingDirectory(Mo.class).resolve(MATHML_CHARACTERS_BY_UNICODE_XML).toFile());
+            List<Element> characterElements = characterXml.getRootElement().getChildren();
+
+            for (Element characterElement : characterElements) {
+                String unicode = characterElement.getAttributeValue("unicode");
+
+                // Decode Unicode value to character, note: currently only UTF-8 values
+                char c = (char) Integer.parseInt(unicode.substring(1), 16);
+
+                List<Element> nameElements = characterElement.getChildren();
+                if (nameElements.isEmpty() == false) {
+                    List<String> names = new ArrayList<>();
+                    for (Element nameTag : nameElements) {
+                        names.add(nameTag.getText());
+                    }
+                    mathmlEntityMapByUnicode.put(Character.toString(c), names);
+                }
+            }
+            logger.debug("Character Map by Unicode init");
+        } catch (JDOMException e) {
+            logger.error(e.getMessage(), e);
+        } catch (FileNotFoundException e) {
+            logger.error("Missing required system file " + MATHML_CHARACTERS_BY_UNICODE_XML);
+            logger.error(e.getMessage(), e);
+        } catch (IOException e) {
+            logger.error(e.getMessage(), e);
+        }
+    }
+
+    /**
+     * Searches for an operator inside the MathML Operator dictionary
+     * @param operator character which represents the operator
+     * @param form MathML Operator form parameter, one of "prefix", "infix" (default) or "postfix"
+     * @return Found MathML Operator object with its attributes OR null, when nothing could be found
+     */
+    public static Mo findInDictionary(String operator, String form) {
+        if (form == null) {
+            form = "infix";
+        }
+        String searchString = operator;
+        if (dictionary.containsKey(searchString) == false && mathmlEntityMapByUnicode.containsKey(searchString)) {
+            List<String> names = mathmlEntityMapByUnicode.get(searchString);
+
+            for (String name : names) {
+                if (dictionary.containsKey(name)) {
+                    searchString = name;
+                    break;
+                }
+                if (dictionary.containsKey("&" + name + ";")) {
+                    searchString = "&" + name + ";";
+                    break;
+                }
+            }
+        }
+
+        if (dictionary.containsKey(searchString)) {
+            List<Mo> list = dictionary.get(searchString);
+            if (list.size() == 1) {
+                return list.get(0);
+            }
+
+            for (Mo mo : list) {
+                if (mo.getForm().equals(form)) {
+                    return mo;
+                }
+            }
+        }
+
+        return null;
     }
 
     private String operator;
@@ -110,8 +221,28 @@ public class Mo implements FormulaElement {
     private boolean movablelimits = false;
     private boolean accent = false;
 
-    private String lspace = null;
-    private String rspace = null;
+    private Unit maxsize = new Unit(Double.POSITIVE_INFINITY, null);
+    private Unit minsize = new Unit(1.0, null);
+
+    public Unit getMaxsize() {
+        return maxsize;
+    }
+
+    public void setMaxsize(Unit maxsize) {
+        this.maxsize = maxsize;
+    }
+
+    public Unit getMinsize() {
+        return minsize;
+    }
+
+    public void setMinsize(Unit minsize) {
+        this.minsize = minsize;
+    }
+
+    private Unit lspace = null;
+    private Unit rspace = null;
+
 
     public boolean isFence() {
         return fence;
@@ -161,19 +292,19 @@ public class Mo implements FormulaElement {
         this.accent = accent;
     }
 
-    public String getLspace() {
+    public Unit getLspace() {
         return lspace;
     }
 
-    public void setLspace(String lspace) {
+    public void setLspace(Unit lspace) {
         this.lspace = lspace;
     }
 
-    public String getRspace() {
+    public Unit getRspace() {
         return rspace;
     }
 
-    public void setRspace(String rspace) {
+    public void setRspace(Unit rspace) {
         this.rspace = rspace;
     }
 
@@ -194,10 +325,26 @@ public class Mo implements FormulaElement {
     }
 
     @Override
+    public String toString() {
+        return "Mo{" +
+                "operator='" + operator + '\'' +
+                ", form='" + form + '\'' +
+                ", fence=" + fence +
+                ", stretchy=" + stretchy +
+                ", separator=" + separator +
+                ", largeop=" + largeop +
+                ", movablelimits=" + movablelimits +
+                ", accent=" + accent +
+                ", maxsize=" + maxsize +
+                ", minsize=" + minsize +
+                ", lspace=" + lspace +
+                ", rspace=" + rspace +
+                '}';
+    }
+
+    @Override
     public Element render(FormulaElement parent, List<FormulaElement> siblings) {
-        if (dictionary.containsKey(operator) == false) {
-            logger.debug("Operator not found in dictionary: " + operator);
-        }
+        logger.debug(this.toString());
 
         // Mrow default form behaviour according to W3C MathML2
         // 3.2.5.7.2 Default value of the form attribute
@@ -233,20 +380,32 @@ public class Mo implements FormulaElement {
         Element moSpan = new Element("span");
         moSpan.setAttribute("class", "mo");
 
+        String output = operator;
+        if (output.length() > 1) {
+            String entityName = output.substring(1, output.length() - 1);
+            if (mathmlEntityMapByName.containsKey(entityName)) {
+                output = mathmlEntityMapByName.get(entityName);
+            }
+        }
 
         // Spacing depends on form attribute
         String text;
-        switch (this.form) {
-            case "prefix":
-                text = " " + operator;
-                break;
-            case "postfix":
-                text = operator + " ";
-                break;
-            case "infix":
-            default:
-                text = " " + operator + " ";
-                break;
+
+        if (this.separator) {
+            text = output;
+        } else {
+            switch (this.form) {
+                case "prefix":
+                    text = " " + output;
+                    break;
+                case "postfix":
+                    text = output + " ";
+                    break;
+                case "infix":
+                default:
+                    text = " " + output + " ";
+                    break;
+            }
         }
         moSpan.addContent(text);
 
