@@ -1,6 +1,6 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit;
 
-import at.ac.tuwien.ims.latex2mobiformulaconv.elements.literals.Ms;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.token.Ms;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.log4j.Logger;
 import org.jdom2.Element;

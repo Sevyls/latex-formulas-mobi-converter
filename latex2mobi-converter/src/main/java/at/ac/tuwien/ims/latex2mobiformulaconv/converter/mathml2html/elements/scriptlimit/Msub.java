@@ -1,16 +1,9 @@
-package at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit;
+package at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.scriptlimit;
 
-import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.token.Mn;
-import org.apache.commons.lang.RandomStringUtils;
-import org.apache.log4j.Logger;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.FormulaElement;
 import org.jdom2.Element;
-import org.junit.Before;
-import org.junit.Test;
 
-import java.util.Random;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import java.util.List;
 
 /**
  * The MIT License (MIT)
@@ -39,28 +32,41 @@ import static org.junit.Assert.assertTrue;
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
  * @author Michael Auß
+ *         Created: 15.09.2014
  */
-public class MnTest extends FormulaElementTest {
-    private Mn mn;
-    private String randomText;
-
-    private static Logger logger = Logger.getLogger(MnTest.class);
-
-    @Before
-    public void setUp() throws Exception {
-        mn = new Mn();
-        randomText = RandomStringUtils.randomAscii(new Random().nextInt(32) + 1);
-        logger.debug("RandomText: " + randomText);
-        mn.setValue(randomText);
-
-        formulaElement = mn;
+public class Msub implements FormulaElement {
+    public FormulaElement getBase() {
+        return base;
     }
 
-    @Test
-    public void testDetails() throws Exception {
-        Element result = mn.render(possibleParent, null);
+    public void setBase(FormulaElement base) {
+        this.base = base;
+    }
 
-        assertEquals(randomText, result.getText());
-        assertTrue(result.getChildren().isEmpty());
+    public FormulaElement getSubscript() {
+        return subscript;
+    }
+
+    public void setSubscript(FormulaElement subscript) {
+        this.subscript = subscript;
+    }
+
+    private FormulaElement base;
+    private FormulaElement subscript;
+
+    @Override
+    public Element render(FormulaElement parent, List<FormulaElement> siblings) {
+        Element msubSpan = new Element("span");
+        msubSpan.setAttribute("class", "msub");
+
+        // Add base content
+        msubSpan.addContent(base.render(null, null));
+
+        // Add subscript content
+        Element sub = new Element("sub");
+        sub.addContent(subscript.render(null, null));
+        msubSpan.addContent(sub);
+
+        return msubSpan;
     }
 }

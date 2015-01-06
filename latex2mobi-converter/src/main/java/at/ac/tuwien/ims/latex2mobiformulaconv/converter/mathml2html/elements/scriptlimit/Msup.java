@@ -1,16 +1,9 @@
-package at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit;
+package at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.scriptlimit;
 
-import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.token.Mn;
-import org.apache.commons.lang.RandomStringUtils;
-import org.apache.log4j.Logger;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.FormulaElement;
 import org.jdom2.Element;
-import org.junit.Before;
-import org.junit.Test;
 
-import java.util.Random;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import java.util.List;
 
 /**
  * The MIT License (MIT)
@@ -39,28 +32,48 @@ import static org.junit.Assert.assertTrue;
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
  * @author Michael Auß
+ *         Created: 15.09.2014
  */
-public class MnTest extends FormulaElementTest {
-    private Mn mn;
-    private String randomText;
+public class Msup implements FormulaElement {
+    public static final char COMMAND = '_';
 
-    private static Logger logger = Logger.getLogger(MnTest.class);
-
-    @Before
-    public void setUp() throws Exception {
-        mn = new Mn();
-        randomText = RandomStringUtils.randomAscii(new Random().nextInt(32) + 1);
-        logger.debug("RandomText: " + randomText);
-        mn.setValue(randomText);
-
-        formulaElement = mn;
+    public FormulaElement getBase() {
+        return base;
     }
 
-    @Test
-    public void testDetails() throws Exception {
-        Element result = mn.render(possibleParent, null);
-
-        assertEquals(randomText, result.getText());
-        assertTrue(result.getChildren().isEmpty());
+    public void setBase(FormulaElement base) {
+        this.base = base;
     }
+
+    public FormulaElement getSuperscript() {
+        return superscript;
+    }
+
+    public void setSuperscript(FormulaElement superscript) {
+        this.superscript = superscript;
+    }
+
+    private FormulaElement base;
+    private FormulaElement superscript;
+
+    @Override
+    public Element render(FormulaElement parent, List<FormulaElement> siblings) {
+        Element msuperSpan = new Element("span");
+        msuperSpan.setAttribute("class", "msup");
+
+        // Add base content
+        if (base != null) {
+            Element baseElement = base.render(null, null);
+            msuperSpan.addContent(baseElement);
+        }
+
+        // Add superscript content
+        Element sub = new Element("sup");
+        sub.addContent(superscript.render(null, null));
+        msuperSpan.addContent(sub);
+
+        return msuperSpan;
+    }
+
+
 }

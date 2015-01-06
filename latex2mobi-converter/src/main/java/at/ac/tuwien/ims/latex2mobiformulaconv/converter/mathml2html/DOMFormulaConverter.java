@@ -1,9 +1,14 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html;
 
-import at.ac.tuwien.ims.latex2mobiformulaconv.elements.*;
-import at.ac.tuwien.ims.latex2mobiformulaconv.elements.attributes.Unit;
-import at.ac.tuwien.ims.latex2mobiformulaconv.elements.literals.*;
-import at.ac.tuwien.ims.latex2mobiformulaconv.elements.operators.Mroot;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.Formula;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.FormulaElement;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.attributes.Unit;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.layout.*;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.scriptlimit.*;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.tablesmatrices.Mtable;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.tablesmatrices.Mtd;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.tablesmatrices.Mtr;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.token.*;
 import org.apache.log4j.Logger;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -246,9 +251,7 @@ public class DOMFormulaConverter extends FormulaConverter {
             case "msqrt":
                 Mroot msqrt = new Mroot();
                 msqrt.setBase(renderElement(cur.getChildren().get(0)));
-                Mn square = new Mn();
-
-                msqrt.setIndex(square);
+                // no index
                 output = msqrt;
                 break;
             case "mroot":

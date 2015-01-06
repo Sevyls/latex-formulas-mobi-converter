@@ -1,16 +1,10 @@
-package at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit;
+package at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.tablesmatrices;
 
-import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.token.Mn;
-import org.apache.commons.lang.RandomStringUtils;
-import org.apache.log4j.Logger;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.FormulaElement;
 import org.jdom2.Element;
-import org.junit.Before;
-import org.junit.Test;
 
-import java.util.Random;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The MIT License (MIT)
@@ -38,29 +32,31 @@ import static org.junit.Assert.assertTrue;
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
- * @author Michael Auß
+ * @author mauss
+ *         Created: 20.05.14 23:36
  */
-public class MnTest extends FormulaElementTest {
-    private Mn mn;
-    private String randomText;
+public class Mtable implements FormulaElement {
+    private List<Mtr> rows = new ArrayList<Mtr>();
 
-    private static Logger logger = Logger.getLogger(MnTest.class);
-
-    @Before
-    public void setUp() throws Exception {
-        mn = new Mn();
-        randomText = RandomStringUtils.randomAscii(new Random().nextInt(32) + 1);
-        logger.debug("RandomText: " + randomText);
-        mn.setValue(randomText);
-
-        formulaElement = mn;
+    public List<Mtr> getRows() {
+        return rows;
     }
 
-    @Test
-    public void testDetails() throws Exception {
-        Element result = mn.render(possibleParent, null);
+    @Override
+    public Element render(FormulaElement parent, List<FormulaElement> siblings) {
+        Element mtableDiv = new Element("div");
+        mtableDiv.setAttribute("class", "mtable");
 
-        assertEquals(randomText, result.getText());
-        assertTrue(result.getChildren().isEmpty());
+        // create Table
+        Element table = new Element("table");
+
+        // evaluate Rows
+        for (int i = 0; i < rows.size(); i++) {
+            table.addContent(rows.get(i).render(null, null));
+        }
+
+        mtableDiv.addContent(table);
+
+        return mtableDiv;
     }
 }

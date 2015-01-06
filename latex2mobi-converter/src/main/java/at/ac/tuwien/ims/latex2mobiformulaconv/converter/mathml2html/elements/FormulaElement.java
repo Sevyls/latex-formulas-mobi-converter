@@ -1,32 +1,24 @@
-package at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit;
+package at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements;
 
-import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.token.Mn;
-import org.apache.commons.lang.RandomStringUtils;
-import org.apache.log4j.Logger;
 import org.jdom2.Element;
-import org.junit.Before;
-import org.junit.Test;
 
-import java.util.Random;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import java.util.List;
 
 /**
  * The MIT License (MIT)
  * latex2mobi -- LaTeX Formulas to Mobi Converter
  * Copyright (c) 2014 Michael Auß
- * <p/>
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * <p/>
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * <p/>
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -34,33 +26,25 @@ import static org.junit.Assert.assertTrue;
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- * <p/>
- * <p/>
+ *
+ *
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
+ *
  * @author Michael Auß
+ *         Created: 20.05.14 23:29
+ *
+ * A part of a formula which can be rendered to HTML
  */
-public class MnTest extends FormulaElementTest {
-    private Mn mn;
-    private String randomText;
+public interface FormulaElement {
 
-    private static Logger logger = Logger.getLogger(MnTest.class);
-
-    @Before
-    public void setUp() throws Exception {
-        mn = new Mn();
-        randomText = RandomStringUtils.randomAscii(new Random().nextInt(32) + 1);
-        logger.debug("RandomText: " + randomText);
-        mn.setValue(randomText);
-
-        formulaElement = mn;
-    }
-
-    @Test
-    public void testDetails() throws Exception {
-        Element result = mn.render(possibleParent, null);
-
-        assertEquals(randomText, result.getText());
-        assertTrue(result.getChildren().isEmpty());
-    }
+    /**
+     * Renders this FormulaElement to HTML.
+     * May call render() on sub-elements for recursive rendering.
+     *
+     * @return A JDOM Element which represents this FormulaElement + sub-elements (i.e. in HTML)
+     * @param parent the parent FormulaElement, use it for context only
+     * @param siblings list of sibling elements including this FormulaElement, use it for context only
+     */
+    public Element render(FormulaElement parent, List<FormulaElement> siblings);
 }

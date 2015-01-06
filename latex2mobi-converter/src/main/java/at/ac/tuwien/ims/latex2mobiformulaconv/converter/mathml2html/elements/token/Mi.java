@@ -1,16 +1,9 @@
-package at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit;
+package at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.token;
 
-import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.token.Mn;
-import org.apache.commons.lang.RandomStringUtils;
-import org.apache.log4j.Logger;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.FormulaElement;
 import org.jdom2.Element;
-import org.junit.Before;
-import org.junit.Test;
 
-import java.util.Random;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import java.util.List;
 
 /**
  * The MIT License (MIT)
@@ -39,28 +32,26 @@ import static org.junit.Assert.assertTrue;
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
  * @author Michael Auß
+ *         Date: 15.09.2014
  */
-public class MnTest extends FormulaElementTest {
-    private Mn mn;
-    private String randomText;
+public class Mi extends Token {
+    private String value;
 
-    private static Logger logger = Logger.getLogger(MnTest.class);
-
-    @Before
-    public void setUp() throws Exception {
-        mn = new Mn();
-        randomText = RandomStringUtils.randomAscii(new Random().nextInt(32) + 1);
-        logger.debug("RandomText: " + randomText);
-        mn.setValue(randomText);
-
-        formulaElement = mn;
+    @Override
+    public Object getValue() {
+        return value;
     }
 
-    @Test
-    public void testDetails() throws Exception {
-        Element result = mn.render(possibleParent, null);
+    @Override
+    public void setValue(Object value) {
+        this.value = (String) value;
+    }
 
-        assertEquals(randomText, result.getText());
-        assertTrue(result.getChildren().isEmpty());
+    @Override
+    public Element render(FormulaElement parent, List<FormulaElement> siblings) {
+        Element span = new Element("span");
+        span.setAttribute("class", "mi");
+        span.setText(value.trim());
+        return span;
     }
 }

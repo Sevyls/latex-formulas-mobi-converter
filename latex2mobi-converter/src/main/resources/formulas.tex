@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage{amsmath,amssymb}
 \usepackage{leqno}
+\usepackage{array}
 
 \begin{document}
 
@@ -43,13 +44,13 @@ $\frac{\frac{1}{x}+\frac{1}{y}}{y-z}$
 
 $^3/_7$
 
-$\newcommand*\rfrac[2]{{}^{#1}\!/_{#2}}
+$\newcommand{\rfrac}[2]{{}^{#1}\!/_{#2}}
 \rfrac{3}{7}$
 
 
 \begin{equation}
 \frac{
-    \begin{array}[b]{r}
+    \begin{array}{rr}
       \left( x_1 x_2 \right)\\
       \times \left( x'_1 x'_2 \right)
     \end{array}
@@ -95,7 +96,7 @@ $\int\limits_a^b$
 
 
 $
-( a ), [ b ], \{ c \}, | d |, \| e \|,
+( a ), [ b ], \{ c \}, |d|, \|e\|,
 \langle f \rangle, \lfloor g \rfloor,
 \lceil h \rceil, \ulcorner i \urcorner
 $
@@ -109,6 +110,8 @@ $\left\{\frac{x^2}{y^3}\right\}$
 $\left.\frac{x^3}{3}\right|_0^1$
 
 $( \big( \Big( \bigg( \Bigg($
+
+$ \big\{ \Big\{ \bigg\{ \Bigg\{$
 
 $\frac{\mathrm d}{\mathrm d x} \left( k g(x) \right)$
 

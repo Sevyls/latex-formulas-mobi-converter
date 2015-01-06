@@ -1,6 +1,5 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.snugglepkgs;
 
-import at.ac.tuwien.ims.latex2mobiformulaconv.converter.BinomHandler;
 import uk.ac.ed.ph.snuggletex.SnugglePackage;
 import uk.ac.ed.ph.snuggletex.definitions.LaTeXMode;
 import uk.ac.ed.ph.snuggletex.definitions.TextFlowContext;

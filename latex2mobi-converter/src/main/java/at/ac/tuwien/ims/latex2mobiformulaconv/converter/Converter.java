@@ -7,7 +7,7 @@ import at.ac.tuwien.ims.latex2mobiformulaconv.converter.latex2html.PandocLatexTo
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.DOMFormulaConverter;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.FormulaConverter;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.ImageFormulaConverter;
-import at.ac.tuwien.ims.latex2mobiformulaconv.elements.Formula;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.Formula;
 import at.ac.tuwien.ims.latex2mobiformulaconv.utils.WorkingDirectoryResolver;
 import org.apache.log4j.Logger;
 import org.jdom2.Document;
@@ -244,7 +244,6 @@ public class Converter {
 
 
         try {
-
             Path tempDir = Files.createTempDirectory("latex2mobi");
             Path mainCssPath = WorkingDirectoryResolver.getWorkingDirectory(getClass()).resolve("main.css");
 
@@ -252,11 +251,7 @@ public class Converter {
             Files.copy(mainCssPath, tempDir.resolve("main.css"));
             tempFilepath = tempDir.resolve("latex2mobi.html");
 
-
-
-
             logger.debug("tempFile created at: " + tempFilepath.toAbsolutePath().toString());
-
 
             Files.write(tempFilepath, new XMLOutputter().outputString(document).getBytes(Charset.forName("UTF-8")));
 

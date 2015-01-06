@@ -1,6 +1,6 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html;
 
-import at.ac.tuwien.ims.latex2mobiformulaconv.elements.Formula;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.Formula;
 import net.sourceforge.jeuclid.MathMLParserSupport;
 import net.sourceforge.jeuclid.MutableLayoutContext;
 import net.sourceforge.jeuclid.context.LayoutContextImpl;

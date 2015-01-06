@@ -1,13 +1,10 @@
-package at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit;
+package at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.layout;
 
-import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.token.Mo;
-import org.apache.commons.lang.RandomStringUtils;
-import org.apache.log4j.Logger;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.FormulaElement;
 import org.jdom2.Element;
-import org.junit.Before;
-import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The MIT License (MIT)
@@ -36,31 +33,50 @@ import static org.junit.Assert.assertEquals;
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
  * @author Michael Auß
+ *         Date: 15.09.20
  */
-public class MoTest extends FormulaElementTest {
-    private static final char[] operators = new char[]{'+', '-', '*', '%', '=', '/', '&', '<', '>', ':'};
-
-    private static Logger logger = Logger.getLogger(MoTest.class);
-    private Mo mo;
-    private String operator;
+public class Mstyle implements FormulaElement {
+    private List<FormulaElement> base = new ArrayList<>();
+    private String style;
 
 
-    @Before
-    public void setUp() throws Exception {
-        mo = new Mo();
-        formulaElement = mo;
-        operator = RandomStringUtils.random(1, operators);
-        logger.debug("Operator: " + operator);
-        mo.setOperator(operator);
-
+    public List<FormulaElement> getBase() {
+        return base;
     }
 
-    @Test
-    public void testDetails() throws Exception {
-        Element result = mo.render(possibleParent, null);
-
-        assertEquals(operator, result.getText());
+    public void setBase(List<FormulaElement> base) {
+        this.base = base;
     }
 
-    // TODO lspace + rspace tests
+    public void addBaseElement(FormulaElement element) {
+        this.base.add(element);
+    }
+
+    public String getStyle() {
+        return style;
+    }
+
+    public void setStyle(String style) {
+        this.style = style;
+    }
+
+    @Override
+    public Element render(FormulaElement parent, List<FormulaElement> siblings) {
+        Element span = new Element("span");
+
+        // set style classes
+        String cssClass = "mstyle";
+        if (style != null && style.isEmpty() == false) {
+            cssClass += " mathvariant-" + style;
+        }
+
+        span.setAttribute("class", cssClass);
+
+        if (base.isEmpty() == false) {
+            for (FormulaElement e : base) {
+                span.addContent(e.render(null, null));
+            }
+        }
+        return span;
+    }
 }

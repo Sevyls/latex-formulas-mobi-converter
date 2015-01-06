@@ -1,7 +1,7 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit;
 
-import at.ac.tuwien.ims.latex2mobiformulaconv.elements.FormulaElement;
-import at.ac.tuwien.ims.latex2mobiformulaconv.elements.Mrow;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.FormulaElement;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.layout.Mrow;
 import org.apache.commons.lang.math.RandomUtils;
 import org.apache.log4j.Logger;
 import org.jdom2.Element;

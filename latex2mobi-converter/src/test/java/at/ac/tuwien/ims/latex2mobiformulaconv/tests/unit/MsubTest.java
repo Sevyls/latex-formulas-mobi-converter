@@ -1,7 +1,7 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit;
 
-import at.ac.tuwien.ims.latex2mobiformulaconv.elements.FormulaElement;
-import at.ac.tuwien.ims.latex2mobiformulaconv.elements.Msub;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.FormulaElement;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.scriptlimit.Msub;
 import org.jdom2.Element;
 import org.junit.Before;
 import org.junit.Test;

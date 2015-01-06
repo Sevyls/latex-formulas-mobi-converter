@@ -1,16 +1,8 @@
-package at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit;
+package at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements;
 
-import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.token.Mn;
-import org.apache.commons.lang.RandomStringUtils;
-import org.apache.log4j.Logger;
 import org.jdom2.Element;
-import org.junit.Before;
-import org.junit.Test;
 
-import java.util.Random;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import java.nio.file.Path;
 
 /**
  * The MIT License (MIT)
@@ -39,28 +31,52 @@ import static org.junit.Assert.assertTrue;
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
  * @author Michael Auß
+ *         Created: 20.05.14 23:30
  */
-public class MnTest extends FormulaElementTest {
-    private Mn mn;
-    private String randomText;
+public class Formula {
+    private int id;
+    private String latexCode;
+    private Path imageFilePath;
+    private Element html;
+    private String mathMl;
 
-    private static Logger logger = Logger.getLogger(MnTest.class);
-
-    @Before
-    public void setUp() throws Exception {
-        mn = new Mn();
-        randomText = RandomStringUtils.randomAscii(new Random().nextInt(32) + 1);
-        logger.debug("RandomText: " + randomText);
-        mn.setValue(randomText);
-
-        formulaElement = mn;
+    public Element getHtml() {
+        return html;
     }
 
-    @Test
-    public void testDetails() throws Exception {
-        Element result = mn.render(possibleParent, null);
+    public void setHtml(Element html) {
+        this.html = html;
+    }
 
-        assertEquals(randomText, result.getText());
-        assertTrue(result.getChildren().isEmpty());
+    public Path getImageFilePath() {
+        return imageFilePath;
+    }
+
+    public void setImageFilePath(Path imageFilePath) {
+        this.imageFilePath = imageFilePath;
+    }
+
+    public String getMathMl() {
+        return mathMl;
+    }
+
+    public void setMathMl(String mathMl) {
+        this.mathMl = mathMl;
+    }
+
+    public String getLatexCode() {
+        return latexCode;
+    }
+
+    public void setLatexCode(String latexCode) {
+        this.latexCode = latexCode;
+    }
+
+    public Formula(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 }
