@@ -265,6 +265,7 @@ public class Converter {
                 } catch (FileAlreadyExistsException e) {
                     // do nothing
                 }
+                mainCssIs = classLoader.getResourceAsStream(MAIN_CSS_FILENAME);
                 Files.copy(mainCssIs, markupDir.resolve(MAIN_CSS_FILENAME), StandardCopyOption.REPLACE_EXISTING);
 
                 Files.copy(tempFilepath, markupDir.resolve(tempFilepath.getFileName()), StandardCopyOption.REPLACE_EXISTING);
