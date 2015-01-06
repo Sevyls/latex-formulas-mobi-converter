@@ -84,7 +84,7 @@ public class MoTest extends FormulaElementTest {
         mo.setSeparator(true);
         Element result = mo.render(possibleParent, null);
 
-        assertEquals(" " + operator + " ", result.getText());
+        assertEquals(operator, result.getText());
     }
 
 
