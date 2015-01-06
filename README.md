@@ -86,23 +86,56 @@ A short explanation about the main conversion strategy:
 
 ### 1. Main document structure conversion (without formulas)
 
-Initially pandoc converts the LaTeX input file to HTML5. 
-The complete LaTeX code will be transformed into an HTML representation, except for the formulas. 
-Pandoc will not transform the formulas, just mark them with a "LaTeX" HTML class.
+Initially pandoc converts the LaTeX document input file to HTML5.
+The complete LaTeX code will be transformed into an HTML representation, **except for the formulas**.
+We use Pandoc's options just to mark the formulas with a "LaTeX" HTML class.
+Rendering of other document parts is up to pandoc alone.
 
 ### 2. Converting all formulas from LaTeX to MathML with SnuggleTeX
 
-// TODO 
+In order to transform your LaTeX formulas for displaying inside a Mobi-/Kindle Format-Ebook,
+we have to generate markup. Best known for its presentation markup is MathML.
+This project makes heavy use of **SnuggleTeX** to parse LaTeX **Formulas** and generate MathML2.
 
-### 3. Converting all formulas from MathML to pure HTML markup and applying a static stylesheet
+#### LaTeX Support Notes
 
-// TODO 
+##### Note: SnuggleTeX only supports a subset of LaTeX:
+http://www2.ph.ed.ac.uk/snuggletex/documentation/supported-latex.html
+
+##### Note: SnuggleTeX requires clean LaTeX syntax
+
+for correct parsing!
+
+i.e.: LaTeX Command Arguments *have to be correctly surrounded by curly brackets* like:
+
+This Command works: `\newcommand{\rfrac}[2]{{}^{#1}\!/_{#2}}`
+
+**DOES NOT WORK:** `\newcommand\rfrac[2]{{}^{#1}\!/_{#2}}`
+
+### 3. Transforming all formulas from MathML to pure HTML markup and applying a static stylesheet
+
+At this step, every formula has been transformed into MathML which will be rendered to a pure HTML+CSS output.
+The converter replaces each LaTeX formula with the resulting Markup.
+
+#### Info:
+As of today the Kindle devices and apps do not support rendering of MathML of any kind.
+This software package makes reasonable assumptions for rendering MathML with the Mobi/Kindle Format *supported
+subset* of HTML5 + CSS3.
+On Kindle devices or apps, you **can not** use any JavaScript or other DOM processing languages.
+
 
 ### 4. Converting the resulting HTML document to the MOBI-Format
 
-// TODO 
+The last step for completion is the step to convert the HTML+CSS into a readable Mobi-Ebook.
+
+Note: Currently there is only an HtmlToMobiConverter-Implementation which uses Amazon's Kindlegen Executable.
 
 
-#// TODO rest of documentation.
+## Known Issues
+
+// TODO Documenation
+
+#### Trademark Notice
+Amazon, Kindle, Fire and all related logos are trademarks of Amazon.com, Inc. or its affiliates.
 
 
