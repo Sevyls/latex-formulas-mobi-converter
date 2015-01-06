@@ -210,8 +210,11 @@ public class Main {
 
     private static void usage() {
         HelpFormatter formatter = new HelpFormatter();
+
+        // Windows cmd.exe mag mein scharfes ß nicht.
+        // Grrr.... Schei? Encoding.
         String header = "LaTeX Formulas to Mobi Converter\n"
-                + "(c) 2014 by Michael Auß\n\n\n";
+                + "(c) 2014-2015 by Michael Auss\n\n\n";
         String footer = "\n\n\nThis software is open source, hosted at GitHub:\n"
                 + "https://github.com/Sevyls/latex-formulas-mobi-converter";
         formatter.printHelp("latex2mobi", header, options, footer);

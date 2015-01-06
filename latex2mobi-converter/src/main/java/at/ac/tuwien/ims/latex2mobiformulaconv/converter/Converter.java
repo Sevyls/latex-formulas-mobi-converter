@@ -8,13 +8,13 @@ import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.DOMFormulaCo
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.FormulaConverter;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.ImageFormulaConverter;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.Formula;
-import at.ac.tuwien.ims.latex2mobiformulaconv.utils.WorkingDirectoryResolver;
 import org.apache.log4j.Logger;
 import org.jdom2.Document;
 import org.jdom2.output.XMLOutputter;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
@@ -59,6 +59,7 @@ import java.util.Map;
  */
 public class Converter {
     private static Logger logger = Logger.getLogger(Converter.class);
+    private static final String MAIN_CSS_FILENAME = "main.css";
 
     // TODO resolve hard coded Implementation bindings
     private static LatexToHtmlConverter latexToHtmlConverter = new PandocLatexToHtmlConverter();
@@ -245,10 +246,12 @@ public class Converter {
 
         try {
             Path tempDir = Files.createTempDirectory("latex2mobi");
-            Path mainCssPath = WorkingDirectoryResolver.getWorkingDirectory(getClass()).resolve("main.css");
 
-            logger.debug("Copying main.css file to temp dir:" + mainCssPath.toAbsolutePath().toString() + " -> " + tempDir.toAbsolutePath().toString());
-            Files.copy(mainCssPath, tempDir.resolve("main.css"));
+            ClassLoader classLoader = getClass().getClassLoader();
+            InputStream mainCssIs = classLoader.getResourceAsStream(MAIN_CSS_FILENAME);
+
+            logger.debug("Copying main.css file to temp dir: " + tempDir.toAbsolutePath().toString());
+            Files.copy(mainCssIs, tempDir.resolve(MAIN_CSS_FILENAME));
             tempFilepath = tempDir.resolve("latex2mobi.html");
 
             logger.debug("tempFile created at: " + tempFilepath.toAbsolutePath().toString());
@@ -262,7 +265,7 @@ public class Converter {
                 } catch (FileAlreadyExistsException e) {
                     // do nothing
                 }
-                Files.copy(mainCssPath, markupDir.resolve(mainCssPath.getFileName()), StandardCopyOption.REPLACE_EXISTING);
+                Files.copy(mainCssIs, markupDir.resolve(MAIN_CSS_FILENAME), StandardCopyOption.REPLACE_EXISTING);
 
                 Files.copy(tempFilepath, markupDir.resolve(tempFilepath.getFileName()), StandardCopyOption.REPLACE_EXISTING);
             }
@@ -270,6 +273,7 @@ public class Converter {
             logger.error(e.getMessage(), e);
             // TODO Exception handling
         }
+
         return tempFilepath.toFile();
     }
 

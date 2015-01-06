@@ -3,7 +3,6 @@ package at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.to
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.FormulaElement;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.attributes.Unit;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.layout.Mrow;
-import at.ac.tuwien.ims.latex2mobiformulaconv.utils.WorkingDirectoryResolver;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.log4j.Logger;
 import org.jdom2.Document;
@@ -67,7 +66,8 @@ public class Mo implements FormulaElement {
         // Read from dictionary xml
         try {
             SAXBuilder builder = new SAXBuilder();
-            Document dictionaryXml = builder.build(WorkingDirectoryResolver.getWorkingDirectory(Mo.class).resolve(MATHML_OPERATOR_DICTIONARY_XML).toFile());
+
+            Document dictionaryXml = builder.build(FormulaElement.class.getClassLoader().getResourceAsStream(MATHML_OPERATOR_DICTIONARY_XML));
             List<Element> operatorElements = dictionaryXml.getRootElement().getChildren();
             logger.debug("Found " + operatorElements.size() + " operators from dictionary.");
 
@@ -109,6 +109,7 @@ public class Mo implements FormulaElement {
         } catch (IOException e) {
             logger.error(e.getMessage(), e);
         }
+
         logger.debug("Dictionary init");
 
         // MathML2 Character Entity Mapping by name
@@ -116,7 +117,9 @@ public class Mo implements FormulaElement {
         try {
             SAXBuilder builder = new SAXBuilder();
 
-            Document characterXml = builder.build(WorkingDirectoryResolver.getWorkingDirectory(Mo.class).resolve(MATHML_CHARACTERS_BY_NAME_XML).toFile());
+            //Document characterXml = builder.build(WorkingDirectoryResolver.getWorkingDirectory(FormulaElement.class.getClassLoader()).resolve(MATHML_CHARACTERS_BY_NAME_XML).toFile());
+
+            Document characterXml = builder.build(FormulaElement.class.getClassLoader().getResourceAsStream(MATHML_CHARACTERS_BY_NAME_XML));
             List<Element> characterElements = characterXml.getRootElement().getChildren();
 
             for (Element characterElement : characterElements) {
@@ -142,7 +145,7 @@ public class Mo implements FormulaElement {
         try {
             SAXBuilder builder = new SAXBuilder();
 
-            Document characterXml = builder.build(WorkingDirectoryResolver.getWorkingDirectory(Mo.class).resolve(MATHML_CHARACTERS_BY_UNICODE_XML).toFile());
+            Document characterXml = builder.build(FormulaElement.class.getClassLoader().getResourceAsStream(MATHML_CHARACTERS_BY_UNICODE_XML));
             List<Element> characterElements = characterXml.getRootElement().getChildren();
 
             for (Element characterElement : characterElements) {
