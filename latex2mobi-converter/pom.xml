@@ -50,6 +50,11 @@
         </developer>
     </developers>
 
+    <organization>
+        <name>Vienna University of Technology</name>
+        <url>http://www.tuwien.ac.at</url>
+    </organization>
+
     <repositories>
         <repository>
             <id>www2.ph.ed.ac.uk-releases</id>
@@ -108,12 +113,6 @@
             <artifactId>snuggletex-upconversion</artifactId>
             <version>1.2.2</version>
         </dependency>
-        <!--<dependency>
-            <groupId>uk.ac.ed.ph.snuggletex</groupId>
-            <artifactId>snuggletex-jeuclid</artifactId>
-            <version>1.2.2</version>
-        </dependency>       -->
-
 
         <dependency>
             <groupId>net.sourceforge.jeuclid</groupId>
@@ -126,6 +125,24 @@
             <version>2.3</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>4.1.4.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>4.1.4.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>4.1.4.RELEASE</version>
+        </dependency>
+
+
+        <!-- test dependencies -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -158,6 +175,12 @@
             <version>1.7.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>4.1.4.RELEASE</version>
+            <scope>test</scope>
+        </dependency>
 
 
     </dependencies>
@@ -167,10 +190,10 @@
         <system>Redmine</system>
     </issueManagement>
 
-    <organization>
-        <name>Vienna University of Technology</name>
-        <url>http://www.tuwien.ac.at</url>
-    </organization>
+    <ciManagement>
+        <system>Travis CI</system>
+        <url>https://travis-ci.org/Sevyls/latex-formulas-mobi-converter/</url>
+    </ciManagement>
 
     <scm>
         <url>https://github.com/Sevyls/latex-formulas-mobi-converter.git</url>

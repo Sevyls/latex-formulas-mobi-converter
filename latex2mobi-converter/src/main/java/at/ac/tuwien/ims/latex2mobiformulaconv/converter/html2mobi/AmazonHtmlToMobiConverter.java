@@ -40,10 +40,13 @@ import java.nio.file.Paths;
  *
  * @author mauss
  *         Created: 21.05.14 00:13
- *         // TODO Documentation
+ *
+ * Converts an HTML file with Amazon's Kindlegen executable to a Mobi ebook
  */
 public class AmazonHtmlToMobiConverter implements HtmlToMobiConverter {
     private static Logger logger = Logger.getLogger(AmazonHtmlToMobiConverter.class);
+
+    private String command = "kindlegen";
 
     @Override
     public File convertToMobi(File htmlFile) {
@@ -57,7 +60,9 @@ public class AmazonHtmlToMobiConverter implements HtmlToMobiConverter {
 
 
         // TODO  read kindlegen path from running config
-        CommandLine cmdLine = new CommandLine("kindlegen");
+
+
+        CommandLine cmdLine = new CommandLine(command);
         cmdLine.addArgument(Paths.get(htmlFile.toURI()).toAbsolutePath().toString());
         cmdLine.addArgument("-c0");
         //cmdLine.addArgument("-locale en");

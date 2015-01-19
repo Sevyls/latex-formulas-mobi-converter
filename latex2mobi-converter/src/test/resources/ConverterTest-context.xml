@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   					   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="converter" class="at.ac.tuwien.ims.latex2mobiformulaconv.converter.Converter">
+        <property name="latexToHtmlConverter" ref="latex2html-converter"/>
+        <property name="htmlToMobiConverter" ref="html2mobi-converter"/>
+    </bean>
+
+
+    <bean id="latex2html-converter"
+          class="at.ac.tuwien.ims.latex2mobiformulaconv.converter.latex2html.PandocLatexToHtmlConverter"/>
+    <bean id="html2mobi-converter"
+          class="at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi.AmazonHtmlToMobiConverter"/>
+
+    <bean id="dom-formula-converter"
+          class="at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.DOMFormulaConverter"/>
+    <bean id="image-formula-converter"
+          class="at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.ImageFormulaConverter"/>
+</beans>

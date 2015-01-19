@@ -4,11 +4,15 @@ import at.ac.tuwien.ims.latex2mobiformulaconv.converter.Converter;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi.AmazonHtmlToMobiConverter;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.latex2html.PandocLatexToHtmlConverter;
 import at.ac.tuwien.ims.latex2mobiformulaconv.utils.WorkingDirectoryResolver;
+
 import org.apache.commons.cli.*;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.log4j.Logger;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -50,6 +54,7 @@ public class Main {
     private static Logger logger = Logger.getRootLogger();
     private static PropertiesConfiguration config;
     private static Options options;
+    private static ApplicationContext applicationContext;
 
     // Flag options
     private static boolean replaceWithPictures = false;
@@ -63,15 +68,8 @@ public class Main {
     private static Path workingDirectory;
     private static Path outputPath;
     private static boolean exportMarkup;
+    private static String filename = "LaTeX2Mobi";
 
-
-    public static boolean isReplaceWithPictures() {
-        return replaceWithPictures;
-    }
-
-    public static void setReplaceWithPictures(boolean replaceWithPictures) {
-        Main.replaceWithPictures = replaceWithPictures;
-    }
 
     /**
      * Main application method, may exit on error.
@@ -83,19 +81,35 @@ public class Main {
 
         // Init
         setupWorkingDirectory();
+        logger.debug("Working directory set up to: " + workingDirectory.toAbsolutePath().toString());
+
         initializeOptions();
+
+        applicationContext = new ClassPathXmlApplicationContext("/application-context.xml");
+        logger.debug("Application context loaded.");
+
 
         // Analyse options
         parseCli(args);
+        logger.debug("CLI arguments parsed.");
+
         loadConfiguration();
+        logger.debug("Configuration loaded.");
 
         // Start conversion
-        Converter converter = new Converter(workingDirectory);
+        Converter converter;
+        if (replaceWithPictures) {
+            converter = (Converter) applicationContext.getBean("image-converter");
+        } else {
+            converter = (Converter) applicationContext.getBean("dom-converter");
+        }
+
+        converter.setWorkingDirectory(workingDirectory);
 
         converter.setInputPaths(inputPaths);
         converter.setReplaceWithPictures(replaceWithPictures);
         converter.setOutputPath(outputPath);
-        converter.setFilename("LaTeX2Mobi");  // TODO
+        converter.setFilename(filename);
         converter.setTitle(title);
         converter.setDebug(debug);
         converter.setExportMarkup(exportMarkup);
@@ -131,6 +145,10 @@ public class Main {
                 title = cmd.getOptionValue('t');
             }
 
+            if (cmd.hasOption('f')) {
+                filename = cmd.getOptionValue('f');
+            }
+
             if (cmd.hasOption('i')) {
                 String[] inputValues = cmd.getOptionValues('i');
                 for (String inputValue : inputValues) {
@@ -155,10 +173,15 @@ public class Main {
                 String outputDirectory = cmd.getOptionValue('o');
 
                 outputPath = workingDirectory.resolve(outputDirectory);
+                logger.debug("Output path: " + outputPath.toAbsolutePath().toString());
                 if (!Files.isDirectory(outputPath) && Files.isRegularFile(outputPath)) {
                     logger.error("Given output directory is a file! Exiting...");
-                    logger.debug(outputPath.toAbsolutePath().toString());
+
                     System.exit(1);
+                }
+
+                if (!Files.exists(outputPath)) {
+                    Files.createDirectory(outputPath);
                 }
 
                 if (!Files.isWritable(outputPath)) {
@@ -196,6 +219,9 @@ public class Main {
         } catch (ParseException e) {
             logger.error(e.getMessage(), e);
             // TODO Exception handling
+        } catch (IOException e) {
+            logger.error(e.getMessage(), e);
+            // TODO Exception handling
         }
     }
 
@@ -231,17 +257,18 @@ public class Main {
 
         } catch (ConfigurationException e) {
             logger.error(e.getMessage(), e);
-            // TODO Exception handling
+            logger.error("Configuration could not be loaded. Exiting...");
+            System.exit(-1);
         }
 
         if (!(defaultConfigPath.toFile().exists() && defaultConfigPath.toFile().isFile())) {
             try {
-                logger.debug("Creating empty config file in working directory...");
+                logger.info("Creating empty config file in working directory...");
                 config.save();
                 logger.debug("Saved empty configuration: " + defaultConfigPath.toAbsolutePath().toString());
             } catch (ConfigurationException e) {
+                logger.error("Default configuration file could not be saved!");
                 logger.error(e.getMessage(), e);
-                // TODO Exception handling
             }
         }
     }
@@ -254,16 +281,16 @@ public class Main {
         inputOption.setArgs(Option.UNLIMITED_VALUES);
         inputOption.setValueSeparator(',');
         options.addOption(inputOption);
-
+        options.addOption("f", "filename", true, "output filename");
         options.addOption("o", "output-dir", true, "output directory");
         options.addOption("m", "export-markup", false, "export html markup");
         options.addOption("t", "title", true, "Document title");
         options.addOption("h", "help", false, "show this help");
         options.addOption("d", "debug", false, "show debug output");
 
-        Option picturesOption = new Option("r", "replace-with-images");
+        Option picturesOption = new Option("r", "replace latex formulas with pictures, override html");
+        picturesOption.setLongOpt("replace-with-images");
         picturesOption.setArgs(0);
-        picturesOption.setDescription("replace latex formulas with pictures, override html");
         picturesOption.setRequired(false);
         options.addOption(picturesOption);
 

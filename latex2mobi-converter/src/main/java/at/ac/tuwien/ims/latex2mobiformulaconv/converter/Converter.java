@@ -1,13 +1,14 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.converter;
 
-import at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi.AmazonHtmlToMobiConverter;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi.HtmlToMobiConverter;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.latex2html.LatexToHtmlConverter;
-import at.ac.tuwien.ims.latex2mobiformulaconv.converter.latex2html.PandocLatexToHtmlConverter;
-import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.DOMFormulaConverter;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.FormulaConverter;
+
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.DOMFormulaConverter;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.ImageFormulaConverter;
+
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.Formula;
+
 import org.apache.log4j.Logger;
 import org.jdom2.Document;
 import org.jdom2.output.XMLOutputter;
@@ -60,16 +61,13 @@ import java.util.Map;
 public class Converter {
     private static Logger logger = Logger.getLogger(Converter.class);
     private static final String MAIN_CSS_FILENAME = "main.css";
+    private static final String FILE_EXTENSION = ".mobi";
 
-    // TODO resolve hard coded Implementation bindings
-    private static LatexToHtmlConverter latexToHtmlConverter = new PandocLatexToHtmlConverter();
-    private static HtmlToMobiConverter htmlToMobiConverter = new AmazonHtmlToMobiConverter();
+    private LatexToHtmlConverter latexToHtmlConverter;
+    private HtmlToMobiConverter htmlToMobiConverter;
+    private FormulaConverter formulaConverter;
 
     private Path workingDirectory;
-
-    public Converter(Path workingDirectory) {
-        this.workingDirectory = workingDirectory;
-    }
 
     /**
      *  ArrayList of input paths, only the first gets read
@@ -96,6 +94,38 @@ public class Converter {
     private String filename;
 
     private String title;
+
+    public Path getWorkingDirectory() {
+        return workingDirectory;
+    }
+
+    public void setWorkingDirectory(Path workingDirectory) {
+        this.workingDirectory = workingDirectory;
+    }
+
+    public LatexToHtmlConverter getLatexToHtmlConverter() {
+        return latexToHtmlConverter;
+    }
+
+    public void setLatexToHtmlConverter(LatexToHtmlConverter latexToHtmlConverter) {
+        this.latexToHtmlConverter = latexToHtmlConverter;
+    }
+
+    public HtmlToMobiConverter getHtmlToMobiConverter() {
+        return htmlToMobiConverter;
+    }
+
+    public void setHtmlToMobiConverter(HtmlToMobiConverter htmlToMobiConverter) {
+        this.htmlToMobiConverter = htmlToMobiConverter;
+    }
+
+    public FormulaConverter getFormulaConverter() {
+        return formulaConverter;
+    }
+
+    public void setFormulaConverter(FormulaConverter formulaConverter) {
+        this.formulaConverter = formulaConverter;
+    }
 
     public boolean isExportMarkup() {
         return exportMarkup;
@@ -172,14 +202,8 @@ public class Converter {
 
         logger.info("Parsing LaTeX formulas from resulting HTML...");
 
-        FormulaConverter formulaConverter;
-        Map<Integer, Formula> formulaMap = new HashMap<>();
 
-        if (replaceWithPictures) {
-            formulaConverter = new ImageFormulaConverter();
-        } else {
-            formulaConverter = new DOMFormulaConverter();
-        }
+        Map<Integer, Formula> formulaMap = new HashMap<>();
 
         formulaConverter.setDebug(debug);
 
@@ -215,13 +239,13 @@ public class Converter {
             // Don't overwrite files
             Path outputFilepath;
             int i = 1;
-            String replaceFilename = filename + ".mobi";
+            String replaceFilename = filename + FILE_EXTENSION;
             while (true) {
                 outputFilepath = outputPath.resolve(replaceFilename);
                 if (Files.exists(outputFilepath) == false) {
                     break;
                 }
-                replaceFilename = filename + " (" + i + ").mobi";
+                replaceFilename = filename + " (" + i + ")" + FILE_EXTENSION;
                 i++;
             }
 

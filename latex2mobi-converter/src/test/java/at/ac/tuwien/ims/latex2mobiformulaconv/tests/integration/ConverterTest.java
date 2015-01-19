@@ -1,13 +1,21 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.tests.integration;
 
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.Converter;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.FormulaConverter;
 import at.ac.tuwien.ims.latex2mobiformulaconv.tests.utils.TestUtils;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestContext;
+import org.springframework.test.context.TestContextManager;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.annotation.Resource;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -47,9 +55,14 @@ import static org.junit.Assert.fail;
  *         Integration test
  *         Tests the standard ways of running a conversion with the formulas.tex test resource
  */
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:ConverterTest-context.xml"})
 public class ConverterTest {
     private static Logger logger = Logger.getLogger(ConverterTest.class);
+
+    @Autowired
     private Converter converter;
+
     private ArrayList<Path> inputPaths;
     private Path outputPath;
     private Path outputFilePath;
@@ -59,11 +72,18 @@ public class ConverterTest {
     private final String filename = "ConverterTestFile";
     private final String ext = ".mobi";
 
+    @Resource(name = "image-formula-converter")
+    private FormulaConverter img_converter;
+
+    @Resource(name = "dom-formula-converter")
+    private FormulaConverter dom_converter;
+
     @Before
     public void setUp() throws Exception {
         workingDirectory = TestUtils.getWorkingDirectory(this.getClass());
         logger.info("Working directory: " + workingDirectory.toAbsolutePath().toString());
-        converter = new Converter(workingDirectory);
+
+        converter.setWorkingDirectory(workingDirectory);
         title = RandomStringUtils.randomAlphanumeric(64);
         logger.debug("Random title: " + title);
 
@@ -82,27 +102,29 @@ public class ConverterTest {
 
     @Test
     public void testConvertCreatesFilesWithImages() throws Exception {
-        testConvertCreatesFiles(true);
+
+        testConvertCreatesFiles(img_converter);
     }
 
     @Test
     public void testConvertCreatesFilesWithoutImages() throws Exception {
-        testConvertCreatesFiles(false);
+        testConvertCreatesFiles(dom_converter);
     }
 
     /**
      * Generic test runner
      *
-     * @param images flag for test mode - when true the formulas will get replaced by images, else by html+css
+     * @param formulaConverter an implementation of FormulaConverter interface
      * @throws Exception
      */
-    private void testConvertCreatesFiles(boolean images) throws Exception {
+    private void testConvertCreatesFiles(FormulaConverter formulaConverter) throws Exception {
+        converter.setFormulaConverter(formulaConverter);
+
         assertTrue(Files.exists(inputPaths.get(0)));
         assertTrue(!Files.exists(outputFilePath));
 
         try {
             converter.setInputPaths(inputPaths);
-            converter.setReplaceWithPictures(images);
             converter.setOutputPath(outputPath);
             converter.setFilename(filename);
             converter.setTitle(title);
@@ -131,7 +153,7 @@ public class ConverterTest {
 
         // Modify expected output file location
         outputFilePath = outputPath.resolve(filename + " (1)" + ext);
-        testConvertCreatesFiles(false);
+        testConvertCreatesFiles(dom_converter);
         assertTrue(Files.exists(existingFile));
         assertTrue(Files.exists(outputFilePath));
 
