@@ -78,20 +78,17 @@ public class Main {
      */
     public static void main(String[] args) {
         logger.debug("main() started.");
-
         // Init
         setupWorkingDirectory();
-        logger.debug("Working directory set up to: " + workingDirectory.toAbsolutePath().toString());
-
         initializeOptions();
-
-        applicationContext = new ClassPathXmlApplicationContext("/application-context.xml");
-        logger.debug("Application context loaded.");
-
-
         // Analyse options
         parseCli(args);
         logger.debug("CLI arguments parsed.");
+
+        logger.debug("Working directory set up to: " + workingDirectory.toAbsolutePath().toString());
+
+        applicationContext = new ClassPathXmlApplicationContext("/application-context.xml");
+        logger.debug("Application context loaded.");
 
         loadConfiguration();
         logger.debug("Configuration loaded.");
@@ -286,7 +283,7 @@ public class Main {
         options.addOption("m", "export-markup", false, "export html markup");
         options.addOption("t", "title", true, "Document title");
         options.addOption("h", "help", false, "show this help");
-        options.addOption("d", "debug", false, "show debug output");
+        options.addOption("d", "debug", false, "show debug output in html markup");
 
         Option picturesOption = new Option("r", "replace latex formulas with pictures, override html");
         picturesOption.setLongOpt("replace-with-images");
