@@ -35,7 +35,7 @@ Faculty of Informatics at the Vienna University of Technology.
 You need to have the Java Runtime Environment installed in order to run this software.
 Download Java here: [http://www.java.com](http://www.java.com/)
 
-### Pandoc 1.12 or higher
+### Pandoc 1.13 or higher
 This software makes great use of pandoc's LaTeX to HTML converter. 
 
 Download & install from [http://johnmacfarlane.net/pandoc/](http://johnmacfarlane.net/pandoc/)
