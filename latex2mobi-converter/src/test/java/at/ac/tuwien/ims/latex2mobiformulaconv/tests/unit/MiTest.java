@@ -49,7 +49,7 @@ public class MiTest extends FormulaElementTest {
     @Before
     public void setUp() throws Exception {
         mi = new Mi();
-        randomText = RandomStringUtils.randomAscii(new Random().nextInt(32) + 1);
+        randomText = RandomStringUtils.randomAscii(new Random().nextInt(32) + 1).trim();
         logger.debug("RandomText: " + randomText);
         mi.setValue(randomText);
 

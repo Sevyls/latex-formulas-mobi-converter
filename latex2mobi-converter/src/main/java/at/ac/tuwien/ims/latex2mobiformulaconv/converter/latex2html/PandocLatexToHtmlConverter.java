@@ -45,38 +45,17 @@ import java.util.HashMap;
  *
  * @author Michael Auß
  *         Created: 21.05.14 00:06
+ *
+ * An implementation of the LaTeX to HTML Converter interface using Pandoc
+ * Pandoc will be called with an input file be
+ * and the results will be parsed from its output file.
  */
 public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
     private static Logger logger = Logger.getLogger(PandocLatexToHtmlConverter.class);
 
-    private String includeCss(Path workingDirectory) {
-        // Load main css file
-        File mainCss = workingDirectory.resolve("main.css").toFile();
-
-        /*String css = "";
-        try {
-            css = FileUtils.readFileToString(mainCss, Charset.forName("UTF-8"));
-        } catch (IOException e) {
-            logger.error("Error reading main.css file\n" + e.getMessage(), e);
-        }
-
-        // TODO compile all css files to single string
-
-        return "<style><!--//--><![CDATA[//><!--\n" + css + "\n//--><!]]></style>";*/
-        /*
-        String linkTag = null;
-        try {
-            linkTag = "<link rel=\"stylesheet\" type=\"text/css\" href=\"" +  mainCss.toURI().toURL().toString() + "\"></link>";
-        } catch (MalformedURLException e) {
-            logger.error("Main Css file Url could not be read");
-        }
-
-        return linkTag;*/
-        return "";
-    }
 
     @Override
-    public Document convert(File tex, String title, final Path workingDirectory) {
+    public Document convert(File tex, String title) {
         logger.debug("Start convert() with file " + tex.toPath().toAbsolutePath().toString() + ", title: " + title);
 
         // TODO read pandoc path from running config
@@ -111,8 +90,9 @@ public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
         try {
             executor.execute(cmdLine, resultHandler);
         } catch (IOException e) {
+            logger.error("Pandoc's execution failed, exiting...");
             logger.error(e.getMessage(), e);
-            // TODO Exception handling
+            System.exit(-1);
         }
 
         try {
@@ -141,13 +121,17 @@ public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
         }
 
         // add html document structure to output
+        // TODO pandoc's html output depends on the operating system
+        // TODO pandoc on Mac OS X returns valid html
+
+        // pandoc on Windows returns no document markup (html, head, body)
+        // therefore we have to use a template
         String htmlOutput = "<!DOCTYPE html>\n" +
                 "<html>\n" +
                 "<head>\n" +
                 // set title
                 "<title>" + title + "</title>\n" +
                 // include css
-                //includeCss(workingDirectory) +
                 "<link rel=\"stylesheet\" type=\"text/css\" href=\"main.css\"></link>\n" +
                 "</head>\n" +
                 "<body>";

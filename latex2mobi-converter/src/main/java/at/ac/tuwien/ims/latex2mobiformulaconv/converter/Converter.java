@@ -4,9 +4,6 @@ import at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi.HtmlToMobiConv
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.latex2html.LatexToHtmlConverter;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.FormulaConverter;
 
-import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.DOMFormulaConverter;
-import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.ImageFormulaConverter;
-
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.Formula;
 
 import org.apache.log4j.Logger;
@@ -198,7 +195,7 @@ public class Converter {
 
         // Main Document conversion to HTML, without formulas
         logger.debug("Converting main document to HTML...");
-        Document document = latexToHtmlConverter.convert(inputFile, title, workingDirectory);
+        Document document = latexToHtmlConverter.convert(inputFile, title);
 
         logger.info("Parsing LaTeX formulas from resulting HTML...");
 

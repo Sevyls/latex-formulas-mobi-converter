@@ -76,7 +76,7 @@ public class PandocLatexToHtmlConverterTest {
 
     @Test
     public void testConvertLatexToHtml() throws Exception {
-        Document result = converter.convert(inputFile, title, workingDirectory);
+        Document result = converter.convert(inputFile, title);
         assertNotNull(result);
 
         Element root = result.getRootElement();

@@ -34,13 +34,16 @@ import java.nio.file.Path;
  *
  * @author mauss
  *         Created: 21.05.14 00:08
- *         // TODO Documentation
+ *
+ * Describes the basic signature of a LaTeX to HTML converter class
  */
 public interface LatexToHtmlConverter extends ExecOption {
     /**
-     * // TODO Documentation
+     * Converts a LaTeX file to HTML
      *
-     * @return
+     * @param tex The LaTeX input fiverle
+     * @param title The Document's title, for the HTML title tag
+     * @return JDOM Document object of the resulting html file
      */
-    public Document convert(File tex, String title, final Path workingDirectory);
+    public Document convert(File tex, String title);
 }
