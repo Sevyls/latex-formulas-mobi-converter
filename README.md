@@ -45,7 +45,7 @@ Download & install from [http://johnmacfarlane.net/pandoc/](http://johnmacfarlan
 ##### OR: config file
 
 Inside the config file "*configuration.properties*" you can define a permanent  
-> pandoc.exec = "file:///opt/pandoc-1.12.4.2/pandoc"
+> pandoc.exec = "file:///opt/pandoc-1.13.2/pandoc"
 
 ##### OR: CLI arguments
 
