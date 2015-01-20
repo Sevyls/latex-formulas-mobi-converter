@@ -78,3 +78,6 @@ Session.vim
 *.msi
 *.msm
 *.msp
+
+# ignore log files
+*.log

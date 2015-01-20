@@ -244,36 +244,6 @@
                 </plugins>
             </build>
         </profile>
-
-        <profile>
-            <id>mac-deploy</id>
-            <activation>
-                <os>
-                    <family>mac</family>
-                </os>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>osxappbundle-maven-plugin</artifactId>
-                        <version>1.0-alpha-2</version>
-                        <configuration>
-                            <mainClass>at.ac.tuwien.ims.latex2mobiformulaconv.app.Main</mainClass>
-                            <!--<iconfile>${basedir}/build-resources/osx/icons/application.icns</iconfile>-->
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>bundle</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
     </profiles>
 
     <build>
