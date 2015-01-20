@@ -92,7 +92,7 @@ Faculty of Informatics at the Vienna University of Technology.</p>
 Download Java here: <a href="http://www.java.com/">http://www.java.com</a></p>
 
 <h3>
-<a id="pandoc-112-or-higher" class="anchor" href="#pandoc-112-or-higher" aria-hidden="true"><span class="octicon octicon-link"></span></a>Pandoc 1.12 or higher</h3>
+<a id="pandoc-113-or-higher" class="anchor" href="#pandoc-113-or-higher" aria-hidden="true"><span class="octicon octicon-link"></span></a>Pandoc 1.13 or higher</h3>
 
 <p>This software makes great use of pandoc's LaTeX to HTML converter. </p>
 
@@ -106,7 +106,7 @@ Download Java here: <a href="http://www.java.com/">http://www.java.com</a></p>
 <p>Inside the config file "<em>configuration.properties</em>" you can define a permanent  </p>
 
 <blockquote>
-<p>pandoc.exec = "file:///opt/pandoc-1.12.4.2/pandoc"</p>
+<p>pandoc.exec = "file:///opt/pandoc-1.13.2/pandoc"</p>
 </blockquote>
 
 <h5>
@@ -215,10 +215,23 @@ On Kindle devices or apps, you <strong>can not</strong> use any JavaScript or ot
 <h2>
 <a id="known-issues" class="anchor" href="#known-issues" aria-hidden="true"><span class="octicon octicon-link"></span></a>Known Issues</h2>
 
-<p>// TODO Documenation</p>
+<h3>
+<a id="rendering-issues" class="anchor" href="#rendering-issues" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rendering issues</h3>
 
-<h4>
-<a id="trademark-notice" class="anchor" href="#trademark-notice" aria-hidden="true"><span class="octicon octicon-link"></span></a>Trademark Notice</h4>
+<ul>
+<li>LaTeX which results in MathML-Elements of munder, mover or similar</li>
+<li>Dynamically sized brackets, braces, parantheses etc., over- or underlines will not be rendered correctly</li>
+</ul>
+
+<h3>
+<a id="configuration-issues" class="anchor" href="#configuration-issues" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration issues</h3>
+
+<ul>
+<li>Executable parameters don't work (pandoc, kindlegen), you have to make them available in your system's PATH.</li>
+</ul>
+
+<h2>
+<a id="trademark-notice" class="anchor" href="#trademark-notice" aria-hidden="true"><span class="octicon octicon-link"></span></a>Trademark Notice</h2>
 
 <p>Amazon, Kindle, Fire and all related logos are trademarks of Amazon.com, Inc. or its affiliates.</p>
         </article>
