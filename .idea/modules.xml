@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/calibre-plugin/calibre-plugin.iml" filepath="$PROJECT_DIR$/calibre-plugin/calibre-plugin.iml" />
       <module fileurl="file://$PROJECT_DIR$/latex2mobi-converter/latex2mobi-converter.iml" filepath="$PROJECT_DIR$/latex2mobi-converter/latex2mobi-converter.iml" />
     </modules>
   </component>
