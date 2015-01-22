@@ -6,9 +6,9 @@
 .settings/
 
 # Intellij
-.idea/
-*.iml
-*.iws
+#.idea/
+#*.iml
+#*.iws
 ## Additional for IntelliJ
 out/
 
