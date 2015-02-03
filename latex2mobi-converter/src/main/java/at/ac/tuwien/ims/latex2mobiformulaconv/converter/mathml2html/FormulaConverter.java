@@ -15,6 +15,8 @@ import org.jdom2.xpath.XPathFactory;
 import uk.ac.ed.ph.snuggletex.*;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -69,6 +71,7 @@ public abstract class FormulaConverter {
     }
 
     private boolean debug = false;
+    protected Path tempDirPath = null;
 
     public boolean isDebug() {
         return debug;
@@ -76,6 +79,14 @@ public abstract class FormulaConverter {
 
     public void setDebug(boolean debug) {
         this.debug = debug;
+    }
+
+    public FormulaConverter() {
+        try {
+            tempDirPath = Files.createTempDirectory("latex2mobi");
+        } catch (IOException e) {
+            logger.error("Error creating temporary directory!");
+        }
     }
 
     /**
@@ -220,5 +231,9 @@ public abstract class FormulaConverter {
             }
         }
         return doc;
+    }
+
+    public Path getTempDirPath() {
+        return tempDirPath;
     }
 }

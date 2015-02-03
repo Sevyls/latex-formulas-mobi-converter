@@ -59,16 +59,17 @@ public class Main {
     // Flag options
     private static boolean replaceWithPictures = false;
     private static boolean debug = false;
+    private static boolean exportMarkup = false;
+    private static boolean noMobiConversion = false;
 
     // Value options
     private static String title = null;
+    private static String filename = "LaTeX2Mobi";
 
     // Paths
     private static ArrayList<Path> inputPaths = new ArrayList<Path>();
     private static Path workingDirectory;
     private static Path outputPath;
-    private static boolean exportMarkup;
-    private static String filename = "LaTeX2Mobi";
 
 
     /**
@@ -110,6 +111,7 @@ public class Main {
         converter.setTitle(title);
         converter.setDebug(debug);
         converter.setExportMarkup(exportMarkup);
+        converter.setNoMobiConversion(noMobiConversion);
 
         Path resultFile = converter.convert();
 
@@ -131,6 +133,7 @@ public class Main {
             }
 
             if (cmd.hasOption('d')) {
+                // Activate debug markup only - does not affect logging!
                 debug = true;
             }
             
@@ -144,6 +147,11 @@ public class Main {
 
             if (cmd.hasOption('f')) {
                 filename = cmd.getOptionValue('f');
+            }
+
+            if (cmd.hasOption('n')) {
+                exportMarkup = true; // implicit markup export
+                noMobiConversion = true;
             }
 
             if (cmd.hasOption('i')) {
@@ -281,6 +289,7 @@ public class Main {
         options.addOption("f", "filename", true, "output filename");
         options.addOption("o", "output-dir", true, "output directory");
         options.addOption("m", "export-markup", false, "export html markup");
+        options.addOption("n", "no-mobi", false, "no Mobi conversion, just markup, NOTE: makes -m implicit!");
         options.addOption("t", "title", true, "Document title");
         options.addOption("h", "help", false, "show this help");
         options.addOption("d", "debug", false, "show debug output in html markup");
