@@ -279,6 +279,10 @@ public class Converter {
 
             Files.write(tempFilepath, new XMLOutputter().outputString(document).getBytes(Charset.forName("UTF-8")));
 
+            if (debug) {
+                logger.info("Debug markup will be generated.");
+            }
+
             if (exportMarkup) {
                 Path markupDir = workingDirectory.resolve(title + "-markup");
                 try {
@@ -290,6 +294,8 @@ public class Converter {
                 Files.copy(mainCssIs, markupDir.resolve(MAIN_CSS_FILENAME), StandardCopyOption.REPLACE_EXISTING);
 
                 Files.copy(tempFilepath, markupDir.resolve(tempFilepath.getFileName()), StandardCopyOption.REPLACE_EXISTING);
+
+                logger.info("Exported markup to folder: " + markupDir.toAbsolutePath().toString());
             }
         } catch (IOException e) {
             logger.error(e.getMessage(), e);
