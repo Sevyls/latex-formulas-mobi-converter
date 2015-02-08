@@ -71,13 +71,13 @@ public class ImageFormulaConverter extends FormulaConverter {
         try {
             final org.w3c.dom.Document doc = MathMLParserSupport.parseString(formula.getMathMl());
 
-            final File outFile = Files.createTempFile("formula", ".png").toFile();
+            final File outFile = Files.createTempFile(tempDirPath, "formula", ".png").toFile();
 
             formula.setImageFilePath(outFile.toPath());
 
             // Generate Html Image tag
             Element imageTag = new Element("img");
-            imageTag.setAttribute("src", formula.getImageFilePath().toAbsolutePath().toString());
+            imageTag.setAttribute("src", formula.getImageFilePath().getFileName().toString());
             imageTag.setAttribute("alt", FORMULA_ID_PREFIX + formula.getId());
             formula.setHtml(imageTag);
 
@@ -86,7 +86,8 @@ public class ImageFormulaConverter extends FormulaConverter {
             params.setParameter(Parameter.MATHSIZE, 25f);
 
             // convert to image
-            Converter.getInstance().convert(doc, outFile, "image/png", params);
+            net.sourceforge.jeuclid.converter.Converter imageConverter = net.sourceforge.jeuclid.converter.Converter.getInstance();
+            imageConverter.convert(doc, outFile, "image/png", params);
             logger.debug("Image file created at: " + outFile.toPath().toAbsolutePath().toString());
         } catch (SAXException e1) {
             logger.error(e1.getMessage(), e1);
@@ -96,13 +97,14 @@ public class ImageFormulaConverter extends FormulaConverter {
             logger.error(e3.getMessage(), e3);
         }
 
-
         return formula;
     }
 
 
     /**
      * Replaces formula placeholders with created images
+     *
+     * @deprecated This is an old implementation and is not being used anymore.
      *
      * @param document   JDOM HTML Document with placeholders
      * @param imagePaths Filepaths of Images to be replaced
@@ -127,7 +129,7 @@ public class ImageFormulaConverter extends FormulaConverter {
             element.removeAttribute("class");
             element.removeContent();
             Element imageTag = new Element("img");
-            imageTag.setAttribute("src", imagePath.toAbsolutePath().toString());
+            imageTag.setAttribute("src", imagePath.toFile().getName());
             imageTag.setAttribute("alt", FORMULA_ID_PREFIX + id);
             element.addContent(imageTag);
         }

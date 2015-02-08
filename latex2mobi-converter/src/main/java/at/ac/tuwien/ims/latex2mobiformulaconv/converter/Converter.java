@@ -6,6 +6,8 @@ import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.FormulaConve
 
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.Formula;
 
+import org.apache.commons.io.filefilter.DirectoryFileFilter;
+import org.apache.commons.io.filefilter.FileFileFilter;
 import org.apache.log4j.Logger;
 import org.jdom2.Document;
 import org.jdom2.output.XMLOutputter;
@@ -79,6 +81,7 @@ public class Converter {
     private boolean debug = false;
 
     private boolean exportMarkup = false;
+    private boolean noMobiConversion = false;
 
     /**
      * the directory path where the result will be written to
@@ -180,6 +183,14 @@ public class Converter {
         this.inputPaths = inputPaths;
     }
 
+    public boolean isNoMobiConversion() {
+        return noMobiConversion;
+    }
+
+    public void setNoMobiConversion(boolean noMobiConversion) {
+        this.noMobiConversion = noMobiConversion;
+    }
+
     /**
      * Converts a single input file from LaTeX to Mobi
      * @return Path of the resulting File
@@ -224,35 +235,42 @@ public class Converter {
         // Saving html file
         File htmlFile = saveHtmlFile(document);
 
+        Path markupDir = null;
+        if (exportMarkup || noMobiConversion) {
+            markupDir = exportMarkup(htmlFile.toPath());
+        }
 
+        if (noMobiConversion) {
+            return markupDir.toAbsolutePath();
+        } else {
+            // Convert to MOBI format
+            logger.info("Converting completed HTML to MOBI format...");
+            File mobiFile = htmlToMobiConverter.convertToMobi(htmlFile);
 
-        // Convert to MOBI format
-        logger.info("Converting completed HTML to MOBI format...");
-        File mobiFile = htmlToMobiConverter.convertToMobi(htmlFile);
-
-        // Save file
-        Path resultFilepath = null;
-        try {
-            // Don't overwrite files
-            Path outputFilepath;
-            int i = 1;
-            String replaceFilename = filename + FILE_EXTENSION;
-            while (true) {
-                outputFilepath = outputPath.resolve(replaceFilename);
-                if (Files.exists(outputFilepath) == false) {
-                    break;
+            // Save file
+            Path resultFilepath = null;
+            try {
+                // Don't overwrite files
+                Path outputFilepath;
+                int i = 1;
+                String replaceFilename = filename + FILE_EXTENSION;
+                while (true) {
+                    outputFilepath = outputPath.resolve(replaceFilename);
+                    if (Files.exists(outputFilepath) == false) {
+                        break;
+                    }
+                    replaceFilename = filename + " (" + i + ")" + FILE_EXTENSION;
+                    i++;
                 }
-                replaceFilename = filename + " (" + i + ")" + FILE_EXTENSION;
-                i++;
+
+                resultFilepath = Files.move(mobiFile.toPath(), outputFilepath);
+                logger.debug("Mobi file moved to: " + resultFilepath.toAbsolutePath().toString());
+                return resultFilepath.toAbsolutePath();
+
+            } catch (IOException e) {
+                logger.error(e.getMessage(), e);
+                return null;
             }
-
-            resultFilepath = Files.move(mobiFile.toPath(), outputFilepath);
-            logger.debug("Mobi file moved to: " + resultFilepath.toAbsolutePath().toString());
-            return resultFilepath.toAbsolutePath();
-
-        } catch (IOException e) {
-            logger.error(e.getMessage(), e);
-            return null;
         }
     }
 
@@ -266,31 +284,28 @@ public class Converter {
 
 
         try {
-            Path tempDir = Files.createTempDirectory("latex2mobi");
+            Path tempDirPath = formulaConverter.getTempDirPath();
 
             ClassLoader classLoader = getClass().getClassLoader();
             InputStream mainCssIs = classLoader.getResourceAsStream(MAIN_CSS_FILENAME);
 
-            logger.debug("Copying main.css file to temp dir: " + tempDir.toAbsolutePath().toString());
-            Files.copy(mainCssIs, tempDir.resolve(MAIN_CSS_FILENAME));
-            tempFilepath = tempDir.resolve("latex2mobi.html");
+            logger.debug("Copying main.css file to temp dir: " + tempDirPath.toAbsolutePath().toString());
+            try {
+                Files.copy(mainCssIs, tempDirPath.resolve(MAIN_CSS_FILENAME));
+            } catch (FileAlreadyExistsException e) {
+                // do nothing
+            }
+
+            tempFilepath = tempDirPath.resolve("latex2mobi.html");
 
             logger.debug("tempFile created at: " + tempFilepath.toAbsolutePath().toString());
 
             Files.write(tempFilepath, new XMLOutputter().outputString(document).getBytes(Charset.forName("UTF-8")));
 
-            if (exportMarkup) {
-                Path markupDir = workingDirectory.resolve(title + "-markup");
-                try {
-                    Files.createDirectory(markupDir);
-                } catch (FileAlreadyExistsException e) {
-                    // do nothing
-                }
-                mainCssIs = classLoader.getResourceAsStream(MAIN_CSS_FILENAME);
-                Files.copy(mainCssIs, markupDir.resolve(MAIN_CSS_FILENAME), StandardCopyOption.REPLACE_EXISTING);
-
-                Files.copy(tempFilepath, markupDir.resolve(tempFilepath.getFileName()), StandardCopyOption.REPLACE_EXISTING);
+            if (debug) {
+                logger.info("Debug markup will be generated.");
             }
+
         } catch (IOException e) {
             logger.error(e.getMessage(), e);
             // TODO Exception handling
@@ -299,4 +314,29 @@ public class Converter {
         return tempFilepath.toFile();
     }
 
+    private Path exportMarkup(Path tempFilepath) {
+        Path markupDir = workingDirectory.resolve(title + "-markup"); // TODO rename if already exists
+        try {
+            try {
+                Files.createDirectory(markupDir);
+            } catch (FileAlreadyExistsException e) {
+                // do nothing
+            }
+
+            Path tempDirPath = tempFilepath.getParent();
+            File tempDir = tempDirPath.toFile();
+
+            // Copy all files from temp folder to the markup output folder
+            String[] files = tempDir.list(FileFileFilter.FILE);
+            for (int i = 0; i < files.length; i++) {
+                Files.copy(tempDirPath.resolve(files[i]), markupDir.resolve(files[i]), StandardCopyOption.REPLACE_EXISTING);
+            }
+
+            logger.info("Exported markup to folder: " + markupDir.toAbsolutePath().toString());
+        } catch (IOException e) {
+            logger.error("Error saving markup files: " + e.getMessage(), e);
+            return null;
+        }
+        return markupDir;
+    }
 }
