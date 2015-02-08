@@ -1,0 +1,7 @@
+LaTeX Formula Input Conversion Plugin
+=====================================
+
+Created by Michael Auß
+
+Requires calibre >= 2.19.0
+

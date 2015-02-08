@@ -2,21 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af19dff2-f604-421a-be0e-315b98413f47" name="Default" comment="Merge branch master into branch calibre-plugin">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/calibre-plugin/images/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/calibre-plugin/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/calibre-plugin/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/calibre-plugin/about.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/calibre-plugin/config.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/calibre-plugin/main.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/calibre-plugin/plugin-import-name-interface_demo.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/calibre-plugin/ui.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/.gitignore" afterPath="$PROJECT_DIR$/latex2mobi-converter/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/Converter.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/Converter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/FormulaConverter.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/FormulaConverter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/ImageFormulaConverter.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/ImageFormulaConverter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/app/Main.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/app/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/pom.xml" afterPath="$PROJECT_DIR$/latex2mobi-converter/pom.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/calibre-plugin/src/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/calibre-plugin/src/plugin-import-name-latexformulasconverter.txt" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/calibre-plugin/__init__.py" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/calibre-plugin/about.txt" afterPath="$PROJECT_DIR$/calibre-plugin/src/about.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/calibre-plugin/config.py" afterPath="$PROJECT_DIR$/calibre-plugin/src/config.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/calibre-plugin/images/icon.png" afterPath="$PROJECT_DIR$/calibre-plugin/src/images/icon.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/calibre-plugin/main.py" afterPath="$PROJECT_DIR$/calibre-plugin/src/main.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/calibre-plugin/plugin-import-name-interface_demo.txt" afterPath="$PROJECT_DIR$/calibre-plugin/src/Makefile" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/calibre-plugin/ui.py" afterPath="$PROJECT_DIR$/calibre-plugin/src/ui.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/calibre-plugin/.gitignore" afterPath="$PROJECT_DIR$/calibre-plugin/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/calibre-plugin/calibre-plugin.iml" afterPath="$PROJECT_DIR$/calibre-plugin/calibre-plugin.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="latex-formulas-mobi-converter.iws" />
@@ -44,11 +40,71 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/calibre-plugin/src/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.43220338" vertical-offset="3690" max-vertical-offset="27666">
-              <caret line="222" column="43" selection-start-line="222" selection-start-column="43" selection-end-line="222" selection-end-column="43" />
+            <state vertical-scroll-proportion="0.29801324" vertical-offset="0" max-vertical-offset="906">
+              <caret line="15" column="35" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ui.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/calibre-plugin/src/ui.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1386">
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="about.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/calibre-plugin/src/about.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="234">
+              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/calibre-plugin/src/config.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="846">
+              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="plugin-import-name-latexformulasconverter.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/calibre-plugin/src/plugin-import-name-latexformulasconverter.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="108">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/calibre-plugin/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2862">
+              <caret line="0" column="12" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="calibre-plugin.iml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/calibre-plugin/calibre-plugin.iml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="414">
+              <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -88,6 +144,11 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/latex2mobi-converter/.gitignore" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
+        <option value="$PROJECT_DIR$/calibre-plugin/__init__.py" />
+        <option value="$PROJECT_DIR$/calibre-plugin/.gitignore" />
+        <option value="$PROJECT_DIR$/calibre-plugin/src/about.txt" />
+        <option value="$PROJECT_DIR$/calibre-plugin/src/Makefile" />
+        <option value="$PROJECT_DIR$/calibre-plugin/src/__init__.py" />
       </list>
     </option>
   </component>
@@ -286,6 +347,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="latex-formulas-mobi-converter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="calibre-plugin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -299,7 +374,7 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="/usr/bin/python" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/calibre-plugin/calibre-src/src" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -329,8 +404,14 @@
     <property name="jdk.selected.PYTHON_MODULE" value="Python 2.7.8 (/usr/bin/python)" />
     <property name="ignore_missing_gitignore" value="true" />
   </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings />
+    </option>
+  </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/calibre-plugin/src" />
       <recent name="$PROJECT_DIR$/latex2mobi-converter/src/test/resources" />
     </key>
   </component>
@@ -974,7 +1055,7 @@
       <workItem from="1421695461238" duration="15456000" />
       <workItem from="1421883383241" duration="338000" />
       <workItem from="1421883771386" duration="2018000" />
-      <workItem from="1423414738905" duration="154000" />
+      <workItem from="1423414738905" duration="2947000" />
     </task>
     <task id="LOCAL-00001" summary="Add spring beans config, Add filename option to Main app">
       <created>1421705433191</created>
@@ -1010,7 +1091,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20511000" />
+    <option name="totallyTimeSpent" value="23304000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1045,26 +1126,26 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5005359" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17802198" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41868132" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32417583" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33736265" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24969475" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35042736" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35042736" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25641027" sideWeight="0.4994641" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.4994641" order="0" side_tool="false" content_ui="combo" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1096,7 +1177,9 @@
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="antWorkspaceConfiguration">
@@ -1104,101 +1187,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/app/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3366" max-vertical-offset="5328">
-          <caret line="203" column="50" selection-start-line="203" selection-start-column="50" selection-end-line="203" selection-end-column="50" />
-          <folding>
-            <marker date="1423414775208" expanded="false" signature="-1:-1" placeholder="&lt;~&gt;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/FormulaElementTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="852" max-vertical-offset="1422">
-          <caret line="85" column="5" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="144" max-vertical-offset="6678">
-          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/latex2html/LatexToHtmlConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="348" max-vertical-offset="918">
-          <caret line="30" column="7" selection-start-line="30" selection-start-column="7" selection-end-line="30" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Mn.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="456" max-vertical-offset="1026">
-          <caret line="45" column="24" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/latex2html/PandocLatexToHtmlConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="548" max-vertical-offset="3024">
-          <caret line="57" column="38" selection-start-line="57" selection-start-column="38" selection-end-line="57" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/Converter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2448" max-vertical-offset="4446">
-          <caret line="197" column="0" selection-start-line="197" selection-start-column="0" selection-end-line="197" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#4970#4971#0" expanded="false" />
-            <element signature="e#5167#5168#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/app/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3366" max-vertical-offset="5166">
-          <caret line="203" column="50" selection-start-line="203" selection-start-column="50" selection-end-line="203" selection-end-column="50" />
-          <folding>
-            <marker date="1423414775208" expanded="false" signature="-1:-1" placeholder="&lt;~&gt;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/utils/WorkingDirectoryResolver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="316" max-vertical-offset="1188">
-          <caret line="46" column="21" selection-start-line="46" selection-start-column="21" selection-end-line="46" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/FormulaElementTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="852" max-vertical-offset="1422">
-          <caret line="85" column="5" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/latex2mobi-converter/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="144" max-vertical-offset="6678">
@@ -1472,14 +1460,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/calibre-plugin/calibre-plugin.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="570">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/test.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34736842" vertical-offset="0" max-vertical-offset="570">
@@ -1506,8 +1486,80 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43220338" vertical-offset="3690" max-vertical-offset="27666">
+        <state vertical-scroll-proportion="0.35172415" vertical-offset="3690" max-vertical-offset="27666">
           <caret line="222" column="43" selection-start-line="222" selection-start-column="43" selection-end-line="222" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/calibre-plugin/src/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1986755" vertical-offset="0" max-vertical-offset="3096">
+          <caret line="10" column="55" selection-start-line="10" selection-start-column="55" selection-end-line="10" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/calibre-plugin/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2862">
+          <caret line="0" column="12" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/calibre-plugin/calibre-plugin.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="414">
+          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/calibre-plugin/src/plugin-import-name-latexformulasconverter.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="906">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/calibre-plugin/src/ui.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1386">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/calibre-plugin/src/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="846">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/calibre-plugin/src/about.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="234">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/calibre-plugin/src/Makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.01986755" vertical-offset="0" max-vertical-offset="906">
+          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/calibre-plugin/src/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29801324" vertical-offset="0" max-vertical-offset="906">
+          <caret line="15" column="35" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
           <folding />
         </state>
       </provider>
@@ -1515,9 +1567,81 @@
   </component>
   <component name="masterDetails">
     <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Spring</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Python 2.7.8 (/usr/bin/python) interpreter library</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>calibre-plugin</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
       <state key="ProjectJDKs.UI">
         <settings>
           <last-edited>1.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: aopalliance:aopalliance:1.0</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
