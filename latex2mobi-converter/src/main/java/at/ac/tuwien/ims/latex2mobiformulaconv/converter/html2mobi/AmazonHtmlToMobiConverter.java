@@ -38,15 +38,16 @@ import java.nio.file.Paths;
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
+ * Converts an HTML file with Amazon's Kindlegen executable to a Mobi ebook
+ *
  * @author mauss
  *         Created: 21.05.14 00:13
- *
- * Converts an HTML file with Amazon's Kindlegen executable to a Mobi ebook
  */
 public class AmazonHtmlToMobiConverter implements HtmlToMobiConverter {
     private static Logger logger = Logger.getLogger(AmazonHtmlToMobiConverter.class);
 
     private String command = "kindlegen";
+    private Path execPath = null;
 
     @Override
     public File convertToMobi(File htmlFile) {
@@ -57,12 +58,14 @@ public class AmazonHtmlToMobiConverter implements HtmlToMobiConverter {
             System.exit(1);
         }
 
+        CommandLine cmdLine;
+        if (execPath != null) {
+            cmdLine = new CommandLine(execPath.toFile());
+        } else {
+            cmdLine = new CommandLine(command);
+        }
 
-
-        // TODO  read kindlegen path from running config
-
-
-        CommandLine cmdLine = new CommandLine(command);
+        // Run configuration
         cmdLine.addArgument(Paths.get(htmlFile.toURI()).toAbsolutePath().toString());
         cmdLine.addArgument("-c0");
         //cmdLine.addArgument("-locale en");
@@ -85,8 +88,9 @@ public class AmazonHtmlToMobiConverter implements HtmlToMobiConverter {
         try {
             executor.execute(cmdLine, resultHandler);
         } catch (IOException e) {
+            logger.error("Kindlegen execution failed to execute:");
             logger.error(e.getMessage(), e);
-            // TODO Exception handling
+            System.exit(-1);
         }
 
         try {
@@ -109,8 +113,8 @@ public class AmazonHtmlToMobiConverter implements HtmlToMobiConverter {
             }
 
         } catch (InterruptedException e) {
+            logger.error("Kindlegen's execution got interrupted: ");
             logger.error(e.getMessage(), e);
-            // TODO Exception handling
         }
 
         String output = "";
@@ -119,8 +123,9 @@ public class AmazonHtmlToMobiConverter implements HtmlToMobiConverter {
             writer.close();
 
         } catch (IOException e) {
+            logger.error("Error reading kindlegen's output from buffer:");
             logger.error(e.getMessage(), e);
-            // TODO Exception handling
+
         }
 
         // TODO evaluate Kindlegen output
@@ -139,5 +144,10 @@ public class AmazonHtmlToMobiConverter implements HtmlToMobiConverter {
         Option option = new Option("k", "kindlegen-exec", true, "Amazon KindleGen executable location");
         option.setArgs(1);
         return option;
+    }
+
+    @Override
+    public void setExecPath(Path execPath) {
+        this.execPath = execPath;
     }
 }

@@ -2,6 +2,8 @@ package at.ac.tuwien.ims.latex2mobiformulaconv.converter;
 
 import org.apache.commons.cli.Option;
 
+import java.nio.file.Path;
+
 /**
  * The MIT License (MIT)
  * latex2mobi -- LaTeX Formulas to Mobi Converter
@@ -28,10 +30,12 @@ import org.apache.commons.cli.Option;
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
- * @author mauss
- *         Created: 06.06.14 22:48
- *         <p/>
- *         Creating an Apache Commons CLI Option for a runtime-depending executable
+ * Creating an Apache Commons CLI Option for a runtime-depending executable
+ *
+ * Created: 06.06.14 22:48
+ *
+ * @author Michael Auß
+ *
  */
 public interface ExecOption {
     /**
@@ -40,5 +44,12 @@ public interface ExecOption {
      * @return the configured Option object
      */
     public Option getExecOption();
+
+    /**
+     * Provides a setter method for the path to an executable
+     *
+     * @param execPath An absolute path for the executable
+     */
+    public void setExecPath(Path execPath);
 
 }

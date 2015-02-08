@@ -3,6 +3,7 @@ package at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi;
 import org.apache.commons.cli.Option;
 
 import java.io.File;
+import java.nio.file.Path;
 
 /**
  * The MIT License (MIT)
@@ -30,10 +31,14 @@ import java.io.File;
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
+ * Converts HTML to Mobi by using the Calibre CLI
+ *
  * @author mauss
  *         Created: 21.05.14 00:12
  */
 public class CalibreHtmlToMobiConverter implements HtmlToMobiConverter {
+    private Path execPath = null;
+
     @Override
     public File convertToMobi(File htmlFile) {
         // TODO implement
@@ -42,8 +47,11 @@ public class CalibreHtmlToMobiConverter implements HtmlToMobiConverter {
 
     @Override
     public Option getExecOption() {
-        // new Option("c", "calibre-exec", true, "Calibre executable location")
-        // TODO implement
-        return null;
+        return new Option("c", "calibre-exec", true, "Calibre executable location");
+    }
+
+    @Override
+    public void setExecPath(Path execPath) {
+        this.execPath = execPath;
     }
 }

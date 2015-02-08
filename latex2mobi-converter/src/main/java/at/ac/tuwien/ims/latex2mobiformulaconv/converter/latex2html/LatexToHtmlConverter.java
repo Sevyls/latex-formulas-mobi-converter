@@ -32,16 +32,16 @@ import java.nio.file.Path;
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
+ * Describes the basic signature of a LaTeX to HTML converter class
+ *
  * @author mauss
  *         Created: 21.05.14 00:08
- *
- * Describes the basic signature of a LaTeX to HTML converter class
  */
 public interface LatexToHtmlConverter extends ExecOption {
     /**
      * Converts a LaTeX file to HTML
      *
-     * @param tex The LaTeX input fiverle
+     * @param tex The LaTeX input file
      * @param title The Document's title, for the HTML title tag
      * @return JDOM Document object of the resulting html file
      */

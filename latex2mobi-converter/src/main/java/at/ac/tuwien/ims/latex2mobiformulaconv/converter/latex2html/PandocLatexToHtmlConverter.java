@@ -53,13 +53,23 @@ import java.util.HashMap;
 public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
     private static Logger logger = Logger.getLogger(PandocLatexToHtmlConverter.class);
 
+    private Path execPath = null;
+
 
     @Override
     public Document convert(File tex, String title) {
         logger.debug("Start convert() with file " + tex.toPath().toAbsolutePath().toString() + ", title: " + title);
 
-        // TODO read pandoc path from running config
-        CommandLine cmdLine = new CommandLine("pandoc");
+        CommandLine cmdLine;
+        if (execPath != null) {
+            // Run the configured pandoc executable
+            logger.info("Pandoc will be run from: " + execPath.toString());
+            cmdLine = new CommandLine(execPath.toFile());
+        } else {
+            // Run in system PATH environment
+            logger.info("Pandoc will be run within the PATH variable.");
+            cmdLine = new CommandLine("pandoc");
+        }
 
         cmdLine.addArgument("--from=latex");
         cmdLine.addArgument("--to=html5");
@@ -173,5 +183,10 @@ public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
         Option pandocOption = new Option("p", "pandoc-exec", true, "pandoc executable location");
         pandocOption.setArgs(1);
         return pandocOption;
+    }
+
+    @Override
+    public void setExecPath(Path execPath) {
+        this.execPath = execPath;
     }
 }

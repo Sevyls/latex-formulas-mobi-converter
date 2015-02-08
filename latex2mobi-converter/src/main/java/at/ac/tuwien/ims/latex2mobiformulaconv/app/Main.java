@@ -2,7 +2,11 @@ package at.ac.tuwien.ims.latex2mobiformulaconv.app;
 
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.Converter;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi.AmazonHtmlToMobiConverter;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi.HtmlToMobiConverter;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.latex2html.LatexToHtmlConverter;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.latex2html.PandocLatexToHtmlConverter;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.DOMFormulaConverter;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.FormulaConverter;
 import at.ac.tuwien.ims.latex2mobiformulaconv.utils.WorkingDirectoryResolver;
 
 import org.apache.commons.cli.*;
@@ -14,6 +18,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -207,14 +212,25 @@ public class Main {
                 replaceWithPictures = true;
             }
 
-            /*// Executable configuration
-            if (cmd.hasOption(latexToHtmlConverter.getExecOption().getOpt())) {
+            // Executable configuration
+            if (cmd.hasOption(((LatexToHtmlConverter) applicationContext.getBean("latex2html-converter")).getExecOption().getOpt())) {
                 // TODO Pandoc executable handling
             }
 
-            if (cmd.hasOption(htmlToMobiConverter.getExecOption().getOpt())) {
-                // TODO KindleGen executable handling
-            }   */
+            HtmlToMobiConverter htmlToMobiConverter = (HtmlToMobiConverter) applicationContext.getBean("html2mobi-converter");
+            Option htmlToMobiOption = htmlToMobiConverter.getExecOption();
+            if (cmd.hasOption(htmlToMobiOption.getOpt())) {
+                String execValue = cmd.getOptionValue(htmlToMobiOption.getOpt());
+                logger.info("HTML to Mobi Executable argument was given: " + execValue);
+                try {
+                    Path execPath = Paths.get(execValue);
+
+                    // TODO KindleGen executable handling
+                } catch (InvalidPathException e) {
+                    logger.error("Invalid path given for --" + htmlToMobiOption.getLongOpt() + " <" + htmlToMobiOption.getArgName() + ">");
+                    logger.error("I will try to use your system's PATH variable...");
+                }
+            }
 
 
         } catch (MissingOptionException m) {
@@ -300,7 +316,10 @@ public class Main {
         picturesOption.setRequired(false);
         options.addOption(picturesOption);
 
-        options.addOption(new PandocLatexToHtmlConverter().getExecOption());
-        options.addOption(new AmazonHtmlToMobiConverter().getExecOption());
+        options.addOption(((LatexToHtmlConverter) applicationContext.getBean("latex2html-converter")).getExecOption());
+        options.addOption(((HtmlToMobiConverter) applicationContext.getBean("html2mobi-converter")).getExecOption());
+
+
+
     }
 }
