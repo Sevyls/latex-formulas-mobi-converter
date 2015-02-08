@@ -85,6 +85,7 @@ public class Main {
     public static void main(String[] args) {
         logger.debug("main() started.");
         // Init
+        applicationContext = new ClassPathXmlApplicationContext("/application-context.xml");
         setupWorkingDirectory();
         initializeOptions();
         // Analyse options
@@ -93,7 +94,7 @@ public class Main {
 
         logger.debug("Working directory set up to: " + workingDirectory.toAbsolutePath().toString());
 
-        applicationContext = new ClassPathXmlApplicationContext("/application-context.xml");
+
         logger.debug("Application context loaded.");
 
         loadConfiguration();
@@ -234,7 +235,11 @@ public class Main {
 
 
         } catch (MissingOptionException m) {
-            logger.warn(m.getMessage());
+            logger.error(m.getMessage());
+            usage();
+            System.exit(1);
+        } catch (MissingArgumentException a) {
+            logger.error(a.getMessage());
             usage();
             System.exit(1);
         } catch (ParseException e) {
@@ -300,8 +305,10 @@ public class Main {
         Option inputOption = new Option("i", "inputPaths", true, "inputPaths file");
         inputOption.setRequired(true);
         inputOption.setArgs(Option.UNLIMITED_VALUES);
+        inputOption.setOptionalArg(false);
         inputOption.setValueSeparator(',');
         options.addOption(inputOption);
+
         options.addOption("f", "filename", true, "output filename");
         options.addOption("o", "output-dir", true, "output directory");
         options.addOption("m", "export-markup", false, "export html markup");
@@ -316,10 +323,8 @@ public class Main {
         picturesOption.setRequired(false);
         options.addOption(picturesOption);
 
+        // implementation specific options
         options.addOption(((LatexToHtmlConverter) applicationContext.getBean("latex2html-converter")).getExecOption());
         options.addOption(((HtmlToMobiConverter) applicationContext.getBean("html2mobi-converter")).getExecOption());
-
-
-
     }
 }
