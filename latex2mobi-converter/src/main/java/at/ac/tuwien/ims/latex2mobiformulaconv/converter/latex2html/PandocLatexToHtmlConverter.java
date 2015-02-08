@@ -115,9 +115,9 @@ public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
 
                 String exceptionKlass = executeException.getCause().getClass().getCanonicalName();
                 String exceptionMessage = executeException.getCause().getMessage();
-                if (exceptionMessage.contains("Cannot run program \"pandoc\"")) {
+
+                if (exceptionKlass.endsWith("IOException") || exceptionMessage.contains("Cannot run program \"pandoc\"")) {
                     logger.error("Pandoc could not be found! Exiting...");
-                    logger.error("Please make sure that pandoc is installed on your system and available in the PATH variable");
                     logger.debug(executeException);
                     System.exit(1);
                 }

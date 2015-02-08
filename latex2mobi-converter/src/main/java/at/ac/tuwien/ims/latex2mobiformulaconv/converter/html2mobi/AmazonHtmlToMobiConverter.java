@@ -60,8 +60,12 @@ public class AmazonHtmlToMobiConverter implements HtmlToMobiConverter {
 
         CommandLine cmdLine;
         if (execPath != null) {
+            // Run the configured kindlegen executable
+            logger.info("Kindlegen will be run from: " + execPath.toString());
             cmdLine = new CommandLine(execPath.toFile());
         } else {
+            // Run in system PATH environment
+            logger.info("Kindlegen will be run within the PATH variable.");
             cmdLine = new CommandLine(command);
         }
 
@@ -103,9 +107,8 @@ public class AmazonHtmlToMobiConverter implements HtmlToMobiConverter {
 
                 String exceptionKlass = executeException.getCause().getClass().getCanonicalName();
                 String exceptionMessage = executeException.getCause().getMessage();
-                if (exceptionMessage.contains("Cannot run program \"kindlegen\"")) {
+                if (exceptionKlass.endsWith("IOException") || exceptionMessage.contains("Cannot run program \"kindlegen\"")) {
                     logger.error("Kindlegen could not be run! Exiting...");
-                    logger.error("Please make sure that Kindlegen is installed and available in the PATH variable!");
                     logger.debug(executeException);
                     System.exit(1);
                 }

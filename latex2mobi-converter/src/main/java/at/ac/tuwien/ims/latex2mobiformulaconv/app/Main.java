@@ -214,8 +214,12 @@ public class Main {
             }
 
             // Executable configuration
-            if (cmd.hasOption(((LatexToHtmlConverter) applicationContext.getBean("latex2html-converter")).getExecOption().getOpt())) {
-                // TODO Pandoc executable handling
+            LatexToHtmlConverter latexToHtmlConverter = (LatexToHtmlConverter) applicationContext.getBean("latex2html-converter");
+            if (cmd.hasOption(latexToHtmlConverter.getExecOption().getOpt())) {
+                String execValue = cmd.getOptionValue(latexToHtmlConverter.getExecOption().getOpt());
+                logger.info("LaTeX to HTML Executable argument was given: " + execValue);
+                Path execPath = Paths.get(execValue);
+                latexToHtmlConverter.setExecPath(execPath);
             }
 
             HtmlToMobiConverter htmlToMobiConverter = (HtmlToMobiConverter) applicationContext.getBean("html2mobi-converter");
@@ -225,8 +229,7 @@ public class Main {
                 logger.info("HTML to Mobi Executable argument was given: " + execValue);
                 try {
                     Path execPath = Paths.get(execValue);
-
-                    // TODO KindleGen executable handling
+                    htmlToMobiConverter.setExecPath(execPath);
                 } catch (InvalidPathException e) {
                     logger.error("Invalid path given for --" + htmlToMobiOption.getLongOpt() + " <" + htmlToMobiOption.getArgName() + ">");
                     logger.error("I will try to use your system's PATH variable...");
