@@ -145,4 +145,3 @@ Note: Currently there is only an HtmlToMobiConverter-Implementation which uses A
 ## Trademark Notice
 Amazon, Kindle, Fire and all related logos are trademarks of Amazon.com, Inc. or its affiliates.
 
-
