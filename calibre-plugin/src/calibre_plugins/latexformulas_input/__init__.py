@@ -35,11 +35,32 @@ class LaTexFormulasInputPlugin(InputFormatPlugin):
         )
     )
 
-    # TODO config widget
-    # def gui_configuration_widget(self, parent, get_option_by_name,
-    #                             get_option_help, db, book_id=None):
-    #    from calibre_plugins.latexformulas_input import PluginWidget
-    #    return PluginWidget(parent, get_option_by_name, get_option_help, db, book_id)
+    def is_customizable(self):
+        '''
+        This method must return True to enable customization via
+        Preferences->Plugins
+        '''
+        return True
+
+
+    def config_widget(self):
+        # TODO config widget
+        return None
+
+
+    def save_settings(self, config_widget):
+        # TODO
+        return None
+
+
+    def gui_configuration_widget(self, parent, get_option_by_name,
+                                 get_option_help, db, book_id=None):
+        from calibre_plugins.latexformulas_input.latexformulas_input import PluginWidget
+
+        return PluginWidget(parent, get_option_by_name, get_option_help, db, book_id)
+
+    def customization_help(self, gui=False):
+        return 'TODO customization_help'
 
     def convert(self, stream, options, file_ext, log, accelerators):
         log('Enter convert() ...')
