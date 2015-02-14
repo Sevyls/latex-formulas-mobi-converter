@@ -315,7 +315,14 @@ public class Converter {
     }
 
     private Path exportMarkup(Path tempFilepath) {
-        Path markupDir = workingDirectory.resolve(title + "-markup"); // TODO rename if already exists
+        Path resultPath;
+        if (outputPath != null) {
+            resultPath = outputPath;
+        } else {
+            resultPath = workingDirectory;
+        }
+
+        Path markupDir = resultPath.resolve(title + "-markup"); // TODO rename if already exists
         try {
             try {
                 Files.createDirectory(markupDir);

@@ -3,7 +3,7 @@
 from __future__ import (unicode_literals, division, absolute_import,
                         print_function)
 
-__license__   = 'GPL v3'
+__license__ = 'GPL v3'
 __copyright__ = '2011, Kovid Goyal <kovid@kovidgoyal.net>'
 __docformat__ = 'restructuredtext en'
 
@@ -21,8 +21,8 @@ prefs = JSONConfig('plugins/interface_demo')
 # Set defaults
 prefs.defaults['hello_world_msg'] = 'Hello, World!'
 
-class ConfigWidget(QWidget):
 
+class ConfigWidget(QWidget):
     def __init__(self):
         QWidget.__init__(self)
         self.l = QHBoxLayout()

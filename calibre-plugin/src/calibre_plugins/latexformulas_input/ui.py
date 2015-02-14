@@ -3,7 +3,7 @@
 from __future__ import (unicode_literals, division, absolute_import,
                         print_function)
 
-__license__   = 'GPL v3'
+__license__ = 'GPL v3'
 __copyright__ = '2011, Kovid Goyal <kovid@kovidgoyal.net>'
 __docformat__ = 'restructuredtext en'
 
@@ -17,8 +17,8 @@ if False:
 from calibre.gui2.actions import InterfaceAction
 from calibre_plugins.interface_demo.main import DemoDialog
 
-class InterfacePlugin(InterfaceAction):
 
+class InterfacePlugin(InterfaceAction):
     name = 'Interface Plugin Demo'
 
     # Declare the main action associated with this plugin
@@ -26,7 +26,7 @@ class InterfacePlugin(InterfaceAction):
     # shortcut. Remember that currently calibre has no central management for
     # keyboard shortcuts, so try to use an unusual/unused shortcut.
     action_spec = ('Interface Plugin Demo', None,
-            'Run the Interface Plugin Demo', 'Ctrl+Shift+F1')
+                   'Run the Interface Plugin Demo', 'Ctrl+Shift+F1')
 
     def genesis(self):
         # This method is called once per plugin, do initial setup here

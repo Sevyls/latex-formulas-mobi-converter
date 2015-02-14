@@ -7,6 +7,8 @@ import org.jdom2.Element;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Random;
+
 import static org.junit.Assert.*;
 
 /**
@@ -49,7 +51,7 @@ public class MsTest extends FormulaElementTest {
     @Before
     public void setUp() throws Exception {
         ms = new Ms();
-        randomString = RandomStringUtils.randomAscii(32);
+        randomString = RandomStringUtils.randomAscii(new Random().nextInt(32) + 1).trim();
         logger.debug("Random string:\n" + randomString);
 
         ms.setValue(whitespace + randomString + whitespace);

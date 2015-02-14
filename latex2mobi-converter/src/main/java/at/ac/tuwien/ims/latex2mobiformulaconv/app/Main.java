@@ -183,7 +183,8 @@ public class Main {
             if (cmd.hasOption('o')) {
                 String outputDirectory = cmd.getOptionValue('o');
 
-                outputPath = workingDirectory.resolve(outputDirectory);
+                //outputPath = workingDirectory.resolve(outputDirectory);
+                outputPath = Paths.get(outputDirectory).toAbsolutePath();
                 logger.debug("Output path: " + outputPath.toAbsolutePath().toString());
                 if (!Files.isDirectory(outputPath) && Files.isRegularFile(outputPath)) {
                     logger.error("Given output directory is a file! Exiting...");
