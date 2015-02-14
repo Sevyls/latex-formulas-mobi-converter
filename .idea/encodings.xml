@@ -2,7 +2,10 @@
 <project version="4">
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
     <file url="file://$PROJECT_DIR$/NOTICE" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/calibre-plugin/src/calibre_plugins/latexformulas_input/latex2mobi-converter-0.5.0.jar" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/calibre-plugin/src/calibre_plugins/latexformulas_input/latex2mobi-converter-0.5.1.jar" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/calibre-plugin/src/calibre_plugins/latexformulas_input/latex2mobi-converter-0.5.1.jar" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/calibre-plugin/src/calibre_plugins/latexformulas_input/latex2mobi-converter-0.5.1.jar" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/latex2mobi-converter" charset="UTF-8" />
   </component>
 </project>
-

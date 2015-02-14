@@ -13,6 +13,7 @@ class PluginWidget(Widget):
     ICON = None  # TODO ?
     HELP = ''  # TODO
 
+
     def __init__(self, parent, get_option, get_help, db=None, book_id=None):
         import traceback
 
