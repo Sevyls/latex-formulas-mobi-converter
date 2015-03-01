@@ -5,15 +5,11 @@ from __future__ import (unicode_literals, division, absolute_import,
 
 import os
 
-from lxml import html
-from lxml.html.builder import (
-    HTML, HEAD, TITLE, BODY, LINK, META, P, SPAN, BR, DIV, SUP, A, DT, DL, DD, H1)
-
 from calibre import guess_type
 from calibre.customize.conversion import InputFormatPlugin
 from calibre.ebooks.metadata.opf2 import OPFCreator
 
-JAR_FILENAME = 'latex2mobi-converter-0.5.1.jar'
+JAR_FILENAME = 'latex2mobi-converter.jar'  # TODO build
 
 class LaTexFormulasInputPlugin(InputFormatPlugin):
     name = 'LaTeX Formula Conversion Plugin'
@@ -24,28 +20,25 @@ class LaTexFormulasInputPlugin(InputFormatPlugin):
     minimum_calibre_version = (2, 19, 0)
     file_types = set(['tex'])
 
+    java_exec = 'java'
+    pandoc_exec = 'pandoc'
+
     plugin_dir = ''
 
-
-
-    # Empty html page for test purposes
-    html = HTML(
-        HEAD(
-            META(charset='utf-8'),
-            TITLE('Testoutput'),
-            LINK(rel='stylesheet', type='text/css', href='main.css'),
-        ),
-        BODY(
-            H1('Stubbed test output'),
-        )
-    )
+    actual_plugin = 'calibre_plugins.latexformulas_input:LaTexFormulasInputPlugin'
 
     def initialize(self):
-        # print('Initializing...')
-        #print('Plugin path: ' + self.plugin_path)
-
         self.plugin_dir = os.path.abspath(os.path.join(self.plugin_path, os.path.pardir))
-        #print("Plugin directory: " + plugin_dir)
+        from calibre_plugins.latexformulas_input.config import prefs
+        if not prefs['java_exec']:
+            print('java_exec not set in configuration! trying auto-configuration...')
+            try:
+                # Usually java sets a JAVA_HOME variable
+                self.java_exec = os.path.join(os.getenv('JAVA_HOME'), 'bin', 'java')
+                prefs['java_exec'] = unicode(self.java_exec)
+            except KeyError:
+                # if not the last resort is the PATH environment...
+                self.java_exec = 'java'
 
         # extract latex2mobi jar from plugin zip to plugin directory
         jar_file = get_resources(JAR_FILENAME)
@@ -61,14 +54,27 @@ class LaTexFormulasInputPlugin(InputFormatPlugin):
 
 
     def config_widget(self):
-        # TODO config widget
-        return None
+        from calibre_plugins.latexformulas_input.config import ConfigWidget
+        return ConfigWidget()
 
 
     def save_settings(self, config_widget):
-        # TODO
-        return None
+        '''
+        Save the settings specified by the user with config_widget.
 
+        :param config_widget: The widget returned by :meth:`config_widget`.
+        '''
+        config_widget.save_settings()
+
+        # Apply the changes
+        self.apply_settings()
+
+    def apply_settings(self):
+        from calibre_plugins.latexformulas_input.config import prefs
+        # In an actual non trivial plugin, you would probably need to
+        # do something based on the settings in prefs
+        print('java_exec: ' + prefs['java_exec'])
+        print('pandoc_exec: ' + prefs['pandoc_exec'])
 
     # TODO GUI Configuration?
     # def gui_configuration_widget(self, parent, get_option_by_name,
@@ -91,32 +97,16 @@ class LaTexFormulasInputPlugin(InputFormatPlugin):
         from subprocess import check_output, STDOUT, CalledProcessError
 
         try:
-            log.debug(check_output(['java', '-jar', os.path.join(self.plugin_dir, JAR_FILENAME), '-i', stream.name,
-                                    '-n', '-o', dest_dir], stderr=STDOUT))
+            log.debug(check_output([self.java_exec, '-jar', os.path.join(self.plugin_dir, JAR_FILENAME), '-i', stream.name,
+                                    '-n', '-o', dest_dir], stderr=STDOUT))  # TODO pandoc exec argument if configured
         except CalledProcessError as e:
             log.debug(e.returncode)
             log.debug(e.cmd)
             log.debug(e.output)
 
-
         opf = OPFCreator(dest_dir, mi)
-
-        # Currently this produces just a test html page
-        # log.debug('Convert test HTML to raw output')
-        #raw = html.tostring(self.html, encoding='utf-8', doctype='<!DOCTYPE html>')
-        #rawOutputPath = os.path.join(dest_dir, 'index.html')
-        #log.debug('Write raw to output file to: ' + rawOutputPath)
-        #with open(rawOutputPath, 'wb') as f:
-        #    f.write(raw)
-
-
-
-
-        # TODO copy/move output files to dest_dir
-
         markup_dir = dest_dir + os.path.sep + os.path.basename(stream.name) + '-markup'
         log.debug('Markup-dir: ' + markup_dir)
-
         log.debug('CreateManifestFromFilesIn()')
 
         opf.create_manifest_from_files_in([markup_dir])
@@ -131,7 +121,6 @@ class LaTexFormulasInputPlugin(InputFormatPlugin):
                 log.debug('Guess type result: ' + item.media_type)
 
         log.debug('Create_spine()')
-
         opf.create_spine([os.path.basename(markup_dir) + os.path.sep + 'latex2mobi.html'])
 
         output_path = os.path.join(dest_dir, 'metadata.opf')
@@ -140,4 +129,3 @@ class LaTexFormulasInputPlugin(InputFormatPlugin):
 
         log('Exit convert() ...')
         return output_path
-
