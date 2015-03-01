@@ -73,7 +73,7 @@ public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
 
         cmdLine.addArgument("--from=latex");
         cmdLine.addArgument("--to=html5");
-        cmdLine.addArgument("--asciimathml");
+        cmdLine.addArgument("--asciimathml"); // With this option, pandoc does not render latex formulas
 
         cmdLine.addArgument("${file}");
 
@@ -84,7 +84,7 @@ public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
 
         DefaultExecuteResultHandler resultHandler = new DefaultExecuteResultHandler();
 
-        ExecuteWatchdog watchdog = new ExecuteWatchdog(60 * 1000);
+        ExecuteWatchdog watchdog = new ExecuteWatchdog(60 * 1000); // TODO make configurable
         Executor executor = new DefaultExecutor();
         executor.setExitValue(1);
         executor.setWatchdog(watchdog);
