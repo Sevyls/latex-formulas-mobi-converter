@@ -138,10 +138,6 @@ Note: Currently there is only an HtmlToMobiConverter-Implementation which uses A
 * LaTeX which results in MathML-Elements of munder, mover or similar
 * Dynamically sized brackets, braces, parantheses etc., over- or underlines will not be rendered correctly
 
-### Configuration issues
-
-* Executable parameters don't work (pandoc, kindlegen), you have to make them available in your system's PATH.
-
 ## Trademark Notice
 Amazon, Kindle, Fire and all related logos are trademarks of Amazon.com, Inc. or its affiliates.
 
