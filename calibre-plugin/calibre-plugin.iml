@@ -27,12 +27,5 @@
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Django" />
-    <option name="TEMPLATE_FOLDERS">
-      <list>
-        <option value="$MODULE_DIR$/calibre-src/src/calibre/ebooks/lrf/html/demo" />
-        <option value="$MODULE_DIR$/calibre-src/src/calibre/ebooks/oeb/polish/tests" />
-        <option value="$MODULE_DIR$/calibre-src/src/calibre/ebooks/oeb/display/test-cfi" />
-      </list>
-    </option>
   </component>
 </module>

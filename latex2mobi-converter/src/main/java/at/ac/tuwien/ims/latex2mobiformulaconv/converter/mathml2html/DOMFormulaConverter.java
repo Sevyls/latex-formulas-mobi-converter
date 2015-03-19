@@ -47,6 +47,9 @@ import java.util.List;
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
+ * Converts formulas from MathML to a HTML+CSS based representation
+ * Implements @see FormulaConverter
+ *
  * @author Michael Auß
  *         Date: 17.08.14
  *         Time: 16:14

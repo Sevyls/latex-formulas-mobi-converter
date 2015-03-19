@@ -33,7 +33,12 @@ import java.util.Map;
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
- * @author mauss
+ * This registry provides custom SnugglePackages for supporting more LaTeX syntax or change
+ * default behaviour of SnuggleTeX
+ *
+ * See http://snuggletex.sourceforge.net/maven/apidocs/uk/ac/ed/ph/snuggletex/SnugglePackage.html for API reference
+ *
+ * @author Michael Auß
  *         Created: 13.07.14 17:05
  */
 public class SnugglePackageRegistry {
@@ -44,12 +49,20 @@ public class SnugglePackageRegistry {
         configure();
     }
 
+    /**
+     * Add another SnugglePackage to the registry.
+     * There will not be any kind of duplicate check.
+     *
+     * @param klass    The class of the implementing package
+     * @param provider an instance of the class
+     */
     public static void register(Class klass, SnugglePackageProvider provider) {
         providerMap.put(klass, provider.provide());
     }
 
     /**
      * static configuration for SnugglePackages
+     * quasi-builtin packages are registered here
      */
     private static void configure() {
         register(Modulo.class, new Modulo());
