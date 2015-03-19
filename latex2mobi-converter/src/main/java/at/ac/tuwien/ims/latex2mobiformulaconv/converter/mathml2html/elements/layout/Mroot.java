@@ -33,10 +33,11 @@ import java.util.List;
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
+ * Rendering for mroot & msqrt MathML Elements
+ *
  * @author Michael Auß
  *         Created: 21.05.14 00:03
  *
- * Rendering for mroot & msqrt MathML Elements
  */
 public class Mroot extends Mo {
     private FormulaElement base;
@@ -64,7 +65,7 @@ public class Mroot extends Mo {
         Element mrootSpan = new Element("span");
         mrootSpan.setAttribute("class", "mroot");
 
-        // index
+        // TODO rename index to correct name "degree"
         if (index != null) {
             Element indexSpan = new Element("span");
             indexSpan.setAttribute("class", "mroot-index");

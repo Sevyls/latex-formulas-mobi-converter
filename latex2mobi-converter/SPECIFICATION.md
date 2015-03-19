@@ -1,6 +1,8 @@
 # latex2mobi - LaTeX Formulas syntax support
 ##### Michael Auß - March 1st, 2015
 
+## Introduction
+
 This document describes the currently supported LaTeX formula elements and their supported & unsupported features and properties.
 
 This software uses Pandoc for converting the main LaTeX document elements into HTML.
@@ -77,7 +79,11 @@ See details at
 
 ## Roots
 
+Roots are fully supported - constructed by a the root character ``√`` in Unicode, an overline for the roots base und an optional superscript for the root's degree.
 
+``\sqrt{x}`` - square root without an explicit degree
+
+``\sqrt[n]{x}`` - n-th root with explicit degree - note that SnuggleTeX requires the correct syntax of brackets for the sqrt command's arguments to work properly.
 
 ## Sums
 
