@@ -19,41 +19,65 @@ Additionally this project adds some SnugglePackages, which add support for addit
 
 This would be the main starting point to add even more syntax support or modify current behaviour.
 
+This project includes a test file "formulas.tex" and a reference PDF converted file "formulas.pdf".
+Based on the content of this file, this specification describes the support of mathematical notation elements in common categories.
+
 ## Symbols
 
-TODO
+This project builds on the extraordinary support of Unicode in all the used third party software, including Pandoc, SnuggleTeX, Amazon Kindlegen and Calibre.
+Whereever possible output will be represented as Unicode encoded characters. Amazon's Kindle devices and Kindlegen software support most of the vast charsets Unicode describes.
+
+
 
 ### Greek letters
 
-TODO
+The whole greek letters command list is supported by SnuggleTeX and will result in a conversion to correct Unicode characters.
+For more have a look at http://www2.ph.ed.ac.uk/snuggletex/documentation/math-mode.html under "Greek Letters"
 
 ### Variant Characters
 
 TODO
 
-### Plusminus sign
+### Binary operators
 
-TODO
+Common mathematical binary operators are supported by SnuggleTeX, for a full list find it at http://www2.ph.ed.ac.uk/snuggletex/documentation/math-mode.html
 
-## Powers
+Additionally the Modulo operator "mod" was added by this software as a SnugglePackage.
 
-TODO
+## Exponent / Powers 
+
+``x^2`` - basically a superscript, supported by the corresponding HTML tag ``<sup>``
+
 
 ## Indices
 
-TODO
+``n_1`` - basically a subscript, supported by the corresponding HTML tag ``<sub>``
+
+Note: The positioning and size of exponents and indexes in relation to the base have been altered from the standard values in order to keep it readable for complex formulas.
 
 ## Accents
 
-TODO
+SnuggleTeX supports a limited, but common list of accented characters, which are mapped to the corresponding Unicode representation. 
+See more at http://www2.ph.ed.ac.uk/snuggletex/documentation/text-mode.html
+
+There are a few examples inside the formulas.tex, which are currently not supported - especially the multistroked accents.
+Some others are being composed with Powers/Exponent notation with additional styling in MathML and result in overlapping output on the Kindle devices. (Vectors)
 
 ## Fractions
 
-TODO
+Fractions are fully supported, rendering of nominator and denominator results in a dynamic resizing. This is necessary especically for inline formulas.
+This leads to readability issues when multiple levels of fractions are used, depending on the complexity of the formulas displayed within the fractions parts.
+
+``\frac{n!}{k!(n-k)!}`` - this example represents the basic accepted syntax of "New style fractions" - SnuggleTeX requires correct use of the curly brackets for the nominator and denominator arguments.
+Old style fractions with ``\over`` are not supported by latex2mobi.
+
+
+
+See details at
 
 ## Roots
 
-TODO
+
 
 ## Sums
 
@@ -62,6 +86,11 @@ TODO
 ## Integrals
 
 TODO
+
+## Trigonomic, logarithmic, limits and other mathematical functions
+
+Common mathematical functions are supported, see details under heading "Mathematical functions" at
+http://www2.ph.ed.ac.uk/snuggletex/documentation/math-mode.html
 
 ## Brackets, braces and delimiters
 
