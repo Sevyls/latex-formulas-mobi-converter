@@ -129,3 +129,5 @@ TODO
 ## Formula Numbering
 
 TODO
+
+## Defining new commands

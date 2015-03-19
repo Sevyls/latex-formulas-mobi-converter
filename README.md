@@ -99,6 +99,8 @@ This project makes heavy use of **SnuggleTeX** to parse LaTeX **Formulas** and g
 
 #### LaTeX Support Notes
 
+For details see SPECIFICATION.md in latex2mobi-converter directory!
+
 ##### Note: SnuggleTeX only supports a subset of LaTeX:
 http://www2.ph.ed.ac.uk/snuggletex/documentation/supported-latex.html
 
