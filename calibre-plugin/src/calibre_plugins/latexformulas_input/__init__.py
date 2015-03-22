@@ -96,9 +96,17 @@ class LaTexFormulasInputPlugin(InputFormatPlugin):
         # call latex2mobi with markup output only
         from subprocess import check_output, STDOUT, CalledProcessError
 
+        args = [self.java_exec, '-jar', os.path.join(self.plugin_dir, JAR_FILENAME), '-i', stream.name,
+                '-n', '-o', dest_dir]
+
+        from calibre_plugins.latexformulas_input.config import prefs
+
+        if prefs['pandoc_exec'] != None and prefs['pandoc_exec'] != '':
+            args.append('-p')
+            args.append(prefs['pandoc_exec'])
+
         try:
-            log.debug(check_output([self.java_exec, '-jar', os.path.join(self.plugin_dir, JAR_FILENAME), '-i', stream.name,
-                                    '-n', '-o', dest_dir], stderr=STDOUT))  # TODO pandoc exec argument if configured
+            log.debug(check_output(args, stderr=STDOUT))
         except CalledProcessError as e:
             log.debug(e.returncode)
             log.debug(e.cmd)
