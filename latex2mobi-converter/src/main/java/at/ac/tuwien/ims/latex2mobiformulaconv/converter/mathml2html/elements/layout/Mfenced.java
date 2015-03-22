@@ -1,6 +1,7 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.layout;
 
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.FormulaElement;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.tablesmatrices.Mtable;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.token.Mo;
 import org.jdom2.Element;
 
@@ -103,6 +104,16 @@ public class Mfenced implements FormulaElement {
 
         // Content
         if (content.isEmpty() == false) {
+
+            // if this is a fenced table or matrix, just render the content element
+            // pass information about the fence via parent reference
+            if (content.size() == 1 &&
+                    content.get(0) instanceof Mtable) {
+                Mtable fencedTableOrMatrix = (Mtable) content.get(0);
+                return fencedTableOrMatrix.render(this, null);
+            }
+
+
             String tempSeparators = separators.replaceAll(" ", "");
 
             for (int i = 0; i < content.size(); i++) {

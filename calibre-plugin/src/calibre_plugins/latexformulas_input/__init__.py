@@ -16,7 +16,7 @@ class LaTexFormulasInputPlugin(InputFormatPlugin):
     description = 'TODO Description'
     supported_platforms = ['windows', 'osx', 'linux']
     author = 'Michael Auß'
-    version = (0, 0, 1)
+    version = (0, 6, 0)
     minimum_calibre_version = (2, 19, 0)
     file_types = set(['tex'])
 

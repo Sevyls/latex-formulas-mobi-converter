@@ -1,6 +1,7 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.tablesmatrices;
 
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.FormulaElement;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.layout.Mfenced;
 import org.jdom2.Element;
 
 import java.util.ArrayList;
@@ -32,7 +33,9 @@ import java.util.List;
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
- * @author mauss
+ * Renders a table or matrix, as described in MathML 2.0 specification (mtable tag)
+ *
+ * @author Michael Auß
  *         Created: 20.05.14 23:36
  */
 public class Mtable implements FormulaElement {
@@ -49,6 +52,27 @@ public class Mtable implements FormulaElement {
 
         // create Table
         Element table = new Element("table");
+
+        // Matrix / Table parenthesis
+        if (parent != null && parent instanceof Mfenced) {
+            Mfenced mfenced = (Mfenced) parent;
+            if (mfenced.getOpened().equals("(") && mfenced.getClosed().equals(")")) {
+                table.setAttribute("class", "pmatrix");
+            }
+            if (mfenced.getOpened().equals("[") && mfenced.getClosed().equals("]")) {
+                table.setAttribute("class", "bmatrix");
+            }
+            if (mfenced.getOpened().equals("{") && mfenced.getClosed().equals("}")) {
+                table.setAttribute("class", "Bmatrix");
+            }
+            if (mfenced.getOpened().equals("|") && mfenced.getClosed().equals("|")) {
+                table.setAttribute("class", "vmatrix");
+            }
+            if (mfenced.getOpened().equals("∥") && mfenced.getClosed().equals("∥")) {
+                table.setAttribute("class", "Vmatrix");
+            }
+
+        }
 
         // evaluate Rows
         for (int i = 0; i < rows.size(); i++) {

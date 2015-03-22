@@ -125,6 +125,79 @@ sub, sup {
     text-align: center;
 }
 
+table.pmatrix {
+    border-left: 0.2ex solid black;
+    border-right: 0.2ex solid black;
+    border-radius: 0.5ex;
+    padding-left: 0.2ex;
+    padding-right: 0.2ex;
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+}
+
+table.vmatrix {
+    border-left: 0.2ex solid black;
+    border-right: 0.2ex solid black;
+    padding-left: 0.2ex;
+    padding-right: 0.2ex;
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+}
+
+table.Vmatrix {
+    border-left: 0.4ex double black;
+    border-right: 0.4ex double black;
+    padding-left: 0.2ex;
+    padding-right: 0.2ex;
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+}
+
+.bmatrix {
+    position: relative;
+    padding-left: 0.2ex;
+    padding-right: 0.2ex;
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+}
+
+.bmatrix:before {
+    content: " ";
+    position: absolute;
+    border-left: 0.2ex solid black;
+    border-top: 0.2ex solid black;
+    border-bottom: 0.2ex solid black;
+    padding-left: 0.2em;
+    top: -0.2em;
+    bottom: -0.2em;
+    left: -0.1em;
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+}
+
+.bmatrix:after {
+    content: " ";
+    position: absolute;
+    border-right: 0.2ex solid black;
+    border-top: 0.2ex solid black;
+    border-bottom: 0.2ex solid black;
+    padding-right: 0.2em;
+    top: -0.2em;
+    bottom: -0.2em;
+    right: -0.1em;
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+}
+
+
 .munder .underscript, .mover .overscript{
     text-align: center;
     height: 0;
@@ -138,14 +211,6 @@ sub, sup {
     display: inline-block;
 }
 
-.integral + sup + sub, .integral + sup {
-    color: red;
-}
-
-.integral + .msubsup > sup + sub, .integral + .msubsup > sup {
-    color: red;
-}
-
 .msub .mo, .msup .mo {
     padding-left: 0em!important;
     padding-right: 0em!important;
@@ -156,23 +221,6 @@ sub, sup {
     display: none;
 }
 
-
-/*
-.mover {
-    margin-top: -1.2em;
-}
-
-.munder {
-    margin-bottom: 1.2em;
-}
-
-.mover .overscript, .munder .underscript {
-     height: 0.1em;
-}
-
-.mover .base {
-    margin-top: 0.2em
-} */
 
 /*
  * Following styles based on

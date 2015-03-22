@@ -76,6 +76,11 @@ public class MfencedTest extends FormulaElementTest {
     }
 
     @Test
+    public void testMtableContent() throws Exception {
+        // TODO
+    }
+
+    @Test
     public void testRenderContentListWithSeparators() throws Exception {
         int count = new Random().nextInt(31) + 2;
         logger.debug("Content list length: " + count);
