@@ -34,5 +34,22 @@ https://github.com/Sevyls/latex-formulas-mobi-converter/releases/download/v0.6.0
 2. Add your pandoc executable to the system's `PATH` variable
 
 
+# Build 
+
+This project comes with a simple Makefile.
+
+## Requirements
+
+* Java JDK 7 or above
+* Maven 3.x
+* Calibre
+
+For producing a standalone zip file, run ``make build-zip``
+
+This will build a latex2mobi jar with Maven and zips it into ``calibre-plugin/build``
+
+For debugging purposes run ``make install`` and ``make debug-gui`` to start Calibre in debug mode.
+
+Note: Calibre binaries must be in the PATH variable
 
 
