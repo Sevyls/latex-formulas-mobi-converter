@@ -18,7 +18,6 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
-<<<<<<< HEAD
  * The MIT License (MIT)
  * latex2mobi -- LaTeX Formulas to Mobi Converter
  * Copyright (c) 2014 Michael Auß
@@ -43,9 +42,6 @@ import java.util.List;
  * <p/>
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
-=======
- *
->>>>>>> origin/master
  *
  * @author Michael Auß
  * Created: 01.04.2015
