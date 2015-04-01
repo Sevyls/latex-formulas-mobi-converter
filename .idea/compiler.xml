@@ -22,7 +22,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="java" />
         <module name="latex2mobi-converter" />
       </profile>
     </annotationProcessing>
@@ -31,4 +30,3 @@
     </bytecodeTargetLevel>
   </component>
 </project>
-
