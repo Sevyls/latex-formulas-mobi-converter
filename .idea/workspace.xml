@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af19dff2-f604-421a-be0e-315b98413f47" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/SPECIFICATION.md" afterPath="$PROJECT_DIR$/latex2mobi-converter/SPECIFICATION.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/resources/formulas.tex" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/resources/formulas.tex" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/resources/main.css" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/resources/main.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -49,10 +47,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SPECIFICATION.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SPECIFICATION.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/latex2mobi-converter/SPECIFICATION.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5253165">
+            <state vertical-scroll-proportion="-8.586206">
               <caret line="138" column="0" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
               <folding />
             </state>
@@ -75,11 +73,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/resources/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.805169">
+              <caret line="38" column="19" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -146,8 +144,8 @@
         <option value="$PROJECT_DIR$/calibre-plugin/src/Makefile" />
         <option value="$PROJECT_DIR$/calibre-plugin/src/calibre_plugins/latexformulas_input/__init__.py" />
         <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/resources/formulas.tex" />
-        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/resources/main.css" />
         <option value="$PROJECT_DIR$/latex2mobi-converter/SPECIFICATION.md" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/resources/main.css" />
       </list>
     </option>
   </component>
@@ -1153,7 +1151,7 @@
       <workItem from="1427827437653" duration="66000" />
       <workItem from="1427827568458" duration="69000" />
       <workItem from="1427827664479" duration="1364000" />
-      <workItem from="1427882122763" duration="3116000" />
+      <workItem from="1427882122763" duration="3271000" />
     </task>
     <task id="LOCAL-00001" summary="Add spring beans config, Add filename option to Main app">
       <created>1421705433191</created>
@@ -1251,11 +1249,17 @@
       <option name="project" value="LOCAL" />
       <updated>1427886122547</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Add table examples to formulas.tex and default styling for normal tables, add documentation of matrices + tables to the latex support specification">
+      <created>1427887928566</created>
+      <option name="number" value="00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1427887928566</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75660000" />
+    <option name="totallyTimeSpent" value="75815000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1380,7 +1384,8 @@
     <MESSAGE value="Matrices will now render correct parenthesis/brackets, curly braces are not implemented yet, add documentation to Plugin readme" />
     <MESSAGE value="Bmatrix will now have standard pmatrix brackets, curly braces are complicated." />
     <MESSAGE value="Add zip file generator for calibre plugin (build-zip target in Makefile)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add zip file generator for calibre plugin (build-zip target in Makefile)" />
+    <MESSAGE value="Add table examples to formulas.tex and default styling for normal tables, add documentation of matrices + tables to the latex support specification" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add table examples to formulas.tex and default styling for normal tables, add documentation of matrices + tables to the latex support specification" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1780,23 +1785,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/resources/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/latex2mobi-converter/SPECIFICATION.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5253165">
+        <state vertical-scroll-proportion="-8.586206">
           <caret line="138" column="0" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
           <folding />
         </state>
       </provider>
       <provider editor-type-id="MarkdownPreviewEditor">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/resources/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.805169">
+          <caret line="38" column="19" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>
