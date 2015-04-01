@@ -77,6 +77,8 @@ This leads to readability issues when multiple levels of fractions are used, dep
 ``\frac{n!}{k!(n-k)!}`` - this example represents the basic accepted syntax of "New style fractions" - SnuggleTeX requires correct use of the curly brackets for the nominator and denominator arguments.
 Old style fractions with ``\over`` are not supported by latex2mobi.
 
+Nested fractions are supported for 4 levels of depth, deeper levels are mostly unreadable on kindle devices. Font size decreases to 85% with every level of nesting.
+
 ## Roots
 
 Roots are fully supported - constructed by a the root character ``√`` in Unicode, an overline for the roots base und an optional superscript for the root's degree.
