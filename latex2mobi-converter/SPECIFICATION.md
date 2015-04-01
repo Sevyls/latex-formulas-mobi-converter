@@ -1,5 +1,5 @@
 # latex2mobi - LaTeX Formulas syntax support
-##### Michael Auß - March 1st, 2015
+##### Michael Auß - April 2015
 
 ## Introduction
 
@@ -28,8 +28,6 @@ Based on the content of this file, this specification describes the support of m
 
 This project builds on the extraordinary support of Unicode in all the used third party software, including Pandoc, SnuggleTeX, Amazon Kindlegen and Calibre.
 Whereever possible output will be represented as Unicode encoded characters. Amazon's Kindle devices and Kindlegen software support most of the vast charsets Unicode describes.
-
-
 
 ### Greek letters
 
@@ -78,10 +76,6 @@ This leads to readability issues when multiple levels of fractions are used, dep
 
 ``\frac{n!}{k!(n-k)!}`` - this example represents the basic accepted syntax of "New style fractions" - SnuggleTeX requires correct use of the curly brackets for the nominator and denominator arguments.
 Old style fractions with ``\over`` are not supported by latex2mobi.
-
-
-
-See details at
 
 ## Roots
 
@@ -137,6 +131,8 @@ The following Matrix types are fully supported:
 * Vmatrix (double vertical lines)
 
 Bmatrix: Curly braces are not supported, but will be represented as normal round parentheses.
+
+Specifying cell alignment is currently not supported (like in ``\begin{matrix*}[r]``) and will lead to broken output of the argument ``[r]``.
 
 ## Tables
 
