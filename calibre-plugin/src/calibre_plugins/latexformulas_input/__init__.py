@@ -9,7 +9,7 @@ from calibre import guess_type
 from calibre.customize.conversion import InputFormatPlugin
 from calibre.ebooks.metadata.opf2 import OPFCreator
 
-JAR_FILENAME = 'latex2mobi-converter.jar'  # TODO build
+JAR_FILENAME = 'latex2mobi-converter.jar'
 
 class LaTexFormulasInputPlugin(InputFormatPlugin):
     name = 'LaTeX Formula Conversion Plugin'
