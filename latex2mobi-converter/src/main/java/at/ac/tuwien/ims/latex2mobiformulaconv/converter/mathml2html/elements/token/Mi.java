@@ -31,11 +31,22 @@ import java.util.List;
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
+ * Represents and renders the MathML literal tag Mi to HTML+CSS
+ *
  * @author Michael Auß
  *         Date: 15.09.2014
  */
 public class Mi extends Token {
     private String value;
+    private String mathvariant;
+
+    public String getMathvariant() {
+        return mathvariant;
+    }
+
+    public void setMathvariant(String mathvariant) {
+        this.mathvariant = mathvariant;
+    }
 
     @Override
     public Object getValue() {
@@ -51,6 +62,15 @@ public class Mi extends Token {
     public Element render(FormulaElement parent, List<FormulaElement> siblings) {
         Element span = new Element("span");
         span.setAttribute("class", "mi");
+        if (mathvariant != null) {
+            switch(mathvariant) {
+                case "fraktur":
+                    // TODO find fraktur unicode
+                    break;
+                // TODO add more variants
+
+            }
+        }
         span.setText(value.trim());
         return span;
     }

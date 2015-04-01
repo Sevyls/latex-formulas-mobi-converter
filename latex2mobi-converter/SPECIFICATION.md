@@ -38,7 +38,10 @@ For more have a look at http://www2.ph.ed.ac.uk/snuggletex/documentation/math-mo
 
 ### Variant Characters
 
-TODO
+Currently there is no support for MathML's mathvariant attribute in latex2mobi.
+Conversion of the latin alphabet into variant characters is supported by pandoc, but they are treated as equations, which results in excluding them from the document conversion.
+
+A conversion mechanism like implemented in converting mathml operators or characters 
 
 ### Binary operators
 
@@ -87,24 +90,34 @@ Roots are fully supported - constructed by a the root character ``√`` in Unico
 
 ## Sums
 
-TODO
+Basic sums including simple limits are supported.
+The placement of the limits results to the right of the sigma symbol, as inline notation.
+ Therefore complex wide and tall limits could result in deformation or hard readability.
 
 ## Integrals
 
-TODO
+Basic integrals are supported including their limit notation.
+The placement of the limits results to the right of the integral symbol, as inline notation.
+Therefore complex wide and tall limits could result in deformation or hard readability.
 
 ## Trigonomic, logarithmic, limits and other mathematical functions
 
 Common mathematical functions are supported, see details under heading "Mathematical functions" at
 http://www2.ph.ed.ac.uk/snuggletex/documentation/math-mode.html
 
-## Brackets, braces and delimiters
+## Parantheses, brackets, braces and delimiters
 
-TODO
+These are fully supported as symbols in every possible construct.  
 
-### Over- and underline, -braces
+Note: **Spanning** braces or parantheses of any kind are not supported. 
+They have to be dynamically resized, which in turn is not supported by HTML & CSS.
+Design ideas went into building surrounding ``<table>`` constructs and forming the border as implemented in handling of Matrices.
 
-TODO
+
+### Over- and underline, Over- and underbraces
+
+As described in the former paragraph, spanning constructs as braces and overlines are difficult to construct. 
+Currently there is no support for this notation.
 
 ## Intervals
 
@@ -141,8 +154,8 @@ TODO
 
 TODO
 
-## Formula Numbering
+## Formula Numbering & referencing 
 
-TODO
+Commands like ``\label{eq:xdef}`` and ``\ref{eq:xdef}`` are currently not supported by SnuggleTeX and will lead to broken output. 
 
 ## Defining new commands

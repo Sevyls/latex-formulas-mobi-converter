@@ -120,6 +120,7 @@ public class DOMFormulaConverter extends FormulaConverter {
     private FormulaElement renderElement(Element cur) {
 
         String name = cur.getName();
+        String mathvariant = null;
         FormulaElement output;
 
         // Based on the MathML tag a corresponding class will be chosen and output will be rendered
@@ -203,6 +204,11 @@ public class DOMFormulaConverter extends FormulaConverter {
             case "mi":
                 Mi mi = new Mi();
                 mi.setValue(cur.getText());
+                mathvariant = cur.getAttributeValue("mathvariant");
+                if (mathvariant != null  && mathvariant.isEmpty() == false) {
+                    mi.setMathvariant(mathvariant);
+                    mathvariant = null;
+                }
                 output = mi;
                 break;
             case "mfrac":
@@ -276,9 +282,10 @@ public class DOMFormulaConverter extends FormulaConverter {
             case "mstyle":
                 Mstyle mstyle = new Mstyle();
 
-                String mathvariant = cur.getAttributeValue("mathvariant");
+                mathvariant = cur.getAttributeValue("mathvariant");
                 if (mathvariant != null && mathvariant.isEmpty() == false) {
                     mstyle.setStyle(mathvariant);
+                    mathvariant = null;
                 }
 
                 Iterator<Element> mstyleIterator = cur.getChildren().iterator();
