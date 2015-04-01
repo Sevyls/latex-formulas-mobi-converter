@@ -173,13 +173,13 @@ public class DOMFormulaConverter extends FormulaConverter {
                         mo = new Summation();
                         break;
                     default:       */
-                        mo = Mo.findInDictionary(operator, cur.getAttributeValue("form", "infix"));
+                        mo = MathmlCharacterDictionary.findOperator(operator, cur.getAttributeValue("form", "infix"));
 
                 //}
 
                 if (mo == null) {
                     mo = new Mo();
-                    mo.setOperator(operator);
+                    mo.setValue(operator);
 
                     // Parse attributes
                     mo.setAccent(Boolean.parseBoolean(cur.getAttributeValue("accent", "false")));

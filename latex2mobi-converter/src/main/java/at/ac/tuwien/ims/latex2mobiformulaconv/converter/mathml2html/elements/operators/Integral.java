@@ -37,7 +37,7 @@ import java.util.List;
  */
 public class Integral extends Mo {
     public Integral() {
-        setOperator("∫");
+        setValue("∫");
         setForm("prefix");
     }
 
@@ -45,7 +45,7 @@ public class Integral extends Mo {
     public Element render(FormulaElement parent, List<FormulaElement> siblings) {
         Element integralSpan = new Element("span");
         integralSpan.setAttribute("class", "mo integral");
-        integralSpan.setText(getOperator());
+        integralSpan.setText(getValue());
         return integralSpan;
     }
 }

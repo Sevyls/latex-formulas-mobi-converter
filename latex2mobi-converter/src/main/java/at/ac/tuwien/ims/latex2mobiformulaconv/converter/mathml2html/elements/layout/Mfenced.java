@@ -137,7 +137,7 @@ public class Mfenced implements FormulaElement {
                         // TODO separator entity support
                     }
 
-                    separatorElement.setOperator(separator);
+                    separatorElement.setValue(separator);
 
                     Element mo = separatorElement.render(this, null);
                     mo.setAttribute("class", mo.getAttributeValue("class") + " mfenced-separator");

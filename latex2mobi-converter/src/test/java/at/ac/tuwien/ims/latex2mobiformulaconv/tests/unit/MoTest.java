@@ -51,7 +51,7 @@ public class MoTest extends FormulaElementTest {
         formulaElement = mo;
         operator = RandomStringUtils.random(1, operators);
         logger.debug("Operator: " + operator);
-        mo.setOperator(operator);
+        mo.setValue(operator);
 
     }
 
