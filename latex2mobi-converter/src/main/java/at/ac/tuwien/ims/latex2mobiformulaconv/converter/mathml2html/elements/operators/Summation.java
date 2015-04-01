@@ -37,7 +37,7 @@ import java.util.List;
  */
 public class Summation extends Mo {
     public Summation() {
-        setOperator("∑");
+        setValue("∑");
         setForm("prefix");
     }
 
@@ -45,7 +45,7 @@ public class Summation extends Mo {
     public Element render(FormulaElement parent, List<FormulaElement> siblings) {
         Element summationSpan = new Element("span");
         summationSpan.setAttribute("class", "mo summation");
-        summationSpan.setText(getOperator());
+        summationSpan.setText(getValue());
         return summationSpan;
     }
 }

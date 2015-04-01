@@ -1,5 +1,6 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.token;
 
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.MathmlCharacterDictionary;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.FormulaElement;
 import org.jdom2.Element;
 
@@ -65,7 +66,10 @@ public class Mi extends Token {
         if (mathvariant != null) {
             switch(mathvariant) {
                 case "fraktur":
-                    // TODO find fraktur unicode
+                    String frakturName = this.value + "fr";
+                    if (MathmlCharacterDictionary.entityMapByName.containsKey(frakturName)) {
+                        this.value = MathmlCharacterDictionary.entityMapByName.get(frakturName);
+                    }
                     break;
                 // TODO add more variants
 
