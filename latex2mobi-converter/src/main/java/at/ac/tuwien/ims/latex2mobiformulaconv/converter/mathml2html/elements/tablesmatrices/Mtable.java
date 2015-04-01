@@ -63,7 +63,8 @@ public class Mtable implements FormulaElement {
                 table.setAttribute("class", "bmatrix");
             }
             if (mfenced.getOpened().equals("{") && mfenced.getClosed().equals("}")) {
-                table.setAttribute("class", "Bmatrix");
+                table.setAttribute("class", "pmatrix"); // intentionally pmatrix for curved border corners
+                mtableDiv.setAttribute("class", mtableDiv.getAttributeValue("class") + " mtable-Bmatrix");
             }
             if (mfenced.getOpened().equals("|") && mfenced.getClosed().equals("|")) {
                 table.setAttribute("class", "vmatrix");
