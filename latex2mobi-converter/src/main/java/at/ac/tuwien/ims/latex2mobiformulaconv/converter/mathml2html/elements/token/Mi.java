@@ -65,11 +65,14 @@ public class Mi extends Token {
         span.setAttribute("class", "mi");
         if (mathvariant != null) {
             switch(mathvariant) {
+                case "script":
+                    lookup(this.value + "scr");
+                    break;
+                case "double-struck":
+                    lookup(this.value.toUpperCase() + "opf");
+                    break;
                 case "fraktur":
-                    String frakturName = this.value + "fr";
-                    if (MathmlCharacterDictionary.entityMapByName.containsKey(frakturName)) {
-                        this.value = MathmlCharacterDictionary.entityMapByName.get(frakturName);
-                    }
+                    lookup(this.value + "fr");
                     break;
                 // TODO add more variants
 
@@ -77,5 +80,11 @@ public class Mi extends Token {
         }
         span.setText(value.trim());
         return span;
+    }
+
+    private void lookup(String name) {
+        if (MathmlCharacterDictionary.entityMapByName.containsKey(name)) {
+            this.value = MathmlCharacterDictionary.entityMapByName.get(name);
+        }
     }
 }
