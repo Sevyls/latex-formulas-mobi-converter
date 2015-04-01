@@ -38,10 +38,13 @@ For more have a look at http://www2.ph.ed.ac.uk/snuggletex/documentation/math-mo
 
 ### Variant Characters
 
-Currently there is no support for MathML's mathvariant attribute in latex2mobi.
-Conversion of the latin alphabet into variant characters is supported by pandoc, but they are treated as equations, which results in excluding them from the document conversion.
+The following variant character sets are currently supported:
 
-A conversion mechanism like implemented in converting mathml operators or characters 
+* Fraktur 
+* Script
+* Double-struck 
+
+For details see http://www.w3.org/TR/MathML2/chapter6.html#chars.letter-like-tables
 
 ### Binary operators
 

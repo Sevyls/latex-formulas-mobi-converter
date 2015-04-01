@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="45386f65-047a-4f27-a937-587acb461b39" name="Default" comment="Fix workspace">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/calibre-plugin/README.md" afterPath="$PROJECT_DIR$/calibre-plugin/README.md" />
+    <list default="true" id="45386f65-047a-4f27-a937-587acb461b39" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/SPECIFICATION.md" afterPath="$PROJECT_DIR$/latex2mobi-converter/SPECIFICATION.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="latex-formulas-mobi-converter.iws" />
@@ -31,20 +31,36 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="59" column="5" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="5" />
-              <folding />
+              <folding>
+                <element signature="e#2127#2128#0" expanded="true" />
+                <element signature="e#2170#2171#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/calibre-plugin/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.45396146">
+            <state vertical-scroll-proportion="-7.3103447">
               <caret line="44" column="9" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="9" />
               <folding />
             </state>
           </provider>
           <provider editor-type-id="MarkdownPreviewEditor">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SPECIFICATION.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/latex2mobi-converter/SPECIFICATION.md">
+          <provider editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="46" column="83" selection-start-line="46" selection-start-column="83" selection-end-line="46" selection-end-column="83" />
+              <folding />
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="MarkdownPreviewEditor">
             <state />
           </provider>
         </entry>
@@ -64,6 +80,7 @@
       <list>
         <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Mi.java" />
         <option value="$PROJECT_DIR$/calibre-plugin/README.md" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/SPECIFICATION.md" />
       </list>
     </option>
   </component>
@@ -311,7 +328,7 @@
     <property name="dynamic.classpath" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="Mi&#9;PSI&#9;JAVA://at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.token.Mi" />
+    <property name="SearchEverywhereHistoryKey" value="SPeci&#9;FILE&#9;file:///Users/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/SPECIFICATION.md&#10;Mi&#9;PSI&#9;JAVA://at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.token.Mi" />
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration default="false" name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -791,18 +808,28 @@
     </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="45386f65-047a-4f27-a937-587acb461b39" name="Default" comment="" />
       <created>1427895426213</created>
       <option name="number" value="Default" />
       <updated>1427895426213</updated>
-      <workItem from="1427895426593" duration="894000" />
+      <workItem from="1427895426593" duration="1067000" />
     </task>
+    <task id="LOCAL-00001" summary="Update Calibre Plugin readme with build instructions">
+      <created>1427896576308</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1427896576308</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="894000" />
+    <option name="totallyTimeSpent" value="1067000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
@@ -837,6 +864,10 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Update Calibre Plugin readme with build instructions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update Calibre Plugin readme with build instructions" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -856,22 +887,36 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Mi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="59" column="5" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/calibre-plugin/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45396146">
+        <state vertical-scroll-proportion="-7.3103447">
           <caret line="44" column="9" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="9" />
           <folding />
         </state>
       </provider>
       <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Mi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="59" column="5" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="5" />
+          <folding>
+            <element signature="e#2127#2128#0" expanded="true" />
+            <element signature="e#2170#2171#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/SPECIFICATION.md">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="46" column="83" selection-start-line="46" selection-start-column="83" selection-end-line="46" selection-end-column="83" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="MarkdownPreviewEditor">
         <state />
       </provider>
     </entry>
