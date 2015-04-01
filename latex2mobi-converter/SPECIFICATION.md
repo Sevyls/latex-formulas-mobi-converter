@@ -110,9 +110,24 @@ TODO
 
 TODO
 
-## Matrices, tables
+## Matrices
 
-TODO
+The following Matrix types are fully supported:
+
+* matrix (no parentheses, brackets of any kind)
+* pmatrix (parentheses)
+* bmatrix (brackets)
+* vmatrix (single vertical lines)
+* Vmatrix (double vertical lines)
+
+Bmatrix: Curly braces are not supported, but will be represented as normal round parentheses.
+
+## Tables
+
+Basic table support comes with pandoc. A default styling for tables is included.
+Styling cells and borders with ``\hline`` and ``\cline`` will be ignored.
+A default border-collapse style is in place for reading purposes.
+
 
 ## Text in equations or vice-versa
 

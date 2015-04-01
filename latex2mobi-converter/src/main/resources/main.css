@@ -27,6 +27,17 @@
  *
  */
 
+table {
+    border: 1px solid black;
+    margin: 0.2em;
+    padding: 0.1em;
+    border-collapse: collapse;
+}
+
+table td, table th {
+    border: 1px solid black;
+}
+
 .math {
     font-family: serif;
     font-size: 2em;
@@ -123,6 +134,18 @@ sub, sup {
 
 .mtable td {
     text-align: center;
+    border: none;
+}
+
+
+/*
+ Override table defaults
+ */
+.mtable > table {
+    border: none;
+    padding: auto;
+    margin: auto;
+    border-collapse: separate;
 }
 
 table.pmatrix {
