@@ -16,7 +16,7 @@ class LaTexFormulasInputPlugin(InputFormatPlugin):
     description = 'TODO Description'
     supported_platforms = ['windows', 'osx', 'linux']
     author = 'Michael Auß'
-    version = (0, 6, 0)
+    version = (0, 7, 0)
     minimum_calibre_version = (2, 19, 0)
     file_types = set(['tex'])
 
@@ -71,17 +71,9 @@ class LaTexFormulasInputPlugin(InputFormatPlugin):
 
     def apply_settings(self):
         from calibre_plugins.latexformulas_input.config import prefs
-        # In an actual non trivial plugin, you would probably need to
-        # do something based on the settings in prefs
         print('java_exec: ' + prefs['java_exec'])
         print('pandoc_exec: ' + prefs['pandoc_exec'])
 
-    # TODO GUI Configuration?
-    # def gui_configuration_widget(self, parent, get_option_by_name,
-    #                            get_option_help, db, book_id=None):
-    #   from calibre_plugins.latexformulas_input.latexformulas_input import PluginWidget
-    #
-    #   return PluginWidget(parent, get_option_by_name, get_option_help, db, book_id)
 
     def customization_help(self, gui=False):
         return 'TODO customization_help'
@@ -91,7 +83,7 @@ class LaTexFormulasInputPlugin(InputFormatPlugin):
         dest_dir = os.getcwdu()  # note: temp dir from calibre process
         log.debug('dest_dir: ' + dest_dir)
 
-        mi = None  # TODO
+        mi = None
 
         # call latex2mobi with markup output only
         from subprocess import check_output, STDOUT, CalledProcessError

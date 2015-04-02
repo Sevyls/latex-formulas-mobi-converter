@@ -24,10 +24,9 @@ clean:
 	rm -rf ../calibre-src
 	rm -rf ../build
 	rm -f calibre_plugins/latexformulas_input/latex2mobi-converter.jar
+	mvn clean -f "../../latex2mobi-converter/pom.xml" -q
 
 build-zip:
-	cd ../../latex2mobi-converter
-	mvn clean -f "../../latex2mobi-converter/pom.xml" -q
 	mvn package -f "../../latex2mobi-converter/pom.xml" -q
 	cp ../../latex2mobi-converter/target/latex2mobi-converter-?.?.?.jar calibre_plugins/latexformulas_input/latex2mobi-converter.jar
 	mkdir -p ../build
