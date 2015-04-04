@@ -6,7 +6,7 @@
     <name>Latex to Mobi Formula Converter - Bachelor Thesis</name>
     <groupId>at.ac.tuwien.ims</groupId>
     <artifactId>latex2mobi-converter</artifactId>
-    <version>0.7.0</version>
+    <version>0.7.1</version>
     <licenses>
         <license>
             <name>MIT License</name>
@@ -181,8 +181,18 @@
             <version>4.1.4.RELEASE</version>
             <scope>test</scope>
         </dependency>
-
-
+        <dependency>
+            <groupId>net.sf.launch4j</groupId>
+            <artifactId>launch4j</artifactId>
+            <version>3.5.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.akathist.maven.plugins.launch4j</groupId>
+            <artifactId>launch4j-maven-plugin</artifactId>
+            <version>1.7.5</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <issueManagement>
@@ -198,53 +208,6 @@
     <scm>
         <url>https://github.com/Sevyls/latex-formulas-mobi-converter.git</url>
     </scm>
-
-    <profiles>
-        <profile>
-            <id>windows-deploy</id>
-
-            <activation>
-                <os>
-                    <family>Windows</family>
-                </os>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.bluestemsoftware.open.maven.plugin</groupId>
-                        <artifactId>launch4j-plugin</artifactId>
-                        <version>1.5.0.0</version>
-                        <executions>
-                            <execution>
-                                <id>launch4j</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>launch4j</goal>
-                                </goals>
-                                <configuration>
-
-                                    <headerType>console</headerType>
-                                    <outfile>${project.build.directory}/latex2mobi.exe</outfile>
-
-                                    <errTitle>Launcher</errTitle>
-                                    <jre>
-                                        <minVersion>1.7.0</minVersion>
-                                    </jre>
-                                    <classPath>
-                                        <mainClass>at.ac.tuwien.ims.latex2mobiformulaconv.app.Main</mainClass>
-                                        <addDependencies>true</addDependencies>
-                                        <preCp>anything</preCp>
-                                    </classPath>
-                                    <!--<icon>${basedir}/build-resources/win/icons/application.ico</icon>-->
-
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 
     <build>
         <resources>
@@ -297,6 +260,10 @@
                         </configuration>
                     </execution>
                 </executions>
+                <configuration>
+                    <shadedArtifactAttached>true</shadedArtifactAttached> <!-- Make the shaded artifact not the main one -->
+                    <shadedClassifierName>shaded</shadedClassifierName> <!-- set the suffix to the shaded jar -->
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -311,6 +278,37 @@
                     </execution>
                 </executions>
 
+            </plugin>
+
+            <plugin>
+                <groupId>com.akathist.maven.plugins.launch4j</groupId>
+                <artifactId>launch4j-maven-plugin</artifactId>
+                <version>1.7.5</version>
+                <executions>
+                    <execution>
+                        <id>latex2mobi.exe</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>launch4j</goal>
+                        </goals>
+                        <configuration>
+                            <headerType>console</headerType>
+                            <outfile>target/latex2mobi.exe</outfile>
+                            <jar>target/${artifactId}-${version}-shaded.jar</jar> <!-- 'shaded' is the value set on shadedClassifierName above -->
+                            <errTitle>App Err</errTitle>
+                            <classPath>
+                                <mainClass>at.ac.tuwien.ims.latex2mobiformulaconv.app.Main</mainClass>
+                            </classPath>
+                            <!--<icon>src/main/resources/icons/exeIcon.ico</icon>-->
+                            <jre>
+                                <minVersion>1.7.0</minVersion>
+                                <maxVersion>1.8.0</maxVersion>
+                                <initialHeapSize>128</initialHeapSize>
+                                <maxHeapSize>1024</maxHeapSize>
+                            </jre>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
