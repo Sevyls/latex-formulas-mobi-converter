@@ -10,7 +10,7 @@ This project includes a standalone plugin for Calibre (an ebook management progr
 
 ## Download
 
-https://github.com/Sevyls/latex-formulas-mobi-converter/releases/download/v0.6.0/latex2mobi.calibre.plugin.zip
+https://github.com/Sevyls/latex-formulas-mobi-converter/releases/
 
 ## Installation
 
