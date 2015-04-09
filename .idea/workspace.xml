@@ -111,8 +111,8 @@
       <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.travis.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.15120968">
-              <caret line="5" column="74" selection-start-line="5" selection-start-column="74" selection-end-line="5" selection-end-column="74" />
+            <state vertical-scroll-proportion="0.12096774">
+              <caret line="4" column="59" selection-start-line="4" selection-start-column="59" selection-end-line="4" selection-end-column="59" />
               <folding />
             </state>
           </provider>
@@ -1183,7 +1183,7 @@
       <workItem from="1428183130199" duration="273000" />
       <workItem from="1428513469844" duration="382000" />
       <workItem from="1428513904630" duration="1891000" />
-      <workItem from="1428600151306" duration="4636000" />
+      <workItem from="1428600151306" duration="4735000" />
     </task>
     <task id="LOCAL-00001" summary="Update Calibre Plugin readme with build instructions">
       <created>1427896576308</created>
@@ -1251,11 +1251,17 @@
       <option name="project" value="LOCAL" />
       <updated>1428607233392</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="import gpg key for calibre ppa">
+      <created>1428607771926</created>
+      <option name="number" value="00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1428607771926</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18465000" />
+    <option name="totallyTimeSpent" value="18564000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
@@ -1317,7 +1323,8 @@
     <MESSAGE value="Update Readmes" />
     <MESSAGE value="Implement CalibreHtmlToMobiConverter via Calibre CLI tools" />
     <MESSAGE value="travis calibre ubuntu test output for ebook-convert usage" />
-    <option name="LAST_COMMIT_MESSAGE" value="travis calibre ubuntu test output for ebook-convert usage" />
+    <MESSAGE value="import gpg key for calibre ppa" />
+    <option name="LAST_COMMIT_MESSAGE" value="import gpg key for calibre ppa" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1799,8 +1806,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15120968">
-          <caret line="5" column="74" selection-start-line="5" selection-start-column="74" selection-end-line="5" selection-end-column="74" />
+        <state vertical-scroll-proportion="0.12096774">
+          <caret line="4" column="59" selection-start-line="4" selection-start-column="59" selection-end-line="4" selection-end-column="59" />
           <folding />
         </state>
       </provider>
