@@ -81,8 +81,7 @@ public class CalibreHtmlToMobiConverter implements HtmlToMobiConverter {
         cmdLine.addArgument(tempMobiFilepath.toAbsolutePath().toString());
 
         // Output will be in format "KF8" only, old format does not allow external CSS files
-        //cmdLine.addArgument("--mobi-file-type=new");
-        cmdLine.addArgument("-h");
+        cmdLine.addArgument("--mobi-file-type=new");
 
         DefaultExecuteResultHandler resultHandler = new DefaultExecuteResultHandler();
 
