@@ -78,6 +78,19 @@ Ad-hoc configuration is possible by passing the following *optional* command lin
 
 ``-k / --kindlegen-exec <KindleGen exec path>``
 
+### Alternative: Calibre 
+
+Calibre comes with a bunch of CLI tools including an ebook converter.
+As an alternative to the proprietary Amazon KindleGen you are able to use latex2mobi with calibre instead.
+
+As with the above executables the tool ``ebook-convert`` requires you to
+ 
+**add the ebook-convert executable to your PATH variable** 
+
+#### **OR** you specify its path with the following option:
+ 
+``-c / --calibre-exec <calibre's ebook-convert exec path>``
+
 
 ## Build-Requirements
 
