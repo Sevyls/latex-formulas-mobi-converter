@@ -92,7 +92,7 @@ public class AmazonHtmlToMobiConverter implements HtmlToMobiConverter {
         try {
             executor.execute(cmdLine, resultHandler);
         } catch (IOException e) {
-            logger.error("Kindlegen execution failed to execute:");
+            logger.error("Kindlegen failed to execute:");
             logger.error(e.getMessage(), e);
             System.exit(-1);
         }

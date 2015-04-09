@@ -1,0 +1,417 @@
+/*
+ * The MIT License (MIT)
+ * latex2mobi -- LaTeX Formulas to Mobi Converter
+ * Copyright (c) 2014 Michael Auß
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ *
+ * For Third Party Software Licenses read LICENSE file in base dir.
+ *
+ *
+ */
+
+table {
+    border: 1px solid black;
+    margin: 0.2em;
+    padding: 0.1em;
+    border-collapse: collapse;
+}
+
+table td, table th {
+    border: 1px solid black;
+    padding: 0.2em;
+}
+
+.math {
+    font-family: serif;
+    font-size: 2em;
+}
+
+code {
+    white-space: pre;
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.mfrac {
+    display: inline-block;
+    font-size: 85%;
+    position: relative;
+    top: 1em;
+    padding-bottom: 1.1em;
+}
+
+.numerator {
+    display: block;
+    text-align: center;
+}
+
+.denominator {
+    display: block;
+}
+
+sub, sup {
+    font-size: 0.5em;
+}
+
+/* thanks to https://gist.github.com/unruthless/413930 */
+.msubsup sub, .msubsup sup {
+    /* Specified in % so that the sup/sup is the
+       right size relative to the surrounding text */
+    font-size: /*75%;*/ 0.5em;
+
+    /* Zero out the line-height so that it doesn't
+       interfere with the positioning that follows */
+    line-height: 0;
+
+    /* Where the magic happens: makes all browsers position
+       the sup/sup properly, relative to the surrounding text */
+    position: relative;
+
+    /* Note that if you're using Eric Meyer's reset.css, this
+       is already set and you can remove this rule */
+    vertical-align: baseline;
+}
+
+.msubsup sup {
+    /* Move the superscripted text up */
+    top: /*-0.5em;*/ -0.75em;
+}
+
+.msubsup sub {
+    /* Move the subscripted text down, but only
+       half as far down as the superscript moved up */
+    bottom: -0.25em;
+    left: -0.5em;
+}
+
+.msubsup sub .mrow {
+    left: -0.5em;
+    position: relative;
+    bottom: /*-0.25em;*/ -0.5em;
+}
+
+.mroot-index {
+    font-size: 0.5em;
+    vertical-align: super;
+    top: -0.9em;
+    position: relative;
+    left: 0.9em;
+}
+
+.mroot-symbol {
+    font-size: 1.34em;
+}
+
+.mroot-topbar {
+    border-top: 0.05em solid black;
+}
+
+.mroot-base {
+    margin-left: 0.05em;
+}
+
+.mtable, .munder, .mover {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.mtable td {
+    text-align: center;
+    border: none;
+}
+
+
+/*
+ Override table defaults
+ */
+.mtable > table {
+    border: none;
+    padding: auto;
+    margin: auto;
+    border-collapse: separate;
+}
+
+table.pmatrix {
+    border-left: 0.2ex solid black;
+    border-right: 0.2ex solid black;
+    border-radius: 0.5ex;
+    padding-left: 0.2ex;
+    padding-right: 0.2ex;
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+}
+
+table.vmatrix {
+    border-left: 0.2ex solid black;
+    border-right: 0.2ex solid black;
+    padding-left: 0.2ex;
+    padding-right: 0.2ex;
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+}
+
+table.Vmatrix {
+    border-left: 0.4ex double black;
+    border-right: 0.4ex double black;
+    padding-left: 0.2ex;
+    padding-right: 0.2ex;
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+}
+
+.bmatrix {
+    position: relative;
+    padding-left: 0.2ex;
+    padding-right: 0.2ex;
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+}
+
+.bmatrix:before {
+    content: " ";
+    position: absolute;
+    border-left: 0.2ex solid black;
+    border-top: 0.2ex solid black;
+    border-bottom: 0.2ex solid black;
+    padding-left: 0.2em;
+    top: -0.2em;
+    bottom: -0.2em;
+    left: -0.1em;
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+}
+
+.bmatrix:after {
+    content: " ";
+    position: absolute;
+    border-right: 0.2ex solid black;
+    border-top: 0.2ex solid black;
+    border-bottom: 0.2ex solid black;
+    padding-right: 0.2em;
+    top: -0.2em;
+    bottom: -0.2em;
+    right: -0.1em;
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+}
+
+/*
+    experimental css for Bmatrix curly brackets, currently not scaling properly...
+*/
+/*
+.mtable-Bmatrix {
+    position: relative;
+    padding-left: 0.2ex;
+    padding-right: 0.2ex;
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+}
+
+.mtable-Bmatrix:before {
+    content: "⎨";
+    position: absolute;
+    left: -0.128em;
+    margin-top: 50%;
+}
+
+.mtable-Bmatrix:after {
+    content: "⎬";
+    position: absolute;
+    right: -0.12em;
+    margin-top: -105%;
+}
+
+.Bmatrix {
+    position: relative;
+    padding-left: 0.2ex;
+    padding-right: 0.2ex;
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+}
+
+.Bmatrix:before {
+    content: "⎨ ";
+    position: absolute;
+    border-left: 0.2ex solid black;
+    border-top: 0.2ex solid black;
+    border-bottom: 0.2ex solid black;
+    padding-left: 0.2em;
+    top: -0.2em;
+    bottom: -0.2em;
+    left: -0.1em;
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+}
+
+.Bmatrix:after {
+    content: " ⎬";
+    position: absolute;
+    border-right: 0.2ex solid black;
+    border-top: 0.2ex solid black;
+    border-bottom: 0.2ex solid black;
+    padding-right: 0.2em;
+    top: -0.2em;
+    bottom: -0.2em;
+    right: -0.1em;
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+}
+*/
+
+.munder .underscript, .mover .overscript{
+    text-align: center;
+    height: 0;
+}
+
+.mover .overscript {
+    margin-bottom: 0;
+}
+
+.mspace {
+    display: inline-block;
+}
+
+.msub .mo, .msup .mo {
+    padding-left: 0em!important;
+    padding-right: 0em!important;
+}
+
+
+.nothing {
+    display: none;
+}
+
+
+/*
+ * Following styles based on
+ * G Sample CSS Style Sheet for MathML (Non-Normative)
+ * http://www.w3.org/TR/MathML2/appendixg.html
+ */
+.math, .math[mode="inline"] {
+    display: inline;
+
+    font-style: normal;
+}
+
+.math {
+    display: block;
+    text-align: center;
+
+    font-style: normal;
+}
+
+
+/* Rules dealing with the various values of the "mathvariant" attribute: */
+
+.mathvariant-normal {
+    font-family: "Times New Roman", Courier, Garamond, serif;
+    font-weight: normal;
+    font-style: normal;
+}
+
+.mathvariant-bold {
+    font-family: "Times New Roman", Courier, Garamond, serif;
+    font-weight: bold;
+    font-style: normal;
+}
+
+.mathvariant-italic {
+    font-family: "Times New Roman", Courier, Garamond, serif;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.mathvariant-bold-italic {
+    font-family: "Times New Roman", Courier, Garamond, serif;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.mathvariant-double-struck {
+    font-family: msbm;
+    font-weight: normal;
+    font-style: normal;
+}
+
+.mathvariant-script {
+    font-family: eusb;
+    font-weight: normal;
+    font-style: normal;
+}
+
+.mathvariant-bold-script {
+    font-family: eusb;
+    font-weight: bold;
+    font-style: normal;
+}
+
+.mathvariant-fraktur {
+    font-family: eufm;
+    font-weight: normal;
+    font-style: normal;
+}
+
+.mathvariant-bold-fraktur {
+    font-family: eufm;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.mathvariant-sans-serif {
+    font-family: Arial, "Lucida Sans Unicode", Verdana, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+}
+
+.mathvariant-bold-sans-serif {
+    font-family: Arial, "Lucida Sans Unicode", Verdana, sans-serif;
+    font-weight: bold;
+    font-style: normal;
+}
+
+.mathvariant-sans-serif-italic {
+    font-family: Arial, "Lucida Sans Unicode", Verdana, sans-serif;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.mathvariant-sans-serif-bold-italic {
+    font-family: Arial, "Lucida Sans Unicode", Verdana, sans-serif;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.mathvariant-monospace {
+    font-family: monospace
+}

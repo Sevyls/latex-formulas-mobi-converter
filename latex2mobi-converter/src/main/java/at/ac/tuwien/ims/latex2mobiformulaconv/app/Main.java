@@ -218,7 +218,7 @@ public class Main {
                 latexToHtmlConverter.setExecPath(execPath);
             }
 
-            HtmlToMobiConverter htmlToMobiConverter = (HtmlToMobiConverter) applicationContext.getBean("html2mobi-converter");
+            HtmlToMobiConverter htmlToMobiConverter = (HtmlToMobiConverter) applicationContext.getBean("kindlegen-html2mobi-converter");
             Option htmlToMobiOption = htmlToMobiConverter.getExecOption();
             if (cmd.hasOption(htmlToMobiOption.getOpt())) {
                 String execValue = cmd.getOptionValue(htmlToMobiOption.getOpt());
@@ -324,6 +324,9 @@ public class Main {
 
         // implementation specific options
         options.addOption(((LatexToHtmlConverter) applicationContext.getBean("latex2html-converter")).getExecOption());
-        options.addOption(((HtmlToMobiConverter) applicationContext.getBean("html2mobi-converter")).getExecOption());
+        options.addOption(((HtmlToMobiConverter) applicationContext.getBean("kindlegen-html2mobi-converter")).getExecOption());
+        options.addOption(((HtmlToMobiConverter) applicationContext.getBean("calibre-html2mobi-converter")).getExecOption());
+
+         // TODO add switch for HtmlToMobiConverter with default kindlegen
     }
 }
