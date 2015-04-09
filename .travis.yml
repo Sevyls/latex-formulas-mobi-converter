@@ -3,7 +3,9 @@ jdk:
   - oraclejdk7
 before_install:
   - echo 'yes' | sudo add-apt-repository ppa:marutter/c2d4u
-  - echo 'yes' | sudo add-apt-repository ppa:n-muench/calibre2
+  - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EAE0D85C
+  - echo 'yes' | sudo add-apt-repository deb http://ppa.launchpad.net/n-muench/programs-ppa2/ubuntu precise main
+  - echo 'yes' | sudo add-apt-repository deb-src http://ppa.launchpad.net/n-muench/programs-ppa2/ubuntu precise main
   - sudo apt-get update
   - sudo apt-get install -y pandoc calibre
 before_script:

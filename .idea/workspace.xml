@@ -111,8 +111,8 @@
       <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.travis.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.12096774">
-              <caret line="4" column="59" selection-start-line="4" selection-start-column="59" selection-end-line="4" selection-end-column="59" />
+            <state vertical-scroll-proportion="0.4233871">
+              <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -1183,7 +1183,7 @@
       <workItem from="1428183130199" duration="273000" />
       <workItem from="1428513469844" duration="382000" />
       <workItem from="1428513904630" duration="1891000" />
-      <workItem from="1428600151306" duration="4735000" />
+      <workItem from="1428600151306" duration="4925000" />
     </task>
     <task id="LOCAL-00001" summary="Update Calibre Plugin readme with build instructions">
       <created>1427896576308</created>
@@ -1257,11 +1257,17 @@
       <option name="project" value="LOCAL" />
       <updated>1428607771926</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="fix typo in calibre ppa name">
+      <created>1428608960206</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1428608960206</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18564000" />
+    <option name="totallyTimeSpent" value="18754000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
@@ -1324,7 +1330,8 @@
     <MESSAGE value="Implement CalibreHtmlToMobiConverter via Calibre CLI tools" />
     <MESSAGE value="travis calibre ubuntu test output for ebook-convert usage" />
     <MESSAGE value="import gpg key for calibre ppa" />
-    <option name="LAST_COMMIT_MESSAGE" value="import gpg key for calibre ppa" />
+    <MESSAGE value="fix typo in calibre ppa name" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix typo in calibre ppa name" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1806,8 +1813,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12096774">
-          <caret line="4" column="59" selection-start-line="4" selection-start-column="59" selection-end-line="4" selection-end-column="59" />
+        <state vertical-scroll-proportion="0.4233871">
+          <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
           <folding />
         </state>
       </provider>
