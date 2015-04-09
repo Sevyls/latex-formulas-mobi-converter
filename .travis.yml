@@ -3,13 +3,14 @@ jdk:
   - oraclejdk7
 before_install:
   - echo 'yes' | sudo add-apt-repository ppa:marutter/c2d4u
-  - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EAE0D85C
-  - echo 'yes' | sudo add-apt-repository "deb http://ppa.launchpad.net/n-muench/programs-ppa2/ubuntu precise main"
   - sudo apt-get update
-  - sudo apt-get install -y pandoc calibre
+  - sudo apt-get install -y pandoc
 before_script:
   - wget "http://kindlegen.s3.amazonaws.com/kindlegen_linux_2.6_i386_v2_9.tar.gz"  -O "/tmp/kindlegen.tar.gz"
   - mkdir kindlegen
   - tar -xvf /tmp/kindlegen.tar.gz -C kindlegen/
   - export PATH=$PATH:$PWD/kindlegen/
+  - sudo python -c "import urllib2; exec urllib2.urlopen('http://status.calibre-ebook.com/linux_installer').read(); main()"
+  - export PATH=$PATH:/opt/calibre
+  - ls /opt/calibre
   - cd latex2mobi-converter
