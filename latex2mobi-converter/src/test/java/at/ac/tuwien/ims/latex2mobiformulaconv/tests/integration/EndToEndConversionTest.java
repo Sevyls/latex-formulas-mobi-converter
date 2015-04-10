@@ -11,8 +11,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestContext;
-import org.springframework.test.context.TestContextManager;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
@@ -57,8 +55,8 @@ import static org.junit.Assert.fail;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:ConverterTest-context.xml"})
-public class ConverterTest {
-    private static Logger logger = Logger.getLogger(ConverterTest.class);
+public class EndToEndConversionTest {
+    private static Logger logger = Logger.getLogger(EndToEndConversionTest.class);
 
     @Autowired
     private Converter converter;

@@ -27,18 +27,18 @@ import org.apache.log4j.Logger;
  * <p/>
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
- *
+ * <p/>
  * Integration Test for
- * @see at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi.CalibreHtmlToMobiConverter
  *
  * @author Michael Auß
- *  Created on 09.04.15.
+ *         Created on 10.04.15.
+ * @see at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi.AmazonHtmlToMobiConverter
  */
-public class CalibreHtmlToMobiConverterTest extends HtmlToMobiConverterTest {
-    private static Logger logger = Logger.getLogger(CalibreHtmlToMobiConverterTest.class);
+public class AmazonHtmlToMobiConverterTest extends HtmlToMobiConverterTest {
+    private static Logger logger = Logger.getLogger(AmazonHtmlToMobiConverterTest.class);
 
-    public CalibreHtmlToMobiConverterTest() {
+    public AmazonHtmlToMobiConverterTest() {
         super();
-        this.bean = "calibre-html2mobi-converter";
+        this.bean = "kindlegen-html2mobi-converter";
     }
 }
