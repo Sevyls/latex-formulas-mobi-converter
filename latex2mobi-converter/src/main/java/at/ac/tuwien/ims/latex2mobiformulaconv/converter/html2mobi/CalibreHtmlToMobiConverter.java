@@ -38,7 +38,7 @@ import java.nio.file.Paths;
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
- * Converts HTML to Mobi by using the Calibre CLI
+ * Converts HTML to Mobi by using the Calibre CLI tool "ebook-convert"
  *
  * @author Michael Auß
  *         Created: 21.05.14 00:12
@@ -69,7 +69,7 @@ public class CalibreHtmlToMobiConverter implements HtmlToMobiConverter {
             cmdLine = new CommandLine(command);
         }
 
-        // ebook-convert input_file.html output_file.mobi --mobi-file-type=new
+        // cli command: ebook-convert input_file.html output_file.mobi --mobi-file-type=new
 
         // Run configuration
         cmdLine.addArgument(Paths.get(htmlFile.toURI()).toAbsolutePath().toString());
@@ -140,9 +140,7 @@ public class CalibreHtmlToMobiConverter implements HtmlToMobiConverter {
 
         }
 
-        // TODO evaluate ebook-convert output
         logger.debug("Calibre ebook-convert output: \n" + output);
-
 
         return tempMobiFilepath.toFile();
     }

@@ -35,6 +35,8 @@ import java.util.List;
  *         Created: 20.05.14 23:29
  *
  * A part of a formula which can be rendered to HTML
+ *
+ * Note: This is not used when converting to images
  */
 public interface FormulaElement {
 
@@ -42,9 +44,16 @@ public interface FormulaElement {
      * Renders this FormulaElement to HTML.
      * May call render() on sub-elements for recursive rendering.
      *
+     * Some cases require to take different actions in rendering depending on
+     * this elements parents or siblings.
+     *
+     * Implementing classes SHOULD always have a way to fallback if parent or siblings are NULL
+     *
+     * NEVER call render() on the parent or siblings, endless loop could be the result.
+     *
      * @return A JDOM Element which represents this FormulaElement + sub-elements (i.e. in HTML)
-     * @param parent the parent FormulaElement, use it for context only
-     * @param siblings list of sibling elements including this FormulaElement, use it for context only
+     * @param parent the parent FormulaElement
+     * @param siblings list of sibling elements including this FormulaElement
      */
     public Element render(FormulaElement parent, List<FormulaElement> siblings);
 }

@@ -32,6 +32,12 @@ import java.util.List;
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
+ * Renders a MathML Mover tag
+ *
+ * http://www.w3.org/TR/MathML2/chapter3.html#presm.mover
+ *
+ * Note: currently this element will not result in proper output when using HTML as output
+ *
  * @author Michael Auß
  *         Date: 15.09.14
  *         Time: 22:35

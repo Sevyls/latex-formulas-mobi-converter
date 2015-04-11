@@ -32,6 +32,10 @@ import java.util.List;
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
+ * Renders a MathML Mspace tag
+ *
+ * http://www.w3.org/TR/MathML2/chapter3.html#presm.mspace
+ *
  * @author Michael Auß
  *         Date: 15.09.14
  */

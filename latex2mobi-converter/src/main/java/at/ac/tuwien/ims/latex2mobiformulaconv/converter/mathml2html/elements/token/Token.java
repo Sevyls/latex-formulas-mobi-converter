@@ -28,7 +28,10 @@ import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.For
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
- * @author mauss
+ * Represents a Token as defined in MathML 2.0
+ * http://www.w3.org/TR/MathML2/chapter3.html#presm.tokel
+ *
+ * @author Michael Auß
  *         Created: 20.05.14 23:39
  */
 public abstract class Token implements FormulaElement {

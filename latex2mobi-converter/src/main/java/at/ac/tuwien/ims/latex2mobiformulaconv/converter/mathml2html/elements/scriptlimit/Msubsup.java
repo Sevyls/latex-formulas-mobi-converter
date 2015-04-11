@@ -31,6 +31,10 @@ import java.util.List;
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
+ * Renders a MathML Msubsup tag
+ *
+ * http://www.w3.org/TR/MathML2/chapter3.html#presm.msubsup
+ *
  * @author Michael Auß
  *         Date: 17.09.2014
  */

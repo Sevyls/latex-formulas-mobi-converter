@@ -36,6 +36,10 @@ import java.util.List;
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
+ * Renders a MathML Mo tag
+ *
+ * http://www.w3.org/TR/MathML2/chapter3.html#presm.mo
+ *
  * @author Michael Auß
  *         Created: 15.09.2014
  */

@@ -1,13 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="45386f65-047a-4f27-a937-587acb461b39" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/AmazonHtmlToMobiConverterTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/HtmlToMobiConverterTest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/ConverterTest.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/EndToEndConversionTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/CalibreHtmlToMobiConverterTest.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/CalibreHtmlToMobiConverterTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MtableTest.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MtableTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/test/resources/html+css/latex2mobi.html" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/test/resources/html+css/latex2mobi.html" />
+    <list default="true" id="45386f65-047a-4f27-a937-587acb461b39" name="Default" comment="update readme">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/utils/AbstractMainTests.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/MainApplicationTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_library_1_3.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/operators/Exponential.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/operators/Integral.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/operators/Limit.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/operators/Logarithm.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/operators/Summation.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/tablesmatrices/Matrix.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Accent.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/snugglepkgs/IgnoredLatexCommands.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/html2mobi/AmazonHtmlToMobiConverter.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/html2mobi/AmazonHtmlToMobiConverter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/AmazonHtmlToMobiConverterTest.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/AmazonHtmlToMobiConverterTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/Argument.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/Argument.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/snugglepkgs/Binomial.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/snugglepkgs/Binomial.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/html2mobi/CalibreHtmlToMobiConverter.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/html2mobi/CalibreHtmlToMobiConverter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/Converter.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/Converter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/DOMFormulaConverter.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/DOMFormulaConverter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/EndToEndConversionTest.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/EndToEndConversionTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/Formula.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/Formula.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/FormulaConverter.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/FormulaConverter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/FormulaElement.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/FormulaElement.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/html2mobi/HtmlToMobiConverter.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/html2mobi/HtmlToMobiConverter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/HtmlToMobiConverterTest.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/HtmlToMobiConverterTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/ImageFormulaConverter.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/ImageFormulaConverter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/latex2html/LatexToHtmlConverter.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/latex2html/LatexToHtmlConverter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/app/Main.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/app/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/MathmlCharacterDictionary.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/MathmlCharacterDictionary.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/layout/Mfenced.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/layout/Mfenced.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/layout/Mfrac.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/layout/Mfrac.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Mi.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Mi.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Mn.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Mn.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Mo.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Mo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/snugglepkgs/Modulo.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/snugglepkgs/Modulo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/scriptlimit/Mover.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/scriptlimit/Mover.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/layout/Mroot.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/layout/Mroot.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/layout/Mrow.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/layout/Mrow.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Ms.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Ms.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Mspace.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Mspace.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/layout/Mstyle.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/layout/Mstyle.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/scriptlimit/Msub.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/scriptlimit/Msub.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/scriptlimit/Msubsup.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/scriptlimit/Msubsup.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/scriptlimit/Msup.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/scriptlimit/Msup.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/tablesmatrices/Mtable.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/tablesmatrices/Mtable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/tablesmatrices/Mtd.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/tablesmatrices/Mtd.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Mtext.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Mtext.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/tablesmatrices/Mtr.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/tablesmatrices/Mtr.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/scriptlimit/Munder.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/scriptlimit/Munder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/latex2html/PandocLatexToHtmlConverter.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/latex2html/PandocLatexToHtmlConverter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/PandocLatexToHtmlConverterTest.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/PandocLatexToHtmlConverterTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/snugglepkgs/SnugglePackageProvider.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/snugglepkgs/SnugglePackageProvider.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Token.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Token.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/attributes/Unit.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/attributes/Unit.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/resources/application-context.xml" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/resources/application-context.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/calibre-plugin/calibre-plugin.iml" afterPath="$PROJECT_DIR$/calibre-plugin/calibre-plugin.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/latex2mobi-converter.iml" afterPath="$PROJECT_DIR$/latex2mobi-converter/latex2mobi-converter.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/pom.xml" afterPath="$PROJECT_DIR$/latex2mobi-converter/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="latex-formulas-mobi-converter.iws" />
@@ -22,6 +74,9 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/latex-formulas-mobi-converter$All_in_latex2mobi_converter.coverage" NAME="All in latex2mobi-converter Coverage Results" MODIFIED="1428764007323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
@@ -38,69 +93,7 @@
         <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/AmazonHtmlToMobiConverterTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="35" column="6" selection-start-line="35" selection-start-column="6" selection-end-line="35" selection-end-column="6" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MtableTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MtableTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.57459676">
-              <caret line="19" column="45" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MfencedTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MfencedTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="104" column="9" selection-start-line="102" selection-start-column="8" selection-end-line="104" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Mtable.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/tablesmatrices/Mtable.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MsupTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MsupTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="47" column="48" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="48" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PandocLatexToHtmlConverterTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/PandocLatexToHtmlConverterTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="58" column="27" selection-start-line="58" selection-start-column="27" selection-end-line="58" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EndToEndConversionTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/EndToEndConversionTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="78" column="11" selection-start-line="78" selection-start-column="11" selection-end-line="78" selection-end-column="11" />
+              <caret line="33" column="2" selection-start-line="33" selection-start-column="2" selection-end-line="33" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -110,10 +103,48 @@
         <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/HtmlToMobiConverterTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="73" column="13" selection-start-line="73" selection-start-column="13" selection-end-line="73" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <caret line="47" column="22" selection-start-line="47" selection-start-column="22" selection-end-line="47" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PandocLatexToHtmlConverter.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/latex2html/PandocLatexToHtmlConverter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.42531356">
+              <caret line="115" column="83" selection-start-line="115" selection-start-column="83" selection-end-line="115" selection-end-column="83" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PandocLatexToHtmlConverterTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/PandocLatexToHtmlConverterTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="50" column="22" selection-start-line="50" selection-start-column="22" selection-end-line="50" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DOMFormulaConverterTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/DOMFormulaConverterTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DOMFormulaConverter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/DOMFormulaConverter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="301" column="0" selection-start-line="301" selection-start-column="0" selection-end-line="301" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -122,17 +153,37 @@
         <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/CalibreHtmlToMobiConverterTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
+              <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application-context.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/resources/application-context.xml">
+      <file leaf-file-name="CalibreHtmlToMobiConverter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/html2mobi/CalibreHtmlToMobiConverter.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="20" column="14" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="43" />
+              <caret line="143" column="0" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AmazonHtmlToMobiConverter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/html2mobi/AmazonHtmlToMobiConverter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="141" column="0" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HtmlToMobiConverter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/html2mobi/HtmlToMobiConverter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="38" column="34" selection-start-line="38" selection-start-column="34" selection-end-line="38" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -165,25 +216,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Mi.java" />
-        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/resources/main.css" />
-        <option value="$PROJECT_DIR$/calibre-plugin/.gitignore" />
-        <option value="$PROJECT_DIR$/calibre-plugin/src/Makefile" />
-        <option value="$PROJECT_DIR$/calibre-plugin/src/calibre_plugins/latexformulas_input/__init__.py" />
-        <option value="$PROJECT_DIR$/latex2mobi-converter/pom.xml" />
-        <option value="$PROJECT_DIR$/latex2mobi-converter/SPECIFICATION.md" />
-        <option value="$PROJECT_DIR$/calibre-plugin/README.md" />
-        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/html2mobi/AmazonHtmlToMobiConverter.java" />
-        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/resources/application-context.xml" />
-        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/app/Main.java" />
-        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/html2mobi/CalibreHtmlToMobiConverter.java" />
-        <option value="$PROJECT_DIR$/.travis.yml" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/CalibreHtmlToMobiConverterTest.java" />
-        <option value="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/HtmlToMobiConverterTest.java" />
-        <option value="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/AmazonHtmlToMobiConverterTest.java" />
         <option value="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/EndToEndConversionTest.java" />
         <option value="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MtableTest.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/app/MainTest.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/MainTest.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/Converter.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/resources/application-context.xml" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/pom.xml" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/utils/AbstractMainTests.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/MainApplicationTest.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Token.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/layout/Mstyle.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/layout/Mrow.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/layout/Mroot.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/layout/Mfrac.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Mspace.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Ms.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Mo.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Mn.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Mi.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Mtext.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/tablesmatrices/Mtable.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/tablesmatrices/Mtd.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/tablesmatrices/Mtr.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/Formula.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/scriptlimit/Munder.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/scriptlimit/Mover.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/scriptlimit/Msup.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/scriptlimit/Msubsup.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/scriptlimit/Msub.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/layout/Mfenced.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/FormulaElement.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/attributes/Unit.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/FormulaConverter.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/Argument.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/latex2html/LatexToHtmlConverter.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/ImageFormulaConverter.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/snugglepkgs/Binomial.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/snugglepkgs/Modulo.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/snugglepkgs/SnugglePackageProvider.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/MathmlCharacterDictionary.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/AmazonHtmlToMobiConverterTest.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/HtmlToMobiConverterTest.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/PandocLatexToHtmlConverterTest.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/DOMFormulaConverter.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/html2mobi/CalibreHtmlToMobiConverter.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/html2mobi/AmazonHtmlToMobiConverter.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/html2mobi/HtmlToMobiConverter.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/app/Main.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/latex2html/PandocLatexToHtmlConverter.java" />
       </list>
     </option>
   </component>
@@ -235,9 +318,9 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="873" />
+    <option name="y" value="31" />
+    <option name="width" value="1680" />
+    <option name="height" value="1019" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -262,8 +345,9 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -271,6 +355,16 @@
               <option name="myItemId" value="latex-formulas-mobi-converter" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="latex-formulas-mobi-converter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -297,6 +391,54 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="latex-formulas-mobi-converter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="latex2mobi-converter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="latex-formulas-mobi-converter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="latex2mobi-converter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="html+css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -325,6 +467,10 @@
               <option name="myItemId" value="tests" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -349,10 +495,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="unit" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -490,7 +632,353 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="mathml2html" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="latex-formulas-mobi-converter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="latex2mobi-converter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="latex2mobiformulaconv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="converter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mathml2html" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elements" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="latex-formulas-mobi-converter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="latex2mobi-converter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="latex2mobiformulaconv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="converter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mathml2html" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elements" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="token" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="latex-formulas-mobi-converter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="latex2mobi-converter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="latex2mobiformulaconv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="converter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mathml2html" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elements" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tablesmatrices" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="latex-formulas-mobi-converter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="latex2mobi-converter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="latex2mobiformulaconv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="converter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mathml2html" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elements" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scriptlimit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="latex-formulas-mobi-converter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="latex2mobi-converter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="latex2mobiformulaconv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="converter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mathml2html" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elements" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="latex-formulas-mobi-converter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="latex2mobi-converter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="latex2mobiformulaconv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="converter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mathml2html" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elements" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="attributes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="latex-formulas-mobi-converter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="latex2mobi-converter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="latex2mobiformulaconv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="converter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="latex2html" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="latex-formulas-mobi-converter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="latex2mobi-converter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="latex2mobiformulaconv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="converter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="html2mobi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="latex-formulas-mobi-converter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="latex2mobi-converter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="latex2mobiformulaconv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -506,7 +994,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -519,10 +1006,10 @@
     <property name="dynamic.classpath" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="pom.xml&#9;FILE&#9;file:///Users/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/pom.xml&#10;writer8/main.py&#9;FILE&#9;file:///Users/michael/Projekte/latex-formulas-mobi-converter/calibre-plugin/calibre-src/src/calibre/ebooks/mobi/writer8/main.py&#10;toc.py&#9;FILE&#9;file:///Users/michael/Projekte/latex-formulas-mobi-converter/calibre-plugin/calibre-src/src/calibre/ebooks/mobi/writer8/toc.py&#10;cli.py&#9;FILE&#9;file:///Users/michael/Projekte/latex-formulas-mobi-converter/calibre-plugin/calibre-src/src/calibre/ebooks/conversion/cli.py&#10;news.py&#9;FILE&#9;file:///Users/michael/Projekte/latex-formulas-mobi-converter/calibre-plugin/calibre-src/src/calibre/web/feeds/news.py&#10;processor.py&#9;FILE&#9;file:///Users/michael/Projekte/latex-formulas-mobi-converter/calibre-plugin/calibre-src/src/calibre/ebooks/txt/processor.py&#10;Makefi&#9;FILE&#9;file:///Users/michael/Projekte/latex-formulas-mobi-converter/calibre-plugin/src/Makefile&#10;Binom&#9;PSI&#9;JAVA://at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.snugglepkgs.BinomHandler&#10;main.css&#9;FILE&#9;file:///Users/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/src/main/resources/main.css&#10;formulas.tex&#9;FILE&#9;file:///Users/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/src/main/resources/formulas.tex&#10;SPeci&#9;FILE&#9;file:///Users/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/SPECIFICATION.md&#10;Mi&#9;PSI&#9;JAVA://at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.token.Mi" />
+    <property name="SearchEverywhereHistoryKey" value="pom.xml&#9;FILE&#9;file:///home/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/pom.xml&#10;writer8/main.py&#9;FILE&#9;file:///Users/michael/Projekte/latex-formulas-mobi-converter/calibre-plugin/calibre-src/src/calibre/ebooks/mobi/writer8/main.py&#10;toc.py&#9;FILE&#9;file:///Users/michael/Projekte/latex-formulas-mobi-converter/calibre-plugin/calibre-src/src/calibre/ebooks/mobi/writer8/toc.py&#10;cli.py&#9;FILE&#9;file:///Users/michael/Projekte/latex-formulas-mobi-converter/calibre-plugin/calibre-src/src/calibre/ebooks/conversion/cli.py&#10;news.py&#9;FILE&#9;file:///Users/michael/Projekte/latex-formulas-mobi-converter/calibre-plugin/calibre-src/src/calibre/web/feeds/news.py&#10;processor.py&#9;FILE&#9;file:///Users/michael/Projekte/latex-formulas-mobi-converter/calibre-plugin/calibre-src/src/calibre/ebooks/txt/processor.py&#10;Makefi&#9;FILE&#9;file:///Users/michael/Projekte/latex-formulas-mobi-converter/calibre-plugin/src/Makefile&#10;Binom&#9;PSI&#9;JAVA://at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.snugglepkgs.BinomHandler&#10;main.css&#9;FILE&#9;file:///Users/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/src/main/resources/main.css&#10;formulas.tex&#9;FILE&#9;file:///Users/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/src/main/resources/formulas.tex&#10;SPeci&#9;FILE&#9;file:///Users/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/SPECIFICATION.md&#10;Mi&#9;PSI&#9;JAVA://at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.token.Mi" />
     <property name="FullScreen" value="false" />
     <property name="ignore_missing_gitignore" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
@@ -531,6 +1018,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="at.ac.tuwien.ims.latex2mobiformulaconv.app" />
       <recent name="at.ac.tuwien.ims.latex2mobiformulaconv.tests.integration" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
@@ -540,86 +1028,11 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/latex2mobi-converter/src/test/resources" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="at.ac.tuwien.ims.latex2mobiformulaconv.tests.integration" />
+    </key>
   </component>
   <component name="RunManager" selected="JUnit.All in latex2mobi-converter">
-    <configuration default="false" name="CalibreHtmlToMobiConverterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="at.ac.tuwien.ims.latex2mobiformulaconv.tests.integration.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="latex2mobi-converter" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" value="" />
-      <option name="PACKAGE_NAME" value="at.ac.tuwien.ims.latex2mobiformulaconv.tests.integration" />
-      <option name="MAIN_CLASS_NAME" value="at.ac.tuwien.ims.latex2mobiformulaconv.tests.integration.CalibreHtmlToMobiConverterTest" />
-      <option name="METHOD_NAME" value="" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="AmazonHtmlToMobiConverterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="at.ac.tuwien.ims.latex2mobiformulaconv.tests.integration.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="latex2mobi-converter" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="at.ac.tuwien.ims.latex2mobiformulaconv.tests.integration" />
-      <option name="MAIN_CLASS_NAME" value="at.ac.tuwien.ims.latex2mobiformulaconv.tests.integration.AmazonHtmlToMobiConverterTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="at.ac.tuwien.ims.latex2mobiformulaconv.tests.integration in latex2mobi-converter" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="at.ac.tuwien.ims.latex2mobiformulaconv.tests.integration.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="latex2mobi-converter" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="at.ac.tuwien.ims.latex2mobiformulaconv.tests.integration" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="package" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
     <configuration default="false" name="MtableTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -655,6 +1068,85 @@
       <option name="MAIN_CLASS_NAME" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="MainApplicationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="at.ac.tuwien.ims.latex2mobiformulaconv.tests.integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="latex2mobi-converter" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="at.ac.tuwien.ims.latex2mobiformulaconv.tests.integration" />
+      <option name="MAIN_CLASS_NAME" value="at.ac.tuwien.ims.latex2mobiformulaconv.tests.integration.MainApplicationTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="EndToEndConversionTest and 4 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="latex2mobi-converter" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="pattern" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns>
+        <pattern testClass="at.ac.tuwien.ims.latex2mobiformulaconv.tests.integration.EndToEndConversionTest" />
+        <pattern testClass="at.ac.tuwien.ims.latex2mobiformulaconv.tests.integration.CalibreHtmlToMobiConverterTest" />
+        <pattern testClass="at.ac.tuwien.ims.latex2mobiformulaconv.tests.integration.PandocLatexToHtmlConverterTest" />
+        <pattern testClass="at.ac.tuwien.ims.latex2mobiformulaconv.tests.integration.DOMFormulaConverterTest" />
+        <pattern testClass="at.ac.tuwien.ims.latex2mobiformulaconv.tests.integration.AmazonHtmlToMobiConverterTest" />
+      </patterns>
+      <method />
+    </configuration>
+    <configuration default="false" name="MainApplicationTest.testUsage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="at.ac.tuwien.ims.latex2mobiformulaconv.tests.integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="latex2mobi-converter" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="at.ac.tuwien.ims.latex2mobiformulaconv.tests.integration" />
+      <option name="MAIN_CLASS_NAME" value="at.ac.tuwien.ims.latex2mobiformulaconv.tests.integration.MainApplicationTest" />
+      <option name="METHOD_NAME" value="testUsage" />
+      <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -767,7 +1259,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="latex2mobi-converter" />
+      <module name="calibre-plugin" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="TARGET" value="" />
       <option name="SETTINGS_FILE" value="" />
@@ -902,6 +1394,10 @@
       </MavenSettings>
       <method />
     </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
+      <profiling log-folder="$PROJECT_DIR$" />
+      <method />
+    </configuration>
     <configuration default="true" type="PyBehaveRunConfigurationType" factoryName="Behave">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -911,7 +1407,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="latex2mobi-converter" />
+      <module name="calibre-plugin" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="ADDITIONAL_ARGS" value="" />
       <method />
@@ -925,7 +1421,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="latex2mobi-converter" />
+      <module name="calibre-plugin" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="ADDITIONAL_ARGS" value="" />
       <method />
@@ -941,7 +1437,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="latex2mobi-converter" />
+      <module name="calibre-plugin" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="" />
       <option name="PARAMETERS" value="" />
@@ -990,17 +1486,6 @@
       <listeners />
       <method />
     </configuration>
-    <configuration default="true" type="executeSpecs" factoryName="Gauge Execution">
-      <setting name="environment" value="" />
-      <setting name="specsToExecute" value="" />
-      <setting name="tags" value="" />
-      <setting name="parallelNodes" value="" />
-      <setting name="execInParallel" value="false" />
-      <setting name="programParameters" value="" />
-      <setting name="workingDirectory" value="" />
-      <envMap />
-      <method />
-    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-options />
       <gulpfile />
@@ -1019,7 +1504,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="latex2mobi-converter" />
+      <module name="calibre-plugin" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="" />
       <option name="CLASS_NAME" value="" />
@@ -1039,7 +1524,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="latex2mobi-converter" />
+      <module name="calibre-plugin" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="" />
       <option name="CLASS_NAME" value="" />
@@ -1059,7 +1544,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="latex2mobi-converter" />
+      <module name="calibre-plugin" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="" />
       <option name="CLASS_NAME" value="" />
@@ -1081,7 +1566,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="latex2mobi-converter" />
+      <module name="calibre-plugin" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="" />
       <option name="CLASS_NAME" value="" />
@@ -1104,7 +1589,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="latex2mobi-converter" />
+      <module name="calibre-plugin" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="" />
       <option name="CLASS_NAME" value="" />
@@ -1163,19 +1648,19 @@
     <list size="7">
       <item index="0" class="java.lang.String" itemvalue="Application.normal output" />
       <item index="1" class="java.lang.String" itemvalue="Application.usage" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.CalibreHtmlToMobiConverterTest" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.AmazonHtmlToMobiConverterTest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.at.ac.tuwien.ims.latex2mobiformulaconv.tests.integration in latex2mobi-converter" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.MtableTest" />
-      <item index="6" class="java.lang.String" itemvalue="JUnit.All in latex2mobi-converter" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.MtableTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.All in latex2mobi-converter" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.MainApplicationTest" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.EndToEndConversionTest and 4 more" />
+      <item index="6" class="java.lang.String" itemvalue="JUnit.MainApplicationTest.testUsage" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="JUnit.All in latex2mobi-converter" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.MtableTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.at.ac.tuwien.ims.latex2mobiformulaconv.tests.integration in latex2mobi-converter" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.CalibreHtmlToMobiConverterTest" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.AmazonHtmlToMobiConverterTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.MainApplicationTest.testUsage" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.MainApplicationTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.EndToEndConversionTest and 4 more" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.MtableTest" />
       </list>
     </recent_temporary>
   </component>
@@ -1198,6 +1683,8 @@
       <workItem from="1428600151306" duration="7031000" />
       <workItem from="1428655930788" duration="21000" />
       <workItem from="1428679115568" duration="2722000" />
+      <workItem from="1428753014624" duration="2115000" />
+      <workItem from="1428756560782" duration="10605000" />
     </task>
     <task id="LOCAL-00001" summary="Update Calibre Plugin readme with build instructions">
       <created>1427896576308</created>
@@ -1323,40 +1810,74 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23603000" />
+    <option name="totallyTimeSpent" value="36323000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="873" extended-state="6" />
+    <frame x="0" y="31" width="1680" height="1019" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36363637" sideWeight="0.49713877" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290653" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="85" y="31" width="1482" height="820" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24969475" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290653" sideWeight="0.49713877" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39948782" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290653" sideWeight="0.50572246" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290653" sideWeight="0.49713877" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290653" sideWeight="0.50572246" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.4868421" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5131579" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297568" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24964234" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3290653" sideWeight="0.49427754" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25518927" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32743362" sideWeight="0.49427754" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36363637" sideWeight="0.49713877" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32853982" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39933628" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32853982" sideWeight="0.49713877" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24175824" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290653" sideWeight="0.49713877" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290653" sideWeight="0.50572246" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.48808104" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2555012" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32829374" sideWeight="0.49427754" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36363637" sideWeight="0.49713877" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290653" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39948782" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290653" sideWeight="0.49713877" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2431466" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297568" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -1399,166 +1920,145 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Mi.java</url>
-          <line>71</line>
+          <line>73</line>
           <properties />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="3" />
+      <option name="time" value="10" />
     </breakpoint-manager>
-    <watches-manager />
+    <watches-manager>
+      <configuration name="JUnit">
+        <watch expression="result" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/calibre-plugin/src/Makefile">
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/resources/application-context.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.2788296">
+          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
-      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-        <state />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/Converter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="6.776248">
+          <caret line="314" column="0" selection-start-line="314" selection-start-column="0" selection-end-line="314" selection-end-column="0" />
+          <folding>
+            <element signature="e#5098#5099#0" expanded="true" />
+            <element signature="e#5156#5157#0" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/calibre-plugin/.gitignore">
+    <entry file="jar:///usr/jdk/src.zip!/java/lang/Throwable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+        <state vertical-scroll-proportion="0.3321859">
+          <caret line="113" column="13" selection-start-line="113" selection-start-column="13" selection-end-line="113" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/latex2mobi-converter/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.70567983">
+          <caret line="168" column="21" selection-start-line="168" selection-start-column="21" selection-end-line="168" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/calibre-plugin/src/calibre_plugins/latexformulas_input/__init__.py">
+    <entry file="jar:///usr/jdk/src.zip!/java/lang/Runtime.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="124" column="0" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/calibre-plugin/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="46" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/calibre-plugin/src/Makefile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/calibre-plugin/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+        <state vertical-scroll-proportion="0.3321859">
+          <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/pom.xml">
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/MainApplicationTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="184" column="6" selection-start-line="184" selection-start-column="6" selection-end-line="184" selection-end-column="6" />
+        <state vertical-scroll-proportion="0.78313255">
+          <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/snugglepkgs/SnugglePackageRegistry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.50344825">
+          <caret line="40" column="22" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/calibre-plugin/src/calibre_plugins/latexformulas_input/__init__.py">
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/layout/Mstyle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="124" column="0" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/calibre-plugin/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="46" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/calibre-plugin/src/Makefile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/calibre-plugin/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+        <state vertical-scroll-proportion="0.39482757">
+          <caret line="39" column="27" selection-start-line="39" selection-start-column="27" selection-end-line="39" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/pom.xml">
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/layout/Mrow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
+        <state vertical-scroll-proportion="0.5275862">
+          <caret line="38" column="4" selection-start-line="38" selection-start-column="4" selection-end-line="38" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/calibre-plugin/src/calibre_plugins/latexformulas_input/__init__.py">
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/layout/Mroot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="124" column="0" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/calibre-plugin/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="46" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
+        <state vertical-scroll-proportion="0.30172414">
+          <caret line="37" column="61" selection-start-line="37" selection-start-column="61" selection-end-line="37" selection-end-column="61" />
           <folding />
         </state>
       </provider>
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/calibre-plugin/src/Makefile">
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/layout/Mfrac.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.30172414">
+          <caret line="36" column="7" selection-start-line="36" selection-start-column="7" selection-end-line="36" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
-      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/calibre-plugin/.gitignore">
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Mspace.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <caret line="36" column="58" selection-start-line="34" selection-start-column="1" selection-end-line="36" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Ms.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="35" column="54" selection-start-line="33" selection-start-column="1" selection-end-line="35" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Mo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="22" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Mn.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="35" column="54" selection-start-line="35" selection-start-column="54" selection-end-line="35" selection-end-column="54" />
           <folding />
         </state>
       </provider>
@@ -1566,204 +2066,234 @@
     <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Mi.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="59" column="5" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="5" />
+          <caret line="30" column="7" selection-start-line="30" selection-start-column="7" selection-end-line="30" selection-end-column="7" />
           <folding>
-            <element signature="e#2127#2128#0" expanded="false" />
-            <element signature="e#2170#2171#0" expanded="false" />
+            <element signature="e#2148#2149#0" expanded="true" />
+            <element signature="e#2191#2192#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/resources/formulas.tex">
-      <provider selected="true" editor-type-id="LaTeXFileEditor">
-        <state />
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Mtext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="35" column="57" selection-start-line="35" selection-start-column="57" selection-end-line="35" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/tablesmatrices/Mtr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="37" column="2" selection-start-line="37" selection-start-column="2" selection-end-line="37" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/Formula.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="3" selection-start-line="23" selection-start-column="3" selection-end-line="23" selection-end-column="3" />
+          <folding>
+            <element signature="e#2593#2594#0" expanded="true" />
+            <element signature="e#2620#2621#0" expanded="true" />
+            <element signature="e#2661#2662#0" expanded="true" />
+            <element signature="e#2693#2694#0" expanded="true" />
+            <element signature="e#2731#2732#0" expanded="true" />
+            <element signature="e#2767#2768#0" expanded="true" />
+            <element signature="e#2823#2824#0" expanded="true" />
+            <element signature="e#2873#2874#0" expanded="true" />
+            <element signature="e#2906#2907#0" expanded="true" />
+            <element signature="e#2935#2936#0" expanded="true" />
+            <element signature="e#2979#2980#0" expanded="true" />
+            <element signature="e#3015#3016#0" expanded="true" />
+            <element signature="e#3051#3052#0" expanded="true" />
+            <element signature="e#3083#3084#0" expanded="true" />
+            <element signature="e#3133#3134#0" expanded="true" />
+            <element signature="e#3175#3176#0" expanded="true" />
+            <element signature="e#3205#3206#0" expanded="true" />
+            <element signature="e#3233#3234#0" expanded="true" />
+            <element signature="e#3259#3260#0" expanded="true" />
+            <element signature="e#3284#3285#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/scriptlimit/Munder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="39" column="2" selection-start-line="34" selection-start-column="1" selection-end-line="39" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/scriptlimit/Mover.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="40" column="1" selection-start-line="40" selection-start-column="1" selection-end-line="40" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/tablesmatrices/Mtable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/tablesmatrices/Mtd.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="35" column="2" selection-start-line="35" selection-start-column="2" selection-end-line="35" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/scriptlimit/Msup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="32" column="2" selection-start-line="32" selection-start-column="2" selection-end-line="32" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/scriptlimit/Msubsup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="31" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/scriptlimit/Msub.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="37" column="22" selection-start-line="37" selection-start-column="22" selection-end-line="37" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/layout/Mfenced.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="43" column="42" selection-start-line="43" selection-start-column="42" selection-end-line="43" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/FormulaElement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="57" column="17" selection-start-line="57" selection-start-column="17" selection-end-line="57" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/attributes/Unit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="27" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Token.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="23" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/FormulaConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="53" column="17" selection-start-line="53" selection-start-column="17" selection-end-line="53" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/Argument.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="11" selection-start-line="28" selection-start-column="11" selection-end-line="28" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/latex2html/LatexToHtmlConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="11" selection-start-line="36" selection-start-column="11" selection-end-line="36" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/ImageFormulaConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="49" column="11" selection-start-line="49" selection-start-column="11" selection-end-line="49" selection-end-column="11" />
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/snugglepkgs/Binomial.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="42" column="34" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/snugglepkgs/BinomHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="55" selection-start-line="27" selection-start-column="55" selection-end-line="27" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/resources/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="63" column="23" selection-start-line="63" selection-start-column="23" selection-end-line="63" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/calibre-plugin/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+          <caret line="35" column="11" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/calibre-plugin/src/Makefile">
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/snugglepkgs/Modulo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/calibre-plugin/src/calibre_plugins/latexformulas_input/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="124" column="0" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="191" column="57" selection-start-line="191" selection-start-column="57" selection-end-line="191" selection-end-column="57" />
+          <caret line="35" column="11" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/SPECIFICATION.md">
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/snugglepkgs/SnugglePackageProvider.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="19" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/calibre-plugin/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="15" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.7.0_75.jdk/Contents/Home/src.zip!/java/lang/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3326613">
-          <caret line="107" column="19" selection-start-line="107" selection-start-column="19" selection-end-line="107" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/resources/html+css/latex2mobi.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="38" selection-start-line="0" selection-start-column="38" selection-end-line="0" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/resources/html+css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47974414">
-          <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/resources/log4j.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6048387">
-          <caret line="30" column="29" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/app/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.60685486">
-          <caret line="318" column="55" selection-start-line="318" selection-start-column="55" selection-end-line="318" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/Converter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="62" column="15" selection-start-line="62" selection-start-column="15" selection-end-line="62" selection-end-column="15" />
+          <caret line="17" column="49" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="49" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/html2mobi/CalibreHtmlToMobiConverter.java">
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/MathmlCharacterDictionary.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="151" column="54" selection-start-line="151" selection-start-column="54" selection-end-line="151" selection-end-column="54" />
+          <caret line="194" column="9" selection-start-line="194" selection-start-column="9" selection-end-line="194" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/utils/TestUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.0689654">
-          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="46" column="7" selection-start-line="46" selection-start-column="7" selection-end-line="46" selection-end-column="7" />
           <folding />
         </state>
       </provider>
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/html2mobi/AmazonHtmlToMobiConverter.java">
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/utils/AbstractMainTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0397351">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="90" selection-start-line="38" selection-start-column="90" selection-end-line="38" selection-end-column="90" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#3280#3288#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.travis.yml">
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/AmazonHtmlToMobiConverterTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/html2mobi/HtmlToMobiConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.546371">
-          <caret line="39" column="17" selection-start-line="39" selection-start-column="17" selection-end-line="39" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/HtmlToMobiConverterTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="73" column="13" selection-start-line="73" selection-start-column="13" selection-end-line="73" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/resources/application-context.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="14" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/EndToEndConversionTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="78" column="11" selection-start-line="78" selection-start-column="11" selection-end-line="78" selection-end-column="11" />
+          <caret line="33" column="2" selection-start-line="33" selection-start-column="2" selection-end-line="33" selection-end-column="2" />
           <folding />
         </state>
       </provider>
@@ -1771,7 +2301,23 @@
     <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/PandocLatexToHtmlConverterTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="58" column="27" selection-start-line="58" selection-start-column="27" selection-end-line="58" selection-end-column="27" />
+          <caret line="50" column="22" selection-start-line="50" selection-start-column="22" selection-end-line="50" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/DOMFormulaConverterTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/DOMFormulaConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="301" column="0" selection-start-line="301" selection-start-column="0" selection-end-line="301" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1779,65 +2325,55 @@
     <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/CalibreHtmlToMobiConverterTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
+          <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/FormulaElementTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="51" column="22" selection-start-line="51" selection-start-column="22" selection-end-line="51" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/AmazonHtmlToMobiConverterTest.java">
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/html2mobi/CalibreHtmlToMobiConverter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="6" selection-start-line="35" selection-start-column="6" selection-end-line="35" selection-end-column="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <caret line="143" column="0" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/tablesmatrices/Mtable.java">
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/html2mobi/AmazonHtmlToMobiConverter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <caret line="141" column="0" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MsupTest.java">
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/html2mobi/HtmlToMobiConverter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="47" column="48" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="48" />
+          <caret line="38" column="34" selection-start-line="38" selection-start-column="34" selection-end-line="38" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MfracTest.java">
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/app/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43293494">
-          <caret line="47" column="11" selection-start-line="47" selection-start-column="11" selection-end-line="47" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.354618">
+          <caret line="176" column="47" selection-start-line="176" selection-start-column="43" selection-end-line="176" selection-end-column="58" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MfencedTest.java">
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/HtmlToMobiConverterTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="104" column="9" selection-start-line="102" selection-start-column="8" selection-end-line="104" selection-end-column="9" />
+          <caret line="47" column="22" selection-start-line="47" selection-start-column="22" selection-end-line="47" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MtableTest.java">
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/latex2html/PandocLatexToHtmlConverter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.57459676">
-          <caret line="19" column="45" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
+        <state vertical-scroll-proportion="0.42531356">
+          <caret line="115" column="83" selection-start-line="115" selection-start-column="83" selection-end-line="115" selection-end-column="83" />
           <folding />
         </state>
       </provider>
@@ -1871,7 +2407,7 @@
       </state>
       <state key="GlobalLibrariesConfigurable.UI">
         <settings>
-          <last-edited>Python 2.7.6 (/usr/bin/python) interpreter library</last-edited>
+          <last-edited>Python 2.7.8 (/usr/bin/python) interpreter library</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1900,7 +2436,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

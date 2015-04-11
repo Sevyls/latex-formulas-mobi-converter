@@ -41,11 +41,12 @@ import static org.junit.Assert.assertTrue;
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
  * <p/>
- * Abstract Integration Test for
+
+ * Abstract Integration Test for an HtmlToMobiConverter Implementation
+ * @see at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi.HtmlToMobiConverter
  *
  * @author Michael Auß
  *         Created on 10.04.15.
- * @see at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi.HtmlToMobiConverter
  */
 public abstract class HtmlToMobiConverterTest {
     private static Logger logger = Logger.getLogger(HtmlToMobiConverterTest.class);

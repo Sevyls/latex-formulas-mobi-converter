@@ -42,19 +42,18 @@ import java.util.HashMap;
  * <p/>
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
- *
- * @author Michael Auß
- *         Created: 21.05.14 00:06
- *
+
  * An implementation of the LaTeX to HTML Converter interface using Pandoc
  * Pandoc will be called with an input file be
  * and the results will be parsed from its output file.
+ *
+ * @author Michael Auß
+ *         Created: 21.05.14 00:06
  */
 public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
     private static Logger logger = Logger.getLogger(PandocLatexToHtmlConverter.class);
 
     private Path execPath = null;
-
 
     @Override
     public Document convert(File tex, String title) {
@@ -84,7 +83,7 @@ public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
 
         DefaultExecuteResultHandler resultHandler = new DefaultExecuteResultHandler();
 
-        ExecuteWatchdog watchdog = new ExecuteWatchdog(60 * 1000); // TODO make configurable
+        ExecuteWatchdog watchdog = new ExecuteWatchdog(60 * 1000); // max execution time 1 minute
         Executor executor = new DefaultExecutor();
         executor.setExitValue(1);
         executor.setWatchdog(watchdog);

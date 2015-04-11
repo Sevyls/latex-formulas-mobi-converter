@@ -45,6 +45,9 @@ import static org.junit.Assert.*;
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
+ * Integration Test for PandocLatexToHtmlConverter
+ * @see at.ac.tuwien.ims.latex2mobiformulaconv.converter.latex2html.PandocLatexToHtmlConverter
+ *
  * @author Michael Auß
  *         Date: 18.08.14
  *         Time: 21:22

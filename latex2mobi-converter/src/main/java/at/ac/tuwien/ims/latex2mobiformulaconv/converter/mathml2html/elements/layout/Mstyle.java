@@ -32,8 +32,12 @@ import java.util.List;
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
+ * Renders a MathML mstyle tag
+ *
+ * See http://www.w3.org/TR/MathML2/chapter3.html#presm.mstyle
+ *
  * @author Michael Auß
- *         Date: 15.09.20
+ *         Date: 15.09.2014
  */
 public class Mstyle implements FormulaElement {
     private List<FormulaElement> base = new ArrayList<>();

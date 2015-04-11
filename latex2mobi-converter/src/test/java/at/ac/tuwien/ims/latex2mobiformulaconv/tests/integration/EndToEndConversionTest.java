@@ -126,7 +126,7 @@ public class EndToEndConversionTest {
             converter.setOutputPath(outputPath);
             converter.setFilename(filename);
             converter.setTitle(title);
-            converter.setDebug(false);
+            converter.setDebugMarkupOutput(false);
 
             converter.convert();
             assertTrue(Files.exists(outputFilePath));

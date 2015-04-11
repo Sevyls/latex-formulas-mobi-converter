@@ -34,6 +34,10 @@ import java.util.List;
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
+ * Renders a MathML mrow tag
+ *
+ * See http://www.w3.org/TR/MathML2/chapter3.html#presm.mrow
+ *
  * @author Michael Auß
  *         Created: 20.05.14 23:30
  */

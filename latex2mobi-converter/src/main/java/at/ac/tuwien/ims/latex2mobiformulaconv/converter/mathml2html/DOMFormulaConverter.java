@@ -48,7 +48,11 @@ import java.util.List;
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
  * Converts formulas from MathML to a HTML+CSS based representation
- * Implements @see FormulaConverter
+ *
+ * For supported MathML see the SPECIFICATION.md
+ *
+ * Implements the FormulaConverter interface
+ * @see at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.FormulaConverter
  *
  * @author Michael Auß
  *         Date: 17.08.14
@@ -113,6 +117,7 @@ public class DOMFormulaConverter extends FormulaConverter {
 
     /**
      * Recursive function to render all FormulaElements
+     * Converts MathML to HTML
      *
      * @param cur the current processed MathML JDOM2 Element (a node or leaf inside MathML's DOM tree)
      * @return an object which implements the FormulaElement interface, so it can be rendered to HTML
@@ -125,18 +130,24 @@ public class DOMFormulaConverter extends FormulaConverter {
 
         // Based on the MathML tag a corresponding class will be chosen and output will be rendered
         switch (name.toLowerCase()) {
+
+            // Superscripts
             case "msup":
                 Msup msup = new Msup();
                 msup.setBase(renderElement(cur.getChildren().get(0)));
                 msup.setSuperscript(renderElement(cur.getChildren().get(1)));
                 output = msup;
                 break;
+
+            // Subscripts
             case "msub":
                 Msub msub = new Msub();
                 msub.setBase(renderElement(cur.getChildren().get(0)));
                 msub.setSubscript(renderElement(cur.getChildren().get(1)));
                 output = msub;
                 break;
+
+            // Subscript-superscript Pairs
             case "msubsup":
                 Msubsup msubsup = new Msubsup();
                 msubsup.setBase(renderElement(cur.getChildren().get(0)));
@@ -144,6 +155,8 @@ public class DOMFormulaConverter extends FormulaConverter {
                 msubsup.setSuperscript(renderElement(cur.getChildren().get(2)));
                 output = msubsup;
                 break;
+
+            // Rows
             case "mrow":
                 Mrow mrow = new Mrow();
                 Iterator<Element> iterator = cur.getChildren().iterator();
@@ -156,26 +169,15 @@ public class DOMFormulaConverter extends FormulaConverter {
 
                 output = mrow;
                 break;
+
+            // operators
             case "mo":
                 Mo mo;
                 String operator = cur.getText();
 
 
-                // TODO handling special classes
-                /*switch (operator) {
-                    case "∫":
-                    case "&int;":
-                    case "&Integral;":
-                        mo = new Integral();
-                        break;
-                    case "∑":
-                    case "&Sum;":
-                        mo = new Summation();
-                        break;
-                    default:       */
-                        mo = MathmlCharacterDictionary.findOperator(operator, cur.getAttributeValue("form", "infix"));
-
-                //}
+                // find operator in dictionary
+                mo = MathmlCharacterDictionary.findOperator(operator, cur.getAttributeValue("form", "infix"));
 
                 if (mo == null) {
                     mo = new Mo();
@@ -196,11 +198,15 @@ public class DOMFormulaConverter extends FormulaConverter {
                 }
                 output = mo;
                 break;
+
+            // numbers
             case "mn":
                 Mn mn = new Mn();
                 mn.setValue(cur.getText());
                 output = mn;
                 break;
+
+            // identifiers
             case "mi":
                 Mi mi = new Mi();
                 mi.setValue(cur.getText());
@@ -211,6 +217,8 @@ public class DOMFormulaConverter extends FormulaConverter {
                 }
                 output = mi;
                 break;
+
+            // fractions
             case "mfrac":
                 Mfrac mfrac = new Mfrac();
                 mfrac.setNumerator(renderElement(cur.getChildren().get(0)));
@@ -223,6 +231,8 @@ public class DOMFormulaConverter extends FormulaConverter {
 
                 output = mfrac;
                 break;
+
+            // Expression Inside Pair of Fences
             case "mfenced":
                 Mfenced mfenced = new Mfenced();
                 mfenced.setOpened(cur.getAttributeValue("open"));
@@ -240,6 +250,8 @@ public class DOMFormulaConverter extends FormulaConverter {
                 }
                 output = mfenced;
                 break;
+
+            // Space
             case "mspace":
                 Mspace mspace = new Mspace();
 
@@ -253,32 +265,42 @@ public class DOMFormulaConverter extends FormulaConverter {
                     mspace.setHeight(Unit.parse(heightAttribute));
                 }
 
-                // TODO linebreaks
+                // linebreaks will be ignored for now
 
                 output = mspace;
                 break;
+
+            // Square root
             case "msqrt":
                 Mroot msqrt = new Mroot();
                 msqrt.setBase(renderElement(cur.getChildren().get(0)));
                 // no index
                 output = msqrt;
                 break;
+
+            // Root
             case "mroot":
                 Mroot mroot = new Mroot();
                 mroot.setBase(renderElement(cur.getChildren().get(0)));
                 mroot.setIndex(renderElement(cur.getChildren().get(1)));
                 output = mroot;
                 break;
+
+            // String literal
             case "ms":
                 Ms ms = new Ms();
                 ms.setValue(cur.getText());
                 output = ms;
                 break;
+
+            // Text
             case "mtext":
                 Mtext mtext = new Mtext();
                 mtext.setValue(cur.getText());
                 output = mtext;
                 break;
+
+            // Style change
             case "mstyle":
                 Mstyle mstyle = new Mstyle();
 
@@ -294,18 +316,24 @@ public class DOMFormulaConverter extends FormulaConverter {
                 }
                 output = mstyle;
                 break;
+
+            // Overscript
             case "mover":
                 Mover mover = new Mover();
                 mover.setBase(renderElement(cur.getChildren().get(0)));
                 mover.setOverscript(renderElement(cur.getChildren().get(1)));
                 output = mover;
                 break;
+
+            // Underscript
             case "munder":
                 Munder munder = new Munder();
                 munder.setBase(renderElement(cur.getChildren().get(0)));
                 munder.setUnderscript(renderElement(cur.getChildren().get(1)));
                 output = munder;
                 break;
+
+            // Matrices & tables
             case "mtable":
                 Mtable mtable = new Mtable();
                 Iterator<Element> mRowIterator = cur.getChildren().iterator();
@@ -315,6 +343,8 @@ public class DOMFormulaConverter extends FormulaConverter {
                 }
                 output = mtable;
                 break;
+
+            // Table rows
             case "mtr":
                 Mtr mtr = new Mtr();
                 Iterator<Element> mCellIterator = cur.getChildren().iterator();
@@ -324,6 +354,8 @@ public class DOMFormulaConverter extends FormulaConverter {
                 }
                 output = mtr;
                 break;
+
+            // Table cells
             case "mtd":
                 Mtd mtd = new Mtd();
                 Mrow tdContent = new Mrow();

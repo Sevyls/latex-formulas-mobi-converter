@@ -32,7 +32,9 @@ import java.util.List;
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
- * Represents and renders the MathML literal tag Mi to HTML+CSS
+ * Renders a MathML Mi tag
+ *
+ * http://www.w3.org/TR/MathML2/chapter3.html#presm.mi
  *
  * @author Michael Auß
  *         Date: 15.09.2014

@@ -3,10 +3,7 @@ package at.ac.tuwien.ims.latex2mobiformulaconv.converter;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi.HtmlToMobiConverter;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.latex2html.LatexToHtmlConverter;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.FormulaConverter;
-
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.Formula;
-
-import org.apache.commons.io.filefilter.DirectoryFileFilter;
 import org.apache.commons.io.filefilter.FileFileFilter;
 import org.apache.log4j.Logger;
 import org.jdom2.Document;
@@ -78,7 +75,7 @@ public class Converter {
      * else the will be represented with html
      */
     private boolean replaceWithPictures = false;
-    private boolean debug = false;
+    private boolean debugMarkupOutput = false;
 
     private boolean exportMarkup = false;
     private boolean noMobiConversion = false;
@@ -151,12 +148,12 @@ public class Converter {
         this.replaceWithPictures = replaceWithPictures;
     }
 
-    public boolean isDebug() {
-        return debug;
+    public boolean isDebugMarkupOutput() {
+        return debugMarkupOutput;
     }
 
-    public void setDebug(boolean debug) {
-        this.debug = debug;
+    public void setDebugMarkupOutput(boolean debugMarkupOutput) {
+        this.debugMarkupOutput = debugMarkupOutput;
     }
 
     public Path getOutputPath() {
@@ -213,7 +210,7 @@ public class Converter {
 
         Map<Integer, Formula> formulaMap = new HashMap<>();
 
-        formulaConverter.setDebug(debug);
+        formulaConverter.setDebug(debugMarkupOutput);
 
         Map<Integer, String> latexFormulas = formulaConverter.extractFormulas(document);
 
@@ -302,7 +299,7 @@ public class Converter {
 
             Files.write(tempFilepath, new XMLOutputter().outputString(document).getBytes(Charset.forName("UTF-8")));
 
-            if (debug) {
+            if (debugMarkupOutput) {
                 logger.info("Debug markup will be generated.");
             }
 

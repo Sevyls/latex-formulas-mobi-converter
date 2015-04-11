@@ -6,13 +6,11 @@
 
     <bean id="image-converter" class="at.ac.tuwien.ims.latex2mobiformulaconv.converter.Converter">
         <property name="latexToHtmlConverter" ref="latex2html-converter"/>
-        <property name="htmlToMobiConverter" ref="kindlegen-html2mobi-converter"/>
         <property name="formulaConverter" ref="image-formula-converter"/>
     </bean>
 
     <bean id="dom-converter" class="at.ac.tuwien.ims.latex2mobiformulaconv.converter.Converter">
         <property name="latexToHtmlConverter" ref="latex2html-converter"/>
-        <property name="htmlToMobiConverter" ref="kindlegen-html2mobi-converter"/>
         <property name="formulaConverter" ref="dom-formula-converter"/>
     </bean>
 

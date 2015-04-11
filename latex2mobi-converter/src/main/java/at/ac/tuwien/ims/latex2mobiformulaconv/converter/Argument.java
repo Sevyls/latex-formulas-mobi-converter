@@ -26,7 +26,7 @@ package at.ac.tuwien.ims.latex2mobiformulaconv.converter;
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
- * @author mauss
+ * @author Michael Auß
  *         Created: 17.06.14 00:42
  */
 public abstract class Argument {

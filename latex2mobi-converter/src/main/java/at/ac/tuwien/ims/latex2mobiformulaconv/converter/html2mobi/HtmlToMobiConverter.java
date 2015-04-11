@@ -30,12 +30,11 @@ import java.io.File;
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
- * @author mauss
- *         Created: 21.05.14 00:11
- *
  * This interface provides the method signature for converting an HTML document
  * to an eBook in Mobi-Format
  *
+ * @author Michael Auß
+ *         Created: 21.05.14 00:11
  */
 public interface HtmlToMobiConverter extends ExecOption {
     /**
