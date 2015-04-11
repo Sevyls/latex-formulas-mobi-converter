@@ -1,43 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
+<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
+<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on https://github.com/jonrohan -->
 <html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="LaTeX to Mobi Formula Converter : Bachelor Thesis, Michael Auß, e0525937@student.tuwien.ac.at">
+  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen">
+  <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/script.js"></script>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+  <title>LaTeX to Mobi Formula Converter</title>
+  <meta name="description" content="Bachelor Thesis, Michael Auß, e0525937@student.tuwien.ac.at">
 
-    <title>LaTeX to Mobi Formula Converter</title>
-  </head>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
 
-  <body>
+</head>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/Sevyls/latex-formulas-mobi-converter">View on GitHub</a>
+<body>
 
-          <h1 id="project_title">LaTeX to Mobi Formula Converter</h1>
-          <h2 id="project_tagline">Bachelor Thesis, Michael Auß, e0525937@student.tuwien.ac.at</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/Sevyls/latex-formulas-mobi-converter/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/Sevyls/latex-formulas-mobi-converter/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h1>
+  <div class="wrapper">
+    <header>
+      <h1 class="title">LaTeX to Mobi Formula Converter</h1>
+    </header>
+    <div id="container">
+      <p class="tagline">Bachelor Thesis, Michael Auß, e0525937@student.tuwien.ac.at</p>
+      <div id="main" role="main">
+        <div class="download-bar">
+        <div class="inner">
+          <a href="https://github.com/Sevyls/latex-formulas-mobi-converter/tarball/master" class="download-button tar"><span>Download</span></a>
+          <a href="https://github.com/Sevyls/latex-formulas-mobi-converter/zipball/master" class="download-button zip"><span>Download</span></a>
+          <a href="https://github.com/Sevyls/latex-formulas-mobi-converter" class="code">View LaTeX to Mobi Formula Converter on GitHub</a>
+        </div>
+        <span class="blc"></span><span class="trc"></span>
+        </div>
+        <article class="markdown-body">
+          <h1>
 <a id="latex-to-mobi-formula-converter" class="anchor" href="#latex-to-mobi-formula-converter" aria-hidden="true"><span class="octicon octicon-link"></span></a>Latex to Mobi Formula Converter</h1>
 
 <p>Bachelor Thesis</p>
 
 <p>Michael Auß
 <a href="mailto:e0525937@student.tuwien.ac.at">e0525937@student.tuwien.ac.at</a></p>
+
+<p>Interactive Media Systems, E188/2,
+Favoritenstrasse 9-11, 4th floor,
+1040 Wien, Austria</p>
 
 <p><a href="http://badge.fury.io/gh/sevyls%2Flatex-formulas-mobi-converter"><img src="https://badge.fury.io/gh/sevyls%2Flatex-formulas-mobi-converter.svg" alt="GitHub version"></a> <a href="https://travis-ci.org/Sevyls/latex-formulas-mobi-converter"><img src="https://travis-ci.org/Sevyls/latex-formulas-mobi-converter.svg?branch=master" alt="Build status" title="Build status"></a></p>
 
@@ -46,6 +55,18 @@
 <p>Interactive Media Systems is a multimedia research group at the
 Institute of Software Technology and Interactive Systems, part of the
 Faculty of Informatics at the Vienna University of Technology.</p>
+
+<h2>
+<a id="about-this-topic" class="anchor" href="#about-this-topic" aria-hidden="true"><span class="octicon octicon-link"></span></a>About This Topic</h2>
+
+<p>"Develop a best-effort algorithm for the conversion of formulas set in Latex to Mobi (i.e. HTML 4). Currently, formulas are the biggest hurdle for the conversion of Latex documents into e-books. This component - if well done - would help providing costly scientifc books as cheap e-books."</p>
+
+<h2>
+<a id="introduction" class="anchor" href="#introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction</h2>
+
+<p>The main purpose of this software is to provide the ability to automatically convert LaTeX documents into MOBI-eBooks, 
+with the special interest in correct and automated rendering of mathematical formulas on Amazon Kindle eBook reader devices. 
+Using the well known web markup and styling languages HTML and CSS, the rendering is independent from different screen sizes and densities.</p>
 
 <h2>
 <a id="libraries-used" class="anchor" href="#libraries-used" aria-hidden="true"><span class="octicon octicon-link"></span></a>Libraries used</h2>
@@ -96,22 +117,11 @@ Download Java here: <a href="http://www.java.com/">http://www.java.com</a></p>
 <p><strong>Add the installed pandoc executable/directory to your operating system's PATH variable.</strong></p>
 
 <h5>
-<a id="or-config-file" class="anchor" href="#or-config-file" aria-hidden="true"><span class="octicon octicon-link"></span></a>OR: config file</h5>
-
-<p>Inside the config file "<em>configuration.properties</em>" you can define a permanent  </p>
-
-<blockquote>
-<p>pandoc.exec = "file:///opt/pandoc-1.13.2/pandoc"</p>
-</blockquote>
-
-<h5>
 <a id="or-cli-arguments" class="anchor" href="#or-cli-arguments" aria-hidden="true"><span class="octicon octicon-link"></span></a>OR: CLI arguments</h5>
 
 <p>Ad-hoc configuration is possible by passing the following <em>optional</em> command line argument:</p>
 
-<blockquote>
-<p>-p / --pandoc-exec </p>
-</blockquote>
+<p><code>-p / --pandoc-exec &lt;pandoc-filepath&gt;</code></p>
 
 <p>Notice: this overrides all other previous discussed settings.</p>
 
@@ -123,6 +133,29 @@ Download Java here: <a href="http://www.java.com/">http://www.java.com</a></p>
 <p>Download &amp; install from <a href="http://www.amazon.com/gp/feature.html?docId=1000765211">http://www.amazon.com/gp/feature.html?docId=1000765211</a></p>
 
 <p><strong>Add the installed kindlegen executable/directory to your operating system's PATH variable.</strong></p>
+
+<h5>
+<a id="or-cli-arguments-1" class="anchor" href="#or-cli-arguments-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>OR: CLI arguments</h5>
+
+<p>Ad-hoc configuration is possible by passing the following <em>optional</em> command line argument:</p>
+
+<p><code>-k / --kindlegen-exec &lt;KindleGen exec path&gt;</code></p>
+
+<h3>
+<a id="alternative-calibre" class="anchor" href="#alternative-calibre" aria-hidden="true"><span class="octicon octicon-link"></span></a>Alternative: Calibre</h3>
+
+<p>Calibre comes with a bunch of CLI tools including an ebook converter.
+As an alternative to the proprietary Amazon KindleGen you are able to use latex2mobi with calibre instead.</p>
+
+<p>As with the above executables the tool <code>ebook-convert</code> requires you to</p>
+
+<p><strong>add the ebook-convert executable to your PATH variable</strong> </p>
+
+<h4>
+<a id="or-you-specify-its-path-with-the-following-option" class="anchor" href="#or-you-specify-its-path-with-the-following-option" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+<strong>OR</strong> you specify its path with the following option:</h4>
+
+<p><code>-c / --calibre-exec &lt;calibre's ebook-convert exec path&gt;</code></p>
 
 <h2>
 <a id="build-requirements" class="anchor" href="#build-requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Build-Requirements</h2>
@@ -143,28 +176,39 @@ Download Java here: <a href="http://www.java.com/">http://www.java.com</a></p>
 <p>This project is built with Maven 3.3.x</p>
 
 <ul>
-<li>Download &amp; install from here <a href="http://maven.apache.org/download.cgi">http://maven.apache.org/download.cgi</a>
+<li>Download &amp; install from here <a href="http://maven.apache.org">http://maven.apache.org/download.cgi</a>
 </li>
 </ul>
+
+<h3>
+<a id="intellij-idea-optional" class="anchor" href="#intellij-idea-optional" aria-hidden="true"><span class="octicon octicon-link"></span></a>IntelliJ IDEA (optional)</h3>
+
+<p>This project was built with IntelliJ IDEA and comes with a configured dual module project. 
+Just checkout the git repository and open the project's root directory with IntelliJ IDEA.</p>
+
+<p>Find IntelliJ IDEA here: <a href="https://www.jetbrains.com/idea/">https://www.jetbrains.com/idea/</a></p>
 
 <h2>
 <a id="conversion-strategy" class="anchor" href="#conversion-strategy" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conversion strategy</h2>
 
-<p>A short explanation about the main conversion strategy:</p>
+<p>Converting LaTeX and rendering formulas is a complex topic. I want to give a short explanation about my main conversion strategy:</p>
 
 <h3>
 <a id="1-main-document-structure-conversion-without-formulas" class="anchor" href="#1-main-document-structure-conversion-without-formulas" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Main document structure conversion (without formulas)</h3>
 
-<p>Initially pandoc converts the LaTeX document input file to HTML5.
-The complete LaTeX code will be transformed into an HTML representation, <strong>except for the formulas</strong>.
-We use Pandoc's options just to mark the formulas with a "LaTeX" HTML class.
-Rendering of other document parts is up to pandoc alone.</p>
+<p>The complete LaTeX code will be transformed into an HTML representation, <strong>except for the formulas</strong>.</p>
+
+<p>Initially Pandoc converts the LaTeX document input file to HTML5.</p>
+
+<p>We use Pandoc's options just to mark the formulas with a "LaTeX" HTML class.</p>
+
+<p>Rendering of other document parts is up to Pandoc alone. Some basic styling for tables and font sizes are set in <code>main.css</code></p>
 
 <h3>
 <a id="2-converting-all-formulas-from-latex-to-mathml-with-snuggletex" class="anchor" href="#2-converting-all-formulas-from-latex-to-mathml-with-snuggletex" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Converting all formulas from LaTeX to MathML with SnuggleTeX</h3>
 
 <p>In order to transform your LaTeX formulas for displaying inside a Mobi-/Kindle Format-Ebook,
-we have to generate markup. Best known for its presentation markup is MathML.
+we have to generate markup. A known standard for this is MathML and its presentation markup.
 This project makes heavy use of <strong>SnuggleTeX</strong> to parse LaTeX <strong>Formulas</strong> and generate MathML2.</p>
 
 <h4>
@@ -207,7 +251,9 @@ On Kindle devices or apps, you <strong>can not</strong> use any JavaScript or ot
 
 <p>The last step for completion is the step to convert the HTML+CSS into a readable Mobi-Ebook.</p>
 
-<p>Note: Currently there is only an HtmlToMobiConverter-Implementation which uses Amazon's Kindlegen Executable.</p>
+<p>The command line version of latex2mobi currently includes only an HtmlToMobiConverter which uses Amazon's Kindlegen Executable.</p>
+
+<p>The Calibre plugin produces HTML5 markup and a CSS stylesheet which will be passed to a Calibre-builtin output converter. Mobi or other output files can be chosen from within calibre, see the plugin's <a href="https://github.com/Sevyls/latex-formulas-mobi-converter/tree/master/calibre-plugin">README</a> for more information.    </p>
 
 <h2>
 <a id="known-issues" class="anchor" href="#known-issues" aria-hidden="true"><span class="octicon octicon-link"></span></a>Known Issues</h2>
@@ -217,25 +263,33 @@ On Kindle devices or apps, you <strong>can not</strong> use any JavaScript or ot
 
 <ul>
 <li>LaTeX which results in MathML-Elements of munder, mover or similar</li>
-<li>Dynamically sized brackets, braces, parantheses etc., over- or underlines will not be rendered correctly</li>
+<li>Dynamically sized brackets, braces, parantheses etc. (except for Matrices), over- or underlines will not be rendered correctly</li>
 </ul>
 
 <h2>
 <a id="trademark-notice" class="anchor" href="#trademark-notice" aria-hidden="true"><span class="octicon octicon-link"></span></a>Trademark Notice</h2>
 
 <p>Amazon, Kindle, Fire and all related logos are trademarks of Amazon.com, Inc. or its affiliates.</p>
-      </section>
+        </article>
+      </div>
     </div>
+    <footer>
+      <div class="owner">
+      <p><a href="https://github.com/Sevyls" class="avatar"><img src="https://avatars3.githubusercontent.com/u/547842?v=3&amp;s=60" width="48" height="48"></a> <a href="https://github.com/Sevyls">Sevyls</a> maintains <a href="https://github.com/Sevyls/latex-formulas-mobi-converter">LaTeX to Mobi Formula Converter</a></p>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">LaTeX to Mobi Formula Converter maintained by <a href="https://github.com/Sevyls">Sevyls</a></p>
-        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
 
-    
+      </div>
+      <div class="creds">
+        <small>This page generated using <a href="https://pages.github.com/">GitHub Pages</a><br>theme by <a href="https://twitter.com/jonrohan/">Jon Rohan</a></small>
+      </div>
+    </footer>
+  </div>
+  <div class="current-section">
+    <a href="#top">Scroll to top</a>
+    <a href="https://github.com/Sevyls/latex-formulas-mobi-converter/tarball/master" class="tar">tar</a><a href="https://github.com/Sevyls/latex-formulas-mobi-converter/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
+    <p class="name"></p>
+  </div>
 
-  </body>
+  
+</body>
 </html>
