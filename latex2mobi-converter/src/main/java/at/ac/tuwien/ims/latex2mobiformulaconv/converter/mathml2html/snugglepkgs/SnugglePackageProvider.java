@@ -28,7 +28,7 @@ import uk.ac.ed.ph.snuggletex.SnugglePackage;
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
- * @author mauss
+ * @author Michael Auß
  *         Created: 13.07.14 17:01
  */
 public interface SnugglePackageProvider {

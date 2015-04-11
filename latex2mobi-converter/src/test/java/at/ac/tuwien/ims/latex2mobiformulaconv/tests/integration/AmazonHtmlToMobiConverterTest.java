@@ -1,10 +1,6 @@
-package at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.operators;
+package at.ac.tuwien.ims.latex2mobiformulaconv.tests.integration;
 
-import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.FormulaElement;
-import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.token.Mo;
-import org.jdom2.Element;
-
-import java.util.List;
+import org.apache.log4j.Logger;
 
 /**
  * The MIT License (MIT)
@@ -31,21 +27,20 @@ import java.util.List;
  * <p/>
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
+ * <p/>
+ *
+ * Integration Test for AmazonHtmlToMobiConverter
+ * @see at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi.AmazonHtmlToMobiConverter
+ *
  *
  * @author Michael Auß
- *         Created: 21.05.14 00:03
+ *         Created on 10.04.15.
  */
-public class Summation extends Mo {
-    public Summation() {
-        setValue("∑");
-        setForm("prefix");
-    }
+public class AmazonHtmlToMobiConverterTest extends HtmlToMobiConverterTest {
+    private static Logger logger = Logger.getLogger(AmazonHtmlToMobiConverterTest.class);
 
-    @Override
-    public Element render(FormulaElement parent, List<FormulaElement> siblings) {
-        Element summationSpan = new Element("span");
-        summationSpan.setAttribute("class", "mo summation");
-        summationSpan.setText(getValue());
-        return summationSpan;
+    public AmazonHtmlToMobiConverterTest() {
+        super();
+        this.bean = "kindlegen-html2mobi-converter";
     }
 }

@@ -1,10 +1,6 @@
-package at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.operators;
+package at.ac.tuwien.ims.latex2mobiformulaconv.tests.integration;
 
-import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.FormulaElement;
-import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.token.Mo;
-import org.jdom2.Element;
-
-import java.util.List;
+import org.apache.log4j.Logger;
 
 /**
  * The MIT License (MIT)
@@ -32,12 +28,17 @@ import java.util.List;
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
- * @author mauss
- *         Created: 21.05.14 00:02
+ * Integration Test for
+ * @see at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi.CalibreHtmlToMobiConverter
+ *
+ * @author Michael Auß
+ *  Created on 09.04.15.
  */
-public class Logarithm extends Mo {
-    @Override
-    public Element render(FormulaElement parent, List<FormulaElement> siblings) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+public class CalibreHtmlToMobiConverterTest extends HtmlToMobiConverterTest {
+    private static Logger logger = Logger.getLogger(CalibreHtmlToMobiConverterTest.class);
+
+    public CalibreHtmlToMobiConverterTest() {
+        super();
+        this.bean = "calibre-html2mobi-converter";
     }
 }

@@ -50,10 +50,12 @@ import java.util.List;
 public class MathmlCharacterDictionary {
     private static Logger logger = Logger.getLogger(MathmlCharacterDictionary.class);
 
+    // Resource filenames
     private static final String MATHML_OPERATOR_DICTIONARY_XML = "mathml-operator-dictionary.xml";
     private static final String MATHML_CHARACTERS_BY_NAME_XML = "mathml-characters-by-name.xml";
     private static final String MATHML_CHARACTERS_BY_UNICODE_XML = "mathml-characters-by-unicode.xml";
 
+    // Directory maps
     public static final HashMap<String, List<Token>> operatorDictionary = new HashMap<>();
     public static final HashMap<String, String> entityMapByName = new HashMap<>();
     public static final HashMap<String, List<String>> entityMapByUnicode = new HashMap<>();
@@ -182,6 +184,7 @@ public class MathmlCharacterDictionary {
 
     /**
      * Searches for an operator inside the MathML Operator dictionary
+     *
      * @param operator character which represents the operator
      * @param form MathML Operator form parameter, one of "prefix", "infix" (default) or "postfix"
      * @return Found MathML Operator object with its attributes OR null, when nothing could be found

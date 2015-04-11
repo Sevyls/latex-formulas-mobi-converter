@@ -6,20 +6,20 @@
 
     <bean id="image-converter" class="at.ac.tuwien.ims.latex2mobiformulaconv.converter.Converter">
         <property name="latexToHtmlConverter" ref="latex2html-converter"/>
-        <property name="htmlToMobiConverter" ref="html2mobi-converter"/>
         <property name="formulaConverter" ref="image-formula-converter"/>
     </bean>
 
     <bean id="dom-converter" class="at.ac.tuwien.ims.latex2mobiformulaconv.converter.Converter">
         <property name="latexToHtmlConverter" ref="latex2html-converter"/>
-        <property name="htmlToMobiConverter" ref="html2mobi-converter"/>
         <property name="formulaConverter" ref="dom-formula-converter"/>
     </bean>
 
     <bean id="latex2html-converter"
           class="at.ac.tuwien.ims.latex2mobiformulaconv.converter.latex2html.PandocLatexToHtmlConverter"/>
-    <bean id="html2mobi-converter"
+    <bean id="kindlegen-html2mobi-converter"
           class="at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi.AmazonHtmlToMobiConverter"/>
+    <bean id="calibre-html2mobi-converter"
+          class="at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi.CalibreHtmlToMobiConverter"/>
     <bean id="dom-formula-converter"
           class="at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.DOMFormulaConverter"/>
     <bean id="image-formula-converter"

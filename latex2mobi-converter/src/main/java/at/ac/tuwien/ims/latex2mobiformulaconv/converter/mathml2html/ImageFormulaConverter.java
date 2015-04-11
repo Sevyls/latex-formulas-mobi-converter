@@ -5,7 +5,6 @@ import net.sourceforge.jeuclid.MathMLParserSupport;
 import net.sourceforge.jeuclid.MutableLayoutContext;
 import net.sourceforge.jeuclid.context.LayoutContextImpl;
 import net.sourceforge.jeuclid.context.Parameter;
-import net.sourceforge.jeuclid.converter.Converter;
 import org.apache.log4j.Logger;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -47,7 +46,7 @@ import java.util.Map;
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
- * @author mauss
+ * @author Michael Auß
  *         Date: 08.06.14
  */
 public class ImageFormulaConverter extends FormulaConverter {

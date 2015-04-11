@@ -30,14 +30,44 @@ import java.nio.file.Path;
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
+ * Main model for a single formula found in a LaTeX input document
+ *
+ * Holds all relevant information for source and destination representation
+ * after successful conversion.
+ *
  * @author Michael Auß
  *         Created: 20.05.14 23:30
  */
 public class Formula {
+    /**
+     * The id is the sequential position on the document
+     */
     private int id;
+
+    /**
+     * The LaTeX source for this formula
+     */
     private String latexCode;
+
+    /**
+     * The file path for the image representation of this formula
+     * (only available if output should be images instead of markup)
+     *
+     * @see at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.ImageFormulaConverter
+     */
     private Path imageFilePath;
+
+    /**
+     * The markup representation of this formula
+     * default representation of a formula after conversion
+     * @see at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.DOMFormulaConverter
+     */
     private Element html;
+
+    /**
+     * The intermediate step to converting a formula is its MathML representation
+     * SnuggleTeX generates this MathML
+     */
     private String mathMl;
 
     public Element getHtml() {

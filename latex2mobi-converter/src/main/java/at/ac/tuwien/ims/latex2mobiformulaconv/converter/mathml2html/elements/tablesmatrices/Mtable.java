@@ -33,7 +33,9 @@ import java.util.List;
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
- * Renders a table or matrix, as described in MathML 2.0 specification (mtable tag)
+ * Renders a MathML Mtable tag (Matrices, tables)
+ *
+ * http://www.w3.org/TR/MathML2/chapter3.html#presm.mtable
  *
  * @author Michael Auß
  *         Created: 20.05.14 23:36

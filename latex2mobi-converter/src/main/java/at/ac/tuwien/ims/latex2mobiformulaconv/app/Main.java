@@ -17,6 +17,7 @@ import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * The MIT License (MIT)
@@ -44,13 +45,15 @@ import java.util.ArrayList;
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
- * @author mauss
+ * The main latex2mobi command line application
+ *
+ * @author Michael Auß
  *         Created: 29.04.14 22:55
  */
 public class Main {
     private static final String CONFIGURATION_FILENAME = "configuration.properties";
 
-    // Utils
+    // Utilities
     private static Logger logger = Logger.getRootLogger();
     private static PropertiesConfiguration config;
     private static Options options;
@@ -58,9 +61,10 @@ public class Main {
 
     // Flag options
     private static boolean replaceWithPictures = false;
-    private static boolean debug = false;
+    private static boolean debugMarkupOutput = false;
     private static boolean exportMarkup = false;
     private static boolean noMobiConversion = false;
+    private static boolean useCalibreInsteadOfKindleGen = false;
 
     // Value options
     private static String title = null;
@@ -78,19 +82,23 @@ public class Main {
      * @param args standard posix command line arguments
      */
     public static void main(String[] args) {
-        logger.debug("main() started.");
-        // Init
+        logger.debug("main() started with args:");
+        for (int i = 0; i < args.length; i++) {
+            logger.debug("args[" + i + "]" + ": " + args[i]);
+        }
+
+        // Initialize application
         applicationContext = new ClassPathXmlApplicationContext("/application-context.xml");
+        logger.debug("Application context loaded.");
+
         setupWorkingDirectory();
+        logger.debug("Working directory set up to: " + workingDirectory.toAbsolutePath().toString());
+
         initializeOptions();
+
         // Analyse options
         parseCli(args);
         logger.debug("CLI arguments parsed.");
-
-        logger.debug("Working directory set up to: " + workingDirectory.toAbsolutePath().toString());
-
-
-        logger.debug("Application context loaded.");
 
         loadConfiguration();
         logger.debug("Configuration loaded.");
@@ -103,6 +111,16 @@ public class Main {
             converter = (Converter) applicationContext.getBean("dom-converter");
         }
 
+        // Decide which HtmlToMobi Converter to use
+        HtmlToMobiConverter htmlToMobiConverter;
+        if (useCalibreInsteadOfKindleGen) {
+            htmlToMobiConverter = (HtmlToMobiConverter) applicationContext.getBean("calibre-html2mobi-converter");
+        } else {
+            // default is kindlegen
+            htmlToMobiConverter = (HtmlToMobiConverter) applicationContext.getBean("kindlegen-html2mobi-converter");
+        }
+        converter.setHtmlToMobiConverter(htmlToMobiConverter);
+
         converter.setWorkingDirectory(workingDirectory);
 
         converter.setInputPaths(inputPaths);
@@ -110,7 +128,7 @@ public class Main {
         converter.setOutputPath(outputPath);
         converter.setFilename(filename);
         converter.setTitle(title);
-        converter.setDebug(debug);
+        converter.setDebugMarkupOutput(debugMarkupOutput);
         converter.setExportMarkup(exportMarkup);
         converter.setNoMobiConversion(noMobiConversion);
 
@@ -135,7 +153,7 @@ public class Main {
 
             if (cmd.hasOption('d')) {
                 // Activate debug markup only - does not affect logging!
-                debug = true;
+                debugMarkupOutput = true;
             }
             
             if (cmd.hasOption('m')) {
@@ -209,6 +227,11 @@ public class Main {
                 replaceWithPictures = true;
             }
 
+            if (cmd.hasOption("u")) {
+                logger.debug("Use calibre instead of kindlegen");
+                useCalibreInsteadOfKindleGen = true;
+            }
+
             // Executable configuration
             LatexToHtmlConverter latexToHtmlConverter = (LatexToHtmlConverter) applicationContext.getBean("latex2html-converter");
             if (cmd.hasOption(latexToHtmlConverter.getExecOption().getOpt())) {
@@ -218,7 +241,12 @@ public class Main {
                 latexToHtmlConverter.setExecPath(execPath);
             }
 
-            HtmlToMobiConverter htmlToMobiConverter = (HtmlToMobiConverter) applicationContext.getBean("html2mobi-converter");
+            String htmlToMobiConverterBean = "kindlegen-html2mobi-converter";
+            if (useCalibreInsteadOfKindleGen) {
+                htmlToMobiConverterBean = "calibre-html2mobi-converter";
+            }
+
+            HtmlToMobiConverter htmlToMobiConverter = (HtmlToMobiConverter) applicationContext.getBean(htmlToMobiConverterBean);
             Option htmlToMobiOption = htmlToMobiConverter.getExecOption();
             if (cmd.hasOption(htmlToMobiOption.getOpt())) {
                 String execValue = cmd.getOptionValue(htmlToMobiOption.getOpt());
@@ -234,19 +262,28 @@ public class Main {
 
 
         } catch (MissingOptionException m) {
-            logger.error(m.getMessage());
+
+            Iterator<String> missingOptionsIterator = m.getMissingOptions().iterator();
+            while (missingOptionsIterator.hasNext()) {
+                logger.error("Missing required options: " + missingOptionsIterator.next() + "\n");
+            }
             usage();
             System.exit(1);
         } catch (MissingArgumentException a) {
-            logger.error(a.getMessage());
+            logger.error("Missing required argument for option: "
+                    + a.getOption().getOpt() + "/" + a.getOption().getLongOpt()
+                    + "<" + a.getOption().getArgName() + ">");
             usage();
-            System.exit(1);
+            System.exit(2);
         } catch (ParseException e) {
+            logger.error("Error parsing command line arguments, exiting...");
             logger.error(e.getMessage(), e);
-            // TODO Exception handling
+            System.exit(3);
         } catch (IOException e) {
+            logger.error("Error creating output path at " + outputPath.toAbsolutePath().toString());
             logger.error(e.getMessage(), e);
-            // TODO Exception handling
+            logger.error("Exiting...");
+            System.exit(4);
         }
     }
 
@@ -262,7 +299,7 @@ public class Main {
     private static void usage() {
         HelpFormatter formatter = new HelpFormatter();
 
-        // Windows cmd.exe mag mein scharfes ß nicht.
+        // Windows cmd.exe does not like my sharp s (ß).
         // Grrr.... Schei? Encoding.
         String header = "LaTeX Formulas to Mobi Converter\n"
                 + "(c) 2014-2015 by Michael Auss\n\n\n";
@@ -314,7 +351,8 @@ public class Main {
         options.addOption("n", "no-mobi", false, "no Mobi conversion, just markup, NOTE: makes -m implicit!");
         options.addOption("t", "title", true, "Document title");
         options.addOption("h", "help", false, "show this help");
-        options.addOption("d", "debug", false, "show debug output in html markup");
+        options.addOption("d", "debugMarkupOutput", false, "show debug output in html markup");
+        options.addOption("u", "use-calibre", false, "use calibre ebook-convert instead of kindlegen");
 
         Option picturesOption = new Option("r", "replace latex formulas with pictures, override html");
         picturesOption.setLongOpt("replace-with-images");
@@ -324,6 +362,7 @@ public class Main {
 
         // implementation specific options
         options.addOption(((LatexToHtmlConverter) applicationContext.getBean("latex2html-converter")).getExecOption());
-        options.addOption(((HtmlToMobiConverter) applicationContext.getBean("html2mobi-converter")).getExecOption());
+        options.addOption(((HtmlToMobiConverter) applicationContext.getBean("kindlegen-html2mobi-converter")).getExecOption());
+        options.addOption(((HtmlToMobiConverter) applicationContext.getBean("calibre-html2mobi-converter")).getExecOption());
     }
 }

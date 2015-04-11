@@ -32,12 +32,17 @@ import java.util.List;
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
+ * Renders a MathML Munder tag
+ *
+ * http://www.w3.org/TR/MathML2/chapter3.html#presm.munder
+ *
+ * Note: currently this element will not result in proper output when using HTML as output
+ *
  * @author Michael Auß
  *         Date: 15.09.14
  *         Time: 22:35
  */
 public class Munder implements FormulaElement {
-    // TODO Munder
     private FormulaElement base;
     private FormulaElement underscript;
 
@@ -77,7 +82,6 @@ public class Munder implements FormulaElement {
         underscriptDiv.addContent(underscript.render(this, content));
         mainDiv.addContent(underscriptDiv);
 
-        // TODO munder
         return mainDiv;
     }
 }

@@ -40,7 +40,7 @@ import java.nio.file.Paths;
  *
  * Converts an HTML file with Amazon's Kindlegen executable to a Mobi ebook
  *
- * @author mauss
+ * @author Michael Auß
  *         Created: 21.05.14 00:13
  */
 public class AmazonHtmlToMobiConverter implements HtmlToMobiConverter {
@@ -92,7 +92,7 @@ public class AmazonHtmlToMobiConverter implements HtmlToMobiConverter {
         try {
             executor.execute(cmdLine, resultHandler);
         } catch (IOException e) {
-            logger.error("Kindlegen execution failed to execute:");
+            logger.error("Kindlegen failed to execute:");
             logger.error(e.getMessage(), e);
             System.exit(-1);
         }
@@ -131,7 +131,6 @@ public class AmazonHtmlToMobiConverter implements HtmlToMobiConverter {
 
         }
 
-        // TODO evaluate Kindlegen output
         logger.debug("Kindlegen output: \n" + output);
 
         String mobiFilename = htmlFile.getName().toString().replace(".html", ".mobi").toString();

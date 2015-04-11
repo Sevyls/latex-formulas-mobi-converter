@@ -32,13 +32,15 @@ import java.util.Map;
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
+ * Implementation based on W3C MathML2 Fundamentals,
+ * Chapter 2.4.4.2 Attributes with units
+ * http://www.w3.org/TR/MathML2/chapter2.html#fund.units
+ *
+ *
  * @author Michael Auß
  *         Date: 05.01.2015
  *         Time: 15:03
  *
- * Implementation based on W3C MathML2 Fundamentals,
- * Chapter 2.4.4.2 Attributes with units
- * http://www.w3.org/TR/MathML2/chapter2.html#fund.units
  */
 public class Unit {
     private Double number;
@@ -109,6 +111,10 @@ public class Unit {
         return unit;
     }
 
+    /**
+     * This enum implements the concept of a "unit identifier" described here:
+     * http://www.w3.org/TR/MathML2/chapter2.html#fund.units
+     */
     private enum Identifier {
         EM ("em"),	        //em (font-relative unit traditionally used for horizontal lengths)
         EX ("ex"),	        //ex (font-relative unit traditionally used for vertical lengths)

@@ -33,7 +33,7 @@ import static uk.ac.ed.ph.snuggletex.definitions.Globals.ALL_MODES;
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
  *
- * @author mauss
+ * @author Michael Auß
  *         Created: 13.07.14 16:57
  */
 public class Modulo implements SnugglePackageProvider {

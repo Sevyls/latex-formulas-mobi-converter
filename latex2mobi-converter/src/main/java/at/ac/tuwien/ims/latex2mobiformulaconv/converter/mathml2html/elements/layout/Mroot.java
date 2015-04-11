@@ -35,6 +35,8 @@ import java.util.List;
  *
  * Rendering for mroot & msqrt MathML Elements
  *
+ * See http://www.w3.org/TR/MathML2/chapter3.html#presm.mroot
+ *
  * @author Michael Auß
  *         Created: 21.05.14 00:03
  *

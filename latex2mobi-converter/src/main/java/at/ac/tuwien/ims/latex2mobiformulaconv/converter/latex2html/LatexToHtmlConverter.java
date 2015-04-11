@@ -4,7 +4,6 @@ import at.ac.tuwien.ims.latex2mobiformulaconv.converter.ExecOption;
 import org.jdom2.Document;
 
 import java.io.File;
-import java.nio.file.Path;
 
 /**
  * The MIT License (MIT)
@@ -34,7 +33,7 @@ import java.nio.file.Path;
  *
  * Describes the basic signature of a LaTeX to HTML converter class
  *
- * @author mauss
+ * @author Michael Auß
  *         Created: 21.05.14 00:08
  */
 public interface LatexToHtmlConverter extends ExecOption {
