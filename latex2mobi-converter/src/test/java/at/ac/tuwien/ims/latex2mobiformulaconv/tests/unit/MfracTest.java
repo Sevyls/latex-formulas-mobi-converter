@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.AdditionalMatchers.or;
 import static org.mockito.Mockito.*;
 
-/**
+/*
  * The MIT License (MIT)
  * latex2mobi -- LaTeX Formulas to Mobi Converter
  * Copyright (c) 2014 Michael Auß
@@ -37,6 +37,10 @@ import static org.mockito.Mockito.*;
  * <p/>
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
+ */
+
+/**
+ *
  *
  * @author Michael Auß
  */

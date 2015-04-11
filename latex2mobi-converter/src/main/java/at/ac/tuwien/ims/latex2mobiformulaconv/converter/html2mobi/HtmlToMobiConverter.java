@@ -4,7 +4,7 @@ import at.ac.tuwien.ims.latex2mobiformulaconv.converter.ExecOption;
 
 import java.io.File;
 
-/**
+/*
  * The MIT License (MIT)
  * latex2mobi -- LaTeX Formulas to Mobi Converter
  * Copyright (c) 2014 Michael Auß
@@ -29,6 +29,10 @@ import java.io.File;
  * <p/>
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
+ */
+
+/**
+ *
  *
  * This interface provides the method signature for converting an HTML document
  * to an eBook in Mobi-Format

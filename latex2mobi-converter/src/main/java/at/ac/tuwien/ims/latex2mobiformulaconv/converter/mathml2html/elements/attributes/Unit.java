@@ -6,7 +6,7 @@ import org.apache.log4j.Logger;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
+/*
  * The MIT License (MIT)
  * latex2mobi -- LaTeX Formulas to Mobi Converter
  * Copyright (c) 2014 Michael Auß
@@ -31,6 +31,10 @@ import java.util.Map;
  * <p/>
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
+ */
+
+/**
+ *
  *
  * Implementation based on W3C MathML2 Fundamentals,
  * Chapter 2.4.4.2 Attributes with units

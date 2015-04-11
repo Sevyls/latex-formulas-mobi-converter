@@ -4,7 +4,7 @@ import org.apache.commons.cli.Option;
 
 import java.nio.file.Path;
 
-/**
+/*
  * The MIT License (MIT)
  * latex2mobi -- LaTeX Formulas to Mobi Converter
  * Copyright (c) 2014 Michael Auß
@@ -29,6 +29,10 @@ import java.nio.file.Path;
  * <p/>
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
+ */
+
+/**
+ *
  *
  * Creating an Apache Commons CLI Option for a runtime-depending executable
  *

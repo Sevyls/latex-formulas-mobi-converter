@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-/**
+/*
  * The MIT License (MIT)
  * latex2mobi -- LaTeX Formulas to Mobi Converter
  * Copyright (c) 2014 Michael Auß
@@ -46,6 +46,10 @@ import java.util.List;
  * <p/>
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
+ */
+
+/**
+ *
  *
  * Converts formulas from MathML to a HTML+CSS based representation
  *
@@ -282,7 +286,7 @@ public class DOMFormulaConverter extends FormulaConverter {
             case "mroot":
                 Mroot mroot = new Mroot();
                 mroot.setBase(renderElement(cur.getChildren().get(0)));
-                mroot.setIndex(renderElement(cur.getChildren().get(1)));
+                mroot.setDegree(renderElement(cur.getChildren().get(1)));
                 output = mroot;
                 break;
 

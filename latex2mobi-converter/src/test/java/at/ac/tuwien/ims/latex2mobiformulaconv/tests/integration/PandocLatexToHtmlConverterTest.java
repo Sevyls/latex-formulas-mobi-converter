@@ -19,7 +19,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-/**
+/*
  * The MIT License (MIT)
  * latex2mobi -- LaTeX Formulas to Mobi Converter
  * Copyright (c) 2014 Michael Auß
@@ -44,6 +44,10 @@ import static org.junit.Assert.*;
  * <p/>
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
+ */
+
+/**
+ *
  *
  * Integration Test for PandocLatexToHtmlConverter
  * @see at.ac.tuwien.ims.latex2mobiformulaconv.converter.latex2html.PandocLatexToHtmlConverter

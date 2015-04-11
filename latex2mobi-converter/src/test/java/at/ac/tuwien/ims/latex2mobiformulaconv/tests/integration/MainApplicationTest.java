@@ -37,6 +37,10 @@ import static org.junit.Assert.assertThat;
  * <p/>
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
+ */
+
+/**
+ *
  *
  * @author Michael Auß
  *         Created on 11.04.15.

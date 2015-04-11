@@ -10,7 +10,7 @@ import org.jdom2.Element;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
+/*
  * The MIT License (MIT)
  * latex2mobi -- LaTeX Formulas to Mobi Converter
  * Copyright (c) 2014 Michael Auß
@@ -35,6 +35,10 @@ import java.util.List;
  * <p/>
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
+ */
+
+/**
+ *
  *
  * Renders a MathML Mo tag
  *

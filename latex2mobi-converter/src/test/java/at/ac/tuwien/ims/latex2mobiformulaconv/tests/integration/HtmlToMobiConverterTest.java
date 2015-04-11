@@ -15,7 +15,7 @@ import java.nio.file.Path;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-/**
+/*
  * The MIT License (MIT)
  * latex2mobi -- LaTeX Formulas to Mobi Converter
  * Copyright (c) 2014 Michael Auß
@@ -40,6 +40,10 @@ import static org.junit.Assert.assertTrue;
  * <p/>
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
+ */
+
+/**
+ *
  * <p/>
 
  * Abstract Integration Test for an HtmlToMobiConverter Implementation

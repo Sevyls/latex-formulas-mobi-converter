@@ -3,7 +3,7 @@ package at.ac.tuwien.ims.latex2mobiformulaconv.tests.integration;
 import org.junit.Before;
 import org.junit.Test;
 
-/**
+/*
  * The MIT License (MIT)
  * latex2mobi -- LaTeX Formulas to Mobi Converter
  * Copyright (c) 2014 Michael Auß
@@ -28,6 +28,10 @@ import org.junit.Test;
  * <p/>
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
+ */
+
+/**
+ *
  *
  * @author Michael Auß
  */

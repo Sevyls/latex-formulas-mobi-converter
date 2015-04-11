@@ -2,7 +2,7 @@ package at.ac.tuwien.ims.latex2mobiformulaconv.tests.integration;
 
 import org.apache.log4j.Logger;
 
-/**
+/*
  * The MIT License (MIT)
  * latex2mobi -- LaTeX Formulas to Mobi Converter
  * Copyright (c) 2014 Michael Auß
@@ -27,6 +27,10 @@ import org.apache.log4j.Logger;
  * <p/>
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
+ */
+
+/**
+ *
  *
  * Integration Test for
  * @see at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi.CalibreHtmlToMobiConverter

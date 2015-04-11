@@ -109,7 +109,7 @@ sub, sup {
     bottom: /*-0.25em;*/ -0.5em;
 }
 
-.mroot-index {
+.mroot-degree {
     font-size: 0.5em;
     vertical-align: super;
     top: -0.9em;

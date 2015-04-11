@@ -7,7 +7,7 @@ import uk.ac.ed.ph.snuggletex.semantics.MathOperatorInterpretation;
 
 import static uk.ac.ed.ph.snuggletex.definitions.Globals.ALL_MODES;
 
-/**
+/*
  * The MIT License (MIT)
  * latex2mobi -- LaTeX Formulas to Mobi Converter
  * Copyright (c) 2014 Michael Auß
@@ -32,6 +32,10 @@ import static uk.ac.ed.ph.snuggletex.definitions.Globals.ALL_MODES;
  * <p/>
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
+ */
+
+/**
+ *
  *
  * @author Michael Auß
  *         Created: 13.07.14 16:57

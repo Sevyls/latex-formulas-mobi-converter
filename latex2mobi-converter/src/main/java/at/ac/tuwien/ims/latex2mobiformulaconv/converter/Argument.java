@@ -1,6 +1,6 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.converter;
 
-/**
+/*
  * The MIT License (MIT)
  * latex2mobi -- LaTeX Formulas to Mobi Converter
  * Copyright (c) 2014 Michael Auß
@@ -25,6 +25,10 @@ package at.ac.tuwien.ims.latex2mobiformulaconv.converter;
  * <p/>
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
+ */
+
+/**
+ *
  *
  * @author Michael Auß
  *         Created: 17.06.14 00:42

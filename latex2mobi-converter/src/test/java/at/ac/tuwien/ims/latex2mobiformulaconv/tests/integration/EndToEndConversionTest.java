@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-/**
+/*
  * The MIT License (MIT)
  * latex2mobi -- LaTeX Formulas to Mobi Converter
  * Copyright (c) 2014 Michael Auß
@@ -47,6 +47,10 @@ import static org.junit.Assert.fail;
  * <p/>
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
+ */
+
+/**
+ *
  *
  * @author Michael Auß
  *         <p/>

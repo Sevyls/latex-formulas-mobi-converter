@@ -2,7 +2,7 @@ package at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.to
 
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.FormulaElement;
 
-/**
+/*
  * The MIT License (MIT)
  * latex2mobi -- LaTeX Formulas to Mobi Converter
  * Copyright (c) 2014 Michael Auß
@@ -27,6 +27,10 @@ import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.For
  * <p/>
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
+ */
+
+/**
+ *
  *
  * Represents a Token as defined in MathML 2.0
  * http://www.w3.org/TR/MathML2/chapter3.html#presm.tokel

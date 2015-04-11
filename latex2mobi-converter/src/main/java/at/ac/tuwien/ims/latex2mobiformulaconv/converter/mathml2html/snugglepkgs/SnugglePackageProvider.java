@@ -2,7 +2,7 @@ package at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.snugglepkgs
 
 import uk.ac.ed.ph.snuggletex.SnugglePackage;
 
-/**
+/*
  * The MIT License (MIT)
  * latex2mobi -- LaTeX Formulas to Mobi Converter
  * Copyright (c) 2014 Michael Auß
@@ -27,6 +27,10 @@ import uk.ac.ed.ph.snuggletex.SnugglePackage;
  * <p/>
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
+ */
+
+/**
+ *
  *
  * @author Michael Auß
  *         Created: 13.07.14 17:01

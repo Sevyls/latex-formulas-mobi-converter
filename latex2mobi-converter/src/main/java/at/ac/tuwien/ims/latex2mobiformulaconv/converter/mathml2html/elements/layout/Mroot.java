@@ -7,7 +7,7 @@ import org.jdom2.Element;
 
 import java.util.List;
 
-/**
+/*
  * The MIT License (MIT)
  * latex2mobi -- LaTeX Formulas to Mobi Converter
  * Copyright (c) 2014 Michael Auß
@@ -32,6 +32,10 @@ import java.util.List;
  * <p/>
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
+ */
+
+/**
+ *
  *
  * Rendering for mroot & msqrt MathML Elements
  *
@@ -43,14 +47,14 @@ import java.util.List;
  */
 public class Mroot extends Mo {
     private FormulaElement base;
-    private FormulaElement index = null;
+    private FormulaElement degree = null;
 
-    public FormulaElement getIndex() {
-        return index;
+    public FormulaElement getDegree() {
+        return degree;
     }
 
-    public void setIndex(FormulaElement index) {
-        this.index = index;
+    public void setDegree(FormulaElement degree) {
+        this.degree = degree;
     }
 
     public FormulaElement getBase() {
@@ -67,12 +71,11 @@ public class Mroot extends Mo {
         Element mrootSpan = new Element("span");
         mrootSpan.setAttribute("class", "mroot");
 
-        // TODO rename index to correct name "degree"
-        if (index != null) {
+        if (degree != null) {
             Element indexSpan = new Element("span");
-            indexSpan.setAttribute("class", "mroot-index");
+            indexSpan.setAttribute("class", "mroot-degree");
 
-            indexSpan.addContent(index.render(null, null));
+            indexSpan.addContent(degree.render(null, null));
 
             mrootSpan.addContent(indexSpan);
         }

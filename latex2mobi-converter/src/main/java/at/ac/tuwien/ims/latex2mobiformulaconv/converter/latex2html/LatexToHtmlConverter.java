@@ -5,7 +5,7 @@ import org.jdom2.Document;
 
 import java.io.File;
 
-/**
+/*
  * The MIT License (MIT)
  * latex2mobi -- LaTeX Formulas to Mobi Converter
  * Copyright (c) 2014 Michael Auß
@@ -30,6 +30,10 @@ import java.io.File;
  * <p/>
  * <p/>
  * For Third Party Software Licenses read LICENSE file in base dir.
+ */
+
+/**
+ *
  *
  * Describes the basic signature of a LaTeX to HTML converter class
  *

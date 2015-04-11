@@ -118,10 +118,6 @@ Design ideas went into building surrounding ``<table>`` constructs and forming t
 As described in the former paragraph, spanning constructs as braces and overlines are difficult to construct. 
 Currently there is no support for this notation.
 
-## Intervals
-
-TODO
-
 ## Matrices
 
 The following Matrix types are fully supported:
@@ -143,13 +139,9 @@ Styling cells and borders with ``\hline`` and ``\cline`` will be ignored.
 A default border-collapse style is in place for reading purposes.
 
 
-## Text in equations or vice-versa
+## Text in equations 
 
-TODO
-
-### Spaces and Text in Formulas
-
-TODO
+Text in formulas is supported by the Mtext element of MathML. 
 
 ### Inline and Displayed Formulas
 
@@ -160,3 +152,4 @@ TODO
 Commands like ``\label{eq:xdef}`` and ``\ref{eq:xdef}`` are currently not supported by SnuggleTeX and will lead to broken output. 
 
 ## Defining new commands
+
