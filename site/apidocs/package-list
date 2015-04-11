@@ -1,0 +1,13 @@
+at.ac.tuwien.ims.latex2mobiformulaconv.app
+at.ac.tuwien.ims.latex2mobiformulaconv.converter
+at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi
+at.ac.tuwien.ims.latex2mobiformulaconv.converter.latex2html
+at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html
+at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements
+at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.attributes
+at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.layout
+at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.scriptlimit
+at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.tablesmatrices
+at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.token
+at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.snugglepkgs
+at.ac.tuwien.ims.latex2mobiformulaconv.utils
