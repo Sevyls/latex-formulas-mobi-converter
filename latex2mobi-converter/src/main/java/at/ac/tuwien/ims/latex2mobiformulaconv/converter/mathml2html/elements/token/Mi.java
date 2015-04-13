@@ -80,8 +80,6 @@ public class Mi extends Token {
                 case "fraktur":
                     lookup(this.value + "fr");
                     break;
-                // TODO add more variants
-
             }
         }
         span.setText(value.trim());

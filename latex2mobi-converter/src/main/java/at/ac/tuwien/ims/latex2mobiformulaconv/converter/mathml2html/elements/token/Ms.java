@@ -61,7 +61,8 @@ public class Ms extends Token {
         Element span = new Element("span");
         span.setAttribute("class", "ms");
         // MathML <ms> Element trims strings
-        // Currently whitespace inside the string is ignored TODO
+        // Currently whitespace inside the string is not trimmed
+        // but HTML trims it automatically as only a single space char is maximum within HTML
         span.setText("\"" + value.trim() + "\"");
         return span;
     }

@@ -153,3 +153,11 @@ Commands like ``\label{eq:xdef}`` and ``\ref{eq:xdef}`` are currently not suppor
 
 ## Defining new commands
 
+To define new commands you can use ``\newcommand`` as intended, but be aware of the syntax: curly braces are necessary.
+
+Example:
+
+``\newcommand{\fett}[1]{{\bf #1}}`` 
+
+Now you are able to use ``\fett{bold text with german command name}`` within your LaTeX documents.
+ Pandoc (document) and SnuggleTeX (formulas) support this construct.

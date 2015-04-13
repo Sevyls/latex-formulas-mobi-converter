@@ -197,7 +197,7 @@ public class Converter {
      * @return Path of the resulting File
      */
     public Path convert() {
-        // TODO iterate over inputPaths
+        // Currently only the first input path will be evaluated
         File inputFile = inputPaths.get(0).toFile();
 
         // set default title
@@ -284,7 +284,7 @@ public class Converter {
         Path tempFilepath = null;
 
 
-        try {
+
             Path tempDirPath = formulaConverter.getTempDirPath();
 
             ClassLoader classLoader = getClass().getClassLoader();
@@ -295,12 +295,14 @@ public class Converter {
                 Files.copy(mainCssIs, tempDirPath.resolve(MAIN_CSS_FILENAME));
             } catch (FileAlreadyExistsException e) {
                 // do nothing
+            } catch (IOException e) {
+                logger.error("could not copy main.css file to temp dir!");
             }
 
             tempFilepath = tempDirPath.resolve("latex2mobi.html");
 
             logger.debug("tempFile created at: " + tempFilepath.toAbsolutePath().toString());
-
+        try {
             Files.write(tempFilepath, new XMLOutputter().outputString(document).getBytes(Charset.forName("UTF-8")));
 
             if (debugMarkupOutput) {
@@ -308,9 +310,9 @@ public class Converter {
             }
 
         } catch (IOException e) {
+            logger.error("Error writing HTML to temp dir!");
             logger.error(e.getMessage(), e);
-            // TODO Exception handling
-        }
+            }
 
         return tempFilepath.toFile();
     }
@@ -323,7 +325,7 @@ public class Converter {
             resultPath = workingDirectory;
         }
 
-        Path markupDir = resultPath.resolve(title + "-markup"); // TODO rename if already exists
+        Path markupDir = resultPath.resolve(title + "-markup");
         try {
             try {
                 Files.createDirectory(markupDir);

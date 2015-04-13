@@ -12,8 +12,8 @@ import java.util.List;
 import static org.hamcrest.Matchers.hasItem;
 import static org.junit.Assert.assertThat;
 
-/**
- * * The MIT License (MIT)
+/*
+ * The MIT License (MIT)
  * latex2mobi -- LaTeX Formulas to Mobi Converter
  * Copyright (c) 2015 Michael Auß
  * <p/>
@@ -40,7 +40,9 @@ import static org.junit.Assert.assertThat;
  */
 
 /**
+ * Integration/Blackbox Test for the application's Main class
  *
+ * @see at.ac.tuwien.ims.latex2mobiformulaconv.app.Main
  *
  * @author Michael Auß
  *         Created on 11.04.15.
@@ -57,7 +59,7 @@ public class MainApplicationTest {
     }
 
     /**
-     * Check Usage info (Stdout)
+     * Check Usage info on stdout
      */
     @Test
     public void testUsage() throws Exception {
