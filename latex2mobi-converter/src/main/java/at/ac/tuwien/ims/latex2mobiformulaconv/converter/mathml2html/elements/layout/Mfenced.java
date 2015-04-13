@@ -1,5 +1,6 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.layout;
 
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.MathmlCharacterDictionary;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.FormulaElement;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.tablesmatrices.Mtable;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.token.Mo;
@@ -142,7 +143,14 @@ public class Mfenced implements FormulaElement {
                         separator = tempSeparators;
                     } else if (i < tempSeparators.length()) {
                         separator = Character.toString(tempSeparators.charAt(i));
-                        // TODO separator entity support
+
+                        // Entity lookup
+                        if (separator.length() > 1) {
+                            String entityName = separator.substring(1, separator.length() - 1);
+                            if (MathmlCharacterDictionary.entityMapByName.containsKey(entityName)) {
+                                separator = MathmlCharacterDictionary.entityMapByName.get(entityName);
+                            }
+                        }
                     }
 
                     separatorElement.setValue(separator);
