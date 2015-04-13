@@ -13,6 +13,7 @@ import org.jdom2.output.XMLOutputter;
 import org.jdom2.xpath.XPathExpression;
 import org.jdom2.xpath.XPathFactory;
 import uk.ac.ed.ph.snuggletex.*;
+import uk.ac.ed.ph.snuggletex.internal.FrozenSlice;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -79,17 +80,25 @@ public abstract class FormulaConverter {
         engine.setDefaultXMLStringOutputOptions(xmlStringOutputOptions);
     }
 
-    private boolean debug = false;
+    /**
+     * If true, an Implementation of FormulaConverter
+     * should generate debug output markup per Formula
+     */
+    private boolean generateDebugMarkup = false;
+
+    public void setGenerateDebugMarkup(boolean generateDebugMarkup) {
+        this.generateDebugMarkup = generateDebugMarkup;
+    }
+
+    /**
+     * This path will hold the temporary generated files
+     */
     protected Path tempDirPath = null;
 
-    public boolean isDebug() {
-        return debug;
-    }
-
-    public void setDebug(boolean debug) {
-        this.debug = debug;
-    }
-
+    /**
+     * Main constructor for an implementation
+     * If overwritten, super() must be called!
+     */
     public FormulaConverter() {
         try {
             tempDirPath = Files.createTempDirectory("latex2mobi");
@@ -118,15 +127,47 @@ public abstract class FormulaConverter {
 
         formula.setLatexCode(latexFormula);
 
+        if (latexFormula == null) {
+            formula.setInvalid(true);
+            return formula;
+        }
+
         // Parse MathML formula and convert to png file
         SnuggleInput input = new SnuggleInput(latexFormula);
         try {
-
             SnuggleSession session = engine.createSession();
+
             session.parseInput(input);
             String xmlString = session.buildXMLString();
 
-            formula.setMathMl(xmlString);
+            if (xmlString != null) {
+                // Formula is valid
+                formula.setMathMl(xmlString);
+
+            } else {
+                // Error handling
+                List<InputError> errors = session.getErrors();
+                Integer errorCount = errors.size();
+                logger.error(errorCount + " Error(s) occured while converting LaTeX with SnuggleTeX:");
+                for (int i = 0; i < errorCount; i++) {
+                    InputError error = errors.get(i);
+                    logger.error("--------------");
+                    logger.error("Error " + i + "/" + errorCount + ":");
+                    logger.error("SnuggleTeX Error code: " + error.getErrorCode().getName());
+
+                    FrozenSlice slice = error.getSlice();
+                    input = slice.getDocument().getInput();
+                    String document = input.getString();
+
+                    // log document, position coordinates and substring
+                    logger.error(document);
+                    logger.error("@ Position " + slice.getStartIndex() + ":" + slice.getEndIndex());
+                    logger.error(document.substring(slice.getStartIndex(),
+                            slice.getEndIndex()));
+
+                    formula.setInvalid(true);
+                }
+            }
         } catch (IOException e) {
             logger.error(e.getMessage(), e);
         }
@@ -165,13 +206,14 @@ public abstract class FormulaConverter {
      * @return JDOM Document with replaced formulas
      */
     public Document replaceFormulas(Document doc, Map<Integer, Formula> formulaMap) {
-        List<Element> foundElements = xpath.evaluate(doc);
+        List<Element> foundFormulas = xpath.evaluate(doc);
 
-        if (foundElements.size() > 0) {
-            Map<String, Element> elementMap = new HashMap<>();
+        if (foundFormulas.size() > 0) {
+            Map<String, Element> formulaMarkupMap = new HashMap<>();
 
-            for (Element element : foundElements) {
-                elementMap.put(element.getAttribute("id").getValue(), element);
+            // Initialize markup map
+            for (Element element : foundFormulas) {
+                formulaMarkupMap.put(element.getAttribute("id").getValue(), element);
             }
 
             // Replace all found formulas
@@ -179,14 +221,14 @@ public abstract class FormulaConverter {
             while (formulaIterator.hasNext()) {
                 Integer id = formulaIterator.next();
 
-                Element element = elementMap.get(FORMULA_ID_PREFIX + id);
+                Element formulaMarkupRoot = formulaMarkupMap.get(FORMULA_ID_PREFIX + id);
                 Formula formula = formulaMap.get(id);
 
-                element.removeAttribute("class");
-                element.removeContent();
-                element.setName("div");
+                formulaMarkupRoot.removeAttribute("class");
+                formulaMarkupRoot.removeContent();
+                formulaMarkupRoot.setName("div");
 
-                Element div = (Element) element.getParent();
+                Element div = (Element) formulaMarkupRoot.getParent();
                 div.setName("div");
                 div.setAttribute("class", "formula");
 
@@ -206,24 +248,27 @@ public abstract class FormulaConverter {
                     content.removeAll(texts);
                 }
 
-
-                if (debug) {
+                if (generateDebugMarkup) {
                     div.setAttribute("style", "border: 1px solid black;");
 
+                    // Header
                     Element h4 = new Element("h4");
                     h4.setText("DEBUG - Formula #" + formula.getId());
                     div.addContent(h4);
 
+                    // Render LaTeX source
                     Element latexPre = new Element("pre");
                     latexPre.setAttribute("class", "debug-latex");
                     latexPre.setText(formula.getLatexCode());
                     div.addContent(latexPre);
 
+                    // Render MathML markup
                     Element mathmlPre = new Element("pre");
                     mathmlPre.setAttribute("class", "debug-mathml");
                     mathmlPre.setText(formula.getMathMl());
                     div.addContent(mathmlPre);
 
+                    // Render HTML Markup
                     Element htmlPre = new Element("pre");
                     htmlPre.setAttribute("class", "debug-html");
                     XMLOutputter xmlOutputter = new XMLOutputter();
@@ -234,7 +279,8 @@ public abstract class FormulaConverter {
 
                 }
 
-                element.addContent(formula.getHtml());
+                // Set formula into
+                formulaMarkupRoot.addContent(formula.getHtml());
             }
         }
         return doc;
@@ -242,5 +288,13 @@ public abstract class FormulaConverter {
 
     public Path getTempDirPath() {
         return tempDirPath;
+    }
+
+    public Element renderInvalidFormulaSource(Formula formula) {
+        // Render invalid LaTeX code
+        Element invalidFormulaPre = new Element("pre");
+        invalidFormulaPre.setText("Formula #"
+                + formula.getId() + " is invalid!\n\n" + formula.getLatexCode());
+        return invalidFormulaPre;
     }
 }

@@ -69,50 +69,53 @@ public class DOMFormulaConverter extends FormulaConverter {
     public Formula parse(int id, String latexFormula) {
         Formula formula = super.parseToMathML(id, latexFormula);
 
+        // Generate output
+        Element div = new Element("div");
+
         Element html = new Element("div");
         html.setAttribute("class", "math");
 
-        SAXBuilder builder = new SAXBuilder();
 
+        if (formula.isInvalid() == false) {
+            SAXBuilder builder = new SAXBuilder();
 
-        try {
-            Document mathml = builder.build(new StringReader(formula.getMathMl()));
+            try {
+                Document mathml = builder.build(new StringReader(formula.getMathMl()));
 
-            Element root = mathml.getRootElement();
-            if (root.getChildren().isEmpty()) {
-                return null;
-            }
+                Element root = mathml.getRootElement();
+                if (root.getChildren().isEmpty()) {
+                    return null;
+                }
 
-            Iterator<Element> it = root.getChildren().iterator();
+                Iterator<Element> it = root.getChildren().iterator();
 
-            while (it.hasNext()) {
-                Element cur = it.next();
-                FormulaElement formulaElement = renderElement(cur);
-                if (formulaElement != null) {
-                    Element resultHtml = formulaElement.render(null, null);
-                    if (resultHtml != null) {
-                        html.addContent(resultHtml);
-                    } else {
-                        logger.debug("HTML is NULL: " + cur.getName());
+                while (it.hasNext()) {
+                    Element cur = it.next();
+                    FormulaElement formulaElement = renderElement(cur);
+                    if (formulaElement != null) {
+                        Element resultHtml = formulaElement.render(null, null);
+                        if (resultHtml != null) {
+                            html.addContent(resultHtml);
+                        } else {
+                            logger.debug("HTML is NULL: " + cur.getName());
+                        }
                     }
                 }
+
+            } catch (JDOMException e) {
+                logger.error("Error parsing generated MathML:");
+                logger.error(formula.getMathMl());
+                logger.error(e.getMessage(), e);
+
+            } catch (IOException e) {
+                logger.error("Error reading generated MathML:");
+                logger.error(formula.getMathMl());
+                logger.error(e.getMessage(), e);
             }
-
-        } catch (JDOMException e) {
-            logger.error("Error parsing generated MathML:");
-            logger.error(formula.getMathMl());
-            logger.error(e.getMessage(), e);
-
-        } catch (IOException e) {
-            logger.error("Error reading generated MathML:");
-            logger.error(formula.getMathMl());
-            logger.error(e.getMessage(), e);
+        } else {
+            html.addContent(renderInvalidFormulaSource(formula));
         }
-        // Test output
-        Element div = new Element("div");
-
         div.addContent(html);
-
         formula.setHtml(div);
 
         return formula;

@@ -74,6 +74,16 @@ public class Formula {
      */
     private String mathMl;
 
+    /**
+     * A FormulaConverter can set this flag to true for removing
+     * this formula from the output markup.
+     * <p/>
+     * Default value is false, even if the formula object
+     * is not been initialized properly yet. It is up to the
+     * Formula Converter to determine if the resulting output is invalid.
+     */
+    private boolean invalid = false;
+
     public Element getHtml() {
         return html;
     }
@@ -112,5 +122,13 @@ public class Formula {
 
     public int getId() {
         return id;
+    }
+
+    public void setInvalid(boolean invalid) {
+        this.invalid = invalid;
+    }
+
+    public boolean isInvalid() {
+        return invalid;
     }
 }

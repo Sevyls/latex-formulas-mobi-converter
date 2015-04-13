@@ -214,7 +214,7 @@ public class Converter {
 
         Map<Integer, Formula> formulaMap = new HashMap<>();
 
-        formulaConverter.setDebug(debugMarkupOutput);
+        formulaConverter.setGenerateDebugMarkup(debugMarkupOutput);
 
         Map<Integer, String> latexFormulas = formulaConverter.extractFormulas(document);
 

@@ -56,8 +56,6 @@ import java.util.Map;
 public class ImageFormulaConverter extends FormulaConverter {
     private static Logger logger = Logger.getLogger(ImageFormulaConverter.class);
 
-
-
     /**
      * Takes a single LaTeX formula and converts it to an image in PNG format
      *
@@ -68,38 +66,39 @@ public class ImageFormulaConverter extends FormulaConverter {
     @Override
     public Formula parse(int id, String latexFormula) {
         Formula formula = super.parseToMathML(id, latexFormula);
-
         logger.debug("parse() entered...");
+        if (formula.isInvalid() == false) {
+            try {
+                final org.w3c.dom.Document doc = MathMLParserSupport.parseString(formula.getMathMl());
 
-        try {
-            final org.w3c.dom.Document doc = MathMLParserSupport.parseString(formula.getMathMl());
+                final File outFile = Files.createTempFile(tempDirPath, "formula", ".png").toFile();
 
-            final File outFile = Files.createTempFile(tempDirPath, "formula", ".png").toFile();
+                formula.setImageFilePath(outFile.toPath());
 
-            formula.setImageFilePath(outFile.toPath());
+                // Generate Html Image tag
+                Element imageTag = new Element("img");
+                imageTag.setAttribute("src", formula.getImageFilePath().getFileName().toString());
+                imageTag.setAttribute("alt", FORMULA_ID_PREFIX + formula.getId());
+                formula.setHtml(imageTag);
 
-            // Generate Html Image tag
-            Element imageTag = new Element("img");
-            imageTag.setAttribute("src", formula.getImageFilePath().getFileName().toString());
-            imageTag.setAttribute("alt", FORMULA_ID_PREFIX + formula.getId());
-            formula.setHtml(imageTag);
+                final MutableLayoutContext params = new LayoutContextImpl(
+                        LayoutContextImpl.getDefaultLayoutContext());
+                params.setParameter(Parameter.MATHSIZE, 25f);
 
-            final MutableLayoutContext params = new LayoutContextImpl(
-                    LayoutContextImpl.getDefaultLayoutContext());
-            params.setParameter(Parameter.MATHSIZE, 25f);
-
-            // convert to image
-            net.sourceforge.jeuclid.converter.Converter imageConverter = net.sourceforge.jeuclid.converter.Converter.getInstance();
-            imageConverter.convert(doc, outFile, "image/png", params);
-            logger.debug("Image file created at: " + outFile.toPath().toAbsolutePath().toString());
-        } catch (SAXException e1) {
-            logger.error(e1.getMessage(), e1);
-        } catch (ParserConfigurationException e2) {
-            logger.error(e2.getMessage(), e2);
-        } catch (IOException e3) {
-            logger.error(e3.getMessage(), e3);
+                // convert to image
+                net.sourceforge.jeuclid.converter.Converter imageConverter = net.sourceforge.jeuclid.converter.Converter.getInstance();
+                imageConverter.convert(doc, outFile, "image/png", params);
+                logger.debug("Image file created at: " + outFile.toPath().toAbsolutePath().toString());
+            } catch (SAXException e1) {
+                logger.error(e1.getMessage(), e1);
+            } catch (ParserConfigurationException e2) {
+                logger.error(e2.getMessage(), e2);
+            } catch (IOException e3) {
+                logger.error(e3.getMessage(), e3);
+            }
+        } else {
+            formula.setHtml(renderInvalidFormulaSource(formula));
         }
-
         return formula;
     }
 

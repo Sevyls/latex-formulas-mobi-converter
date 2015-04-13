@@ -1,6 +1,5 @@
-package at.ac.tuwien.ims.latex2mobiformulaconv.tests.integration;
+package at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit;
 
-import org.junit.Before;
 import org.junit.Test;
 
 /*
@@ -31,19 +30,17 @@ import org.junit.Test;
  */
 
 /**
- *
- *
  * @author Michael Auß
  */
-public class DOMFormulaConverterTest {
-
-    @Before
-    public void setUp() throws Exception {
-
-    }
+public class ImageFormulaConverterTest {
 
     @Test
     public void testParse() throws Exception {
-                 // TODO
+        // TODO
+    }
+
+    @Test
+    public void testReplaceFormulasWithImages() throws Exception {
+        // TODO
     }
 }
