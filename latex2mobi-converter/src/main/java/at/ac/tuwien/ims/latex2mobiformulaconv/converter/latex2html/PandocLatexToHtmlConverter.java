@@ -131,7 +131,7 @@ public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
 
         // add html document structure to output
         // TODO pandoc's html output depends on the operating system
-        // TODO pandoc on Mac OS X returns valid html
+
 
         // pandoc on Windows returns no document markup (html, head, body)
         // therefore we have to use a template

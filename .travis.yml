@@ -2,14 +2,15 @@ language: java
 jdk:
   - oraclejdk7
 before_install:
-  - echo 'yes' | sudo add-apt-repository ppa:marutter/c2d4u
-  - sudo apt-get update
-  - sudo apt-get install -y pandoc
-before_script:
+  - echo 'yes' | sudo add-apt-repository ppa:marutter/c2d4u > /dev/null
+  - sudo apt-get update -qq > /dev/null
+  - sudo apt-get install -qq -y pandoc > /dev/null
+  - mvn dependency:resolve -f "./latex2mobi-converter/pom.xml"
   - wget "http://kindlegen.s3.amazonaws.com/kindlegen_linux_2.6_i386_v2_9.tar.gz"  -O "/tmp/kindlegen.tar.gz"
   - mkdir kindlegen
-  - tar -xvf /tmp/kindlegen.tar.gz -C kindlegen/
+  - tar -xvf /tmp/kindlegen.tar.gz -C kindlegen/ > /dev/null
   - export PATH=$PATH:$PWD/kindlegen/
   - sudo -v && wget -nv -O- https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/linux-installer.py | sudo python -c "import sys; main=lambda:sys.stderr.write('Download failed\n'); exec(sys.stdin.read()); main()" > /dev/null
   - export PATH=$PATH:/opt/calibre
+before_script:
   - cd latex2mobi-converter

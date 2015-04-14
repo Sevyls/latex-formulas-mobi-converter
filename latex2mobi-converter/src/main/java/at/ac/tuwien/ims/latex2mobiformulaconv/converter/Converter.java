@@ -51,12 +51,11 @@ import java.util.Map;
 
 /**
  *
- *
+ * Converts LaTeX input to Mobi files
  * @author Michael Auß
  *         Date: 17.08.14
  *         Time: 17:35
  *
- * Converts LaTeX input to Mobi files with Pandoc & Amazon Kindlegen
  */
 public class Converter {
     private static Logger logger = Logger.getLogger(Converter.class);
@@ -79,9 +78,24 @@ public class Converter {
      * else the will be represented with html
      */
     private boolean replaceWithPictures = false;
+
+    /**
+     * if true debug markup will be generated including latex, mathml + html
+     * Does not affect logging in any way
+     */
     private boolean debugMarkupOutput = false;
 
+    /**
+     * if this flag is true, the resulting html + css
+     * will be saved to an extra folder
+     */
     private boolean exportMarkup = false;
+
+    /**
+     * if this flag is true, the converter will stop after generating the
+     * html markup without generating the mobi result file
+     * and this will force exportMarkup to be always true!
+     */
     private boolean noMobiConversion = false;
 
     /**
@@ -94,6 +108,10 @@ public class Converter {
      */
     private String filename;
 
+    /**
+     * The eBook's title (i.e. for the Kindle device library),
+     * does not affect the filename!
+     */
     private String title;
 
     public Path getWorkingDirectory() {
@@ -233,15 +251,18 @@ public class Converter {
             document = formulaConverter.replaceFormulas(document, formulaMap);
         }
 
-        // Saving html file
+        // Persisting markup
         File htmlFile = saveHtmlFile(document);
 
         Path markupDir = null;
+
+        // markup is requested or implicit output
         if (exportMarkup || noMobiConversion) {
             markupDir = exportMarkup(htmlFile.toPath());
         }
 
         if (noMobiConversion) {
+            // no mobi file will be generated in any way, just the markup
             return markupDir.toAbsolutePath();
         } else {
             // Convert to MOBI format
@@ -269,6 +290,7 @@ public class Converter {
                 return resultFilepath.toAbsolutePath();
 
             } catch (IOException e) {
+                logger.error("Error writing or moving output file");
                 logger.error(e.getMessage(), e);
                 return null;
             }
@@ -282,8 +304,6 @@ public class Converter {
      */
     private File saveHtmlFile(Document document) {
         Path tempFilepath = null;
-
-
 
             Path tempDirPath = formulaConverter.getTempDirPath();
 
@@ -317,6 +337,12 @@ public class Converter {
         return tempFilepath.toFile();
     }
 
+    /**
+     * This will save the HTML markup + css file to a specified folder
+     *
+     * @param tempFilepath the temp folder where
+     * @return
+     */
     private Path exportMarkup(Path tempFilepath) {
         Path resultPath;
         if (outputPath != null) {

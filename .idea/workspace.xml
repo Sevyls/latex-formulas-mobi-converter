@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="45386f65-047a-4f27-a937-587acb461b39" name="Default" comment="Configure maven plugin appassembler for unix build">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LICENSE" afterPath="$PROJECT_DIR$/LICENSE" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/pom.xml" afterPath="$PROJECT_DIR$/latex2mobi-converter/pom.xml" />
+    <list default="true" id="45386f65-047a-4f27-a937-587acb461b39" name="Default" comment="Add some javadoc&#10;Add mvn install dependencies to travis before_install script">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.travis.yml" afterPath="$PROJECT_DIR$/.travis.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="latex-formulas-mobi-converter.iws" />
@@ -40,17 +39,17 @@
         <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/latex2html/PandocLatexToHtmlConverter.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="142" column="30" selection-start-line="142" selection-start-column="30" selection-end-line="142" selection-end-column="30" />
+              <caret line="168" column="43" selection-start-line="168" selection-start-column="43" selection-end-line="168" selection-end-column="43" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/latex2mobi-converter/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2513089">
-              <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -64,6 +63,26 @@
               <folding>
                 <element signature="e#3136#3142#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Converter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/Converter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="344" column="7" selection-start-line="344" selection-start-column="7" selection-end-line="344" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.travis.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.38677686">
+              <caret line="13" column="34" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -95,7 +114,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/layout/Mrow.java" />
         <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/layout/Mfrac.java" />
         <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Mspace.java" />
         <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Mn.java" />
@@ -121,7 +139,6 @@
         <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/html2mobi/CalibreHtmlToMobiConverter.java" />
         <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/html2mobi/AmazonHtmlToMobiConverter.java" />
         <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/html2mobi/HtmlToMobiConverter.java" />
-        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/latex2html/PandocLatexToHtmlConverter.java" />
         <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/resources/main.css" />
         <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/layout/Mroot.java" />
         <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/Formula.java" />
@@ -137,7 +154,6 @@
         <option value="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/ImageFormulaConverterTest.java" />
         <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Mi.java" />
         <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Ms.java" />
-        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/Converter.java" />
         <option value="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/HtmlToMobiConverterTest.java" />
         <option value="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/MainApplicationTest.java" />
         <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/layout/Mfenced.java" />
@@ -146,6 +162,9 @@
         <option value="$PROJECT_DIR$/LICENSE" />
         <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/app/Main.java" />
         <option value="$PROJECT_DIR$/latex2mobi-converter/pom.xml" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/latex2html/PandocLatexToHtmlConverter.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/Converter.java" />
+        <option value="$PROJECT_DIR$/.travis.yml" />
       </list>
     </option>
   </component>
@@ -263,265 +282,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="latex2mobi-converter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="latex-formulas-mobi-converter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="latex2mobi-converter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="latex-formulas-mobi-converter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="latex2mobi-converter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="unit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="latex-formulas-mobi-converter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="latex2mobi-converter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="integration" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="latex-formulas-mobi-converter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="latex2mobi-converter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="latex-formulas-mobi-converter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="latex2mobi-converter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="latex-formulas-mobi-converter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="latex2mobi-converter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="latex2mobiformulaconv" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="utils" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="latex-formulas-mobi-converter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="latex2mobi-converter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="latex2mobiformulaconv" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="converter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="latex-formulas-mobi-converter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="latex2mobi-converter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="latex2mobiformulaconv" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="converter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mathml2html" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="latex-formulas-mobi-converter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="latex2mobi-converter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="latex2mobiformulaconv" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
+              <option name="myItemId" value="calibre-plugin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -532,6 +293,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="calibre-plugin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1239,7 +1004,7 @@
       <workItem from="1428949072859" duration="6000" />
       <workItem from="1428949694424" duration="738000" />
       <workItem from="1428950543591" duration="10386000" />
-      <workItem from="1429035025424" duration="8473000" />
+      <workItem from="1429035025424" duration="14153000" />
     </task>
     <task id="LOCAL-00001" summary="Update Calibre Plugin readme with build instructions">
       <created>1427896576308</created>
@@ -1397,11 +1162,59 @@
       <option name="project" value="LOCAL" />
       <updated>1429047987320</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Update copyright in LICENSE&#10;Update to version 0.9.0">
+      <created>1429050967687</created>
+      <option name="number" value="00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1429050967687</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Add some javadoc&#10;Add mvn install dependencies to travis before_install script">
+      <created>1429052502239</created>
+      <option name="number" value="00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1429052502239</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Add some javadoc&#10;Add mvn install dependencies to travis before_install script">
+      <created>1429053244312</created>
+      <option name="number" value="00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1429053244312</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Add some javadoc&#10;Add mvn install dependencies to travis before_install script">
+      <created>1429053919966</created>
+      <option name="number" value="00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1429053919966</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Add some javadoc&#10;Add mvn install dependencies to travis before_install script">
+      <created>1429054367880</created>
+      <option name="number" value="00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1429054367880</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Add some javadoc&#10;Add mvn install dependencies to travis before_install script">
+      <created>1429054623389</created>
+      <option name="number" value="00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1429054623389</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Add some javadoc&#10;Add mvn install dependencies to travis before_install script">
+      <created>1429055337121</created>
+      <option name="number" value="00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1429055337121</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Add some javadoc&#10;Add mvn install dependencies to travis before_install script">
+      <created>1429055975579</created>
+      <option name="number" value="00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1429055975579</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58051000" />
+    <option name="totallyTimeSpent" value="63731000" />
   </component>
   <component name="TodoView" selected-index="2">
     <todo-panel id="selected-file">
@@ -1431,10 +1244,10 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25396827" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33628318" sideWeight="0.4920635" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33628318" sideWeight="0.4920635" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.9745575" sideWeight="0.50793654" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30088496" sideWeight="0.50793654" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32743362" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3986711" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
@@ -1492,7 +1305,9 @@
     <MESSAGE value="Fix a TODO in Mfenced: entity lookup for separator rendering" />
     <MESSAGE value="Add infos to Specification" />
     <MESSAGE value="Configure maven plugin appassembler for unix build" />
-    <option name="LAST_COMMIT_MESSAGE" value="Configure maven plugin appassembler for unix build" />
+    <MESSAGE value="Update copyright in LICENSE&#10;Update to version 0.9.0" />
+    <MESSAGE value="Add some javadoc&#10;Add mvn install dependencies to travis before_install script" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add some javadoc&#10;Add mvn install dependencies to travis before_install script" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1511,20 +1326,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/scriptlimit/Mover.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="40" column="1" selection-start-line="40" selection-start-column="1" selection-end-line="40" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/tablesmatrices/Mtable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/tablesmatrices/Mtd.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1810,50 +1611,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/Converter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="314" column="13" selection-start-line="314" selection-start-column="13" selection-end-line="314" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#3541#3542#0" expanded="false" />
-            <element signature="e#3580#3581#0" expanded="false" />
-            <element signature="e#4251#4252#0" expanded="false" />
-            <element signature="e#4290#4291#0" expanded="false" />
-            <element signature="e#4364#4365#0" expanded="false" />
-            <element signature="e#4420#4421#0" expanded="false" />
-            <element signature="e#4459#4460#0" expanded="false" />
-            <element signature="e#4494#4495#0" expanded="false" />
-            <element signature="e#4551#4552#0" expanded="false" />
-            <element signature="e#4599#4600#0" expanded="false" />
-            <element signature="e#4631#4632#0" expanded="false" />
-            <element signature="e#4659#4660#0" expanded="false" />
-            <element signature="e#4701#4702#0" expanded="false" />
-            <element signature="e#4735#4736#0" expanded="false" />
-            <element signature="e#4781#4782#0" expanded="false" />
-            <element signature="e#4823#4824#0" expanded="false" />
-            <element signature="e#4894#4895#0" expanded="false" />
-            <element signature="e#4956#4957#0" expanded="false" />
-            <element signature="e#5000#5001#0" expanded="false" />
-            <element signature="e#5040#5041#0" expanded="false" />
-            <element signature="e#5107#5108#0" expanded="false" />
-            <element signature="e#5165#5166#0" expanded="false" />
-            <element signature="e#5200#5201#0" expanded="false" />
-            <element signature="e#5233#5234#0" expanded="false" />
-            <element signature="e#5283#5284#0" expanded="false" />
-            <element signature="e#5327#5328#0" expanded="false" />
-            <element signature="e#5362#5363#0" expanded="false" />
-            <element signature="e#5393#5394#0" expanded="false" />
-            <element signature="e#5441#5442#0" expanded="false" />
-            <element signature="e#5481#5482#0" expanded="false" />
-            <element signature="e#5527#5528#0" expanded="false" />
-            <element signature="e#5560#5561#0" expanded="false" />
-            <element signature="e#5621#5622#0" expanded="false" />
-            <element signature="e#5665#5666#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/HtmlToMobiConverterTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.40110907">
@@ -1868,6 +1625,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.28076255">
           <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1939,14 +1697,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/latex2html/PandocLatexToHtmlConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="142" column="30" selection-start-line="142" selection-start-column="30" selection-end-line="142" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/LICENSE">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.26422018">
@@ -1970,8 +1720,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/latex2mobi-converter/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2513089">
-          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/latex2html/PandocLatexToHtmlConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="168" column="43" selection-start-line="168" selection-start-column="43" selection-end-line="168" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/Converter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="344" column="7" selection-start-line="344" selection-start-column="7" selection-end-line="344" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/calibre-plugin/src/Makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.759633">
+          <caret line="26" column="53" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.travis.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38677686">
+          <caret line="13" column="34" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
           <folding />
         </state>
       </provider>
