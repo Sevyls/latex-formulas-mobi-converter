@@ -202,7 +202,7 @@ public class Mo extends Token {
             }
 
             if (this.fence) {
-                // TODO
+                // TODO fence attribute
             }
 
             if (position == 0) {

@@ -112,11 +112,17 @@ Note: **Spanning** braces or parantheses of any kind are not supported.
 They have to be dynamically resized, which in turn is not supported by HTML & CSS.
 Design ideas went into building surrounding ``<table>`` constructs and forming the border as implemented in handling of Matrices.
 
+## Over- and underline, Over- and underbraces
 
-### Over- and underline, Over- and underbraces
-
-As described in the former paragraph, spanning constructs as braces and overlines are difficult to construct. 
+As described in the former paragraphs, spanning constructs as braces and overlines are difficult to construct. 
 Currently there is no support for this notation.
+
+## Stretching of characters is not supported
+
+Given the recommendations for rendering stretched operators like parantheses or over- and underlines here:
+ http://www.w3.org/TR/MathML2/chapter3.html#id.3.2.5.8
+ 
+NOTE: This behaviour is currently not supported due to relative scaling issues between containing element and text.
 
 ## Matrices
 
