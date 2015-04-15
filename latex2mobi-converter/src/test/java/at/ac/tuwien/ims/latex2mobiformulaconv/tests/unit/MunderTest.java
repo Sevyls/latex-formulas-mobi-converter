@@ -1,6 +1,21 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit;
 
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.FormulaElement;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.scriptlimit.Munder;
+import org.apache.log4j.Logger;
+import org.jdom2.Element;
+import org.junit.Before;
 import org.junit.Test;
+
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.mockito.AdditionalMatchers.or;
+import static org.mockito.Matchers.anyListOf;
+import static org.mockito.Matchers.eq;
+import static org.mockito.Matchers.isNull;
+import static org.mockito.Mockito.*;
 
 /*
  * The MIT License (MIT)
@@ -32,10 +47,57 @@ import org.junit.Test;
 /**
  * @author Michael Auß
  */
-public class MunderTest {
+public class MunderTest extends FormulaElementTest {
+    private static final Logger logger = Logger.getLogger(MunderTest.class);
+
+    private Munder munder;
+    private FormulaElement base;
+    private FormulaElement underscript;
+
+
+    @Before
+    public void setUp() throws Exception {
+        logger.debug("enter setUp()...");
+
+        munder = new Munder();
+
+        // mock base
+        base = mock(FormulaElement.class);
+
+        // mock result of base
+        Element baseSpan = new Element("span");
+        when(base.render(or(eq(munder), isNull(FormulaElement.class)),
+                or(anyListOf(FormulaElement.class), isNull(List.class)))).thenReturn(baseSpan);
+
+        munder.setBase(base);
+
+        // mock underscript
+        underscript = mock(FormulaElement.class);
+
+        // mock result of underscript
+        Element underscriptSpan = new Element("span");
+        when(underscript.render(or(eq(munder), isNull(FormulaElement.class)),
+                or(anyListOf(FormulaElement.class), isNull(List.class)))).thenReturn(underscriptSpan);
+
+        munder.setUnderscript(underscript);
+
+        formulaElement = munder;
+    }
 
     @Test
-    public void testRender() throws Exception {
-        // TODO
+    public void testRender() {
+        logger.debug("enter testRender()...");
+
+        Element result = munder.render(possibleParent, null);
+
+        assertNotNull(result);
+        assertEquals("div", result.getName());
+        assertEquals("munder", result.getAttributeValue("class"));
+
+        assertEquals("base", result.getChildren("div").get(0).getAttributeValue("class"));
+        assertEquals("underscript", result.getChildren("div").get(1).getAttributeValue("class"));
+
+        verify(base).render(or(eq(munder), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
+        verify(underscript).render(or(eq(munder), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
     }
 }

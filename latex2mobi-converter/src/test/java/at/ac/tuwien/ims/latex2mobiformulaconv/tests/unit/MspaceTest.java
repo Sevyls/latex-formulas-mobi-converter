@@ -1,6 +1,14 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit;
 
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.attributes.Unit;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.token.Mspace;
+import org.apache.log4j.Logger;
+import org.jdom2.Element;
+import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 /*
  * The MIT License (MIT)
@@ -32,10 +40,53 @@ import org.junit.Test;
 /**
  * @author Michael Auß
  */
-public class MspaceTest {
+public class MspaceTest extends FormulaElementTest {
+    private static final Logger logger = Logger.getLogger(MspaceTest.class);
+
+    private Mspace mspace;
+
+    @Before
+    public void setUp() throws Exception {
+        logger.debug("enter setUp()...");
+
+        mspace = new Mspace();
+
+        formulaElement = mspace;
+    }
 
     @Test
-    public void testRender() throws Exception {
-        // TODO
+    public void testRenderDefault() {
+        logger.debug("enter testRenderDefault()...");
+
+        Element result = mspace.render(possibleParent, null);
+
+        assertNotNull(result);
+        assertEquals("span", result.getName());
+        assertEquals("mspace", result.getAttributeValue("class"));
+        assertEquals(" ", result.getText());
+        assertEquals("width: 0.0em; height: 0.0ex;", result.getAttributeValue("style"));
+    }
+
+    @Test
+    public void testRenderCustomWidthAndHeight() throws Exception {
+        logger.debug("enter testRenderCustomWidthAndHeight()...");
+        final Double width = 1.2;
+        final Double height = 20.2;
+
+        // instantiate Unit manually
+        mspace.setWidth(new Unit(width, "em"));
+
+        // parse Unit
+        mspace.setHeight(Unit.parse(height.toString() + "px"));
+
+        Element result = mspace.render(possibleParent, null);
+
+        assertNotNull(result);
+        assertEquals("span", result.getName());
+        assertEquals("mspace", result.getAttributeValue("class"));
+        assertEquals(" ", result.getText());
+
+        assertEquals("width: " + width.toString() + "em; height: " + height.toString() + "px;", result.getAttributeValue("style"));
+
     }
 }

@@ -1,5 +1,6 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit;
 
+import org.apache.log4j.Logger;
 import org.junit.Test;
 
 /*
@@ -33,6 +34,7 @@ import org.junit.Test;
  * @author Michael Auß
  */
 public class MrootTest {
+    private static final Logger logger = Logger.getLogger(MrootTest.class);
 
     @Test
     public void testRender() throws Exception {
