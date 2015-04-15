@@ -35,8 +35,6 @@ import static uk.ac.ed.ph.snuggletex.definitions.Globals.ALL_MODES;
  */
 
 /**
- *
- *
  * @author Michael Auß
  *         Created: 13.07.14 16:57
  */

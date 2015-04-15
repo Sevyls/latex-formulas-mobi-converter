@@ -34,10 +34,8 @@ import java.util.List;
  */
 
 /**
- *
- *
  * Renders a MathML mstyle tag
- *
+ * <p/>
  * See http://www.w3.org/TR/MathML2/chapter3.html#presm.mstyle
  *
  * @author Michael Auß

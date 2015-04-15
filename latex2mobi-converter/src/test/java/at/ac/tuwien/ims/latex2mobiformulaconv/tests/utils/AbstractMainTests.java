@@ -38,7 +38,6 @@ import java.util.List;
  */
 
 /**
- *
  * <p/>
  * Created on 11.04.15.
  * <p/>
@@ -49,7 +48,93 @@ import java.util.List;
  * @author Paco Castro
  */
 public abstract class AbstractMainTests {
-    public static Logger logger = Logger.getLogger(AbstractMainTests.class);
+    public static final Logger logger = Logger.getLogger(AbstractMainTests.class);
+    private static final PrintStream OUT = System.out;
+    private static final PrintStream ERR = System.err;
+
+    private static void recoverOriginalOutput() {
+        System.err.flush();
+        System.out.flush();
+        System.setOut(AbstractMainTests.OUT);
+        System.setErr(AbstractMainTests.ERR);
+    }
+
+    public static String[] executeMainMethod(String className, String[] args) {
+        // First, change the standard and error output streams
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        PrintStream tempOutput = new PrintStream(bos, true);
+        System.setOut(tempOutput);
+        System.setErr(tempOutput);
+
+        List<String> result = new ArrayList<String>();
+        try {
+            AbstractMainTests.invokeMain(className, args); // Call main!!
+            // Collect main() execution output
+            BufferedReader reader =
+                    new BufferedReader(new StringReader(bos.toString()));
+            String line = reader.readLine();
+            while (line != null) {
+                result.add(line);
+                line = reader.readLine();
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(
+                    "Error obtaining output for [" + className + "]", e
+            );
+        } finally {
+            recoverOriginalOutput();  // Return output to its original form
+            try {
+                bos.close();
+                tempOutput.close();  // Close streams
+            } catch (IOException e) {
+            }
+        }
+        return result.toArray(new String[0]); // Convert from list to an array
+    }
+
+    public static void invokeMain(String test, String[] args) {
+        try {
+            Class clazz = Class.forName(test);
+
+            Method m = clazz.getMethod("main", (new String[0]).getClass());
+
+            // Make sure it is the static void main(String[]) method
+            if ((m.getReturnType() != Void.TYPE) ||
+                    (!Modifier.isStatic(m.getModifiers()))) {
+                throw new RuntimeException(
+                        "Not executable found: static main(String[])"
+                );
+            }
+
+            // Deactivate System.exit() calls
+            SecurityManager securityManager = new StopExitSecurityManager();
+            System.setSecurityManager(securityManager);
+
+            Object[] param = {args};
+
+            try {
+                m.invoke(clazz, param);
+            } catch (InvocationTargetException e) {
+                // Do nothing
+            } catch (SecurityException e) {
+                // Do nothing
+            } finally {
+                // Reset security manager
+                SecurityManager currentManager = System.getSecurityManager();
+                if (currentManager != null
+                        && currentManager instanceof StopExitSecurityManager) {
+                    StopExitSecurityManager stopExitSecurityManager = (StopExitSecurityManager) currentManager;
+                    System.setSecurityManager(stopExitSecurityManager.getPreviousManager());
+                } else {
+                    System.setSecurityManager(null);
+                }
+            }
+
+
+        } catch (Exception e) {
+            throw new RuntimeException("Error executing main", e);
+        }
+    }
 
     /**
      * This Security Manager prevents a the Main class from exiting before any assertions or debugging could be made.
@@ -76,94 +161,6 @@ public abstract class AbstractMainTests {
 
         public SecurityManager getPreviousManager() {
             return prevManager;
-        }
-    }
-
-    private static final PrintStream OUT = System.out;
-    private static final PrintStream ERR = System.err;
-
-    private static void recoverOriginalOutput() {
-        System.err.flush();
-        System.out.flush();
-        System.setOut(AbstractMainTests.OUT);
-        System.setErr(AbstractMainTests.ERR);
-    }
-
-    public static String[] executeMain(String className, String[] args) {
-        // First, change the standard and error output streams
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        PrintStream tempOutput = new PrintStream(bos, true);
-        System.setOut(tempOutput);
-        System.setErr(tempOutput);
-
-        List<String> result = new ArrayList<String>();
-        try {
-            AbstractMainTests.invokeMain(className, args); // Call main!!
-            // Collect main() execution output
-            BufferedReader reader =
-                    new BufferedReader(new StringReader(bos.toString()));
-            String line = reader.readLine();
-            while (line != null) {
-                result.add(line);
-                line = reader.readLine();
-            }
-        } catch (Throwable e) {
-            throw new RuntimeException(
-                    "Error obtaining output for [" + className + "]", e
-            );
-        } finally {
-            recoverOriginalOutput();  // Return output to its original form
-            try {
-                bos.close();
-                tempOutput.close();  // Close streams
-            } catch (IOException e) {
-            }
-        }
-        return result.toArray(new String[0]); // Convert from list to an array
-    }
-
-    public static void invokeMain(String test, String[] args) {
-        try {
-            Class clazz = Class.forName(test);
-            Object app = clazz.newInstance();
-            Method m = app.getClass().
-                    getMethod("main", (new String[0]).getClass());
-
-            // Make sure it is the static void main(String[]) method
-            if ((m.getReturnType() != Void.TYPE) ||
-                    (!Modifier.isStatic(m.getModifiers()))) {
-                throw new RuntimeException(
-                        "Not executable found: static main(String[])"
-                );
-            }
-
-            // Deactivate System.exit() calls
-            SecurityManager securityManager = new StopExitSecurityManager();
-            System.setSecurityManager(securityManager);
-
-            Object[] param = {args};
-
-            try {
-                m.invoke(app, param);
-            } catch (InvocationTargetException e) {
-                // Do nothing
-            } catch (SecurityException e) {
-                // Do nothing
-            } finally {
-                // Reset security manager
-                SecurityManager currentManager = System.getSecurityManager();
-                if (currentManager != null
-                        && currentManager instanceof StopExitSecurityManager) {
-                    StopExitSecurityManager stopExitSecurityManager = (StopExitSecurityManager) currentManager;
-                    System.setSecurityManager(stopExitSecurityManager.getPreviousManager());
-                } else {
-                    System.setSecurityManager(null);
-                }
-            }
-
-
-        } catch (Throwable e) {
-            throw new RuntimeException("Error executing main", e);
         }
     }
 }

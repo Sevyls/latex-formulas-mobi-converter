@@ -29,22 +29,22 @@
     <mrow>
         <munder accentunder="true">
             <mrow>
-                <mi> x </mi>
-                <mo> + </mo>
-                <mi> y </mi>
-                <mo> + </mo>
-                <mi> z </mi>
+                <mi>x</mi>
+                <mo>+</mo>
+                <mi>y</mi>
+                <mo>+</mo>
+                <mi>z</mi>
             </mrow>
             <mo> &UnderBrace; </mo>
         </munder>
         <mtext>&nbsp;versus&nbsp;</mtext>
         <munder accentunder="false">
             <mrow>
-                <mi> x </mi>
-                <mo> + </mo>
-                <mi> y </mi>
-                <mo> + </mo>
-                <mi> z </mi>
+                <mi>x</mi>
+                <mo>+</mo>
+                <mi>y</mi>
+                <mo>+</mo>
+                <mi>z</mi>
             </mrow>
             <mo> &UnderBrace; </mo>
         </munder>

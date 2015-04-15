@@ -35,11 +35,9 @@ import java.util.Map;
  */
 
 /**
- *
- *
  * This registry provides custom SnugglePackages for supporting more LaTeX syntax or change
  * default behaviour of SnuggleTeX
- *
+ * <p/>
  * See http://snuggletex.sourceforge.net/maven/apidocs/uk/ac/ed/ph/snuggletex/SnugglePackage.html for API reference
  *
  * @author Michael Auß

@@ -34,10 +34,8 @@ import java.util.List;
  */
 
 /**
- *
- *
  * Renders a MathML mfrag tag
- *
+ * <p/>
  * See http://www.w3.org/TR/MathML2/chapter3.html#presm.mfrac
  *
  * @author Michael Auß

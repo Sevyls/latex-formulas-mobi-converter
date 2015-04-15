@@ -40,11 +40,10 @@ import static org.junit.Assert.assertEquals;
  */
 
 /**
- *
  * @author Michael Auß
  */
 public class MoTest extends FormulaElementTest {
-    private static Logger logger = Logger.getLogger(MoTest.class);
+    private static final Logger logger = Logger.getLogger(MoTest.class);
     private Mo mo;
     private String operator;
 
@@ -73,7 +72,7 @@ public class MoTest extends FormulaElementTest {
         if (entity != null) {
             operator = entity;
         }
-        
+
         assertEquals(operator, result.getText());
     }
 }

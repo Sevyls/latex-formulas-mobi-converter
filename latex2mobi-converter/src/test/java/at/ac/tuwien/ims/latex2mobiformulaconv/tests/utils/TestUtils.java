@@ -34,14 +34,12 @@ import java.nio.file.Paths;
  */
 
 /**
- *
- *
  * @author Michael Auß
  *         Date: 08.10.2014
  *         Time: 21:07
  */
 public class TestUtils {
-    private static Logger logger = Logger.getLogger(TestUtils.class);
+    private static final Logger logger = Logger.getLogger(TestUtils.class);
 
     /**
      * Returns the Working Directory of a given Test class

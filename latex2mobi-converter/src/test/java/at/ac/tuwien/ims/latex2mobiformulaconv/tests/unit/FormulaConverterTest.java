@@ -49,11 +49,10 @@ import static org.junit.Assert.*;
  * @author Michael Auß
  */
 public class FormulaConverterTest {
+    private static final Logger logger = Logger.getLogger(FormulaConverterTest.class);
     private FormulaConverter formulaConverter;
     private Document document;
     private ApplicationContext applicationContext;
-
-    private static Logger logger = Logger.getLogger(FormulaConverterTest.class);
 
     @Before
     public void setUp() throws Exception {

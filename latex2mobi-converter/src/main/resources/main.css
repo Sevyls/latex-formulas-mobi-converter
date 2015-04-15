@@ -139,7 +139,6 @@ sub, sup {
     border: none;
 }
 
-
 /*
  Override table defaults
  */
@@ -289,7 +288,7 @@ table.Vmatrix {
 }
 */
 
-.munder .underscript, .mover .overscript{
+.munder .underscript, .mover .overscript {
     text-align: center;
     height: 0;
 }
@@ -303,15 +302,13 @@ table.Vmatrix {
 }
 
 .msub .mo, .msup .mo {
-    padding-left: 0em!important;
-    padding-right: 0em!important;
+    padding-left: 0em !important;
+    padding-right: 0em !important;
 }
-
 
 .nothing {
     display: none;
 }
-
 
 /*
  * Following styles based on
@@ -330,7 +327,6 @@ table.Vmatrix {
 
     font-style: normal;
 }
-
 
 /* Rules dealing with the various values of the "mathvariant" attribute: */
 

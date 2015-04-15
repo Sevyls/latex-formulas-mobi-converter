@@ -50,6 +50,9 @@ import static org.mockito.Mockito.*;
  * @author Michael Auß
  */
 public class MfencedTest extends FormulaElementTest {
+    public static final String HTML_CLASS = "class";
+    public static final String HTML_SPAN = "span";
+
     private Mfenced mfenced;
 
     @Before
@@ -70,7 +73,7 @@ public class MfencedTest extends FormulaElementTest {
         for (int i = 0; i < count; i++) {
             FormulaElement mockedFormulaElement = mock(FormulaElement.class);
             when(mockedFormulaElement.render(or(any(FormulaElement.class), isNull(FormulaElement.class)),
-                    or(anyListOf(FormulaElement.class), isNull(List.class)))).thenReturn(new Element("span"));
+                    or(anyListOf(FormulaElement.class), isNull(List.class)))).thenReturn(new Element(HTML_SPAN));
             list.add(mockedFormulaElement);
         }
 
@@ -78,32 +81,32 @@ public class MfencedTest extends FormulaElementTest {
 
         Element result = mfenced.render(possibleParent, null);
 
-        assertEquals("span", result.getName());
-        assertEquals("mfenced", result.getAttributeValue("class"));
+        assertEquals(HTML_SPAN, result.getName());
+        assertEquals("mfenced", result.getAttributeValue(HTML_CLASS));
 
         for (FormulaElement mockedElement : list) {
             verify(mockedElement).render(or(eq(mfenced), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
         }
-        List<Element> spans = result.getChildren("span");
+        List<Element> spans = result.getChildren(HTML_SPAN);
         Element openingFence = spans.get(0);
-        assertEquals("mfenced-open", openingFence.getAttributeValue("class"));
+        assertEquals("mfenced-open", openingFence.getAttributeValue(HTML_CLASS));
 
         for (int i = 1; i < spans.size() - 1; i = i + 2) {
-            assertEquals("mfenced-content", spans.get(i).getAttributeValue("class"));
+            assertEquals("mfenced-content", spans.get(i).getAttributeValue(HTML_CLASS));
         }
 
         // Check separators
         String collectedSeparators = "";
         for (int i = 2; i < spans.size() - 1; i = i + 2) {
             Element separatorSpan = spans.get(i);
-            assertEquals("mo mfenced-separator", separatorSpan.getAttributeValue("class"));
+            assertEquals("mo mfenced-separator", separatorSpan.getAttributeValue(HTML_CLASS));
 
             collectedSeparators += spans.get(i).getText();
         }
         assertEquals(separators, collectedSeparators);
 
-        Element closingFence = result.getChildren().get(result.getChildren("span").size() - 1);
-        assertEquals("mfenced-close", closingFence.getAttributeValue("class"));
+        Element closingFence = result.getChildren().get(result.getChildren(HTML_SPAN).size() - 1);
+        assertEquals("mfenced-close", closingFence.getAttributeValue(HTML_CLASS));
 
     }
 
@@ -118,7 +121,7 @@ public class MfencedTest extends FormulaElementTest {
         for (int i = 0; i < count; i++) {
             FormulaElement mockedFormulaElement = mock(FormulaElement.class);
             when(mockedFormulaElement.render(or(any(FormulaElement.class), isNull(FormulaElement.class)),
-                    or(anyListOf(FormulaElement.class), isNull(List.class)))).thenReturn(new Element("span"));
+                    or(anyListOf(FormulaElement.class), isNull(List.class)))).thenReturn(new Element(HTML_SPAN));
             list.add(mockedFormulaElement);
         }
 
@@ -126,32 +129,31 @@ public class MfencedTest extends FormulaElementTest {
 
         Element result = mfenced.render(possibleParent, null);
 
-        assertEquals("span", result.getName());
-        assertEquals("mfenced", result.getAttributeValue("class"));
+        assertEquals(HTML_SPAN, result.getName());
+        assertEquals("mfenced", result.getAttributeValue(HTML_CLASS));
 
         for (FormulaElement mockedElement : list) {
             verify(mockedElement).render(or(eq(mfenced), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
         }
-        List<Element> spans = result.getChildren("span");
+        List<Element> spans = result.getChildren(HTML_SPAN);
         Element openingFence = spans.get(0);
-        assertEquals("mfenced-open", openingFence.getAttributeValue("class"));
+        assertEquals("mfenced-open", openingFence.getAttributeValue(HTML_CLASS));
 
         for (int i = 1; i < spans.size() - 1; i = i + 2) {
-            assertEquals("mfenced-content", spans.get(i).getAttributeValue("class"));
+            assertEquals("mfenced-content", spans.get(i).getAttributeValue(HTML_CLASS));
         }
 
         // Check separators
-        String collectedSeparators = "";
         for (int i = 2; i < spans.size() - 1; i = i + 2) {
             Element separatorSpan = spans.get(i);
-            assertEquals("mo mfenced-separator", separatorSpan.getAttributeValue("class"));
+            assertEquals("mo mfenced-separator", separatorSpan.getAttributeValue(HTML_CLASS));
 
             assertEquals(separator, spans.get(i).getText());
         }
 
 
-        Element closingFence = result.getChildren().get(result.getChildren("span").size() - 1);
-        assertEquals("mfenced-close", closingFence.getAttributeValue("class"));
+        Element closingFence = result.getChildren().get(result.getChildren(HTML_SPAN).size() - 1);
+        assertEquals("mfenced-close", closingFence.getAttributeValue(HTML_CLASS));
 
     }
 }

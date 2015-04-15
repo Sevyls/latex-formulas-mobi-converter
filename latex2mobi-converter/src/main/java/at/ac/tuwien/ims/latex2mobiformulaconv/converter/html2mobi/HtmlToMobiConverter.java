@@ -32,8 +32,6 @@ import java.io.File;
  */
 
 /**
- *
- *
  * This interface provides the method signature for converting an HTML document
  * to an eBook in Mobi-Format
  *
@@ -47,5 +45,5 @@ public interface HtmlToMobiConverter extends ExecOption {
      * @param htmlFile a JDOM representation of the HTML document which will be converted from.
      * @return Returns the Java File object of the already written output Mobi ebook file.
      */
-    public File convertToMobi(File htmlFile);
+    File convertToMobi(File htmlFile);
 }

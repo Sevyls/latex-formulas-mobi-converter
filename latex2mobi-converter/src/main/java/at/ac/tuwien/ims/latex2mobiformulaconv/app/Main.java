@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.InvalidPathException;
@@ -18,6 +19,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 /*
  * The MIT License (MIT)
@@ -47,38 +49,38 @@ import java.util.Iterator;
  */
 
 /**
- *
- *
  * The main latex2mobi command line application
  *
  * @author Michael Auß
  *         Created: 29.04.14 22:55
  */
 public class Main {
-    private static final String CONFIGURATION_FILENAME = "configuration.properties";
 
+    public static final String CALIBRE_HTML2MOBI_CONVERTER = "calibre-html2mobi-converter";
+    public static final String KINDLEGEN_HTML2MOBI_CONVERTER = "kindlegen-html2mobi-converter";
+    private static final String CONFIGURATION_FILENAME = "configuration.properties";
     // Utilities
-    private static Logger logger = Logger.getRootLogger();
+    private static final Logger logger = Logger.getRootLogger();
     private static PropertiesConfiguration config;
     private static Options options;
     private static ApplicationContext applicationContext;
-
     // Flag options
     private static boolean replaceWithPictures = false;
     private static boolean debugMarkupOutput = false;
     private static boolean exportMarkup = false;
     private static boolean noMobiConversion = false;
     private static boolean useCalibreInsteadOfKindleGen = false;
-
     // Value options
     private static String title = null;
     private static String filename = "LaTeX2Mobi";
-
     // Paths
-    private static ArrayList<Path> inputPaths = new ArrayList<Path>();
+    private static List<Path> inputPaths = new ArrayList<Path>();
     private static Path workingDirectory;
     private static Path outputPath;
 
+    private Main() {
+        // do nothing
+    }
 
     /**
      * Main application method, may exit on error.
@@ -118,10 +120,10 @@ public class Main {
         // Decide which HtmlToMobi Converter to use
         HtmlToMobiConverter htmlToMobiConverter;
         if (useCalibreInsteadOfKindleGen) {
-            htmlToMobiConverter = (HtmlToMobiConverter) applicationContext.getBean("calibre-html2mobi-converter");
+            htmlToMobiConverter = (HtmlToMobiConverter) applicationContext.getBean(CALIBRE_HTML2MOBI_CONVERTER);
         } else {
             // default is kindlegen
-            htmlToMobiConverter = (HtmlToMobiConverter) applicationContext.getBean("kindlegen-html2mobi-converter");
+            htmlToMobiConverter = (HtmlToMobiConverter) applicationContext.getBean(KINDLEGEN_HTML2MOBI_CONVERTER);
         }
         converter.setHtmlToMobiConverter(htmlToMobiConverter);
 
@@ -136,9 +138,12 @@ public class Main {
         converter.setExportMarkup(exportMarkup);
         converter.setNoMobiConversion(noMobiConversion);
 
-        Path resultFile = converter.convert();
-
-        logger.info("Result : " + resultFile.toAbsolutePath().toString());
+        try {
+            Path resultFile = converter.convert();
+            logger.info("Result : " + resultFile.toAbsolutePath().toString());
+        } catch (FileNotFoundException e) {
+            logger.error(e.getMessage());
+        }
 
         logger.debug("main() exit.");
     }
@@ -159,7 +164,7 @@ public class Main {
                 // Activate debug markup only - does not affect logging!
                 debugMarkupOutput = true;
             }
-            
+
             if (cmd.hasOption('m')) {
                 exportMarkup = true;
             }
@@ -180,16 +185,7 @@ public class Main {
             if (cmd.hasOption('i')) {
                 String[] inputValues = cmd.getOptionValues('i');
                 for (String inputValue : inputValues) {
-                    Path inputPath = Paths.get(inputValue);
-
-                    if (Files.exists(inputPath)) {
-                        logger.debug("Input file/directory found: " + inputPath.toAbsolutePath().toString());
-                        inputPaths.add(inputPath);
-                    } else {
-                        logger.error("Input file/directory could not be found!");
-                        logger.error(inputPath.toAbsolutePath().toString());
-                        System.exit(1);
-                    }
+                    inputPaths.add(Paths.get(inputValue));
                 }
             } else {
                 logger.error("You have to specify an inputPath file or directory!");
@@ -200,7 +196,6 @@ public class Main {
             if (cmd.hasOption('o')) {
                 String outputDirectory = cmd.getOptionValue('o');
 
-                //outputPath = workingDirectory.resolve(outputDirectory);
                 outputPath = Paths.get(outputDirectory).toAbsolutePath();
                 logger.debug("Output path: " + outputPath.toAbsolutePath().toString());
                 if (!Files.isDirectory(outputPath) && Files.isRegularFile(outputPath)) {
@@ -245,9 +240,9 @@ public class Main {
                 latexToHtmlConverter.setExecPath(execPath);
             }
 
-            String htmlToMobiConverterBean = "kindlegen-html2mobi-converter";
+            String htmlToMobiConverterBean = KINDLEGEN_HTML2MOBI_CONVERTER;
             if (useCalibreInsteadOfKindleGen) {
-                htmlToMobiConverterBean = "calibre-html2mobi-converter";
+                htmlToMobiConverterBean = CALIBRE_HTML2MOBI_CONVERTER;
             }
 
             HtmlToMobiConverter htmlToMobiConverter = (HtmlToMobiConverter) applicationContext.getBean(htmlToMobiConverterBean);
@@ -366,7 +361,7 @@ public class Main {
 
         // implementation specific options
         options.addOption(((LatexToHtmlConverter) applicationContext.getBean("latex2html-converter")).getExecOption());
-        options.addOption(((HtmlToMobiConverter) applicationContext.getBean("kindlegen-html2mobi-converter")).getExecOption());
-        options.addOption(((HtmlToMobiConverter) applicationContext.getBean("calibre-html2mobi-converter")).getExecOption());
+        options.addOption(((HtmlToMobiConverter) applicationContext.getBean(KINDLEGEN_HTML2MOBI_CONVERTER)).getExecOption());
+        options.addOption(((HtmlToMobiConverter) applicationContext.getBean(CALIBRE_HTML2MOBI_CONVERTER)).getExecOption());
     }
 }

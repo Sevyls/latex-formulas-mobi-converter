@@ -42,18 +42,19 @@ import static org.junit.Assert.assertThat;
 /**
  * Integration/Blackbox Test for the application's Main class
  *
- * @see at.ac.tuwien.ims.latex2mobiformulaconv.app.Main
- *
  * @author Michael Auß
  *         Created on 11.04.15.
+ * @see at.ac.tuwien.ims.latex2mobiformulaconv.app.Main
  */
 public class MainApplicationTest {
-    private static Logger logger = Logger.getLogger(MainApplicationTest.class);
+    private static final Logger logger = Logger.getLogger(MainApplicationTest.class);
 
-    private ArrayList<String> args;
+    private List<String> args;
+
 
     @Before
-    public void setUpStreams() {
+    public void setUp() throws Exception {
+        logger.debug("setup()");
         args = new ArrayList<>();
         args.add("latex2mobi");
     }
@@ -63,9 +64,10 @@ public class MainApplicationTest {
      */
     @Test
     public void testUsage() throws Exception {
-
+        logger.debug("enter testUsage()...");
         args.add("-h");
-        String[] expected = new String[]{
+
+        final String[] expected = new String[]{
                 "usage: latex2mobi",
                 "LaTeX Formulas to Mobi Converter",
                 "(c) 2014-2015 by Michael Auss",
@@ -84,15 +86,25 @@ public class MainApplicationTest {
                 "                             override html",
                 " -t,--title <arg>            Document title"
         };
-        String[] results =
-                AbstractMainTests.executeMain("at.ac.tuwien.ims.latex2mobiformulaconv.app.Main",
-                        args.toArray(new String[args.size()]));
+
+        String[] results = runMain();
 
         List<String> resultsList = Arrays.asList(results);
 
         for (String s : expected) {
             assertThat(resultsList, hasItem(s));
         }
+    }
+
+
+    /**
+     * Runs the Main method in the Main class with args
+     *
+     * @return Output collected from stdout + stderr in an array of strings
+     */
+    private String[] runMain() {
+        return AbstractMainTests.executeMainMethod("at.ac.tuwien.ims.latex2mobiformulaconv.app.Main",
+                args.toArray(new String[args.size()]));
     }
 
     // TODO test convert with multiple option variations, successful and error output

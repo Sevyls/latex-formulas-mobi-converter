@@ -43,12 +43,10 @@ import static org.mockito.Mockito.*;
  */
 
 /**
- *
- *
  * @author Michael Auß
  */
 public class MrowTest extends FormulaElementTest {
-    private static Logger logger = Logger.getLogger(MrowTest.class);
+    private static final Logger logger = Logger.getLogger(MrowTest.class);
     private static final String[] subElements = new String[]{"mo", "mover", "munder", "msup", "mi", "mfrac"};
 
     private Mrow mrow;

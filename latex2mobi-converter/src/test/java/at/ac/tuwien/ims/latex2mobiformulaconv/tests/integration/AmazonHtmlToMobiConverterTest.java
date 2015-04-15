@@ -30,18 +30,16 @@ import org.apache.log4j.Logger;
  */
 
 /**
- *
  * <p/>
- *
+ * <p/>
  * Integration Test for AmazonHtmlToMobiConverter
- * @see at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi.AmazonHtmlToMobiConverter
- *
  *
  * @author Michael Auß
  *         Created on 10.04.15.
+ * @see at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi.AmazonHtmlToMobiConverter
  */
 public class AmazonHtmlToMobiConverterTest extends HtmlToMobiConverterTest {
-    private static Logger logger = Logger.getLogger(AmazonHtmlToMobiConverterTest.class);
+    private static final Logger logger = Logger.getLogger(AmazonHtmlToMobiConverterTest.class);
 
     public AmazonHtmlToMobiConverterTest() {
         super();

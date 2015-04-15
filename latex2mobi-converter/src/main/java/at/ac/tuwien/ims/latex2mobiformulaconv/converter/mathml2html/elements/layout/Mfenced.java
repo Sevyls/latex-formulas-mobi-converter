@@ -37,10 +37,8 @@ import java.util.List;
  */
 
 /**
- *
- *
  * Renders a MathML Mfenced tag
- *
+ * <p/>
  * http://www.w3.org/TR/MathML2/chapter3.html#presm.mfenced
  *
  * @author Michael Auß
@@ -108,7 +106,6 @@ public class Mfenced implements FormulaElement {
         openFenceSpan.setAttribute("class", "mfenced-open");
         openFenceSpan.setText(opened);
         fencedSpan.addContent(openFenceSpan);
-
 
 
         // Content

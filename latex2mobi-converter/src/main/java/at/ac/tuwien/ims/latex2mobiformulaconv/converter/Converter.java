@@ -10,6 +10,7 @@ import org.jdom2.Document;
 import org.jdom2.output.XMLOutputter;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
@@ -17,9 +18,9 @@ import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 /*
@@ -50,15 +51,14 @@ import java.util.Map;
  */
 
 /**
- *
  * Converts LaTeX input to Mobi files
+ *
  * @author Michael Auß
  *         Date: 17.08.14
  *         Time: 17:35
- *
  */
 public class Converter {
-    private static Logger logger = Logger.getLogger(Converter.class);
+    private static final Logger logger = Logger.getLogger(Converter.class);
     private static final String MAIN_CSS_FILENAME = "main.css";
     private static final String FILE_EXTENSION = ".mobi";
 
@@ -69,9 +69,9 @@ public class Converter {
     private Path workingDirectory;
 
     /**
-     *  ArrayList of input paths, only the first gets read
+     * ArrayList of input paths, only the first gets read
      */
-    private ArrayList<Path> inputPaths;
+    private List<Path> inputPaths;
 
     /**
      * if true, the formulas will get replaced with png pictures
@@ -194,11 +194,11 @@ public class Converter {
         this.filename = filename;
     }
 
-    public ArrayList<Path> getInputPaths() {
+    public List<Path> getInputPaths() {
         return inputPaths;
     }
 
-    public void setInputPaths(ArrayList<Path> inputPaths) {
+    public void setInputPaths(List<Path> inputPaths) {
         this.inputPaths = inputPaths;
     }
 
@@ -212,11 +212,22 @@ public class Converter {
 
     /**
      * Converts a single input file from LaTeX to Mobi
+     *
      * @return Path of the resulting File
+     * @throws FileNotFoundException when there's no file at the inputPath location
      */
-    public Path convert() {
+    public Path convert() throws FileNotFoundException {
         // Currently only the first input path will be evaluated
         File inputFile = inputPaths.get(0).toFile();
+
+        final String fullFilePath = inputFile.toPath().toAbsolutePath().toString();
+
+        if (Files.exists(inputPaths.get(0))) {
+            logger.debug("Input file found: " + fullFilePath);
+
+        } else {
+            throw new FileNotFoundException("Input file could not be found at: " + fullFilePath);
+        }
 
         // set default title
         if (title == null) {
@@ -299,29 +310,30 @@ public class Converter {
 
     /**
      * Saves the html document to a file with .html extension
+     *
      * @param document JDOM Document representing the HTML
      * @return written HTML File object
      */
     private File saveHtmlFile(Document document) {
         Path tempFilepath = null;
 
-            Path tempDirPath = formulaConverter.getTempDirPath();
+        Path tempDirPath = formulaConverter.getTempDirPath();
 
-            ClassLoader classLoader = getClass().getClassLoader();
-            InputStream mainCssIs = classLoader.getResourceAsStream(MAIN_CSS_FILENAME);
+        ClassLoader classLoader = getClass().getClassLoader();
+        InputStream mainCssIs = classLoader.getResourceAsStream(MAIN_CSS_FILENAME);
 
-            logger.debug("Copying main.css file to temp dir: " + tempDirPath.toAbsolutePath().toString());
-            try {
-                Files.copy(mainCssIs, tempDirPath.resolve(MAIN_CSS_FILENAME));
-            } catch (FileAlreadyExistsException e) {
-                // do nothing
-            } catch (IOException e) {
-                logger.error("could not copy main.css file to temp dir!");
-            }
+        logger.debug("Copying main.css file to temp dir: " + tempDirPath.toAbsolutePath().toString());
+        try {
+            Files.copy(mainCssIs, tempDirPath.resolve(MAIN_CSS_FILENAME));
+        } catch (FileAlreadyExistsException e) {
+            // do nothing
+        } catch (IOException e) {
+            logger.error("could not copy main.css file to temp dir!");
+        }
 
-            tempFilepath = tempDirPath.resolve("latex2mobi.html");
+        tempFilepath = tempDirPath.resolve("latex2mobi.html");
 
-            logger.debug("tempFile created at: " + tempFilepath.toAbsolutePath().toString());
+        logger.debug("tempFile created at: " + tempFilepath.toAbsolutePath().toString());
         try {
             Files.write(tempFilepath, new XMLOutputter().outputString(document).getBytes(Charset.forName("UTF-8")));
 
@@ -332,7 +344,7 @@ public class Converter {
         } catch (IOException e) {
             logger.error("Error writing HTML to temp dir!");
             logger.error(e.getMessage(), e);
-            }
+        }
 
         return tempFilepath.toFile();
     }

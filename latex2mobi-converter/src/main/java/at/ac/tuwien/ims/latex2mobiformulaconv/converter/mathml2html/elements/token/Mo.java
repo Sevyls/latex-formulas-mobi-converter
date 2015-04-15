@@ -38,17 +38,15 @@ import java.util.List;
  */
 
 /**
- *
- *
  * Renders a MathML Mo tag
- *
+ * <p/>
  * http://www.w3.org/TR/MathML2/chapter3.html#presm.mo
  *
  * @author Michael Auß
  *         Created: 15.09.2014
  */
 public class Mo extends Token {
-    private static Logger logger = Logger.getLogger(Mo.class);
+    private static final Logger logger = Logger.getLogger(Mo.class);
 
     private String value;
 

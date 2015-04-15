@@ -30,16 +30,14 @@ import org.apache.log4j.Logger;
  */
 
 /**
- *
- *
  * Integration Test for
- * @see at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi.CalibreHtmlToMobiConverter
  *
  * @author Michael Auß
- *  Created on 09.04.15.
+ *         Created on 09.04.15.
+ * @see at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi.CalibreHtmlToMobiConverter
  */
 public class CalibreHtmlToMobiConverterTest extends HtmlToMobiConverterTest {
-    private static Logger logger = Logger.getLogger(CalibreHtmlToMobiConverterTest.class);
+    private static final Logger logger = Logger.getLogger(CalibreHtmlToMobiConverterTest.class);
 
     public CalibreHtmlToMobiConverterTest() {
         super();

@@ -30,8 +30,6 @@ import org.junit.Test;
  */
 
 /**
- *
- *
  * @author Michael Auß
  */
 public class MspaceTest {

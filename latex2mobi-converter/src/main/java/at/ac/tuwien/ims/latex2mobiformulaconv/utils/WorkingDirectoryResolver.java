@@ -34,19 +34,18 @@ import java.nio.file.Paths;
  */
 
 /**
- *
- *
  * @author Michael Auß
  *         Date: 02.01.2015
  *         Time: 12:46
- *
- * Helper class for resolving the current working directory of a class
+ *         <p/>
+ *         Helper class for resolving the current working directory of a class
  */
 public class WorkingDirectoryResolver {
-    private static Logger logger = Logger.getLogger(WorkingDirectoryResolver.class);
+    private static final Logger logger = Logger.getLogger(WorkingDirectoryResolver.class);
 
     /**
      * Returns the path of the working directory of a given class
+     *
      * @param clazz Class object
      * @return a Path object of the working directory or null if it could not be resolved
      */

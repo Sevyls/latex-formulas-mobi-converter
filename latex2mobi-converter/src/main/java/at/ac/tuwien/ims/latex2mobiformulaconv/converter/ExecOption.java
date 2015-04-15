@@ -32,14 +32,11 @@ import java.nio.file.Path;
  */
 
 /**
- *
- *
  * Creating an Apache Commons CLI Option for a runtime-depending executable
- *
+ * <p/>
  * Created: 06.06.14 22:48
  *
  * @author Michael Auß
- *
  */
 public interface ExecOption {
     /**
@@ -47,13 +44,13 @@ public interface ExecOption {
      *
      * @return the configured Option object
      */
-    public Option getExecOption();
+    Option getExecOption();
 
     /**
      * Provides a setter method for the path to an executable
      *
      * @param execPath An absolute path for the executable
      */
-    public void setExecPath(Path execPath);
+    void setExecPath(Path execPath);
 
 }

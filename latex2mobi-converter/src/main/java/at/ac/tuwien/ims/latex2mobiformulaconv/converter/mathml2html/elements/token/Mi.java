@@ -34,10 +34,8 @@ import java.util.List;
  */
 
 /**
- *
- *
  * Renders a MathML Mi tag
- *
+ * <p/>
  * http://www.w3.org/TR/MathML2/chapter3.html#presm.mi
  *
  * @author Michael Auß
@@ -70,7 +68,7 @@ public class Mi extends Token {
         Element span = new Element("span");
         span.setAttribute("class", "mi");
         if (mathvariant != null) {
-            switch(mathvariant) {
+            switch (mathvariant) {
                 case "script":
                     lookup(this.value + "scr");
                     break;

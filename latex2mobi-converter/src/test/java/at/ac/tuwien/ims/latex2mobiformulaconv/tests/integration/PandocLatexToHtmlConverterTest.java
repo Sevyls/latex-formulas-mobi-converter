@@ -47,17 +47,15 @@ import static org.junit.Assert.*;
  */
 
 /**
- *
- *
  * Integration Test for PandocLatexToHtmlConverter
- * @see at.ac.tuwien.ims.latex2mobiformulaconv.converter.latex2html.PandocLatexToHtmlConverter
  *
  * @author Michael Auß
  *         Date: 18.08.14
  *         Time: 21:22
+ * @see at.ac.tuwien.ims.latex2mobiformulaconv.converter.latex2html.PandocLatexToHtmlConverter
  */
 public class PandocLatexToHtmlConverterTest {
-    private static Logger logger = Logger.getLogger(PandocLatexToHtmlConverterTest.class);
+    private static final Logger logger = Logger.getLogger(PandocLatexToHtmlConverterTest.class);
 
     private PandocLatexToHtmlConverter converter;
     private File inputFile;

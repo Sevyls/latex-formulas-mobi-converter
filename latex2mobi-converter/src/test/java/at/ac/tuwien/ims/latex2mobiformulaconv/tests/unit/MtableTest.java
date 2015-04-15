@@ -48,8 +48,6 @@ import static org.mockito.Mockito.*;
  */
 
 /**
- *
- *
  * @author Michael Auß
  */
 public class MtableTest extends FormulaElementTest {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <name>Latex to Mobi Formula Converter - Bachelor Thesis</name>
@@ -278,8 +278,10 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <shadedArtifactAttached>true</shadedArtifactAttached> <!-- Make the shaded artifact not the main one -->
-                    <shadedClassifierName>shaded</shadedClassifierName> <!-- set the suffix to the shaded jar -->
+                    <shadedArtifactAttached>true</shadedArtifactAttached>
+                    <!-- Make the shaded artifact not the main one -->
+                    <shadedClassifierName>shaded</shadedClassifierName>
+                    <!-- set the suffix to the shaded jar -->
                 </configuration>
             </plugin>
             <plugin>

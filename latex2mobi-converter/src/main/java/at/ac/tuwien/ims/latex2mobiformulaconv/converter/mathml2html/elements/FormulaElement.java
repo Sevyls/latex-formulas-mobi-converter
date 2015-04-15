@@ -32,32 +32,29 @@ import java.util.List;
  */
 
 /**
- *
- *
- *
  * @author Michael Auß
  *         Created: 20.05.14 23:29
- *
- * A part of a formula which can be rendered to HTML
- *
- * Note: This is not used when converting to images
+ *         <p/>
+ *         A part of a formula which can be rendered to HTML
+ *         <p/>
+ *         Note: This is not used when converting to images
  */
 public interface FormulaElement {
 
     /**
      * Renders this FormulaElement to HTML.
      * May call render() on sub-elements for recursive rendering.
-     *
+     * <p/>
      * Some cases require to take different actions in rendering depending on
      * this elements parents or siblings.
-     *
+     * <p/>
      * Implementing classes SHOULD always have a way to fallback if parent or siblings are NULL
-     *
+     * <p/>
      * NEVER call render() on the parent or siblings, endless loop could be the result.
      *
-     * @return A JDOM Element which represents this FormulaElement + sub-elements (i.e. in HTML)
-     * @param parent the parent FormulaElement
+     * @param parent   the parent FormulaElement
      * @param siblings list of sibling elements including this FormulaElement
+     * @return A JDOM Element which represents this FormulaElement + sub-elements (i.e. in HTML)
      */
-    public Element render(FormulaElement parent, List<FormulaElement> siblings);
+    Element render(FormulaElement parent, List<FormulaElement> siblings);
 }

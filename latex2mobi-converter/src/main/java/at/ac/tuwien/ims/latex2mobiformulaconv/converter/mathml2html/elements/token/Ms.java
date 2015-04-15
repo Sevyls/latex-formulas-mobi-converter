@@ -33,10 +33,8 @@ import java.util.List;
  */
 
 /**
- *
- *
  * Renders a MathML Ms tag
- *
+ * <p/>
  * http://www.w3.org/TR/MathML2/chapter3.html#presm.ms
  *
  * @author Michael Auß

@@ -33,10 +33,8 @@ import java.util.List;
  */
 
 /**
- *
- *
  * Renders a MathML Msup tag
- *
+ * <p/>
  * http://www.w3.org/TR/MathML2/chapter3.html#presm.msup
  *
  * @author Michael Auß
@@ -44,6 +42,8 @@ import java.util.List;
  */
 public class Msup implements FormulaElement {
     public static final char COMMAND = '_';
+    private FormulaElement base;
+    private FormulaElement superscript;
 
     public FormulaElement getBase() {
         return base;
@@ -60,9 +60,6 @@ public class Msup implements FormulaElement {
     public void setSuperscript(FormulaElement superscript) {
         this.superscript = superscript;
     }
-
-    private FormulaElement base;
-    private FormulaElement superscript;
 
     @Override
     public Element render(FormulaElement parent, List<FormulaElement> siblings) {

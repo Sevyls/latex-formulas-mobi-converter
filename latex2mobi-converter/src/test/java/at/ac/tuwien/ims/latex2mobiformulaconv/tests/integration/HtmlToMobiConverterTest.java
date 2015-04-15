@@ -43,23 +43,21 @@ import static org.junit.Assert.assertTrue;
  */
 
 /**
- *
  * <p/>
-
+ * <p/>
  * Abstract Integration Test for an HtmlToMobiConverter Implementation
- * @see at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi.HtmlToMobiConverter
  *
  * @author Michael Auß
  *         Created on 10.04.15.
+ * @see at.ac.tuwien.ims.latex2mobiformulaconv.converter.html2mobi.HtmlToMobiConverter
  */
 public abstract class HtmlToMobiConverterTest {
-    private static Logger logger = Logger.getLogger(HtmlToMobiConverterTest.class);
-
+    private static final Logger logger = Logger.getLogger(HtmlToMobiConverterTest.class);
+    protected String bean;
     private ApplicationContext applicationContext;
     private HtmlToMobiConverter htmlToMobiConverter;
     private Path inputFile;
     private File mobi;
-    protected String bean;
 
     @Before
     public void setUp() throws Exception {

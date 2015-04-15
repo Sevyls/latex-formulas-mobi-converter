@@ -40,15 +40,12 @@ import static org.junit.Assert.assertTrue;
  */
 
 /**
- *
- *
  * @author Michael Auß
  */
 public class MiTest extends FormulaElementTest {
+    private static final Logger logger = Logger.getLogger(MiTest.class);
     private Mi mi;
     private String randomText;
-
-    private static Logger logger = Logger.getLogger(MiTest.class);
 
     @Before
     public void setUp() throws Exception {

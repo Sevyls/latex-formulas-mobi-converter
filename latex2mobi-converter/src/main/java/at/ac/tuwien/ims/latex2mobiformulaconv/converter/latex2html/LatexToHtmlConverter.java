@@ -33,8 +33,6 @@ import java.io.File;
  */
 
 /**
- *
- *
  * Describes the basic signature of a LaTeX to HTML converter class
  *
  * @author Michael Auß
@@ -44,9 +42,9 @@ public interface LatexToHtmlConverter extends ExecOption {
     /**
      * Converts a LaTeX file to HTML
      *
-     * @param tex The LaTeX input file
+     * @param tex   The LaTeX input file
      * @param title The Document's title, for the HTML title tag
      * @return JDOM Document object of the resulting html file
      */
-    public Document convert(File tex, String title);
+    Document convert(File tex, String title);
 }

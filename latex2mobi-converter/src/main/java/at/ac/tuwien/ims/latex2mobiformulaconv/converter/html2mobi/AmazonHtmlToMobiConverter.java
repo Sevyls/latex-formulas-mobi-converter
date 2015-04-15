@@ -40,15 +40,13 @@ import java.nio.file.Paths;
  */
 
 /**
- *
- *
  * Converts an HTML file with Amazon's Kindlegen executable to a Mobi ebook
  *
  * @author Michael Auß
  *         Created: 21.05.14 00:13
  */
 public class AmazonHtmlToMobiConverter implements HtmlToMobiConverter {
-    private static Logger logger = Logger.getLogger(AmazonHtmlToMobiConverter.class);
+    private static final Logger logger = Logger.getLogger(AmazonHtmlToMobiConverter.class);
 
     private String command = "kindlegen";
     private Path execPath = null;
@@ -76,7 +74,6 @@ public class AmazonHtmlToMobiConverter implements HtmlToMobiConverter {
         // Run configuration
         cmdLine.addArgument(Paths.get(htmlFile.toURI()).toAbsolutePath().toString());
         cmdLine.addArgument("-c0");
-        //cmdLine.addArgument("-locale en");
 
         DefaultExecuteResultHandler resultHandler = new DefaultExecuteResultHandler();
 
@@ -84,10 +81,12 @@ public class AmazonHtmlToMobiConverter implements HtmlToMobiConverter {
         Executor executor = new DefaultExecutor();
         executor.setExitValue(1);
         executor.setWatchdog(watchdog);
-        StringWriter writer = new StringWriter();
-        WriterOutputStream writerOutputStream = new WriterOutputStream(writer, Charset.forName("UTF-8"));
+        StringWriter stdoutWriter = new StringWriter();
+        StringWriter stderrWriter = new StringWriter();
+        WriterOutputStream writerOutputStream = new WriterOutputStream(stdoutWriter, Charset.forName("UTF-8"));
+        WriterOutputStream writerErrorStream = new WriterOutputStream(stderrWriter, Charset.forName("UTF-8"));
 
-        ExecuteStreamHandler kindlegenStreamHandler = new PumpStreamHandler(writerOutputStream, System.err);
+        ExecuteStreamHandler kindlegenStreamHandler = new PumpStreamHandler(writerOutputStream, writerErrorStream);
         executor.setStreamHandler(kindlegenStreamHandler);
 
         logger.debug("Launching kindlegen:");
@@ -124,15 +123,26 @@ public class AmazonHtmlToMobiConverter implements HtmlToMobiConverter {
             logger.error(e.getMessage(), e);
         }
 
+        try {
+            String stderrOutput = stderrWriter.getBuffer().toString();
+            stderrWriter.close();
+            if (stderrOutput.isEmpty() == false) {
+                logger.error("Kindlegen logged some errors:");
+                logger.error(stderrOutput);
+            }
+        } catch (IOException e) {
+            logger.error("Error closing kindlegen's stderr buffer");
+            logger.error(e.getMessage(), e);
+        }
+
         String output = "";
         try {
-            output += writer.getBuffer().toString();
-            writer.close();
+            output += stdoutWriter.getBuffer().toString();
+            stdoutWriter.close();
 
         } catch (IOException e) {
-            logger.error("Error reading kindlegen's output from buffer:");
+            logger.error("Error closing kindlegen's stdout buffer:");
             logger.error(e.getMessage(), e);
-
         }
 
         logger.debug("Kindlegen output: \n" + output);

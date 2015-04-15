@@ -49,21 +49,19 @@ import java.util.List;
  */
 
 /**
- *
- *
  * Converts formulas from MathML to a HTML+CSS based representation
- *
+ * <p/>
  * For supported MathML see the SPECIFICATION.md
- *
+ * <p/>
  * Implements the FormulaConverter interface
- * @see at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.FormulaConverter
  *
  * @author Michael Auß
  *         Date: 17.08.14
  *         Time: 16:14
+ * @see at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.FormulaConverter
  */
 public class DOMFormulaConverter extends FormulaConverter {
-    private static Logger logger = Logger.getLogger(DOMFormulaConverter.class);
+    private static final Logger logger = Logger.getLogger(DOMFormulaConverter.class);
 
     @Override
     public Formula parse(int id, String latexFormula) {
@@ -218,7 +216,7 @@ public class DOMFormulaConverter extends FormulaConverter {
                 Mi mi = new Mi();
                 mi.setValue(cur.getText());
                 mathvariant = cur.getAttributeValue("mathvariant");
-                if (mathvariant != null  && mathvariant.isEmpty() == false) {
+                if (mathvariant != null && mathvariant.isEmpty() == false) {
                     mi.setMathvariant(mathvariant);
                     mathvariant = null;
                 }

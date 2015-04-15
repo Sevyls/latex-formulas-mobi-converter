@@ -51,7 +51,7 @@ import java.util.HashMap;
  *         Created: 21.05.14 00:06
  */
 public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
-    private static Logger logger = Logger.getLogger(PandocLatexToHtmlConverter.class);
+    private static final Logger logger = Logger.getLogger(PandocLatexToHtmlConverter.class);
 
     private Path execPath = null;
 

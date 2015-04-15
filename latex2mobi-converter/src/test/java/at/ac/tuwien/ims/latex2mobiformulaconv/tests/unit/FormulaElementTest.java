@@ -44,20 +44,17 @@ import static org.mockito.Mockito.*;
  */
 
 /**
- *
- *
  * @author Michael Auß
  *         Date: 03.01.2015
  *         Time: 21:56
- *
- * Provides a generic logger and a parent Element
- * Verifies behaviour that all implementing classes should respect.
+ *         <p/>
+ *         Provides a generic logger and a parent Element
+ *         Verifies behaviour that all implementing classes should respect.
  */
 public abstract class FormulaElementTest {
+    protected static final Logger logger = Logger.getLogger(FormulaElementTest.class);
     protected FormulaElement formulaElement;
-
     protected FormulaElement possibleParent = mock(FormulaElement.class);
-    protected static Logger logger = Logger.getLogger(FormulaElementTest.class);
 
     @Test
     public void testRender() {

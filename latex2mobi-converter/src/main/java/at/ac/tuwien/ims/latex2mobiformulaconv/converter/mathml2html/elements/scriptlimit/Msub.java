@@ -33,16 +33,17 @@ import java.util.List;
  */
 
 /**
- *
- *
  * Renders a MathML Msub tag
- *
+ * <p/>
  * http://www.w3.org/TR/MathML2/chapter3.html#presm.msub
  *
  * @author Michael Auß
  *         Created: 15.09.2014
  */
 public class Msub implements FormulaElement {
+    private FormulaElement base;
+    private FormulaElement subscript;
+
     public FormulaElement getBase() {
         return base;
     }
@@ -58,9 +59,6 @@ public class Msub implements FormulaElement {
     public void setSubscript(FormulaElement subscript) {
         this.subscript = subscript;
     }
-
-    private FormulaElement base;
-    private FormulaElement subscript;
 
     @Override
     public Element render(FormulaElement parent, List<FormulaElement> siblings) {

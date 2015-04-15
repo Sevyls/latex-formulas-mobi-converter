@@ -34,25 +34,24 @@ import java.util.Map;
  */
 
 /**
- *
- *
  * Implementation based on W3C MathML2 Fundamentals,
  * Chapter 2.4.4.2 Attributes with units
  * http://www.w3.org/TR/MathML2/chapter2.html#fund.units
  *
- *
  * @author Michael Auß
  *         Date: 05.01.2015
  *         Time: 15:03
- *
  */
 public class Unit {
+    public static final Unit INFINITY = new Unit(Double.POSITIVE_INFINITY, null);
+    private static final Logger logger = Logger.getLogger(Unit.class);
     private Double number;
     private Identifier identifier;
 
-    public static final Unit INFINITY = new Unit(Double.POSITIVE_INFINITY, null);
-
-    private static Logger logger = Logger.getLogger(Unit.class);
+    public Unit(Double number, String identifier) {
+        this.number = number;
+        this.identifier = Identifier.findByValue(identifier);
+    }
 
     public static Unit parse(String unitText) {
         if (unitText == null) {
@@ -115,49 +114,6 @@ public class Unit {
         return unit;
     }
 
-    /**
-     * This enum implements the concept of a "unit identifier" described here:
-     * http://www.w3.org/TR/MathML2/chapter2.html#fund.units
-     */
-    private enum Identifier {
-        EM ("em"),	        //em (font-relative unit traditionally used for horizontal lengths)
-        EX ("ex"),	        //ex (font-relative unit traditionally used for vertical lengths)
-        PIXELS ("px"),	    //pixels, or pixel size of the current display
-        INCHES ("in"),	    //inches (1 inch = 2.54 centimeters)
-        CENTIMETERS ("cm"), //centimeters
-        MILLIMETERS ("mm"), //millimeters
-        POINTS ("pt"),      //points (1 point = 1/72 inch)
-        PICAS ("pc"),       //picas (1 pica = 12 points)
-        PERCENT ("%");      // percentage of default value
-
-        private final String identifier;
-
-        private static final Map<String,Identifier> map;
-        static {
-            map = new HashMap<String,Identifier>();
-            for (Identifier v : Identifier.values()) {
-                map.put(v.identifier, v);
-            }
-        }
-
-        public static Identifier findByValue(String i) {
-            return map.get(i);
-        }
-
-        Identifier(String identifier) {
-            this.identifier = identifier;
-        }
-
-        String getIdentifier() {
-            return identifier;
-        }
-    }
-
-    public Unit(Double number, String identifier) {
-        this.number = number;
-        this.identifier = Identifier.findByValue(identifier);
-    }
-
     public Double getNumber() {
         return number;
     }
@@ -185,5 +141,44 @@ public class Unit {
             output += identifier.getIdentifier();
         }
         return output;
+    }
+
+    /**
+     * This enum implements the concept of a "unit identifier" described here:
+     * http://www.w3.org/TR/MathML2/chapter2.html#fund.units
+     */
+    private enum Identifier {
+        EM("em"),            //em (font-relative unit traditionally used for horizontal lengths)
+        EX("ex"),            //ex (font-relative unit traditionally used for vertical lengths)
+        PIXELS("px"),        //pixels, or pixel size of the current display
+        INCHES("in"),        //inches (1 inch = 2.54 centimeters)
+        CENTIMETERS("cm"), //centimeters
+        MILLIMETERS("mm"), //millimeters
+        POINTS("pt"),      //points (1 point = 1/72 inch)
+        PICAS("pc"),       //picas (1 pica = 12 points)
+        PERCENT("%");      // percentage of default value
+
+        private static final Map<String, Identifier> map;
+
+        static {
+            map = new HashMap<String, Identifier>();
+            for (Identifier v : Identifier.values()) {
+                map.put(v.identifier, v);
+            }
+        }
+
+        private final String identifier;
+
+        Identifier(String identifier) {
+            this.identifier = identifier;
+        }
+
+        public static Identifier findByValue(String i) {
+            return map.get(i);
+        }
+
+        String getIdentifier() {
+            return identifier;
+        }
     }
 }

@@ -9,7 +9,8 @@ import org.junit.Test;
 
 import java.util.Random;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /*
  * The MIT License (MIT)
@@ -39,18 +40,15 @@ import static org.junit.Assert.*;
  */
 
 /**
- *
- *
  * @author Michael Auß
  *         Date: 02.01.2015
  *         Time: 10:39
  */
 public class MsTest extends FormulaElementTest {
+    private static final Logger logger = Logger.getLogger(MsTest.class);
     private Ms ms;
     private String randomString;
     private String whitespace = "   \t";
-
-    private static Logger logger = Logger.getLogger(MsTest.class);
 
     @Before
     public void setUp() throws Exception {

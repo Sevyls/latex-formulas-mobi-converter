@@ -6,7 +6,6 @@ import net.sourceforge.jeuclid.MutableLayoutContext;
 import net.sourceforge.jeuclid.context.LayoutContextImpl;
 import net.sourceforge.jeuclid.context.Parameter;
 import org.apache.log4j.Logger;
-import org.jdom2.Document;
 import org.jdom2.Element;
 import org.xml.sax.SAXException;
 
@@ -14,11 +13,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 
 /*
  * The MIT License (MIT)
@@ -48,13 +42,11 @@ import java.util.Map;
  */
 
 /**
- *
- *
  * @author Michael Auß
  *         Date: 08.06.14
  */
 public class ImageFormulaConverter extends FormulaConverter {
-    private static Logger logger = Logger.getLogger(ImageFormulaConverter.class);
+    private static final Logger logger = Logger.getLogger(ImageFormulaConverter.class);
 
     /**
      * Takes a single LaTeX formula and converts it to an image in PNG format
@@ -100,43 +92,5 @@ public class ImageFormulaConverter extends FormulaConverter {
             formula.setHtml(renderInvalidFormulaSource(formula));
         }
         return formula;
-    }
-
-
-    /**
-     * Replaces formula placeholders with created images
-     *
-     * @deprecated This is an old implementation and is not being used anymore.
-     *
-     * @param document   JDOM HTML Document with placeholders
-     * @param imagePaths Filepaths of Images to be replaced
-     * @return DOM of the resulting HTML Document with &lt;img&gt;-Tags
-     */
-    public Document replaceFormulasWithImages(Document document, Map<Integer, Path> imagePaths) {
-        List<Element> foundElements = xpath.evaluate(document);
-        Map<String, Element> elementMap = new HashMap<>();
-
-        for (Element element : foundElements) {
-            elementMap.put(element.getAttribute("id").getValue(), element);
-        }
-
-        Iterator<Integer> pathIterator = imagePaths.keySet().iterator();
-
-        while (pathIterator.hasNext()) {
-            Integer id = pathIterator.next();
-
-            Element element = elementMap.get(FORMULA_ID_PREFIX + id);
-            Path imagePath = imagePaths.get(id);
-
-            element.removeAttribute("class");
-            element.removeContent();
-            Element imageTag = new Element("img");
-            imageTag.setAttribute("src", imagePath.toFile().getName());
-            imageTag.setAttribute("alt", FORMULA_ID_PREFIX + id);
-            element.addContent(imageTag);
-        }
-
-
-        return document;
     }
 }

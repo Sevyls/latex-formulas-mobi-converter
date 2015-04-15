@@ -34,10 +34,8 @@ import java.util.List;
  */
 
 /**
- *
- *
  * Renders a MathML Mtd tag (Table cells)
- *
+ * <p/>
  * http://www.w3.org/TR/MathML2/chapter3.html#presm.mtd
  *
  * @author Michael Auß

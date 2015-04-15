@@ -35,10 +35,8 @@ import java.util.List;
  */
 
 /**
- *
- *
  * Renders a MathML Mtable tag (Matrices, tables)
- *
+ * <p/>
  * http://www.w3.org/TR/MathML2/chapter3.html#presm.mtable
  *
  * @author Michael Auß

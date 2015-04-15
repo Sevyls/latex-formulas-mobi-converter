@@ -35,12 +35,10 @@ import static uk.ac.ed.ph.snuggletex.definitions.Globals.ALL_MODES;
  */
 
 /**
- *
- *
  * @author Michael Auß
  *         Created: 21.05.14 00:04
- *
- * Binomial representation
+ *         <p/>
+ *         Binomial representation
  */
 public class Binomial implements SnugglePackageProvider {
     @Override
@@ -49,7 +47,7 @@ public class Binomial implements SnugglePackageProvider {
         MathOperatorInterpretation binomInterpretation = new MathOperatorInterpretation("binom");
         LaTeXMode[] argModes = {LaTeXMode.MATH, LaTeXMode.MATH};
 
-        binomPackage.addComplexCommand("binom", false,  2, ALL_MODES, argModes, new BinomHandler(),  TextFlowContext.ALLOW_INLINE);
+        binomPackage.addComplexCommand("binom", false, 2, ALL_MODES, argModes, new BinomHandler(), TextFlowContext.ALLOW_INLINE);
 
         return binomPackage;
     }

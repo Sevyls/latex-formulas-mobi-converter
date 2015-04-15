@@ -34,12 +34,10 @@ import java.util.List;
  */
 
 /**
- *
- *
  * Renders a MathML Munder tag
- *
+ * <p/>
  * http://www.w3.org/TR/MathML2/chapter3.html#presm.munder
- *
+ * <p/>
  * Note: currently this element will not result in proper output when using HTML as output
  *
  * @author Michael Auß

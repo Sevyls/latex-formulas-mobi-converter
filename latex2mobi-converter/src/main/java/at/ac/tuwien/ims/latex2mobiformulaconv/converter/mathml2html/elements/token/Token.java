@@ -30,8 +30,6 @@ import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.For
  */
 
 /**
- *
- *
  * Represents a Token as defined in MathML 2.0
  * http://www.w3.org/TR/MathML2/chapter3.html#presm.tokel
  *

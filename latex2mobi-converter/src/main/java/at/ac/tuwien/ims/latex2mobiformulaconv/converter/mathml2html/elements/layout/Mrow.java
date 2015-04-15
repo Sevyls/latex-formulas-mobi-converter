@@ -37,14 +37,14 @@ import java.util.List;
 
 /**
  * Renders a MathML mrow tag
- *
+ * <p/>
  * See http://www.w3.org/TR/MathML2/chapter3.html#presm.mrow
  *
  * @author Michael Auß
  *         Created: 20.05.14 23:30
  */
 public class Mrow implements FormulaElement {
-    private static Logger logger = Logger.getLogger(Mrow.class);
+    private static final Logger logger = Logger.getLogger(Mrow.class);
 
     List<FormulaElement> list = new ArrayList<>();
 

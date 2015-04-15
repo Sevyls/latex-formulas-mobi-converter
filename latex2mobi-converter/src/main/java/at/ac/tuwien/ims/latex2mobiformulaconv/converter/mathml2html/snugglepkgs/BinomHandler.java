@@ -9,11 +9,11 @@ import uk.ac.ed.ph.snuggletex.tokens.CommandToken;
 
 /**
  * @author ktisha
- *
- * Thanks to ktisha
- * https://github.com/ktisha/snuggletex/
- *
- * Handles \binom{...}{...} and creates <mfrac>
+ *         <p/>
+ *         Thanks to ktisha
+ *         https://github.com/ktisha/snuggletex/
+ *         <p/>
+ *         Handles \binom{...}{...} and creates <mfrac>
  */
 public class BinomHandler implements CommandHandler {
 

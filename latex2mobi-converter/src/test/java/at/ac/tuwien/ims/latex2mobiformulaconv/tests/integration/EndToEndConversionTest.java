@@ -50,8 +50,6 @@ import static org.junit.Assert.fail;
  */
 
 /**
- *
- *
  * @author Michael Auß
  *         <p/>
  *         Integration test
@@ -60,20 +58,17 @@ import static org.junit.Assert.fail;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:ConverterTest-context.xml"})
 public class EndToEndConversionTest {
-    private static Logger logger = Logger.getLogger(EndToEndConversionTest.class);
-
+    private static final Logger logger = Logger.getLogger(EndToEndConversionTest.class);
+    private final String inputFilename = "formulas.tex";
+    private final String filename = "ConverterTestFile";
+    private final String ext = ".mobi";
     @Autowired
     private Converter converter;
-
     private ArrayList<Path> inputPaths;
     private Path outputPath;
     private Path outputFilePath;
     private Path workingDirectory;
-    private final String inputFilename = "formulas.tex";
     private String title;
-    private final String filename = "ConverterTestFile";
-    private final String ext = ".mobi";
-
     @Resource(name = "image-formula-converter")
     private FormulaConverter img_converter;
 
@@ -136,7 +131,7 @@ public class EndToEndConversionTest {
             assertTrue(Files.exists(outputFilePath));
             assertTrue(Files.isRegularFile(outputFilePath));
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(), e);
             fail("Unexpected Exception thrown: " + e.getMessage());
         }
     }

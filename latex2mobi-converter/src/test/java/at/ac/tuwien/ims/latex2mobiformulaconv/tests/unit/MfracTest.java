@@ -40,8 +40,6 @@ import static org.mockito.Mockito.*;
  */
 
 /**
- *
- *
  * @author Michael Auß
  */
 public class MfracTest extends FormulaElementTest {

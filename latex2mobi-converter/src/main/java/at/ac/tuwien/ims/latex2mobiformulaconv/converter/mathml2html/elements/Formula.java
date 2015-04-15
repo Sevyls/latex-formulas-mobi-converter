@@ -32,10 +32,8 @@ import java.nio.file.Path;
  */
 
 /**
- *
- *
  * Main model for a single formula found in a LaTeX input document
- *
+ * <p/>
  * Holds all relevant information for source and destination representation
  * after successful conversion.
  *
@@ -64,6 +62,7 @@ public class Formula {
     /**
      * The markup representation of this formula
      * default representation of a formula after conversion
+     *
      * @see at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.DOMFormulaConverter
      */
     private Element html;
@@ -83,6 +82,10 @@ public class Formula {
      * Formula Converter to determine if the resulting output is invalid.
      */
     private boolean invalid = false;
+
+    public Formula(int id) {
+        this.id = id;
+    }
 
     public Element getHtml() {
         return html;
@@ -116,19 +119,15 @@ public class Formula {
         this.latexCode = latexCode;
     }
 
-    public Formula(int id) {
-        this.id = id;
-    }
-
     public int getId() {
         return id;
     }
 
-    public void setInvalid(boolean invalid) {
-        this.invalid = invalid;
-    }
-
     public boolean isInvalid() {
         return invalid;
+    }
+
+    public void setInvalid(boolean invalid) {
+        this.invalid = invalid;
     }
 }

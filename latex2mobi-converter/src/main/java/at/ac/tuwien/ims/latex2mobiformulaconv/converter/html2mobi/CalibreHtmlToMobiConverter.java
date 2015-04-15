@@ -40,18 +40,15 @@ import java.nio.file.Paths;
  */
 
 /**
- *
- *
  * Converts HTML to Mobi by using the Calibre CLI tool "ebook-convert"
  *
  * @author Michael Auß
  *         Created: 21.05.14 00:12
  */
 public class CalibreHtmlToMobiConverter implements HtmlToMobiConverter {
-    private Path execPath = null;
+    private static final Logger logger = Logger.getLogger(CalibreHtmlToMobiConverter.class);
     private static String command = "ebook-convert";
-    private static Logger logger = Logger.getLogger(CalibreHtmlToMobiConverter.class);
-
+    private Path execPath = null;
 
     @Override
     public File convertToMobi(File htmlFile) {
@@ -64,7 +61,7 @@ public class CalibreHtmlToMobiConverter implements HtmlToMobiConverter {
 
         CommandLine cmdLine;
         if (execPath != null) {
-            // Run the configured kindlegen executable
+            // Run the configured calibre ebook-convert executable
             logger.info("Calibre ebook-convert will be run from: " + execPath.toString());
             cmdLine = new CommandLine(execPath.toFile());
         } else {
@@ -96,8 +93,8 @@ public class CalibreHtmlToMobiConverter implements HtmlToMobiConverter {
         StringWriter writer = new StringWriter();
         WriterOutputStream writerOutputStream = new WriterOutputStream(writer, Charset.forName("UTF-8"));
 
-        ExecuteStreamHandler kindlegenStreamHandler = new PumpStreamHandler(writerOutputStream, System.err);
-        executor.setStreamHandler(kindlegenStreamHandler);
+        ExecuteStreamHandler calibreStreamHandler = new PumpStreamHandler(writerOutputStream, System.err);
+        executor.setStreamHandler(calibreStreamHandler);
 
         logger.debug("Launching calibre´s ebook-convert:");
         logger.debug(cmdLine.toString());
