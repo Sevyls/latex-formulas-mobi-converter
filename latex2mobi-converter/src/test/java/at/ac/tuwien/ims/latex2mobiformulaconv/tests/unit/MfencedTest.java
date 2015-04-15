@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.AdditionalMatchers.or;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyListOf;
@@ -46,16 +47,10 @@ import static org.mockito.Mockito.*;
  */
 
 /**
- *
- *
  * @author Michael Auß
  */
 public class MfencedTest extends FormulaElementTest {
     private Mfenced mfenced;
-    private String opening;
-    private String closing;
-    private String separators;
-
 
     @Before
     public void setUp() throws Exception {
@@ -65,30 +60,11 @@ public class MfencedTest extends FormulaElementTest {
     }
 
     @Test
-    public void testRenderEmptyContent() throws Exception {
-        // TODO
-    }
-
-    @Test
-    public void testRenderSingleContentElement() throws Exception {
-        // TODO
-    }
-
-    @Test
-    public void testRenderContentList() throws Exception {
-        // TODO
-    }
-
-    @Test
-    public void testMtableContent() throws Exception {
-        // TODO
-    }
-
-    @Test
-    public void testRenderContentListWithSeparators() throws Exception {
+    public void testRenderContentListWithDifferentSeparators() throws Exception {
         int count = new Random().nextInt(31) + 2;
         logger.debug("Content list length: " + count);
-        separators = RandomStringUtils.randomAscii(count);
+        final String separators = RandomStringUtils.randomAscii(count);
+        mfenced.setSeparators(separators);
 
         List<FormulaElement> list = new ArrayList<>();
         for (int i = 0; i < count; i++) {
@@ -102,11 +78,80 @@ public class MfencedTest extends FormulaElementTest {
 
         Element result = mfenced.render(possibleParent, null);
 
-
+        assertEquals("span", result.getName());
+        assertEquals("mfenced", result.getAttributeValue("class"));
 
         for (FormulaElement mockedElement : list) {
             verify(mockedElement).render(or(eq(mfenced), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
         }
-        // TODO
+        List<Element> spans = result.getChildren("span");
+        Element openingFence = spans.get(0);
+        assertEquals("mfenced-open", openingFence.getAttributeValue("class"));
+
+        for (int i = 1; i < spans.size() - 1; i = i + 2) {
+            assertEquals("mfenced-content", spans.get(i).getAttributeValue("class"));
+        }
+
+        // Check separators
+        String collectedSeparators = "";
+        for (int i = 2; i < spans.size() - 1; i = i + 2) {
+            Element separatorSpan = spans.get(i);
+            assertEquals("mo mfenced-separator", separatorSpan.getAttributeValue("class"));
+
+            collectedSeparators += spans.get(i).getText();
+        }
+        assertEquals(separators, collectedSeparators);
+
+        Element closingFence = result.getChildren().get(result.getChildren("span").size() - 1);
+        assertEquals("mfenced-close", closingFence.getAttributeValue("class"));
+
+    }
+
+    @Test
+    public void testRenderContentListWithSameSeparators() throws Exception {
+        int count = new Random().nextInt(31) + 2;
+        logger.debug("Content list length: " + count);
+        final String separator = RandomStringUtils.randomAscii(1);
+        mfenced.setSeparators(separator);
+
+        List<FormulaElement> list = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            FormulaElement mockedFormulaElement = mock(FormulaElement.class);
+            when(mockedFormulaElement.render(or(any(FormulaElement.class), isNull(FormulaElement.class)),
+                    or(anyListOf(FormulaElement.class), isNull(List.class)))).thenReturn(new Element("span"));
+            list.add(mockedFormulaElement);
+        }
+
+        mfenced.setContent(list);
+
+        Element result = mfenced.render(possibleParent, null);
+
+        assertEquals("span", result.getName());
+        assertEquals("mfenced", result.getAttributeValue("class"));
+
+        for (FormulaElement mockedElement : list) {
+            verify(mockedElement).render(or(eq(mfenced), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
+        }
+        List<Element> spans = result.getChildren("span");
+        Element openingFence = spans.get(0);
+        assertEquals("mfenced-open", openingFence.getAttributeValue("class"));
+
+        for (int i = 1; i < spans.size() - 1; i = i + 2) {
+            assertEquals("mfenced-content", spans.get(i).getAttributeValue("class"));
+        }
+
+        // Check separators
+        String collectedSeparators = "";
+        for (int i = 2; i < spans.size() - 1; i = i + 2) {
+            Element separatorSpan = spans.get(i);
+            assertEquals("mo mfenced-separator", separatorSpan.getAttributeValue("class"));
+
+            assertEquals(separator, spans.get(i).getText());
+        }
+
+
+        Element closingFence = result.getChildren().get(result.getChildren("span").size() - 1);
+        assertEquals("mfenced-close", closingFence.getAttributeValue("class"));
+
     }
 }
