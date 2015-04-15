@@ -1,7 +1,23 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit;
 
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.FormulaElement;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.layout.Mstyle;
 import org.apache.log4j.Logger;
+import org.jdom2.Element;
+import org.junit.Before;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.mockito.AdditionalMatchers.or;
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyListOf;
+import static org.mockito.Matchers.eq;
+import static org.mockito.Matchers.isNull;
+import static org.mockito.Mockito.*;
 
 /*
  * The MIT License (MIT)
@@ -33,11 +49,37 @@ import org.junit.Test;
 /**
  * @author Michael Auß
  */
-public class MstyleTest {
+public class MstyleTest extends FormulaElementTest {
     private static final Logger logger = Logger.getLogger(MstyleTest.class);
+    private final String STYLE = "test";
+    private Mstyle mstyle;
+    private FormulaElement base;
+
+    @Before
+    public void setUp() throws Exception {
+        mstyle = new Mstyle();
+        base = mock(FormulaElement.class);
+        when(base.render(or(any(FormulaElement.class), isNull(FormulaElement.class)), anyListOf(FormulaElement.class))).thenReturn(new Element("span"));
+        List<FormulaElement> list = new ArrayList<>();
+        list.add(base);
+
+        mstyle.setBase(list);
+        mstyle.setStyle(STYLE);
+
+        formulaElement = mstyle;
+    }
+
 
     @Test
-    public void testRender() throws Exception {
-        // TODO
+    public void testDetails() throws Exception {
+        Element result = mstyle.render(possibleParent, null);
+
+        assertNotNull(result);
+        assertEquals("span", result.getName());
+
+        assertEquals("mstyle mathvariant-test", result.getAttributeValue("class"));
+
+        verify(base).render(or(eq(mstyle), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
+        verify(mstyle.getBase().get(0)).render(isNull(FormulaElement.class), or(anyListOf(FormulaElement.class), isNull(List.class)));
     }
 }

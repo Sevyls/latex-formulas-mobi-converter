@@ -106,6 +106,4 @@ public class MainApplicationTest {
         return AbstractMainTests.executeMainMethod("at.ac.tuwien.ims.latex2mobiformulaconv.app.Main",
                 args.toArray(new String[args.size()]));
     }
-
-    // TODO test convert with multiple option variations, successful and error output
 }

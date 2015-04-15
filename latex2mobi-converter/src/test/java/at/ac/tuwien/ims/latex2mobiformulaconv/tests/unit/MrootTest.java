@@ -85,8 +85,8 @@ public class MrootTest extends FormulaElementTest {
     }
 
     @Test
-    public void testRender() {
-        logger.debug("enter testRender()...");
+    public void testRenderRoot() {
+        logger.debug("enter testRenderRoot()...");
 
         Element result = mroot.render(possibleParent, null);
 
@@ -105,5 +105,26 @@ public class MrootTest extends FormulaElementTest {
 
         verify(base).render(or(eq(mroot), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
         verify(degree).render(or(eq(mroot), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
+    }
+
+    @Test
+    public void testRenderSqrt() {
+        logger.debug("enter testRenderRoot()...");
+        mroot.setDegree(null);
+        Element result = mroot.render(possibleParent, null);
+
+        assertNotNull(result);
+        assertEquals("span", result.getName());
+        assertEquals("mroot", result.getAttributeValue("class"));
+
+
+        Element symbol = result.getChildren("span").get(0);
+        assertEquals("mroot-symbol", symbol.getAttributeValue("class"));
+        assertEquals("√", symbol.getChild("span").getText());
+
+        assertEquals("mroot-topbar", result.getChildren("span").get(1).getAttributeValue("class"));
+        assertEquals("mroot-base", result.getChildren("span").get(1).getChild("span").getAttributeValue("class"));
+
+        verify(base).render(or(eq(mroot), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
     }
 }
