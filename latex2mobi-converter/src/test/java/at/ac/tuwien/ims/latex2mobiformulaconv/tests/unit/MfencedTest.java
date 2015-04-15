@@ -66,7 +66,7 @@ public class MfencedTest extends FormulaElementTest {
     public void testRenderContentListWithDifferentSeparators() throws Exception {
         int count = new Random().nextInt(31) + 2;
         logger.debug("Content list length: " + count);
-        final String separators = RandomStringUtils.randomAscii(count);
+        final String separators = RandomStringUtils.randomAlphanumeric(count);
         mfenced.setSeparators(separators);
 
         List<FormulaElement> list = new ArrayList<>();
