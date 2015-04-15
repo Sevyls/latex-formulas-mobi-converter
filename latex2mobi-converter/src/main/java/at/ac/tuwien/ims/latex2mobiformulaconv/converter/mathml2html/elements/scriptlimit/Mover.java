@@ -47,7 +47,6 @@ import java.util.List;
  *         Time: 22:35
  */
 public class Mover implements FormulaElement {
-    // TODO Mover
     private FormulaElement base;
     private FormulaElement overscript;
 
@@ -81,14 +80,13 @@ public class Mover implements FormulaElement {
         baseDiv.addContent(base.render(this, content));
         baseDiv.setAttribute("class", "base");
 
-        Element underscriptDiv = new Element("div");
-        underscriptDiv.setAttribute("class", "overscript");
-        underscriptDiv.addContent(overscript.render(this, content));
+        Element overscriptDiv = new Element("div");
+        overscriptDiv.setAttribute("class", "overscript");
+        overscriptDiv.addContent(overscript.render(this, content));
 
-        mainDiv.addContent(underscriptDiv);
+        mainDiv.addContent(overscriptDiv);
         mainDiv.addContent(baseDiv);
 
-        // TODO munder
         return mainDiv;
     }
 }

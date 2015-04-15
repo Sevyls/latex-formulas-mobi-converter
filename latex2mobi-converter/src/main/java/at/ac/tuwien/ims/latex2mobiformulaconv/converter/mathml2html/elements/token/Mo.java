@@ -51,6 +51,9 @@ public class Mo extends Token {
     private static Logger logger = Logger.getLogger(Mo.class);
 
     private String value;
+
+    // MathML Mo attributes with default values as described in
+    // http://www.w3.org/TR/MathML2/chapter3.html#id.3.2.5.2
     private String form = "infix";
     private boolean fence = false;
     private boolean stretchy = false;
@@ -61,6 +64,9 @@ public class Mo extends Token {
 
     private Unit maxsize = new Unit(Double.POSITIVE_INFINITY, null);
     private Unit minsize = new Unit(1.0, null);
+
+    private Unit lspace = Unit.parse("thickmathspace");
+    private Unit rspace = Unit.parse("thickmathspace");
 
     public Unit getMaxsize() {
         return maxsize;
@@ -77,10 +83,6 @@ public class Mo extends Token {
     public void setMinsize(Unit minsize) {
         this.minsize = minsize;
     }
-
-    private Unit lspace = Unit.parse("thickmathspace");
-    private Unit rspace = Unit.parse("thickmathspace");
-
 
     public boolean isFence() {
         return fence;
@@ -199,10 +201,6 @@ public class Mo extends Token {
 
             if (this.separator) {
                 this.form = "infix";
-            }
-
-            if (this.fence) {
-                // TODO fence attribute
             }
 
             if (position == 0) {

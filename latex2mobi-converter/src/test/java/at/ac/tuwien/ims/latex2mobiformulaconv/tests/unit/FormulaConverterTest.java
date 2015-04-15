@@ -2,9 +2,19 @@ package at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit;
 
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.FormulaConverter;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.Formula;
+import org.apache.log4j.Logger;
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.input.SAXBuilder;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.Assert.*;
 
@@ -40,11 +50,20 @@ import static org.junit.Assert.*;
  */
 public class FormulaConverterTest {
     private FormulaConverter formulaConverter;
+    private Document document;
+    private ApplicationContext applicationContext;
+
+    private static Logger logger = Logger.getLogger(FormulaConverterTest.class);
 
     @Before
     public void setUp() throws Exception {
         // Mock abstract class to implementing class for testing its non-abstract methods
         formulaConverter = Mockito.mock(FormulaConverter.class, Mockito.CALLS_REAL_METHODS);
+
+        this.applicationContext = new ClassPathXmlApplicationContext("/application-context.xml");
+        Path latexHtmlPath = applicationContext.getResource("html+css/latex.html").getFile().toPath();
+        SAXBuilder sax = new SAXBuilder();
+        document = sax.build(latexHtmlPath.toFile());
     }
 
     @Test
@@ -67,22 +86,32 @@ public class FormulaConverterTest {
 
         assertNotNull(result.getMathMl());
         assertFalse(result.getMathMl().isEmpty());
-
-        // TODO mathml xml schema validation?
     }
 
     @Test
     public void testExtractFormulas() throws Exception {
-        // TODO
+        Map<Integer, String> formulasMap = formulaConverter.extractFormulas(document);
+
+        assertNotNull(formulasMap);
+        assertEquals(106, formulasMap.size());
     }
 
     @Test
     public void testReplaceFormulas() throws Exception {
-        // TODO
-    }
+        formulaConverter.extractFormulas(document);
 
-    @Test
-    public void testRenderInvalidFormulaSource() throws Exception {
-        // TODO
+        Formula formula = new Formula(1);
+        formula.setHtml(new Element("span"));
+
+        Map<Integer, Formula> replaceMap = new HashMap<>();
+        replaceMap.put(formula.getId(), formula);
+
+        Document result = formulaConverter.replaceFormulas(document, replaceMap);
+
+        assertNotNull(result);
+
+        Map<Integer, String> formulasMap = formulaConverter.extractFormulas(result);
+
+        assertEquals(105, formulasMap.size());
     }
 }

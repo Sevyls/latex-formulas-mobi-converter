@@ -66,7 +66,7 @@ public abstract class HtmlToMobiConverterTest {
         logger.debug("setUp()...");
         this.applicationContext = new ClassPathXmlApplicationContext("/application-context.xml");
         this.htmlToMobiConverter = (HtmlToMobiConverter) applicationContext.getBean(bean);
-        this.inputFile = applicationContext.getResource("html+css/latex2mobi.html").getFile().toPath();
+        this.inputFile = applicationContext.getResource("html+css/result.html").getFile().toPath();
         logger.debug("inputFile = " + this.inputFile.toAbsolutePath().toString());
         logger.debug("inputFile exists? " + Files.exists(inputFile));
     }
@@ -80,13 +80,6 @@ public abstract class HtmlToMobiConverterTest {
         logger.debug("Output file created at " + mobi.toPath().toAbsolutePath().toString());
         assertTrue(Files.exists(mobi.toPath()));
         assertTrue(Files.size(mobi.toPath()) > 0L);
-
-        // TODO assert filetype
-    }
-
-    @Test
-    public void testGetExecOption() throws Exception {
-        // TODO testGetExecOption
     }
 
     @After

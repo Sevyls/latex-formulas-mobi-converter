@@ -149,10 +149,6 @@ A default border-collapse style is in place for reading purposes.
 
 Text in formulas is supported by the Mtext element of MathML. 
 
-### Inline and Displayed Formulas
-
-TODO
-
 ## Formula Numbering & referencing 
 
 Commands like ``\label{eq:xdef}`` and ``\ref{eq:xdef}`` are currently not supported by SnuggleTeX and will lead to broken output. 

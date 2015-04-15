@@ -130,10 +130,7 @@ public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
         }
 
         // add html document structure to output
-        // TODO pandoc's html output depends on the operating system
-
-
-        // pandoc on Windows returns no document markup (html, head, body)
+        // pandoc returns no document markup (html, head, body)
         // therefore we have to use a template
         String htmlOutput = "<!DOCTYPE html>\n" +
                 "<html>\n" +
@@ -154,11 +151,9 @@ public class PandocLatexToHtmlConverter implements LatexToHtmlConverter {
             System.exit(1);
         }
 
-
+        // Close tags in template
         htmlOutput += "</body>\n" +
                 "</html>";
-
-        //logger.debug("html-output: " + htmlOutput);
 
         // output loading as JDOM Document
         SAXBuilder sax = new SAXBuilder();

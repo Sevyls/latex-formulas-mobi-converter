@@ -36,8 +36,6 @@ import java.util.List;
  */
 
 /**
- *
- *
  * Renders a MathML mrow tag
  *
  * See http://www.w3.org/TR/MathML2/chapter3.html#presm.mrow
@@ -66,15 +64,14 @@ public class Mrow implements FormulaElement {
             nothing.setText(" ");
             return nothing;
         }
-        if (list.size() == 1) {
-            // TODO check attributes of mrow
 
+        if (list.size() == 1) {
             // MathML2 3.3.1.2.1 mrow of one argument
             // http://www.w3.org/TR/MathML2/chapter3.html#presm.mrow
             // MathML renderers are required to treat an mrow element containing exactly one argument as equivalent
             // in all ways to the single argument occurring alone,
             // provided there are no attributes on the mrow element's start tag.
-            return list.get(0).render(null, null);
+            return list.get(0).render(parent, siblings);
         }
 
         Element span = new Element("span");
