@@ -43,6 +43,7 @@ import java.util.List;
  *         Created: 21.05.14 00:03
  */
 public class Mroot extends Mo {
+    public static final String ROOT_SYMBOL = "√";
     private FormulaElement base;
     private FormulaElement degree = null;
 
@@ -81,7 +82,7 @@ public class Mroot extends Mo {
         Element mrootSymbol = new Element("span");
         mrootSymbol.setAttribute("class", "mroot-symbol");
         Mtext sqrtSymbol = new Mtext();
-        sqrtSymbol.setValue("√");
+        sqrtSymbol.setValue(ROOT_SYMBOL);
         mrootSymbol.addContent(sqrtSymbol.render(null, null));
         mrootSpan.addContent(mrootSymbol);
 

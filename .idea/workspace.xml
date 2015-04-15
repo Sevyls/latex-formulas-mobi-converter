@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="45386f65-047a-4f27-a937-587acb461b39" name="Default" comment="SonarQube code quality adjustments, code reformatting via IntelliJ, some cleanup">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MoverTest.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MoverTest.java" />
+    <list default="true" id="45386f65-047a-4f27-a937-587acb461b39" name="Default" comment="Add some unit tests">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/layout/Mroot.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/layout/Mroot.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MrootTest.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MrootTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MspaceTest.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MspaceTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MstyleTest.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MstyleTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MtextTest.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MtextTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MunderTest.java" afterPath="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MunderTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="latex-formulas-mobi-converter.iws" />
@@ -44,7 +41,7 @@
         <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MoverTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="101" column="130" selection-start-line="101" selection-start-column="8" selection-end-line="101" selection-end-column="130" />
+              <caret line="54" column="38" selection-start-line="54" selection-start-column="38" selection-end-line="54" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -62,21 +59,33 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MrowTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MrowTest.java">
+      <file leaf-file-name="MrootTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MrootTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="3.03125">
+              <caret line="105" column="28" selection-start-line="105" selection-start-column="28" selection-end-line="105" selection-end-column="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Mroot.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/layout/Mroot.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="87" column="58" selection-start-line="87" selection-start-column="58" selection-end-line="87" selection-end-column="58" />
+              <caret line="96" column="15" selection-start-line="96" selection-start-column="15" selection-end-line="96" selection-end-column="15" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MrootTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MrootTest.java">
+      <file leaf-file-name="MspaceTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MspaceTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+              <caret line="84" column="34" selection-start-line="84" selection-start-column="34" selection-end-line="84" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -84,14 +93,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MspaceTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MspaceTest.java">
+      <file leaf-file-name="MtextTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MtextTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.375">
-              <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="56" column="35" selection-start-line="56" selection-start-column="35" selection-end-line="56" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Mtext.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Mtext.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="52" column="32" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MiTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MiTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="53" column="19" selection-start-line="53" selection-start-column="19" selection-end-line="53" selection-end-column="19" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -112,40 +141,6 @@
             <state vertical-scroll-proportion="0.0">
               <caret line="86" column="42" selection-start-line="86" selection-start-column="36" selection-end-line="86" selection-end-column="42" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MsubTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MsubTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="72" column="51" selection-start-line="72" selection-start-column="37" selection-end-line="72" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MstyleTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MstyleTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MunderTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MunderTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="90" column="46" selection-start-line="90" selection-start-column="8" selection-end-line="90" selection-end-column="46" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -188,7 +183,6 @@
         <option value="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/PandocLatexToHtmlConverterTest.java" />
         <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/html2mobi/HtmlToMobiConverter.java" />
         <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/resources/main.css" />
-        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/layout/Mroot.java" />
         <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/Formula.java" />
         <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/DOMFormulaConverter.java" />
         <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/resources/formulas.tex" />
@@ -222,12 +216,13 @@
         <option value="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/MainApplicationTest.java" />
         <option value="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MfencedTest.java" />
         <option value="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/EndToEndConversionTest.java" />
-        <option value="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MrootTest.java" />
         <option value="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MstyleTest.java" />
-        <option value="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MtextTest.java" />
         <option value="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MunderTest.java" />
         <option value="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MoverTest.java" />
         <option value="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MspaceTest.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MtextTest.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/layout/Mroot.java" />
+        <option value="$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MrootTest.java" />
       </list>
     </option>
   </component>
@@ -563,7 +558,7 @@
     <property name="dynamic.classpath" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="Mrowtest&#9;PSI&#9;JAVA://at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit.MrowTest&#10;Endtoend&#9;PSI&#9;JAVA://at.ac.tuwien.ims.latex2mobiformulaconv.tests.integration.EndToEndConversionTest&#10;Mfenced&#9;FILE&#9;file:///home/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MfencedTest.java&#10;MainAppli&#9;FILE&#9;file:///home/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/MainApplicationTest.java&#10;ImageFo&#9;FILE&#9;file:///home/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/ImageFormulaConverter.java&#10;Main.java&#9;FILE&#9;file:///home/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/app/Main.java&#10;Calibre&#9;FILE&#9;file:///home/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/html2mobi/CalibreHtmlToMobiConverter.java&#10;Amazon&#9;FILE&#9;file:///home/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/html2mobi/AmazonHtmlToMobiConverter.java&#10;Main&#9;FILE&#9;file:///home/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/app/Main.java&#10;AbstractMainTests.java&#9;FILE&#9;file:///home/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/utils/AbstractMainTests.java&#10;mathml&#9;FILE&#9;file:///home/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/src/main/resources/mathml-characters-by-name.xml&#10;pom.xml&#9;FILE&#9;file:///home/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/pom.xml&#10;main.css&#9;FILE&#9;file:///home/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/src/main/resources/main.css&#10;Mo.java&#9;FILE&#9;file:///home/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Mo.java&#10;formulas.tex&#9;FILE&#9;file:///home/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/src/main/resources/formulas.tex&#10;ormulas.tex&#9;FILE&#9;file:///home/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/src/main/resources/formulas.tex&#10;mroottest&#9;PSI&#9;JAVA://at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit.MrootTest&#10;writer8/main.py&#9;FILE&#9;file:///Users/michael/Projekte/latex-formulas-mobi-converter/calibre-plugin/calibre-src/src/calibre/ebooks/mobi/writer8/main.py&#10;toc.py&#9;FILE&#9;file:///Users/michael/Projekte/latex-formulas-mobi-converter/calibre-plugin/calibre-src/src/calibre/ebooks/mobi/writer8/toc.py&#10;cli.py&#9;FILE&#9;file:///Users/michael/Projekte/latex-formulas-mobi-converter/calibre-plugin/calibre-src/src/calibre/ebooks/conversion/cli.py&#10;news.py&#9;FILE&#9;file:///Users/michael/Projekte/latex-formulas-mobi-converter/calibre-plugin/calibre-src/src/calibre/web/feeds/news.py&#10;processor.py&#9;FILE&#9;file:///Users/michael/Projekte/latex-formulas-mobi-converter/calibre-plugin/calibre-src/src/calibre/ebooks/txt/processor.py&#10;Makefi&#9;FILE&#9;file:///Users/michael/Projekte/latex-formulas-mobi-converter/calibre-plugin/src/Makefile&#10;Binom&#9;PSI&#9;JAVA://at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.snugglepkgs.BinomHandler&#10;SPeci&#9;FILE&#9;file:///Users/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/SPECIFICATION.md&#10;Mi&#9;PSI&#9;JAVA://at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.token.Mi" />
+    <property name="SearchEverywhereHistoryKey" value="Mroot&#9;PSI&#9;JAVA://at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.layout.Mroot&#10;Mtext&#9;PSI&#9;JAVA://at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.token.Mtext&#10;Mrowtest&#9;PSI&#9;JAVA://at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit.MrowTest&#10;Endtoend&#9;PSI&#9;JAVA://at.ac.tuwien.ims.latex2mobiformulaconv.tests.integration.EndToEndConversionTest&#10;Mfenced&#9;FILE&#9;file:///home/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MfencedTest.java&#10;MainAppli&#9;FILE&#9;file:///home/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/integration/MainApplicationTest.java&#10;ImageFo&#9;FILE&#9;file:///home/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/ImageFormulaConverter.java&#10;Main.java&#9;FILE&#9;file:///home/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/app/Main.java&#10;Calibre&#9;FILE&#9;file:///home/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/html2mobi/CalibreHtmlToMobiConverter.java&#10;Amazon&#9;FILE&#9;file:///home/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/html2mobi/AmazonHtmlToMobiConverter.java&#10;Main&#9;FILE&#9;file:///home/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/app/Main.java&#10;AbstractMainTests.java&#9;FILE&#9;file:///home/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/utils/AbstractMainTests.java&#10;mathml&#9;FILE&#9;file:///home/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/src/main/resources/mathml-characters-by-name.xml&#10;pom.xml&#9;FILE&#9;file:///home/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/pom.xml&#10;main.css&#9;FILE&#9;file:///home/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/src/main/resources/main.css&#10;Mo.java&#9;FILE&#9;file:///home/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Mo.java&#10;formulas.tex&#9;FILE&#9;file:///home/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/src/main/resources/formulas.tex&#10;ormulas.tex&#9;FILE&#9;file:///home/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/src/main/resources/formulas.tex&#10;mroottest&#9;PSI&#9;JAVA://at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit.MrootTest&#10;writer8/main.py&#9;FILE&#9;file:///Users/michael/Projekte/latex-formulas-mobi-converter/calibre-plugin/calibre-src/src/calibre/ebooks/mobi/writer8/main.py&#10;toc.py&#9;FILE&#9;file:///Users/michael/Projekte/latex-formulas-mobi-converter/calibre-plugin/calibre-src/src/calibre/ebooks/mobi/writer8/toc.py&#10;cli.py&#9;FILE&#9;file:///Users/michael/Projekte/latex-formulas-mobi-converter/calibre-plugin/calibre-src/src/calibre/ebooks/conversion/cli.py&#10;news.py&#9;FILE&#9;file:///Users/michael/Projekte/latex-formulas-mobi-converter/calibre-plugin/calibre-src/src/calibre/web/feeds/news.py&#10;processor.py&#9;FILE&#9;file:///Users/michael/Projekte/latex-formulas-mobi-converter/calibre-plugin/calibre-src/src/calibre/ebooks/txt/processor.py&#10;Makefi&#9;FILE&#9;file:///Users/michael/Projekte/latex-formulas-mobi-converter/calibre-plugin/src/Makefile&#10;Binom&#9;PSI&#9;JAVA://at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.snugglepkgs.BinomHandler&#10;SPeci&#9;FILE&#9;file:///Users/michael/Projekte/latex-formulas-mobi-converter/latex2mobi-converter/SPECIFICATION.md&#10;Mi&#9;PSI&#9;JAVA://at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.token.Mi" />
     <property name="FullScreen" value="false" />
     <property name="ignore_missing_gitignore" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
@@ -593,59 +588,7 @@
       <recent name="at.ac.tuwien.ims.latex2mobiformulaconv.tests.integration" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.MspaceTest.testRenderCustomWidthAndHeight">
-    <configuration default="false" name="MoverTest.testRender" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="latex2mobi-converter" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit" />
-      <option name="MAIN_CLASS_NAME" value="at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit.MoverTest" />
-      <option name="METHOD_NAME" value="testRender" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="MunderTest.testRender" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="latex2mobi-converter" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit" />
-      <option name="MAIN_CLASS_NAME" value="at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit.MunderTest" />
-      <option name="METHOD_NAME" value="testRender" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="JUnit.MrootTest.testRender">
     <configuration default="false" name="MspaceTest.testRender" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -711,6 +654,58 @@
       <option name="PACKAGE_NAME" value="at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit" />
       <option name="MAIN_CLASS_NAME" value="at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit.MspaceTest" />
       <option name="METHOD_NAME" value="testRenderCustomWidthAndHeight" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="MtextTest.testDetails" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="latex2mobi-converter" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit" />
+      <option name="MAIN_CLASS_NAME" value="at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit.MtextTest" />
+      <option name="METHOD_NAME" value="testDetails" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="MrootTest.testRender" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="latex2mobi-converter" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit" />
+      <option name="MAIN_CLASS_NAME" value="at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit.MrootTest" />
+      <option name="METHOD_NAME" value="testRender" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -1215,19 +1210,19 @@
     <list size="7">
       <item index="0" class="java.lang.String" itemvalue="Application.normal output" />
       <item index="1" class="java.lang.String" itemvalue="Application.usage" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.MoverTest.testRender" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.MunderTest.testRender" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.MspaceTest.testRender" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.MspaceTest.testRenderDefault" />
-      <item index="6" class="java.lang.String" itemvalue="JUnit.MspaceTest.testRenderCustomWidthAndHeight" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.MspaceTest.testRender" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.MspaceTest.testRenderDefault" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.MspaceTest.testRenderCustomWidthAndHeight" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.MtextTest.testDetails" />
+      <item index="6" class="java.lang.String" itemvalue="JUnit.MrootTest.testRender" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.MspaceTest.testRenderCustomWidthAndHeight" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.MspaceTest.testRenderDefault" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.MspaceTest.testRender" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.MunderTest.testRender" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.MoverTest.testRender" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.MrootTest.testRender" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.MtextTest.testDetails" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.MspaceTest.testRenderCustomWidthAndHeight" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.MspaceTest.testRenderDefault" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.MspaceTest.testRender" />
       </list>
     </recent_temporary>
   </component>
@@ -1259,7 +1254,7 @@
       <workItem from="1428950543591" duration="10386000" />
       <workItem from="1429035025424" duration="14813000" />
       <workItem from="1429115204273" duration="2457000" />
-      <workItem from="1429119169832" duration="12243000" />
+      <workItem from="1429119169832" duration="12975000" />
     </task>
     <task id="LOCAL-00001" summary="Update Calibre Plugin readme with build instructions">
       <created>1427896576308</created>
@@ -1489,11 +1484,17 @@
       <option name="project" value="LOCAL" />
       <updated>1429134360482</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Add some unit tests">
+      <created>1429138371225</created>
+      <option name="number" value="00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1429138371225</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79091000" />
+    <option name="totallyTimeSpent" value="79823000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1562,7 +1563,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/calibre-plugin/calibre-src" />
     </ignored-roots>
-    <MESSAGE value="Add some Specification details to fractions" />
     <MESSAGE value="Update version to v0.7.0&#10;Move mvn clean into Makefile clean target&#10;update gitignore in calibre-plugin module&#10;Update Readme of Calibre-Plugin including example&#10;" />
     <MESSAGE value="Add Windows binary build into Maven configuration via launch4j" />
     <MESSAGE value="Update Readmes" />
@@ -1587,7 +1587,8 @@
     <MESSAGE value="Refactor redundant code into MathmlCharacterDictionary&#10;Use Dictionary in MoTest" />
     <MESSAGE value="Complete Unit tests for Mfenced &#10;Remove empty ImageFormulaConverterTest" />
     <MESSAGE value="SonarQube code quality adjustments, code reformatting via IntelliJ, some cleanup" />
-    <option name="LAST_COMMIT_MESSAGE" value="SonarQube code quality adjustments, code reformatting via IntelliJ, some cleanup" />
+    <MESSAGE value="Add some unit tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add some unit tests" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1615,18 +1616,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/Formula.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="42" column="34" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/resources/formulas.tex">
-      <provider selected="true" editor-type-id="LaTeXFileEditor">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/DOMFormulaConverter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.40275386">
@@ -1929,24 +1918,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MtextTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MiTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6672828">
-          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MrowTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1966,10 +1937,8 @@
     <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MunderTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="90" column="46" selection-start-line="90" selection-start-column="8" selection-end-line="90" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <caret line="88" column="46" selection-start-line="88" selection-start-column="8" selection-end-line="88" selection-end-column="46" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1991,31 +1960,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MrootTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/scriptlimit/Mover.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MoverTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="101" column="130" selection-start-line="101" selection-start-column="8" selection-end-line="101" selection-end-column="130" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2037,8 +1986,62 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MspaceTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.375">
-          <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="84" column="34" selection-start-line="84" selection-start-column="34" selection-end-line="84" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MiTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="53" column="19" selection-start-line="53" selection-start-column="19" selection-end-line="53" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MtextTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="56" column="35" selection-start-line="56" selection-start-column="35" selection-end-line="56" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MoverTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="54" column="38" selection-start-line="54" selection-start-column="38" selection-end-line="54" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/token/Mtext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="52" column="32" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/main/java/at/ac/tuwien/ims/latex2mobiformulaconv/converter/mathml2html/elements/layout/Mroot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="96" column="15" selection-start-line="96" selection-start-column="15" selection-end-line="96" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex2mobi-converter/src/test/java/at/ac/tuwien/ims/latex2mobiformulaconv/tests/unit/MrootTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.03125">
+          <caret line="105" column="28" selection-start-line="105" selection-start-column="28" selection-end-line="105" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

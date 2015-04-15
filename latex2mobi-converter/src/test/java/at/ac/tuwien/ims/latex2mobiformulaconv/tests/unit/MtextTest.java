@@ -1,7 +1,16 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit;
 
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.token.Mtext;
+import org.apache.commons.lang.RandomStringUtils;
 import org.apache.log4j.Logger;
+import org.jdom2.Element;
+import org.junit.Before;
 import org.junit.Test;
+
+import java.util.Random;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /*
  * The MIT License (MIT)
@@ -33,11 +42,27 @@ import org.junit.Test;
 /**
  * @author Michael Auß
  */
-public class MtextTest {
+public class MtextTest extends FormulaElementTest {
     private static final Logger logger = Logger.getLogger(MtextTest.class);
 
+    private Mtext mtext;
+    private String randomText;
+
+    @Before
+    public void setUp() throws Exception {
+        mtext = new Mtext();
+        randomText = RandomStringUtils.randomAscii(new Random().nextInt(200) + 1).trim();
+        logger.debug("RandomText: " + randomText);
+        mtext.setValue(randomText);
+
+        formulaElement = mtext;
+    }
+
     @Test
-    public void testRender() throws Exception {
-        // TODO
+    public void testDetails() throws Exception {
+        Element result = mtext.render(possibleParent, null);
+
+        assertEquals(randomText, result.getText());
+        assertTrue(result.getChildren().isEmpty());
     }
 }

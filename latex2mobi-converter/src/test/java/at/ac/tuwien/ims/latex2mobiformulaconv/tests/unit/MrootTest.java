@@ -1,7 +1,21 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit;
 
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.FormulaElement;
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.layout.Mroot;
 import org.apache.log4j.Logger;
+import org.jdom2.Element;
+import org.junit.Before;
 import org.junit.Test;
+
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.mockito.AdditionalMatchers.or;
+import static org.mockito.Matchers.anyListOf;
+import static org.mockito.Matchers.eq;
+import static org.mockito.Matchers.isNull;
+import static org.mockito.Mockito.*;
 
 /*
  * The MIT License (MIT)
@@ -33,11 +47,63 @@ import org.junit.Test;
 /**
  * @author Michael Auß
  */
-public class MrootTest {
+public class MrootTest extends FormulaElementTest {
     private static final Logger logger = Logger.getLogger(MrootTest.class);
 
+    private Mroot mroot;
+    private FormulaElement base;
+    private FormulaElement degree;
+
+
+    @Before
+    public void setUp() throws Exception {
+        logger.debug("enter setUp()...");
+
+        mroot = new Mroot();
+
+        // mock base
+        base = mock(FormulaElement.class);
+
+        // mock result of base
+        Element baseSpan = new Element("span");
+        when(base.render(or(eq(mroot), isNull(FormulaElement.class)),
+                or(anyListOf(FormulaElement.class), isNull(List.class)))).thenReturn(baseSpan);
+
+        mroot.setBase(base);
+
+        // mock degree
+        degree = mock(FormulaElement.class);
+
+        // mock result of degree
+        Element degreeSpan = new Element("span");
+        when(degree.render(or(eq(mroot), isNull(FormulaElement.class)),
+                or(anyListOf(FormulaElement.class), isNull(List.class)))).thenReturn(degreeSpan);
+
+        mroot.setDegree(degree);
+
+        formulaElement = mroot;
+    }
+
     @Test
-    public void testRender() throws Exception {
-        // TODO
+    public void testRender() {
+        logger.debug("enter testRender()...");
+
+        Element result = mroot.render(possibleParent, null);
+
+        assertNotNull(result);
+        assertEquals("span", result.getName());
+        assertEquals("mroot", result.getAttributeValue("class"));
+
+        assertEquals("mroot-degree", result.getChildren("span").get(0).getAttributeValue("class"));
+
+        Element symbol = result.getChildren("span").get(1);
+        assertEquals("mroot-symbol", symbol.getAttributeValue("class"));
+        assertEquals("√", symbol.getChild("span").getText());
+
+        assertEquals("mroot-topbar", result.getChildren("span").get(2).getAttributeValue("class"));
+        assertEquals("mroot-base", result.getChildren("span").get(2).getChild("span").getAttributeValue("class"));
+
+        verify(base).render(or(eq(mroot), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
+        verify(degree).render(or(eq(mroot), isNull(FormulaElement.class)), or(anyListOf(FormulaElement.class), isNull(List.class)));
     }
 }
