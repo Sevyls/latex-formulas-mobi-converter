@@ -220,15 +220,12 @@ public class Mo extends Token {
         String css = "padding-left: " + lspace.toString() + "; padding-right: " + rspace.toString() + ";";
         moSpan.setAttribute("style", css);
 
-        String output = value;
-        if (output.length() > 1) {
-            String entityName = output.substring(1, output.length() - 1);
-            if (MathmlCharacterDictionary.entityMapByName.containsKey(entityName)) {
-                output = MathmlCharacterDictionary.entityMapByName.get(entityName);
-            }
+        String output = MathmlCharacterDictionary.decodeEntity(value);
+        if (output != null) {
+            value = output;
         }
 
-        moSpan.addContent(output.trim());
+        moSpan.addContent(value.trim());
 
         return moSpan;
     }

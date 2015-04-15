@@ -230,4 +230,21 @@ public class MathmlCharacterDictionary {
         return null;
     }
 
+    public static String decodeEntity(String operatorEntity) {
+        if (operatorEntity != null && operatorEntity.length() > 1) {
+
+            // check if just the name was given
+            if (MathmlCharacterDictionary.entityMapByName.containsKey(operatorEntity)) {
+                return MathmlCharacterDictionary.entityMapByName.get(operatorEntity);
+            }
+
+            // check if it was a complete entity (i.e. "&OverBrace;")
+            String entityName = operatorEntity.substring(1, operatorEntity.length() - 1);
+
+            if (MathmlCharacterDictionary.entityMapByName.containsKey(entityName)) {
+                return MathmlCharacterDictionary.entityMapByName.get(entityName);
+            }
+        }
+        return null;
+    }
 }

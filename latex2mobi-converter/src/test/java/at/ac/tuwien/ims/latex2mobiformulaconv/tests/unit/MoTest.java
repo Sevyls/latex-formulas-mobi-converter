@@ -1,11 +1,14 @@
 package at.ac.tuwien.ims.latex2mobiformulaconv.tests.unit;
 
+import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.MathmlCharacterDictionary;
 import at.ac.tuwien.ims.latex2mobiformulaconv.converter.mathml2html.elements.token.Mo;
-import org.apache.commons.lang.RandomStringUtils;
+import org.apache.commons.lang.math.RandomUtils;
 import org.apache.log4j.Logger;
 import org.jdom2.Element;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
@@ -38,12 +41,9 @@ import static org.junit.Assert.assertEquals;
 
 /**
  *
- *
  * @author Michael Auß
  */
 public class MoTest extends FormulaElementTest {
-    private static final char[] operators = new char[]{'+', '-', '*', '%', '=', '/', '&', '<', '>', ':'};
-
     private static Logger logger = Logger.getLogger(MoTest.class);
     private Mo mo;
     private String operator;
@@ -53,7 +53,10 @@ public class MoTest extends FormulaElementTest {
     public void setUp() throws Exception {
         mo = new Mo();
         formulaElement = mo;
-        operator = RandomStringUtils.random(1, operators);
+
+        operator = new ArrayList<>(MathmlCharacterDictionary.operatorDictionary.keySet())
+                .get(RandomUtils.nextInt(MathmlCharacterDictionary.operatorDictionary.size()));
+
         logger.debug("Operator: " + operator);
         mo.setValue(operator);
 
@@ -62,9 +65,15 @@ public class MoTest extends FormulaElementTest {
     @Test
     public void testDetails() throws Exception {
         Element result = mo.render(possibleParent, null);
+        assertEquals("span", result.getName());
+        assertEquals("mo", result.getAttributeValue("class"));
 
+
+        String entity = MathmlCharacterDictionary.decodeEntity(operator);
+        if (entity != null) {
+            operator = entity;
+        }
+        
         assertEquals(operator, result.getText());
     }
-
-    // TODO lspace + rspace tests
 }

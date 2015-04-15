@@ -87,8 +87,9 @@ public class Mi extends Token {
     }
 
     private void lookup(String name) {
-        if (MathmlCharacterDictionary.entityMapByName.containsKey(name)) {
-            this.value = MathmlCharacterDictionary.entityMapByName.get(name);
+        String result = MathmlCharacterDictionary.decodeEntity(name);
+        if (result != null) {
+            this.value = result;
         }
     }
 }
