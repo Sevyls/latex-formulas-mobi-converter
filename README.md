@@ -91,6 +91,43 @@ As with the above executables the tool ``ebook-convert`` requires you to
  
 ``-c / --calibre-exec <calibre's ebook-convert exec path>``
 
+## Run
+
+### Usage
+
+The default help dialogue gives a glimpse about the flags.
+Required flag: -i
+
+``$ latex2mobi -h
+
+usage: latex2mobi
+LaTeX Formulas to Mobi Converter
+(c) 2014-2015 by Michael Auss
+ -c,--calibre-exec <arg>     Calibre executable location
+ -d,--debugMarkupOutput      show debug output in html markup
+ -f,--filename <arg>         output filename
+ -h,--help                   show this help
+ -i,--inputPaths <arg>       inputPaths file
+ -k,--kindlegen-exec <arg>   Amazon KindleGen executable location
+ -m,--export-markup          export html markup
+ -n,--no-mobi                no Mobi conversion, just markup, NOTE: makes
+                             -m implicit!
+ -o,--output-dir <arg>       output directory
+ -p,--pandoc-exec <arg>      pandoc executable location
+ -r,--replace-with-images    replace latex formulas with pictures,
+                             override html
+ -t,--title <arg>            Document title
+ -u,--use-calibre            use calibre ebook-convert instead of
+                             kindlegen
+``
+
+### Example
+
+Run program with an input file ``example.tex``:
+
+``latex2mobi -i example.tex`` 
+
+Results in a file ``example.mobi``.
 
 ## Build-Requirements
 
