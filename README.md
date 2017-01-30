@@ -98,7 +98,8 @@ As with the above executables the tool ``ebook-convert`` requires you to
 The default help dialogue gives a glimpse about the flags.
 Required flag: -i
 
-``$ latex2mobi -h
+```
+$ latex2mobi -h
 
 usage: latex2mobi
 LaTeX Formulas to Mobi Converter
@@ -119,7 +120,7 @@ LaTeX Formulas to Mobi Converter
  -t,--title <arg>            Document title
  -u,--use-calibre            use calibre ebook-convert instead of
                              kindlegen
-``
+```
 
 ### Example
 
